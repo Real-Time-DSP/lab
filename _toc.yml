@@ -1,0 +1,29 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index
+
+parts:
+
+  - caption: Introduction
+    chapters:
+    - file: primer
+    - file: stm32h735g
+    - file: setup
+    - file: data
+    - file: troubleshooting
+    
+  - caption: Labs
+    chapters:
+    - file: lab1/index
+    - file: lab2/index
+    - file: lab3/index
+    - file: lab4/primer
+    - file: lab4/index
+    - file: lab5/primer
+    - file: lab5/index
+    - file: lab6/primer
+    - file: lab6/index
+    - file: lab7/primer
+    - file: lab7/index

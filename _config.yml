@@ -1,0 +1,23 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+title: 'Real Time DSP Lab Manual'
+author: 'University of Texas at Austin'
+copyright: '2022'
+exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints", README.md]
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: "off"
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/Real-Time-DSP/lab  # Online location of your book
+  path_to_book: docs  # Optional path to your book, relative to the repository root
+  branch: master  # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: true
+  use_repository_button: true
