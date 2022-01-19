@@ -1,0 +1,1151 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM) &#8212; EE 445S Lab Manual</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 6 Primer" href="../lab6/primer.html" />
+    <link rel="prev" title="Lab 5 Primer" href="primer.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">EE 445S Lab Manual</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Contents
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   EE 445S Lab Component
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../primer.html">
+   Lab Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stm32h735g.html">
+   STM32H735G Discovery Kit Setup Guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup.html">
+   Laboratory Hardware Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data.html">
+   Managing data between MATLAB and C
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../troubleshooting.html">
+   Troubleshooting / Frequently Asked Questions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab1/index.html">
+   Lab 1. Overview of Hardware and Software Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab2/index.html">
+   Lab 2. Generating Cosine and Sine Waves
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab3/index.html">
+   Lab 3. Digital Filters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab4/primer.html">
+   Lab 4 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab4/index.html">
+   Lab 4. Pseudo-Random Binary Sequences and Data Scramblers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="primer.html">
+   Lab 5 Primer
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab6/primer.html">
+   Lab 6 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab6/index.html">
+   Lab 6. Quadrature Amplitude Modulation (QAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab7/primer.html">
+   Lab 7 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab7/index.html">
+   Lab 7. Vocoder and Guitar Effects
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   EE 445S Lab Component
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../primer.html">
+   Lab Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stm32h735g.html">
+   STM32H735G Discovery Kit Setup Guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup.html">
+   Laboratory Hardware Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data.html">
+   Managing data between MATLAB and C
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../troubleshooting.html">
+   Troubleshooting / Frequently Asked Questions
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Labs
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab1/index.html">
+   Lab 1. Overview of Hardware and Software Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab2/index.html">
+   Lab 2. Generating Cosine and Sine Waves
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab3/index.html">
+   Lab 3. Digital Filters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab4/primer.html">
+   Lab 4 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab4/index.html">
+   Lab 4. Pseudo-Random Binary Sequences and Data Scramblers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="primer.html">
+   Lab 5 Primer
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab6/primer.html">
+   Lab 6 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab6/index.html">
+   Lab 6. Quadrature Amplitude Modulation (QAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab7/primer.html">
+   Lab 7 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab7/index.html">
+   Lab 7. Vocoder and Guitar Effects
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lab5/index.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Real-Time-DSP/lab"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Real-Time-DSP/lab/issues/new?title=Issue%20on%20page%20%2Flab5/index.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aim-of-the-experiment">
+   Aim of the experiment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-assignment">
+   Reading assignment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-5-instructions-week-1">
+   Lab 5 instructions: week 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulation-in-matlab">
+     Simulation in MATLAB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-up-the-transmitter-on-the-stm32-board">
+     Setting up the transmitter on the STM32 board
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examining-the-transmission-in-matlab">
+     Examining the transmission in MATLAB
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-5-instructions-week-2">
+   Lab 5 instructions: week 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#costas-loop-for-carrier-recovery">
+     Costas loop for carrier recovery
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#symbol-recovery-by-downsampling-and-quantization">
+       Symbol recovery by downsampling and quantization
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-5-instructions-week-3">
+   Lab 5 instructions: week 3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cross-correlation-for-header-detection">
+     Cross-correlation for header detection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#symbol-timing-recovery">
+     Symbol timing recovery
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#symbol-error-probability">
+     Symbol error probability
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-report-contents">
+   Lab report contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-introduction">
+     I. Introduction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ii-methods">
+     II. Methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iii-results-from-lab-exercise">
+     III. Results from lab exercise
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#week-one">
+       Week one
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#week-two">
+       Week two
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#week-three">
+       Week three
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iv-discussion">
+     IV. Discussion
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aim-of-the-experiment">
+   Aim of the experiment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-assignment">
+   Reading assignment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-5-instructions-week-1">
+   Lab 5 instructions: week 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulation-in-matlab">
+     Simulation in MATLAB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-up-the-transmitter-on-the-stm32-board">
+     Setting up the transmitter on the STM32 board
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examining-the-transmission-in-matlab">
+     Examining the transmission in MATLAB
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-5-instructions-week-2">
+   Lab 5 instructions: week 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#costas-loop-for-carrier-recovery">
+     Costas loop for carrier recovery
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#symbol-recovery-by-downsampling-and-quantization">
+       Symbol recovery by downsampling and quantization
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-5-instructions-week-3">
+   Lab 5 instructions: week 3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cross-correlation-for-header-detection">
+     Cross-correlation for header detection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#symbol-timing-recovery">
+     Symbol timing recovery
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#symbol-error-probability">
+     Symbol error probability
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-report-contents">
+   Lab report contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-introduction">
+     I. Introduction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ii-methods">
+     II. Methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iii-results-from-lab-exercise">
+     III. Results from lab exercise
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#week-one">
+       Week one
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#week-two">
+       Week two
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#week-three">
+       Week three
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iv-discussion">
+     IV. Discussion
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lab-5-digital-data-transmission-by-baseband-pulse-amplitude-modulation-pam">
+<h1>Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM)<a class="headerlink" href="#lab-5-digital-data-transmission-by-baseband-pulse-amplitude-modulation-pam" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="aim-of-the-experiment">
+<h2>Aim of the experiment<a class="headerlink" href="#aim-of-the-experiment" title="Permalink to this headline">¶</a></h2>
+<p>In this experiment, you will learn the basics concepts of digital communications like pulse shaping filters, Nyquist criterion, eye diagram, inter-symbol interference and clock recovery. You will learn digital data transmission using baseband pulse amplitude modulation.</p>
+<p>Before you start with the experiment, it is necessary that you have an understanding (at some level) of the following concepts:</p>
+<ul class="simple">
+<li><p>Baseband PAM</p></li>
+<li><p>Nyquist criterion</p></li>
+<li><p>Inter-symbol Interference (ISI)</p></li>
+<li><p>Pulse shaping (raised cosine baseband filtering)</p></li>
+<li><p>Eye diagrams</p></li>
+<li><p>Interpolation filter bank</p></li>
+<li><p>Symbol clock recovery</p></li>
+</ul>
+</div>
+<div class="section" id="reading-assignment">
+<h2>Reading assignment<a class="headerlink" href="#reading-assignment" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Digital Signal Processing using Arm Cortex-M based Microcontrollers by Cem Ünsalan, M. Erkin Yücel, H. Deniz Gürhan.</p>
+<ul>
+<li><p>Chapter 9, sections 1-6</p></li>
+</ul>
+</li>
+<li><p>Software Receiver Design by C. Richard Johnson, Jr., William A. Sethares and Andrew Klein</p>
+<ul>
+<li><p>Sections 2.6-2.16</p></li>
+<li><p>Sections 9.1-9.4</p></li>
+<li><p>Sections 10.1-10.4</p></li>
+<li><p>Sections 11.1-11.6</p></li>
+</ul>
+</li>
+<li><p>Course reader</p>
+<ul>
+<li><p>Lecture 7: Interpolation and Pulse Shaping</p></li>
+<li><p>Lecture 13: Digital Pulse Amplitude Modulation (PAM transmitter)</p></li>
+<li><p>Lecture 12: Channel Impairments (communication channel)</p></li>
+<li><p>Lecture 14: Matched Filtering (PAM receiver)</p></li>
+</ul>
+</li>
+<li><p>Common Microcontroller Software Interface Standard (CMSIS) Reference</p>
+<ul>
+<li><p><a class="reference external" href="https://arm-software.github.io/CMSIS_5/DSP/html/group__FIR__Interpolate.html">FIR Interpolating Filter</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="lab-5-instructions-week-1">
+<h2>Lab 5 instructions: week 1<a class="headerlink" href="#lab-5-instructions-week-1" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise, we will transmit the scrambled tree image from the STM board to a PC running a receiver to recover the image.</p>
+<div class="section" id="simulation-in-matlab">
+<h3>Simulation in MATLAB<a class="headerlink" href="#simulation-in-matlab" title="Permalink to this headline">¶</a></h3>
+<ol>
+<li><p>Run the following code which simulates the generation of the transmitted signal. Please download the <a class="reference external" href="https://danjacobellis.github.io/EE445S-lab/_sources/lab5/pn_16384.md.txt">file containing the PN sequence from lab four</a>, and the <a class="reference external" href="https://danjacobellis.github.io/EE445S-lab/_images/tree.png">tree image</a>. Ensure that both are accessible on the MATLAB path.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f0</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">;</span> <span class="n">fs</span> <span class="o">=</span> <span class="mi">48000</span><span class="p">;</span> <span class="n">sps</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="n">fsym</span> <span class="o">=</span> <span class="n">fs</span><span class="o">/</span><span class="n">sps</span><span class="p">;</span>
+<span class="n">pulse_shaping_filter</span> <span class="o">=</span> <span class="n">rcosdesign</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">sps</span><span class="p">,</span><span class="s1">&#39;normal&#39;</span><span class="p">);</span>
+<span class="n">carrier</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">theta</span><span class="p">)</span> <span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">f0</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span><span class="o">*</span><span class="n">n</span> <span class="o">+</span> <span class="n">theta</span><span class="p">);</span>
+<span class="n">header</span> <span class="o">=</span> <span class="n">str2num</span><span class="p">(</span><span class="n">fliplr</span><span class="p">(</span><span class="n">dec2bin</span><span class="p">(</span><span class="mi">2524737185</span><span class="p">))</span><span class="s1">&#39;);</span>
+<span class="n">serialized_data</span> <span class="o">=</span> <span class="n">reshape</span><span class="p">(</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;tree.png&#39;</span><span class="p">),[</span><span class="mi">1</span><span class="p">,</span><span class="mi">128</span><span class="o">^</span><span class="mi">2</span><span class="p">])</span><span class="s1">&#39;;</span>
+<span class="n">pn16k</span> <span class="o">=</span> <span class="n">readmatrix</span><span class="p">(</span><span class="s1">&#39;pn_16384.txt&#39;</span><span class="p">)</span><span class="s1">&#39;; pn16k = pn16k(:);</span>
+<span class="n">pn16k</span> <span class="o">=</span> <span class="n">fliplr</span><span class="p">(</span><span class="n">dec2bin</span><span class="p">(</span><span class="n">pn16k</span><span class="p">))</span><span class="s1">&#39;; pn16k = str2num(pn16k(:));</span>
+<span class="n">scrambled</span> <span class="o">=</span> <span class="n">mod</span><span class="p">(</span><span class="n">serialized_data</span> <span class="o">+</span> <span class="n">pn16k</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">upsampled_data</span> <span class="o">=</span> <span class="n">upsample</span><span class="p">([</span><span class="n">header</span><span class="p">;</span> <span class="n">scrambled</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">16</span><span class="p">);</span>
+<span class="n">sequence_of_pulses</span> <span class="o">=</span> <span class="n">conv</span><span class="p">(</span><span class="n">upsampled_data</span><span class="p">,</span><span class="n">pulse_shaping_filter</span><span class="p">,</span><span class="s1">&#39;same&#39;</span><span class="p">);</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">length</span><span class="p">(</span><span class="n">sequence_of_pulses</span><span class="p">);</span>
+<span class="n">modulated</span> <span class="o">=</span> <span class="n">sequence_of_pulses</span><span class="s1">&#39; .* carrier(n,0);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create an eye diagram using the first 1600 samples of the simulated signal. You can either use the ‘eyediagram’ function in the communications toolbox or reshape the samples into a matrix and use ‘plot’. <strong>Include the eye diagram in your lab report.</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyediagram</span><span class="p">(</span><span class="n">sequence_of_pulses</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1600</span><span class="p">),</span><span class="mi">16</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">;</span> <span class="n">plot</span><span class="p">(</span><span class="n">reshape</span><span class="p">(</span><span class="n">sequence_of_pulses</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1600</span><span class="p">),[</span><span class="mi">16</span><span class="p">,</span><span class="mi">100</span><span class="p">]));</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="setting-up-the-transmitter-on-the-stm32-board">
+<h3>Setting up the transmitter on the STM32 board<a class="headerlink" href="#setting-up-the-transmitter-on-the-stm32-board" title="Permalink to this headline">¶</a></h3>
+<ol>
+<li><p>In lab.c, create an array containing the data stream to transmit. The data stream will have 32 bits of header followed by 16384 bits for the (scrambled) tree image. If we store it as an array of 32-bit words, then we will need an array of length 513.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uint32_t</span> <span class="n">data_stream</span><span class="p">[</span><span class="mi">513</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>For the header sequence, we will use the output of a maximal-length 5-bit LFSR. Rather than repeat the steps from lab 4 to generate the sequence, you can simply copy the provided sequence which has been computed for you.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_stream</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x967c6ea1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The tree data and scrambler are the same as lab four. Populate the remainder of the <code class="docutils literal notranslate"><span class="pre">data_stream</span></code> array with the scrambled tree (<code class="docutils literal notranslate"><span class="pre">tree[i]^PN[i]</span></code>).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">i_word</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_word</span> <span class="o">&lt;</span> <span class="mi">512</span><span class="p">;</span> <span class="n">i_word</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">data_stream</span><span class="p">[</span><span class="n">i_word</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tree</span><span class="p">[</span><span class="n">i_word</span><span class="p">]</span><span class="o">^</span><span class="n">PN</span><span class="p">[</span><span class="n">i_word</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Prepare the pulse-shaping filter according the specifications below. Since the interpolating filterbank requires a filter whose length is a multiple of the upsampling factor (16), remove the last coefficient (which should be equal to zero and has no effect on the filter)</p>
+<ul class="simple">
+<li><p>Filter type: raised cosine</p></li>
+<li><p>Samples per symbol: 16</p></li>
+<li><p>Sampling Frequency <span class="math notranslate nohighlight">\(F_s= 44.1 \text{ kHz}\)</span></p></li>
+<li><p>Rolloff factor: 0.8</p></li>
+</ul>
+<p>In MATLAB, use the ‘rcosdesign’ function and copy the coefficients into lab.c</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pulse_shaping_coeffs</span> <span class="o">=</span> <span class="n">rcosdesign</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="s1">&#39;normal&#39;</span><span class="p">);</span>
+<span class="n">sprintf</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%f</span><span class="s1">,&#39;</span><span class="p">,</span><span class="n">pulse_shaping_coeffs</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">end</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span> <span class="n">pulse_shaping_coeffs</span><span class="p">[</span><span class="mi">64</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">coefficients</span><span class="o">&gt;</span><span class="p">};</span>
+</pre></div>
+</div>
+</li>
+<li><p>In lab.c prepare the variables necessary to use the CMSIS library function for the interpolating filter. Take a moment to read the <a class="reference external" href="https://arm-software.github.io/CMSIS_5/DSP/html/group__FIR__Interpolate.html">description of the FIR interpolator function.</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arm_fir_interpolate_instance_f32</span> <span class="n">filter_instance</span><span class="p">;</span> 
+<span class="n">uint8_t</span> <span class="n">upsampling_factor</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span>
+<span class="n">uint16_t</span> <span class="n">num_taps</span> <span class="o">=</span> <span class="mi">64</span><span class="p">;</span>
+<span class="n">float32_t</span> <span class="n">state</span><span class="p">[(</span><span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">float32_t</span> <span class="n">filter_in</span><span class="p">[</span><span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">64</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">float32_t</span> <span class="n">filter_out</span><span class="p">[</span><span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">float32_t</span> <span class="n">cos_lut</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">uint32_t</span> <span class="n">i_lut</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Also create variables to keep track of our current word and bit position in the data stream (just as you did in lab 4). You can reuse the variables you used for the PN sequence as long as you reset them.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uint32_t</span> <span class="n">i_word</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">uint32_t</span> <span class="n">i_bit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Initialize the interpolating filter in the lab_init function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arm_fir_interpolate_init_f32</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">filter_instance</span><span class="p">,</span> <span class="n">upsampling_factor</span><span class="p">,</span> <span class="n">num_taps</span><span class="p">,</span> <span class="n">pulse_shaping_coeffs</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">4</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>In process_input_buffer, construct the buffer of symbols that we will send to the arm_fir_interpolate_f32 function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">uint32_t</span> <span class="n">i_sample</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_sample</span><span class="o">&lt;</span><span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">64</span><span class="p">;</span> <span class="n">i_sample</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">filter_in</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="n">data_stream</span><span class="p">[</span><span class="n">i_word</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">i_bit</span><span class="p">)</span> <span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="n">i_bit</span><span class="p">;</span>
+    <span class="n">filter_in</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">filter_in</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">i_bit</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i_bit</span> <span class="o">==</span> <span class="mi">32</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">i_word</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">i_bit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i_word</span> <span class="o">&gt;</span> <span class="mi">512</span><span class="p">){</span><span class="n">i_word</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Perform the filtering and copy the result to the output buffer</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arm_fir_interpolate_f32</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">filter_instance</span><span class="p">,</span> <span class="n">filter_in</span><span class="p">,</span> <span class="n">filter_out</span><span class="p">,</span> <span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">64</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">uint32_t</span> <span class="n">i_sample</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_sample</span> <span class="o">&lt;</span> <span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">i_sample</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="n">input_buffer</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span> <span class="o">=</span> <span class="n">OUTPUT_SCALE_FACTOR</span><span class="o">*</span><span class="n">filter_out</span><span class="p">[</span><span class="n">i_sample</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">cos_lut</span><span class="p">[</span><span class="n">i_lut</span><span class="p">];</span>
+     <span class="n">i_lut</span> <span class="o">=</span> <span class="p">(</span><span class="n">i_lut</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">4</span><span class="p">;</span>
+     <span class="n">i_sample</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
+     <span class="n">input_buffer</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="examining-the-transmission-in-matlab">
+<h3>Examining the transmission in MATLAB<a class="headerlink" href="#examining-the-transmission-in-matlab" title="Permalink to this headline">¶</a></h3>
+<ol>
+<li><p>With the transmitter running, record 12 seconds of data using MATLAB and save it to a file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="o">=</span> <span class="mi">48000</span><span class="p">;</span>
+<span class="n">recorder</span> <span class="o">=</span> <span class="n">audiorecorder</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">recordblocking</span><span class="p">(</span><span class="n">recorder</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+<span class="n">scrambled</span> <span class="o">=</span> <span class="n">getaudiodata</span><span class="p">(</span><span class="n">recorder</span><span class="p">)</span><span class="s1">&#39;;</span>
+<span class="n">save</span> <span class="n">scrambled</span> <span class="n">scrambled</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Remove the scrambler by replacing the line <code class="docutils literal notranslate"><span class="pre">data_stream[i_word+1]</span> <span class="pre">=</span> <span class="pre">tree[i_word]^PN[i_word];</span></code> with <code class="docutils literal notranslate"><span class="pre">data_stream[i_word+1]</span> <span class="pre">=</span> <span class="pre">tree[i_word]</span></code>. Repeat the recording, but ensure that you choose a new file name.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="o">=</span> <span class="mi">48000</span><span class="p">;</span>
+<span class="n">recorder</span> <span class="o">=</span> <span class="n">audiorecorder</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">recordblocking</span><span class="p">(</span><span class="n">recorder</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+<span class="n">not_scrambled</span> <span class="o">=</span> <span class="n">getaudiodata</span><span class="p">(</span><span class="n">recorder</span><span class="p">)</span><span class="s1">&#39;;</span>
+<span class="n">save</span> <span class="n">not_scrambled</span> <span class="n">not_scrambled</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a spectrogram for both recorded transmissions. <strong>Include both spectrograms in your lab report.</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">load</span> <span class="n">scrambled</span><span class="p">;</span>
+<span class="n">figure</span><span class="p">;</span> <span class="n">spectrogram</span><span class="p">(</span><span class="n">scrambled</span><span class="p">,</span><span class="mi">2</span><span class="o">^</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">^</span><span class="mi">10</span><span class="p">,</span><span class="mi">48000</span><span class="p">,</span><span class="s1">&#39;yaxis&#39;</span><span class="p">);</span>
+
+<span class="n">load</span> <span class="n">not_scrambled</span><span class="p">;</span>
+<span class="n">figure</span><span class="p">;</span> <span class="n">spectrogram</span><span class="p">(</span><span class="n">not_scrambled</span><span class="p">,</span><span class="mi">2</span><span class="o">^</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">^</span><span class="mi">10</span><span class="p">,</span><span class="mi">48000</span><span class="p">,</span><span class="s1">&#39;yaxis&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the <a class="reference external" href="https://github.com/danjacobellis/EE445S-lab/raw/main/starter_code/receiver_demo.m">receiver demo</a> in MATLAB using the transmission that was not scrambled. Try to adjust the parameters to recover the tree image. <strong>Include the recovered tree image in your lab report using the best parameters you find.</strong></p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="lab-5-instructions-week-2">
+<h2>Lab 5 instructions: week 2<a class="headerlink" href="#lab-5-instructions-week-2" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise we will transmit the tree image (either from MATLAB or your lab partner’s board) and receive it on the STM board.</p>
+<div class="section" id="costas-loop-for-carrier-recovery">
+<h3>Costas loop for carrier recovery<a class="headerlink" href="#costas-loop-for-carrier-recovery" title="Permalink to this headline">¶</a></h3>
+<ol>
+<li><p>In lab.c, create variables necessary for the costas loop. Assume that the lowpass filter in the costas loop is the same pulse shaping filter as before with 64 coefficients.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span> <span class="n">Ux</span><span class="p">[</span><span class="mi">64</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">float32_t</span> <span class="n">Lx</span><span class="p">[</span><span class="mi">64</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">float32_t</span> <span class="n">Uy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">float32_t</span> <span class="n">Ly</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">float32_t</span> <span class="n">wc</span> <span class="o">=</span> <span class="mf">1.5707963267949</span><span class="p">;</span>
+<span class="n">float32_t</span> <span class="n">theta</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">float32_t</span> <span class="n">mu</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">;</span>
+<span class="n">float32_t</span> <span class="n">baseband</span><span class="p">[</span><span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">uint32_t</span> <span class="n">i_baseband</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add code to process_left_sample which computes the newest values for the upper and lower branches.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span> <span class="n">r</span> <span class="o">=</span> <span class="n">input_sample</span><span class="o">*</span><span class="n">INPUT_SCALE_FACTOR</span><span class="p">;</span>
+
+<span class="n">Ux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">arm_cos_f32</span><span class="p">(</span><span class="n">theta</span><span class="p">);</span>
+<span class="n">Lx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">arm_sin_f32</span><span class="p">(</span><span class="n">theta</span><span class="p">);</span>
+
+<span class="n">Uy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">Ly</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">uint32_t</span> <span class="n">i_sample</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_sample</span> <span class="o">&lt;</span> <span class="mi">64</span><span class="p">;</span> <span class="n">i_sample</span> <span class="o">+=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Uy</span> <span class="o">+=</span> <span class="n">Ux</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span><span class="o">*</span><span class="n">pulse_shaping_coeffs</span><span class="p">[</span><span class="n">i_sample</span><span class="p">];</span>
+    <span class="n">Ly</span> <span class="o">+=</span> <span class="n">Lx</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span><span class="o">*</span><span class="n">pulse_shaping_coeffs</span><span class="p">[</span><span class="n">i_sample</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="n">baseband</span><span class="p">[</span><span class="n">i_baseband</span><span class="p">]</span> <span class="o">=</span> <span class="n">Uy</span><span class="p">;</span>
+<span class="n">i_baseband</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">i_baseband</span> <span class="o">&gt;</span> <span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">4</span><span class="p">){</span><span class="n">i_baseband</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;}</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">i_sample</span> <span class="o">=</span> <span class="mi">63</span><span class="p">;</span> <span class="n">i_sample</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_sample</span> <span class="o">-=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Ux</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span> <span class="o">=</span> <span class="n">Ux</span><span class="p">[</span><span class="n">i_sample</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">Lx</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span> <span class="o">=</span> <span class="n">Lx</span><span class="p">[</span><span class="n">i_sample</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Update the estimate of <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span> <span class="o">+=</span> <span class="n">wc</span> <span class="o">-</span> <span class="n">mu</span><span class="o">*</span><span class="n">Uy</span><span class="o">*</span><span class="n">Ly</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">theta</span> <span class="o">&gt;</span> <span class="mf">6.283185</span><span class="p">){</span><span class="n">theta</span> <span class="o">-=</span> <span class="mf">6.283185</span><span class="p">;}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Connect the input jack on the board to a transmitting source (either the matlab simulation via soundsc or a second board running the previous week’s lab. Send the output of the costas loop (<code class="docutils literal notranslate"><span class="pre">Uy</span></code>) to the DAC. The pulse shaping filter applies a gain of about 3.005, so you may want to use a smaller scale factor.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">OUTPUT_SCALE_FACTOR</span><span class="o">*</span><span class="n">Uy</span><span class="o">*</span><span class="mf">0.3</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Display the output on the oscilloscope and verify its behavior. For the scrambled signal, the output of the Costas loop should closely resemble the baseband signal before modulation. <strong>Include an oscilloscope screenshot in your lab report.</strong></p></li>
+</ol>
+<div class="section" id="symbol-recovery-by-downsampling-and-quantization">
+<h4>Symbol recovery by downsampling and quantization<a class="headerlink" href="#symbol-recovery-by-downsampling-and-quantization" title="Permalink to this headline">¶</a></h4>
+<ol>
+<li><p>Create a variable <span class="math notranslate nohighlight">\(k\)</span> that acts as a counter for the downsampler. Since every 16th sample corresponds to a new symbol, let <span class="math notranslate nohighlight">\(k\)</span> count up to 15 before saving the next value and resetting the counter.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">int32_t</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">==</span> <span class="mi">15</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">//</span> <span class="n">save</span> <span class="n">the</span> <span class="n">current</span> <span class="n">value</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="n">k</span> <span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create an array to store 16384 bits (128 by 128 binary image) which can be displayed on the screen. Also create variables (or reset existing variables) to keep track of the current word and current bit. Quantize the output of the downsampler by comparing its value to zero, then store it in the array.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uint32_t</span> <span class="n">data</span><span class="p">[</span><span class="mi">512</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">uint32_t</span> <span class="n">i_word</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">uint32_t</span> <span class="n">i_bit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">Uy</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">i_word</span><span class="p">]</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">i_bit</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">i_bit</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">i_bit</span> <span class="o">==</span> <span class="mi">32</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">i_word</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">i_bit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+</li>
+<li><p>Create an if statement to detect if the array is full. When it is, display it as an image.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">i_word</span><span class="o">&gt;</span><span class="mi">512</span><span class="p">){</span>
+    <span class="n">display_image</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Setup the transmitter as the input (either with your lab partner running the week 1 code or the provided MATLAB simulation) <em>without</em> scrambling the data. Run the receiver with a breakpoint immediately after image is displayed. You should see a noisy and possibly inverted tree image. Since no symbol timing recovery algorithm is in place, the quality of the recovered image could change when you repeat the experiment. <strong>Include the recovered image in your lab report.</strong> (You can either use a photo or <a class="reference internal" href="../data.html"><span class="doc std std-doc">export the array</span></a> and plot it in MATLAB using the <code class="docutils literal notranslate"><span class="pre">image</span></code> function).</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="lab-5-instructions-week-3">
+<h2>Lab 5 instructions: week 3<a class="headerlink" href="#lab-5-instructions-week-3" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise we will add a symbol clock recovery subsystem and implement the cross-correlation to match the PN header.</p>
+<div class="section" id="cross-correlation-for-header-detection">
+<h3>Cross-correlation for header detection<a class="headerlink" href="#cross-correlation-for-header-detection" title="Permalink to this headline">¶</a></h3>
+<ol>
+<li><p>Create the variables necessary to implement the header detection as an FIR filter including a semaphore variable to track when the header has been detected.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">int8_t</span> <span class="n">xcorr</span><span class="p">[</span><span class="mi">32</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">int8_t</span> <span class="n">header</span><span class="p">[</span><span class="mi">32</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span>
+<span class="n">int8_t</span> <span class="n">R</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">int8_t</span> <span class="n">header_matched</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Each time a new symbol is processed (i.e. inside the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(k==15)</span></code> block), map the symbol to either +1 or -1, and store it in the ‘xcorr’ array.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">Uy</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span><span class="n">xcorr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;}</span>
+<span class="k">else</span><span class="p">{</span><span class="n">xcorr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Perform the correlation as an FIR filter (the header variable as defined above has already been flipped).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">uint32_t</span> <span class="n">i_hdr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_hdr</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">;</span> <span class="n">i_hdr</span> <span class="o">+=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">R</span> <span class="o">+=</span> <span class="n">xcorr</span><span class="p">[</span><span class="n">i_hdr</span><span class="p">]</span><span class="o">*</span><span class="n">header</span><span class="p">[</span><span class="n">i_hdr</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">uint32_t</span> <span class="n">i_hdr</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span> <span class="n">i_hdr</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_hdr</span> <span class="o">-=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">xcorr</span><span class="p">[</span><span class="n">i_hdr</span><span class="p">]</span> <span class="o">=</span> <span class="n">xcorr</span><span class="p">[</span><span class="n">i_hdr</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>If the cross correlation reaches the maximum possible value, update the semaphore.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">R</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span> <span class="p">{</span><span class="n">header_matched</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Move the data collection code block into an if statement so that it only occurs after the header is detected</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">header_matched</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">Uy</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span> <span class="n">data</span><span class="p">[</span><span class="n">i_word</span><span class="p">]</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">i_bit</span><span class="p">);</span> <span class="p">}</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+</li>
+<li><p>Repeat the transmission and put a breakpoint after the image is displayed. The image should appear with proper alignment. <strong>Include the recovered tree image in your lab report</strong> You can either take a photo or perform a memory export and plot it in MATLAB.</p></li>
+</ol>
+</div>
+<div class="section" id="symbol-timing-recovery">
+<h3>Symbol timing recovery<a class="headerlink" href="#symbol-timing-recovery" title="Permalink to this headline">¶</a></h3>
+<ol>
+<li><p>Design two second order IIR bandpass filters in the MATLAB filter designer with the following parameters</p>
+<p><strong>BPF 1</strong></p>
+<ul class="simple">
+<li><p>Design method: Elliptic</p></li>
+<li><p>Filter order <span class="math notranslate nohighlight">\(N=2\)</span></p></li>
+<li><p>Sampling Frequency <span class="math notranslate nohighlight">\(F_s= 48 \text{ kHz}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{\text{pass1}}=1.45\text{ kHz}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{\text{pass2}}=1.55\text{ kHz}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A_{\text{stop}}=80 \text{dB}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A_{\text{pass}}=1 \text{dB}\)</span></p></li>
+</ul>
+<p><strong>BPF 2</strong></p>
+<ul class="simple">
+<li><p>Design method: Elliptic</p></li>
+<li><p>Filter order <span class="math notranslate nohighlight">\(N=2\)</span></p></li>
+<li><p>Sampling Frequency <span class="math notranslate nohighlight">\(F_s= 48 \text{ kHz}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{\text{pass1}}=2.9\text{ kHz}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{\text{pass2}}=3.1\text{ kHz}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A_{\text{stop}}=80 \text{dB}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A_{\text{pass}}=1 \text{dB}\)</span></p></li>
+</ul>
+</li>
+<li><p>Apply the first bandpass filter to the output of the Costas loop <code class="docutils literal notranslate"><span class="pre">Uy</span></code>.</p></li>
+<li><p>Square the output of the first bandpass filter.</p></li>
+<li><p>Apply the second bandpass filter after the squaring block.</p></li>
+<li><p>Send the output to the DAC and display it on the oscilloscope. The peaks of this clock signal indicate when to sample each symbol. <strong>Include an oscilloscope screenshot of the recovered clock signal in your lab report</strong>.</p></li>
+</ol>
+</div>
+<div class="section" id="symbol-error-probability">
+<h3>Symbol error probability<a class="headerlink" href="#symbol-error-probability" title="Permalink to this headline">¶</a></h3>
+<ol>
+<li><p>In MATLAB, plot the theoretical symbol error probability as a function of signal to noise ratio for <span class="math notranslate nohighlight">\(M = 2, 4, 8.\)</span> Put the x-axis SNR variable in dB.</p>
+<div class="math notranslate nohighlight">
+\[ P_e = \frac{2(M-1)}{M}\times Q\left( \sqrt{\text{SNR}\times \frac{3}{M^2 -1}} \right)\]</div>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Q-function"><span class="math notranslate nohighlight">\(Q-\)</span>function</a> is related the the <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution#Cumulative_distribution_function">Gaussian cumulative distribution function <span class="math notranslate nohighlight">\(\Phi(x)\)</span></a> by <span class="math notranslate nohighlight">\(Q(x) = 1-\Phi(x)\)</span>. If you have the communications toolbox installed, you can simply use ‘qfunc’ in MATLAB. Otherwise, you can use the closely related <a class="reference external" href="https://en.wikipedia.org/wiki/Error_function">error function</a> ‘erf’.</p>
+<div class="math notranslate nohighlight">
+\[ \Phi(x) = \frac{1}{2} \left[ 1 + \text{erf}\left( \frac{x}{\sqrt 2} \right) \right] \]</div>
+<p>** Include the error probability vs SNR plot in your lab report**</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="lab-report-contents">
+<h2>Lab report contents<a class="headerlink" href="#lab-report-contents" title="Permalink to this headline">¶</a></h2>
+<p>Be sure to include everything listed in this section when you submit your lab report. The goal of the report is to help cement what you learned in memory. For sections I, II, and IV, imagine your audience is a student who is your peer but who has not yet completed the lab.</p>
+<div class="section" id="i-introduction">
+<h3>I. Introduction<a class="headerlink" href="#i-introduction" title="Permalink to this headline">¶</a></h3>
+<p>Briefly explain the theory and algorithms behind the programs that you wrote. The slides and reading material might help you in writing this section.</p>
+</div>
+<div class="section" id="ii-methods">
+<h3>II. Methods<a class="headerlink" href="#ii-methods" title="Permalink to this headline">¶</a></h3>
+<p>Describe the steps you took to implement the algorithms in your own words.</p>
+</div>
+<div class="section" id="iii-results-from-lab-exercise">
+<h3>III. Results from lab exercise<a class="headerlink" href="#iii-results-from-lab-exercise" title="Permalink to this headline">¶</a></h3>
+<p>Present the results you obtain for each task on the assignment sheet. This section should include illustrative oscilloscope screenshots of the DSP algorithms in action. Also include any code that you wrote or modified. Please do not include all of the boilerplate code from the textbook.</p>
+<div class="section" id="week-one">
+<h4>Week one<a class="headerlink" href="#week-one" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Eye diagram of simulated transmission</p></li>
+<li><p>Spectrograms of PAM transmissions</p></li>
+<li><p>Recovered tree image</p></li>
+</ul>
+</div>
+<div class="section" id="week-two">
+<h4>Week two<a class="headerlink" href="#week-two" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Recovered tree image</p></li>
+</ul>
+</div>
+<div class="section" id="week-three">
+<h4>Week three<a class="headerlink" href="#week-three" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Recovered tree image</p></li>
+<li><p>Symbol error probability vs SNR plot</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="iv-discussion">
+<h3>IV. Discussion<a class="headerlink" href="#iv-discussion" title="Permalink to this headline">¶</a></h3>
+<p>In this section, discuss the takeaway from each lab. You can mention any intuition that you developed. Also mention any problems that you faced and how you rectified them.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lab5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="primer.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lab 5 Primer</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../lab6/primer.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 6 Primer</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Dan Jacobellis<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

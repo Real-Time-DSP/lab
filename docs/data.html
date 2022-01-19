@@ -1,0 +1,595 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Managing data between MATLAB and C &#8212; EE 445S Lab Manual</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Troubleshooting / Frequently Asked Questions" href="troubleshooting.html" />
+    <link rel="prev" title="Laboratory Hardware Setup" href="setup.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">EE 445S Lab Manual</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Contents
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   EE 445S Lab Component
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="primer.html">
+   Lab Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stm32h735g.html">
+   STM32H735G Discovery Kit Setup Guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="setup.html">
+   Laboratory Hardware Setup
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Managing data between MATLAB and C
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="troubleshooting.html">
+   Troubleshooting / Frequently Asked Questions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab1/index.html">
+   Lab 1. Overview of Hardware and Software Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab2/index.html">
+   Lab 2. Generating Cosine and Sine Waves
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab3/index.html">
+   Lab 3. Digital Filters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab4/primer.html">
+   Lab 4 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab4/index.html">
+   Lab 4. Pseudo-Random Binary Sequences and Data Scramblers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab5/primer.html">
+   Lab 5 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab5/index.html">
+   Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab6/primer.html">
+   Lab 6 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab6/index.html">
+   Lab 6. Quadrature Amplitude Modulation (QAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab7/primer.html">
+   Lab 7 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab7/index.html">
+   Lab 7. Vocoder and Guitar Effects
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   EE 445S Lab Component
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="primer.html">
+   Lab Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stm32h735g.html">
+   STM32H735G Discovery Kit Setup Guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="setup.html">
+   Laboratory Hardware Setup
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Managing data between MATLAB and C
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="troubleshooting.html">
+   Troubleshooting / Frequently Asked Questions
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Labs
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab1/index.html">
+   Lab 1. Overview of Hardware and Software Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab2/index.html">
+   Lab 2. Generating Cosine and Sine Waves
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab3/index.html">
+   Lab 3. Digital Filters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab4/primer.html">
+   Lab 4 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab4/index.html">
+   Lab 4. Pseudo-Random Binary Sequences and Data Scramblers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab5/primer.html">
+   Lab 5 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab5/index.html">
+   Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab6/primer.html">
+   Lab 6 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab6/index.html">
+   Lab 6. Quadrature Amplitude Modulation (QAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab7/primer.html">
+   Lab 7 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab7/index.html">
+   Lab 7. Vocoder and Guitar Effects
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/data.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Real-Time-DSP/lab"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Real-Time-DSP/lab/issues/new?title=Issue%20on%20page%20%2Fdata.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moving-data-from-matlab-to-c">
+   Moving data from MATLAB to C.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moving-data-from-c-to-matlab">
+   Moving data from C to MATLAB
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Managing data between MATLAB and C</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moving-data-from-matlab-to-c">
+   Moving data from MATLAB to C.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moving-data-from-c-to-matlab">
+   Moving data from C to MATLAB
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="managing-data-between-matlab-and-c">
+<h1>Managing data between MATLAB and C<a class="headerlink" href="#managing-data-between-matlab-and-c" title="Permalink to this headline">¶</a></h1>
+<p>Often, we will want to examine data generated on the board using MATLAB or export data from MATLAB (such as filter coefficients in Lab 3) to use in our C code.</p>
+<div class="section" id="moving-data-from-matlab-to-c">
+<h2>Moving data from MATLAB to C.<a class="headerlink" href="#moving-data-from-matlab-to-c" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">tree.png</span></code> image will be used as the data payload in some subsequent lab exercises.</p>
+<p><img alt="" src="_images/tree.png" /></p>
+<p>It is a 128x128 binary image (16,384 bits or 512 32-bit words). In MATLAB, we can load this file as a matrix using ‘imread’ and display it using ‘imshow’:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tree</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s1">&#39;tree.png&#39;</span><span class="p">);</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">tree</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>There are two main ways we can load data like this on the STM32 board:</p>
+<ol class="simple">
+<li><p>Use <a class="reference external" href="https://www.st.com/en/development-tools/stm32cubeprog.html">STM32CubeProg</a> or similar software to directly load the data to an appropriate section of the processor’s memory. This method is appropriate for large chunks of data like audio or video files.</p></li>
+<li><p>Format the data into text (usually hexadecimal) and directly initialize a variable with the data in a .c or .h file. This method is appropriate for smaller chunks of data like the filter coefficients or the relatively small tree.png, and is what we will use for the lab exercises.</p></li>
+</ol>
+<p>In MATLAB, the ‘sprintf’ command is a convenient way to format data into text so that it can be directly copied into C code. As an example, consider the following MATLAB code to format one period of a cosine with with <span class="math notranslate nohighlight">\(\omega_0 = \frac{\pi}{8}\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="mi">0</span> <span class="p">:</span> <span class="n">pi</span><span class="o">/</span><span class="mi">4</span> <span class="p">:</span> <span class="mi">7</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">);</span>
+<span class="nb">str</span> <span class="o">=</span> <span class="n">sprintf</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.8g</span><span class="s1">,&#39;</span><span class="p">,</span><span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="nb">str</span>
+<span class="s1">&#39;1,0.70710678,6.123234e-17,-0.70710678,-1,-0.70710678,-1.8369702e-16,0.70710678,&#39;</span>
+</pre></div>
+</div>
+<p>In this format the data can be easily copied into a variable declaration in a .c file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span> <span class="n">data</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.70710678</span><span class="p">,</span><span class="mf">6.123234e-17</span><span class="p">,</span><span class="o">-</span><span class="mf">0.70710678</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mf">0.70710678</span><span class="p">,</span><span class="o">-</span><span class="mf">1.8369702e-16</span><span class="p">,</span><span class="mf">0.70710678</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>The ‘%.8g’ format is adequate for single precision floating point values, but is not ideal for binary data like the tree image. Instead, we can use ‘%x’ for hexadecimal.</p>
+<p>Before formatting the data using sprintf, we must orgainize the data into appropriately sized words with the correct endianness.</p>
+<ol>
+<li><p>Convert the image into a vector of zeros and ones. For this example, we will map white pixels to 0 and black pixels to one:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tree</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">imread</span><span class="p">(</span><span class="s1">&#39;tree.png&#39;</span><span class="p">);</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">reshape</span><span class="p">(</span><span class="n">tree</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">128</span><span class="o">^</span><span class="mi">2</span><span class="p">]);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Convert the data from the MATLAB default (double) to a string of zeros and ones as required by the bin2dec function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_bin</span> <span class="o">=</span> <span class="n">sprintf</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%i</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Group the data into words that are each 32 bits. To change the endianness, flip the array horizontally with ‘fliplr’.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_32bit</span> <span class="o">=</span> <span class="n">fliplr</span><span class="p">(</span><span class="n">reshape</span><span class="p">(</span><span class="n">data_bin</span><span class="p">,[</span><span class="mi">32</span><span class="p">,</span><span class="mi">512</span><span class="p">])</span><span class="s1">&#39;);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Use sprintf to format the data.</p>
+<p>To print all of the data on one line, use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sprintf</span><span class="p">(</span><span class="s1">&#39;0x</span><span class="si">%x</span><span class="s1">,&#39;</span><span class="p">,</span><span class="n">bin2dec</span><span class="p">(</span><span class="n">data_32bit</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Alternatively print the values across multiple lines (in this case 16 words per line).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sprintf</span><span class="p">([</span><span class="n">repmat</span><span class="p">(</span><span class="s1">&#39;0x</span><span class="si">%x</span><span class="s1">,&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">16</span><span class="p">])</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">],</span><span class="n">bin2dec</span><span class="p">(</span><span class="n">data_32bit</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>The resulting variable declaration in C would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uint32_t</span> <span class="n">tree</span><span class="p">[</span><span class="mi">512</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x400</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x1c600</span><span class="p">,</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x1e100</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x1e000</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x1f080</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x3880</span><span class="p">,</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x1880</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0xc80</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x680</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x680</span><span class="p">,</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x4680</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x6680</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x680</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0xc0e80</span><span class="p">,</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x40e80</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x20680</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x10680</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x8680</span><span class="p">,</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x680</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x680</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x680</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x680</span><span class="p">,</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x600680</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x104680</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x82680</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x41680</span><span class="p">,</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x1c00000</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x20e80</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x1e00000</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x10680</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x3e00000</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x8680</span><span class="p">,</span><span class="mh">0x30000000</span><span class="p">,</span><span class="mh">0x83c00004</span><span class="p">,</span><span class="mh">0x1</span><span class="p">,</span><span class="mh">0x4680</span><span class="p">,</span>
+<span class="mh">0x20000000</span><span class="p">,</span><span class="mh">0x8600200c</span><span class="p">,</span><span class="mh">0x1</span><span class="p">,</span><span class="mh">0x680</span><span class="p">,</span><span class="mh">0x40000000</span><span class="p">,</span><span class="mh">0xc002008</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x680</span><span class="p">,</span><span class="mh">0x8f000000</span><span class="p">,</span><span class="mh">0x18404010</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x680</span><span class="p">,</span><span class="mh">0xff000000</span><span class="p">,</span><span class="mh">0x1c408000</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x380</span><span class="p">,</span>
+<span class="mh">0xff000000</span><span class="p">,</span><span class="mh">0x9801038c</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x802180</span><span class="p">,</span><span class="mh">0x86000000</span><span class="p">,</span><span class="mh">0x78004399</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x4010c0</span><span class="p">,</span><span class="mh">0xc00000</span><span class="p">,</span><span class="mh">0x30004793</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x200860</span><span class="p">,</span><span class="mh">0x8c00000</span><span class="p">,</span><span class="mh">0x63818fa6</span><span class="p">,</span><span class="mh">0x21</span><span class="p">,</span><span class="mh">0x100460</span><span class="p">,</span>
+<span class="mh">0x19008000</span><span class="p">,</span><span class="mh">0x67011c2c</span><span class="p">,</span><span class="mh">0x71</span><span class="p">,</span><span class="mh">0x80260</span><span class="p">,</span><span class="mh">0x22018c00</span><span class="p">,</span><span class="mh">0x66081838</span><span class="p">,</span><span class="mh">0xd2</span><span class="p">,</span><span class="mh">0x40160</span><span class="p">,</span><span class="mh">0xfff20e00</span><span class="p">,</span><span class="mh">0x6c0c1f3f</span><span class="p">,</span><span class="mh">0xf4</span><span class="p">,</span><span class="mh">0x200e0</span><span class="p">,</span><span class="mh">0x21b00</span><span class="p">,</span><span class="mh">0x78021a31</span><span class="p">,</span><span class="mh">0x68</span><span class="p">,</span><span class="mh">0x810c60</span><span class="p">,</span>
+<span class="mh">0x80009e00</span><span class="p">,</span><span class="mh">0x7f82d030</span><span class="p">,</span><span class="mh">0x22</span><span class="p">,</span><span class="mh">0x38c08c60</span><span class="p">,</span><span class="mh">0x9c01bc00</span><span class="p">,</span><span class="mh">0x60807030</span><span class="p">,</span><span class="mh">0x62</span><span class="p">,</span><span class="mh">0x3c004260</span><span class="p">,</span><span class="mh">0x3c626000</span><span class="p">,</span><span class="mh">0xc0383230</span><span class="p">,</span><span class="mh">0x6c</span><span class="p">,</span><span class="mh">0x3c202160</span><span class="p">,</span><span class="mh">0x3c40e040</span><span class="p">,</span><span class="mh">0x87f83230</span><span class="p">,</span><span class="mh">0xc9</span><span class="p">,</span><span class="mh">0x3c1020e0</span><span class="p">,</span>
+<span class="mh">0x7880c040</span><span class="p">,</span><span class="mh">0xff86260</span><span class="p">,</span><span class="mh">0x183</span><span class="p">,</span><span class="mh">0x6082060</span><span class="p">,</span><span class="mh">0xe100cc80</span><span class="p">,</span><span class="mh">0x1c39c1ec</span><span class="p">,</span><span class="mh">0x18e</span><span class="p">,</span><span class="mh">0x3ff2060</span><span class="p">,</span><span class="mh">0xfe039900</span><span class="p">,</span><span class="mh">0xf801818d</span><span class="p">,</span><span class="mh">0x18f</span><span class="p">,</span><span class="mh">0x1ff9060</span><span class="p">,</span><span class="mh">0x80073200</span><span class="p">,</span><span class="mh">0xf70f0303</span><span class="p">,</span><span class="mh">0x19f</span><span class="p">,</span><span class="mh">0x1c860</span><span class="p">,</span>
+<span class="mh">0x1e60180</span><span class="p">,</span><span class="mh">0x11e0603</span><span class="p">,</span><span class="mh">0x1b0</span><span class="p">,</span><span class="mh">0x26463</span><span class="p">,</span><span class="mh">0x20c0180</span><span class="p">,</span><span class="mh">0x300c06</span><span class="p">,</span><span class="mh">0x800001fe</span><span class="p">,</span><span class="mh">0x4363f</span><span class="p">,</span><span class="mh">0xfffffc00</span><span class="p">,</span><span class="mh">0x7ffffff</span><span class="p">,</span><span class="mh">0xe00001c8</span><span class="p">,</span><span class="mh">0x201f9f</span><span class="p">,</span><span class="mh">0xfffffc00</span><span class="p">,</span><span class="mh">0x4fffffff</span><span class="p">,</span><span class="mh">0xf0000184</span><span class="p">,</span><span class="mh">0x400fc3</span><span class="p">,</span>
+<span class="mh">0x3800180</span><span class="p">,</span><span class="mh">0xd8030002</span><span class="p">,</span><span class="mh">0x38000383</span><span class="p">,</span><span class="mh">0x18000e0</span><span class="p">,</span><span class="mh">0x11fc0100</span><span class="p">,</span><span class="mh">0x3fc1f841</span><span class="p">,</span><span class="mh">0x1c000670</span><span class="p">,</span><span class="mh">0x1801e60</span><span class="p">,</span><span class="mh">0xb007c200</span><span class="p">,</span><span class="mh">0x6200ffe0</span><span class="p">,</span><span class="mh">0x8ffffe00</span><span class="p">,</span><span class="mh">0x21ff</span><span class="p">,</span><span class="mh">0x4003e360</span><span class="p">,</span><span class="mh">0xc1082707</span><span class="p">,</span><span class="mh">0xe0000000</span><span class="p">,</span><span class="mh">0xc01f</span><span class="p">,</span>
+<span class="mh">0x23026110</span><span class="p">,</span><span class="mh">0xe8fc1bff</span><span class="p">,</span><span class="mh">0xffffffff</span><span class="p">,</span><span class="mh">0x18007</span><span class="p">,</span><span class="mh">0x13b3088</span><span class="p">,</span><span class="mh">0x1c0019ff</span><span class="p">,</span><span class="mh">0x3fffffff</span><span class="p">,</span><span class="mh">0x3</span><span class="p">,</span><span class="mh">0xfed88c</span><span class="p">,</span><span class="mh">0xc38007</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x600</span><span class="p">,</span><span class="mh">0x1fe4c04</span><span class="p">,</span><span class="mh">0xe0ff80c4</span><span class="p">,</span><span class="mh">0x1fffffff</span><span class="p">,</span><span class="mh">0x100603</span><span class="p">,</span>
+<span class="mh">0x3f180e00</span><span class="p">,</span><span class="mh">0x71ff84c4</span><span class="p">,</span><span class="mh">0xf0000000</span><span class="p">,</span><span class="mh">0x18010f</span><span class="p">,</span><span class="mh">0x7e010bc0</span><span class="p">,</span><span class="mh">0x3be30808</span><span class="p">,</span><span class="mh">0xe3fff800</span><span class="p">,</span><span class="mh">0x400bf</span><span class="p">,</span><span class="mh">0xc41089f0</span><span class="p">,</span><span class="mh">0x9e0c1e7f</span><span class="p">,</span><span class="mh">0x87fffe0f</span><span class="p">,</span><span class="mh">0x38073</span><span class="p">,</span><span class="mh">0x83f06478</span><span class="p">,</span><span class="mh">0xe2c46ff</span><span class="p">,</span><span class="mh">0xc000700</span><span class="p">,</span><span class="mh">0x43e0</span><span class="p">,</span>
+<span class="mh">0x1e00236c</span><span class="p">,</span><span class="mh">0x1760c1c0</span><span class="p">,</span><span class="mh">0x180003e0</span><span class="p">,</span><span class="mh">0x2600</span><span class="p">,</span><span class="mh">0xfe000338</span><span class="p">,</span><span class="mh">0x1bffffff</span><span class="p">,</span><span class="mh">0xb00001ff</span><span class="p">,</span><span class="mh">0x4001c03</span><span class="p">,</span><span class="mh">0xe240010</span><span class="p">,</span><span class="mh">0xf0038007</span><span class="p">,</span><span class="mh">0xe00000e1</span><span class="p">,</span><span class="mh">0xf80181f</span><span class="p">,</span><span class="mh">0xc0000</span><span class="p">,</span><span class="mh">0xd801c063</span><span class="p">,</span><span class="mh">0xc0000060</span><span class="p">,</span><span class="mh">0x40303f</span><span class="p">,</span>
+<span class="mh">0xf0080000</span><span class="p">,</span><span class="mh">0x68f8fe61</span><span class="p">,</span><span class="mh">0x30</span><span class="p">,</span><span class="mh">0x207063</span><span class="p">,</span><span class="mh">0xffffe000</span><span class="p">,</span><span class="mh">0x3100ff80</span><span class="p">,</span><span class="mh">0x18</span><span class="p">,</span><span class="mh">0x1fc060</span><span class="p">,</span><span class="mh">0x5c011000</span><span class="p">,</span><span class="mh">0x1a313bb8</span><span class="p">,</span><span class="mh">0x1c</span><span class="p">,</span><span class="mh">0xc0060</span><span class="p">,</span><span class="mh">0x4e00c800</span><span class="p">,</span><span class="mh">0x1ff919f8</span><span class="p">,</span><span class="mh">0x1e</span><span class="p">,</span><span class="mh">0x181060</span><span class="p">,</span>
+<span class="mh">0x37f04600</span><span class="p">,</span><span class="mh">0x7f90cf8</span><span class="p">,</span><span class="mh">0x1b</span><span class="p">,</span><span class="mh">0x301060</span><span class="p">,</span><span class="mh">0xa3fc0600</span><span class="p">,</span><span class="mh">0x80380639</span><span class="p">,</span><span class="mh">0x19</span><span class="p">,</span><span class="mh">0x702060</span><span class="p">,</span><span class="mh">0xe0000</span><span class="p">,</span><span class="mh">0xc601f302</span><span class="p">,</span><span class="mh">0x18</span><span class="p">,</span><span class="mh">0x3c040e0</span><span class="p">,</span><span class="mh">0x8b0000</span><span class="p">,</span><span class="mh">0xf20411c6</span><span class="p">,</span><span class="mh">0x18</span><span class="p">,</span><span class="mh">0x7808160</span><span class="p">,</span>
+<span class="mh">0x64cf0000</span><span class="p">,</span><span class="mh">0xf00801e0</span><span class="p">,</span><span class="mh">0x30</span><span class="p">,</span><span class="mh">0x3c010660</span><span class="p">,</span><span class="mh">0x22460000</span><span class="p">,</span><span class="mh">0xff9f0160</span><span class="p">,</span><span class="mh">0xf0</span><span class="p">,</span><span class="mh">0x78220060</span><span class="p">,</span><span class="mh">0x19000000</span><span class="p">,</span><span class="mh">0xdcf10130</span><span class="p">,</span><span class="mh">0x1e0</span><span class="p">,</span><span class="mh">0x78c23060</span><span class="p">,</span><span class="mh">0x800000</span><span class="p">,</span><span class="mh">0xce7f1c1e</span><span class="p">,</span><span class="mh">0x1e0</span><span class="p">,</span><span class="mh">0x78c260c0</span><span class="p">,</span>
+<span class="mh">0x800000</span><span class="p">,</span><span class="mh">0xc731fd0f</span><span class="p">,</span><span class="mh">0x1e0</span><span class="p">,</span><span class="mh">0x100201c0</span><span class="p">,</span><span class="mh">0x80000000</span><span class="p">,</span><span class="mh">0xf310fc89</span><span class="p">,</span><span class="mh">0x80</span><span class="p">,</span><span class="mh">0x40300</span><span class="p">,</span><span class="mh">0xc0000000</span><span class="p">,</span><span class="mh">0xc9ce18cc</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x80600</span><span class="p">,</span><span class="mh">0x78000000</span><span class="p">,</span><span class="mh">0x66e04002</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x100e00</span><span class="p">,</span>
+<span class="mh">0x78000000</span><span class="p">,</span><span class="mh">0x74706003</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x200a00</span><span class="p">,</span><span class="mh">0x78000000</span><span class="p">,</span><span class="mh">0x30202000</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x401a00</span><span class="p">,</span><span class="mh">0x30000000</span><span class="p">,</span><span class="mh">0x38000004</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x803a00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x3fb80002</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x1004a00</span><span class="p">,</span>
+<span class="mh">0x80000000</span><span class="p">,</span><span class="mh">0x37c00001</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x1008a00</span><span class="p">,</span><span class="mh">0x80000000</span><span class="p">,</span><span class="mh">0x30e70001</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x10a00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x307f0000</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x20a00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x703f0000</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x20a00</span><span class="p">,</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x78070000</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0xa00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x78000000</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0xa00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x70000000</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x40a00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x81a00</span><span class="p">,</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x103a00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x304a00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x208a00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x10a00</span><span class="p">,</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x20a00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x40a00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x80a00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x100a40</span><span class="p">,</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x2008c0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x601800</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0xc03a00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x4a00</span><span class="p">,</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x38a00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x40a00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x80a00</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x101a00</span><span class="p">,</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x303200</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x207200</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x1e200</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x3c000</span><span class="p">,</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x3c200</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x18200</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x200</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x400</span><span class="p">,</span>
+<span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x1800</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x1800</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span><span class="p">,</span><span class="mh">0x0</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="moving-data-from-c-to-matlab">
+<h2>Moving data from C to MATLAB<a class="headerlink" href="#moving-data-from-c-to-matlab" title="Permalink to this headline">¶</a></h2>
+<p>The STM32CubeIDE has a memory browser feature which can be used to easily locate and export a chunk of memory while in debug mode.</p>
+<ol>
+<li><p>Verify that the data is in memory using either the ‘variables’ or ‘expressions’ view.</p></li>
+<li><p>Open the memory browser (Window → Show view → Memory Browser).</p></li>
+<li><p>Identify the address of the beginning of the data you want to access in the memory browser. For example, if using the array above enter <code class="docutils literal notranslate"><span class="pre">tree</span></code> or <code class="docutils literal notranslate"><span class="pre">&amp;tree[0]</span></code>, and you will see the associated address listed in hexadecimal.</p></li>
+<li><p>Identify the address of the last byte of memory you want to extract using the same procedure (e.g. type <code class="docutils literal notranslate"><span class="pre">&amp;tree[512]</span></code> in the memory browser).</p></li>
+<li><p>click the Export <img alt="" src="_images/export.png" /> icon in the memory browser. Choose the appropriate memory addresses, ‘RAW Binary’ as the data type, and a filename, then click okay</p></li>
+<li><p>Load the exported data into MATLAB using ‘fread’:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fid</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s1">&#39;C:\...\data.bin&#39;</span><span class="p">);</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span><span class="mi">16384</span><span class="p">,</span><span class="s1">&#39;bit1&#39;</span><span class="p">);</span> 
+<span class="n">fclose</span><span class="p">(</span><span class="n">fid</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="setup.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Laboratory Hardware Setup</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="troubleshooting.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Troubleshooting / Frequently Asked Questions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Dan Jacobellis<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

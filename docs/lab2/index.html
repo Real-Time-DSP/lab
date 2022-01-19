@@ -1,0 +1,853 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 2. Generating Cosine and Sine Waves &#8212; EE 445S Lab Manual</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 3. Digital Filters" href="../lab3/index.html" />
+    <link rel="prev" title="Lab 1. Overview of Hardware and Software Tools" href="../lab1/index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">EE 445S Lab Manual</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Contents
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   EE 445S Lab Component
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../primer.html">
+   Lab Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stm32h735g.html">
+   STM32H735G Discovery Kit Setup Guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup.html">
+   Laboratory Hardware Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data.html">
+   Managing data between MATLAB and C
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../troubleshooting.html">
+   Troubleshooting / Frequently Asked Questions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab1/index.html">
+   Lab 1. Overview of Hardware and Software Tools
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lab 2. Generating Cosine and Sine Waves
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab3/index.html">
+   Lab 3. Digital Filters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab4/primer.html">
+   Lab 4 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab4/index.html">
+   Lab 4. Pseudo-Random Binary Sequences and Data Scramblers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab5/primer.html">
+   Lab 5 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab5/index.html">
+   Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab6/primer.html">
+   Lab 6 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab6/index.html">
+   Lab 6. Quadrature Amplitude Modulation (QAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab7/primer.html">
+   Lab 7 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab7/index.html">
+   Lab 7. Vocoder and Guitar Effects
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   EE 445S Lab Component
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../primer.html">
+   Lab Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stm32h735g.html">
+   STM32H735G Discovery Kit Setup Guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup.html">
+   Laboratory Hardware Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data.html">
+   Managing data between MATLAB and C
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../troubleshooting.html">
+   Troubleshooting / Frequently Asked Questions
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Labs
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab1/index.html">
+   Lab 1. Overview of Hardware and Software Tools
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lab 2. Generating Cosine and Sine Waves
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab3/index.html">
+   Lab 3. Digital Filters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab4/primer.html">
+   Lab 4 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab4/index.html">
+   Lab 4. Pseudo-Random Binary Sequences and Data Scramblers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab5/primer.html">
+   Lab 5 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab5/index.html">
+   Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab6/primer.html">
+   Lab 6 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab6/index.html">
+   Lab 6. Quadrature Amplitude Modulation (QAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab7/primer.html">
+   Lab 7 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab7/index.html">
+   Lab 7. Vocoder and Guitar Effects
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lab2/index.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Real-Time-DSP/lab"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Real-Time-DSP/lab/issues/new?title=Issue%20on%20page%20%2Flab2/index.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aim-of-the-experiment">
+   Aim of the experiment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-assignment">
+   Reading assignment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-2-instructions-week-1">
+   Lab 2 instructions: Week 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sinusoidal-generation-using-math-library-and-phase-accumulation">
+     Sinusoidal generation using math library and phase accumulation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sinusoidal-generation-using-difference-equation">
+     Sinusoidal generation using difference equation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-2-instructions-week-2">
+   Lab 2 instructions: Week 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sinusoidal-generation-using-lookup-table">
+     Sinusoidal generation using lookup table
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#examining-periodicity-in-matlab">
+       Examining periodicity in MATLAB.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lookup-table-sample-by-sample">
+       Lookup table: sample-by-sample
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lookup-table-direct-memory-access-dma">
+       Lookup table: direct memory access (DMA)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-report-contents">
+   Lab report contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-introduction">
+     I. Introduction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ii-methods">
+     II. Methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iii-results-from-lab-exercise">
+     III. Results from lab exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iv-discussion">
+     IV. Discussion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#v-assignment-questions">
+     V. Assignment questions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lab 2. Generating Cosine and Sine Waves</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aim-of-the-experiment">
+   Aim of the experiment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-assignment">
+   Reading assignment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-2-instructions-week-1">
+   Lab 2 instructions: Week 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sinusoidal-generation-using-math-library-and-phase-accumulation">
+     Sinusoidal generation using math library and phase accumulation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sinusoidal-generation-using-difference-equation">
+     Sinusoidal generation using difference equation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-2-instructions-week-2">
+   Lab 2 instructions: Week 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sinusoidal-generation-using-lookup-table">
+     Sinusoidal generation using lookup table
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#examining-periodicity-in-matlab">
+       Examining periodicity in MATLAB.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lookup-table-sample-by-sample">
+       Lookup table: sample-by-sample
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lookup-table-direct-memory-access-dma">
+       Lookup table: direct memory access (DMA)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-report-contents">
+   Lab report contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-introduction">
+     I. Introduction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ii-methods">
+     II. Methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iii-results-from-lab-exercise">
+     III. Results from lab exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iv-discussion">
+     IV. Discussion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#v-assignment-questions">
+     V. Assignment questions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lab-2-generating-cosine-and-sine-waves">
+<h1>Lab 2. Generating Cosine and Sine Waves<a class="headerlink" href="#lab-2-generating-cosine-and-sine-waves" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="aim-of-the-experiment">
+<h2>Aim of the experiment<a class="headerlink" href="#aim-of-the-experiment" title="Permalink to this headline">¶</a></h2>
+<p>The aim of this experiment is to</p>
+<ul class="simple">
+<li><p>explore the design tradeoffs in signal quality vs. runtime complexity in computing amplitude values of sinusoidal signals.</p></li>
+</ul>
+<p>Sinusoidal waveforms will be computed in discrete time, plotted, and played as audio signals.</p>
+</div>
+<div class="section" id="reading-assignment">
+<h2>Reading assignment<a class="headerlink" href="#reading-assignment" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Digital Signal Processing using Arm Cortex-M based Microcontrollers by Cem Ünsalan, M. Erkin Yücel, H. Deniz Gürhan.</p>
+<ul>
+<li><p>Chapter 2, sections 1-5</p></li>
+<li><p>Chapter 3, sections 1-7</p></li>
+</ul>
+</li>
+<li><p>Software Receiver Design by C. Richard Johnson, Jr., William A. Sethares and Andrew Klein</p>
+<ul>
+<li><p>Chapter 1</p></li>
+</ul>
+</li>
+<li><p>Course reader</p>
+<ul>
+<li><p>Lecture 1 slides on <a class="reference external" href="http://users.ece.utexas.edu/~bevans/courses/realtime/lectures/01_Sinusoids/lecture1.ppt">Generating Sinusoidal Signals</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="lab-2-instructions-week-1">
+<h2>Lab 2 instructions: Week 1<a class="headerlink" href="#lab-2-instructions-week-1" title="Permalink to this headline">¶</a></h2>
+<p>In these exercises, we want to generate the continuous signal <span class="math notranslate nohighlight">\(x(t) = \sin(2 \pi f_0 t)\)</span> by sending the discrete signal <span class="math notranslate nohighlight">\(x[n] = \sin \left( 2 \pi \frac{f_0}{f_s} n\right)\)</span> to the DAC.</p>
+<div class="section" id="sinusoidal-generation-using-math-library-and-phase-accumulation">
+<h3>Sinusoidal generation using math library and phase accumulation<a class="headerlink" href="#sinusoidal-generation-using-math-library-and-phase-accumulation" title="Permalink to this headline">¶</a></h3>
+<p>The first method we will use to generate a sinusoid is a math library call.</p>
+<ol class="simple">
+<li><p>Set the sampling rate to <span class="math notranslate nohighlight">\(\left(f_s = 16 \text{ kHz} \right)\)</span> in lab.h.</p></li>
+<li><p>Determine the discrete time frequency <span class="math notranslate nohighlight">\(\omega_0\)</span> (in radians per sample) corresponding to <span class="math notranslate nohighlight">\(f_0 = 1000\)</span> Hz.</p></li>
+<li><p>In lab.c, create a variable corresponding to the current phase. Use the type float32_t.</p></li>
+<li><p>The math library will compute floating point values of the sinusoid in the range <span class="math notranslate nohighlight">\([-1,1]\)</span>. Determine an appropriate scaling factor to map this to an appropriate range of the 16-bit DAC. (Hint: an int16_t can take values between −32768 and 32767.)</p></li>
+<li><p>In process_left_sample, replace the current talkthrough behavior with the sinusoidal generation using the math library and phase accumulation:</p>
+<ul class="simple">
+<li><p>Instead of setting <code class="docutils literal notranslate"><span class="pre">output_sample</span> <span class="pre">=</span> <span class="pre">input_sample</span></code> , call the math library function:  <code class="docutils literal notranslate"><span class="pre">output_sample</span> <span class="pre">=</span> <span class="pre">SCALING_FACTOR</span> <span class="pre">*</span> <span class="pre">arm_sin_f32(phase)</span></code></p></li>
+<li><p>Increment the phase by <span class="math notranslate nohighlight">\(\omega_0\)</span></p></li>
+</ul>
+</li>
+<li><p>Using the phase accumulation method, the phase will eventually become too large and cause numerical errors. Add an if statement that prevents the phase from exceeding <span class="math notranslate nohighlight">\(2 \pi \)</span>.</p></li>
+<li><p>Display the output signal on the oscilloscope and verify the frequency.</p></li>
+<li><p>Approximate the number of clock cycles that elapsed when calling the math library function by placing it between calls of the provided <code class="docutils literal notranslate"><span class="pre">tic()</span></code> and <code class="docutils literal notranslate"><span class="pre">toc()</span></code> functions. The easiest way to do this is by putting a breakpoint <em>after</em> the line <code class="docutils literal notranslate"><span class="pre">elapsed_cycles</span> <span class="pre">=</span> <span class="pre">toc()</span></code>, setting a watch expression for <code class="docutils literal notranslate"><span class="pre">elapsed_cycles</span></code>, and running the program in debug mode until it reaches the breakpoint. The <code class="docutils literal notranslate"><span class="pre">tic()</span></code> and <code class="docutils literal notranslate"><span class="pre">toc()</span></code> functions estimate the number of clock cycles by saving the value of the systick register and taking a difference. Occasionally, you will observe a very high measurement (something like 4 million) caused by overflow. If this happens, you can easily repeat the measurement by continuing the program execution until it reaches the breakpoint again.</p></li>
+</ol>
+<p><strong>In your lab report, please include:</strong></p>
+<ul class="simple">
+<li><p>the modified process_left_sample function</p></li>
+<li><p>the value of <span class="math notranslate nohighlight">\(\omega_0\)</span> you computed</p></li>
+<li><p>the clock cycle measurement for the math library call</p></li>
+</ul>
+</div>
+<div class="section" id="sinusoidal-generation-using-difference-equation">
+<h3>Sinusoidal generation using difference equation<a class="headerlink" href="#sinusoidal-generation-using-difference-equation" title="Permalink to this headline">¶</a></h3>
+<p>In this exercise, we will apply an impulse to a causal discrete-time linear time-invariant system governed by the difference equation</p>
+<div class="math notranslate nohighlight">
+\[ y[n] = (2 \cos \omega_0) y[n-1] - y[n-2] + (\sin \omega_0) x[n-1]) \]</div>
+<p>The impulse response of this system is a causal sinusoid with discrete time frequency <span class="math notranslate nohighlight">\(\omega_0\)</span>.</p>
+<ol>
+<li><p>In lab.c, initialize variables corresponding to the state variables of the system. For example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="n">float32_t</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If using an array of values like this example, think about which element of the array should correspond to each state variable. A good convention is that <code class="docutils literal notranslate"><span class="pre">x[0]</span></code> maps to <span class="math notranslate nohighlight">\(x[n]\)</span>, <code class="docutils literal notranslate"><span class="pre">x[1]</span></code> maps to <span class="math notranslate nohighlight">\(x[n-1]\)</span>, and so on.</p>
+</li>
+<li><p>In lab.c replace the output value of process_left_sample with the output <span class="math notranslate nohighlight">\(y[n]\)</span> of this system. Use the same value of <span class="math notranslate nohighlight">\(\omega_0\)</span> as before.</p></li>
+<li><p>In lab.c, add statements to the process_left_sample function that simulate the state values moving through the delay line. Looking at the block diagram should help you determine how to update your variables.</p></li>
+<li><p>Run the program and view the output on the oscilloscope to verify the behavior.</p></li>
+</ol>
+<p><strong>Include the modified process_left_sample function in your lab report.</strong></p>
+</div>
+</div>
+<div class="section" id="lab-2-instructions-week-2">
+<h2>Lab 2 instructions: Week 2<a class="headerlink" href="#lab-2-instructions-week-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sinusoidal-generation-using-lookup-table">
+<h3>Sinusoidal generation using lookup table<a class="headerlink" href="#sinusoidal-generation-using-lookup-table" title="Permalink to this headline">¶</a></h3>
+<p>In this exercise, we will examine the lookup table method for generating a sinusoid.</p>
+<div class="section" id="examining-periodicity-in-matlab">
+<h4>Examining periodicity in MATLAB.<a class="headerlink" href="#examining-periodicity-in-matlab" title="Permalink to this headline">¶</a></h4>
+<p>This section may help you complete assignment question #6.</p>
+<p>The lookup table method requires minimal computation compared the math library call or difference equation, but the memory required depends on the desired frequency and the sampling rate. This MATLAB exercise will demonstrate this relationship.</p>
+<ol class="simple">
+<li><p>For a sine wave with desired frequency <span class="math notranslate nohighlight">\(f_0 = \text{1 kHz}\)</span> and a sampling rate of <span class="math notranslate nohighlight">\(f_s = 16 \text{ kHz}\)</span>, determine the appropriate discrete-time frequency <span class="math notranslate nohighlight">\(\omega_0\)</span> in radians per sample.</p></li>
+<li><p>In MATLAB, plot the first 100 samples of the discrete-time signal in step one using the <code class="docutils literal notranslate"><span class="pre">stem</span></code> function. Notice that the signal repeats every 16 samples.</p></li>
+<li><p>Repeat step two for a sine wave with desired frequency <span class="math notranslate nohighlight">\(f_0 = \text{3 kHz}\)</span> and a sampling rate of <span class="math notranslate nohighlight">\(f_s = 16 \text{ kHz}\)</span>. Notice that this signal also repeats every 16 samples.</p></li>
+<li><p>Repeat step two for a sine wave with desired frequency <span class="math notranslate nohighlight">\(\Omega_0 = 1000 \text{ rad/sec}\)</span> and a sampling rate of <span class="math notranslate nohighlight">\(f_s = 8 \text{ kHz}\)</span>. Notice that this signal is <em>aperiodic</em>.</p></li>
+</ol>
+</div>
+<div class="section" id="lookup-table-sample-by-sample">
+<h4>Lookup table: sample-by-sample<a class="headerlink" href="#lookup-table-sample-by-sample" title="Permalink to this headline">¶</a></h4>
+<ol>
+<li><p>For a sine wave with desired frequency <span class="math notranslate nohighlight">\(f_0 = \text{1 kHz}\)</span> and a sampling rate of <span class="math notranslate nohighlight">\(f_s = 16 \text{ kHz}\)</span>, determine the appropriate discrete-time frequency <span class="math notranslate nohighlight">\(\omega_0\)</span> in radians per sample. Notice that this discrete-time signal is periodic with <span class="math notranslate nohighlight">\(L=16\)</span> samples.</p></li>
+<li><p>In lab.h, ensure that the sampling rate is set to 16 kHz.</p></li>
+<li><p>In lab.c, declare an array corresponding to a lookup table that you will build for this sinusoid. Also create a variable corresponding to the current position in the lookup table. For example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int16_t</span><span class="w"> </span><span class="n">table</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span><span class="w"></span>
+<span class="kt">uint32_t</span><span class="w"> </span><span class="n">i_table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>In lab.c, add code to the lab_init function to populate your lookup table. For example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span><span class="w"> </span><span class="n">amplitude</span><span class="p">;</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">amplitude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arm_sin_f32</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">omega0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">table</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SCALING_FACTOR</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">amplitude</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>In lab.c, modify the process_left_sample function to use the values from your lookup table. For example</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">output_sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="p">[</span><span class="n">i_table</span><span class="p">];</span><span class="w"></span>
+<span class="n">i_table</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i_table</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">16</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="n">i_table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;}</span><span class="w"></span>
+<span class="k">return</span><span class="w"> </span><span class="n">output_sample</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the program and view the output on the oscilloscope to verify the behavior. <strong>Include an oscilloscope screenshot in your lab report. Make sure that either the frequency or period of the sinusoid are visible in your screenshot.</strong></p></li>
+<li><p>Change <span class="math notranslate nohighlight">\(\omega\)</span> so that it corresponds to a desired frequency <span class="math notranslate nohighlight">\(f_0 = \text{15 kHz}\)</span> and a sampling rate of <span class="math notranslate nohighlight">\(f_s = 16 \text{ kHz}\)</span> (This should be a red flag!). Run the program and view the output on the oscilloscope. <strong>Include an oscilloscope screenshot in your lab report. Make sure that either the frequency or period of the sinusoid are visible in your screenshot.</strong></p></li>
+</ol>
+</div>
+<div class="section" id="lookup-table-direct-memory-access-dma">
+<h4>Lookup table: direct memory access (DMA)<a class="headerlink" href="#lookup-table-direct-memory-access-dma" title="Permalink to this headline">¶</a></h4>
+<p>The starter code is configured to use the DMA controller to repeatedly transfer a buffer (corresponding to the output signal) to the DAC. Typically, this buffer is updated as new inputs are received. Since we want to generate a periodic signal, we can implement our program more efficiently by populating this buffer with our sinusoid once and then leaving it untouched.</p>
+<ol>
+<li><p>In lab.h, disable updates to the ouput buffer by uncommenting the statement</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># define PERIODIC_LOOKUP_TABLE</span>
+</pre></div>
+</div>
+<p>and commenting the statements for the processing functions</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//   #define PROCESS_LEFT_CHANNEL</span>
+<span class="c1">//   #define PROCESS_RIGHT_CHANNEL</span>
+<span class="c1">//   #define PROCESS_INPUT_BUFFER</span>
+<span class="c1">//   #define PROCESS_OUTPUT_BUFFER</span>
+</pre></div>
+</div>
+</li>
+<li><p>In lab.c, modify the construction of your lookup table so that the values are stored in the output buffer. Recall that the left and right channels are interleaved in the output buffer. To use the lookup table on the left channel, you might add</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">i_sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i_sample</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">FRAME_SIZE</span><span class="p">;</span><span class="w"> </span><span class="n">i_sample</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">i_table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">i_sample</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">output_buffer</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="p">[</span><span class="n">i_table</span><span class="p">];</span><span class="w"> </span><span class="c1">//left</span>
+<span class="w">    </span><span class="n">i_sample</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">output_buffer</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">//right</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the program and view the output on the oscilloscope to verify the behavior.</p></li>
+<li><p>Notice the frame size (8192) is an integer multiple of our signal’s period <span class="math notranslate nohighlight">\(L=16\)</span>. Recalculate <span class="math notranslate nohighlight">\(\omega0\)</span> and <span class="math notranslate nohighlight">\(L\)</span> corresponding to a <span class="math notranslate nohighlight">\(f_0 = \text{440 Hz}\)</span> and update your lookup table accordingly. Run the program and observe the output on the oscilloscope. You should notice abrupt changes in your output every <span class="math notranslate nohighlight">\(\frac{8192}{16000} \approx 0.5\)</span> seconds.</p></li>
+<li><p>In lab.h, change the frame size to 8000 and run the program. You should notice that the abrupt changes in your output no longer occur.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="lab-report-contents">
+<h2>Lab report contents<a class="headerlink" href="#lab-report-contents" title="Permalink to this headline">¶</a></h2>
+<p>Be sure to include everything listed in this section when you submit your lab report. The goal of the report is to help cement what you learned in memory. For sections I, II, and IV, imagine your audience is a student who is your peer but who has not yet completed the lab.</p>
+<div class="section" id="i-introduction">
+<h3>I. Introduction<a class="headerlink" href="#i-introduction" title="Permalink to this headline">¶</a></h3>
+<p>Briefly explain the theory and algorithms behind the programs that you wrote. The slides and reading material might help you in writing this section.</p>
+</div>
+<div class="section" id="ii-methods">
+<h3>II. Methods<a class="headerlink" href="#ii-methods" title="Permalink to this headline">¶</a></h3>
+<p>Describe the steps you took to implement the algorithms in your own words.</p>
+</div>
+<div class="section" id="iii-results-from-lab-exercise">
+<h3>III. Results from lab exercise<a class="headerlink" href="#iii-results-from-lab-exercise" title="Permalink to this headline">¶</a></h3>
+<p>Present the results you obtain for each task on the assignment sheet. This section should include illustrative oscilloscope screenshots of the DSP algorithms in action. Also include any code that you wrote or modified. Please do not include all of the boilerplate code from the textbook.</p>
+<ol class="simple">
+<li><p>Sinusoidal generation using math library and phase accumulation</p>
+<ul class="simple">
+<li><p>process_left sample function modified for math library method</p></li>
+<li><p>value of <span class="math notranslate nohighlight">\(\omega_0\)</span> used to generate 1 kHz sinusoid</p></li>
+</ul>
+</li>
+<li><p>Sinusoidal generation using difference equation</p>
+<ul class="simple">
+<li><p>process_left sample function modified for difference equation method</p></li>
+</ul>
+</li>
+<li><p>Sinusoidal generation using lookup table</p>
+<ul class="simple">
+<li><p>oscilloscope screenshot corresponding to desired frequency <span class="math notranslate nohighlight">\(f_0 = \text{1 kHz}\)</span></p></li>
+<li><p>oscilloscope screenshot corresponding to desired frequency <span class="math notranslate nohighlight">\(f_0 = \text{15 kHz}\)</span></p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="iv-discussion">
+<h3>IV. Discussion<a class="headerlink" href="#iv-discussion" title="Permalink to this headline">¶</a></h3>
+<p>In this section, discuss the takeaway from each lab. You can mention any intuition that you developed. Also mention any problems that you faced and how you rectified them.</p>
+</div>
+<div class="section" id="v-assignment-questions">
+<h3>V. Assignment questions<a class="headerlink" href="#v-assignment-questions" title="Permalink to this headline">¶</a></h3>
+<p>Please answer the following questions.</p>
+<ol>
+<li><p>Explain (mathematically) what happened when the 15 kHz sine wave was generated for a sample rate of 16 kHz.</p></li>
+<li><p>Why is the scaling factor necessary? What would happen if the scaling factor was left out?</p></li>
+<li><p>When generating a sinusoid with a sampling rate of 16 kHz, how many cycles would occur between samples? Assume that the processor is running at 500 MHz.</p></li>
+<li><p>Repeat the previous question for a sampling rate of 192 kHz.</p></li>
+<li><p>Look at the measurement you obtained for the number of clock cycles required to execute the math library sin function. Compare this number to the answers obtained in the previous two question. What do these numbers tell you about the feasibility of the math library method for generating sinusoids as the sampling rate increases?</p></li>
+<li><p>The lookup table method for generating a sinusoid requires almost no computation, but does require memory. For which of the following conditions would the lookup table method be appropriate?</p>
+<p>a. <span class="math notranslate nohighlight">\(f_0 = \text{1 kHz}\)</span>, <span class="math notranslate nohighlight">\(f_s = 16 \text{ kHz}\)</span></p>
+<p>b. <span class="math notranslate nohighlight">\(f_0 = \text{440 Hz}\)</span> (middle c), <span class="math notranslate nohighlight">\(f_s = 44.1 \text{ kHz}\)</span> (CD audio)</p>
+<p>c. <span class="math notranslate nohighlight">\(\Omega_0 = 1000 \text{ rad/sec}\)</span>, <span class="math notranslate nohighlight">\(f_s = 16 \text{ kHz}\)</span>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lab2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../lab1/index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lab 1. Overview of Hardware and Software Tools</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../lab3/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 3. Digital Filters</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Dan Jacobellis<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

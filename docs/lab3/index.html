@@ -1,0 +1,1002 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 3. Digital Filters &#8212; EE 445S Lab Manual</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 4 Primer" href="../lab4/primer.html" />
+    <link rel="prev" title="Lab 2. Generating Cosine and Sine Waves" href="../lab2/index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">EE 445S Lab Manual</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Contents
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   EE 445S Lab Component
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../primer.html">
+   Lab Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stm32h735g.html">
+   STM32H735G Discovery Kit Setup Guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup.html">
+   Laboratory Hardware Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data.html">
+   Managing data between MATLAB and C
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../troubleshooting.html">
+   Troubleshooting / Frequently Asked Questions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab1/index.html">
+   Lab 1. Overview of Hardware and Software Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab2/index.html">
+   Lab 2. Generating Cosine and Sine Waves
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lab 3. Digital Filters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab4/primer.html">
+   Lab 4 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab4/index.html">
+   Lab 4. Pseudo-Random Binary Sequences and Data Scramblers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab5/primer.html">
+   Lab 5 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab5/index.html">
+   Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab6/primer.html">
+   Lab 6 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab6/index.html">
+   Lab 6. Quadrature Amplitude Modulation (QAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab7/primer.html">
+   Lab 7 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab7/index.html">
+   Lab 7. Vocoder and Guitar Effects
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   EE 445S Lab Component
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../primer.html">
+   Lab Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stm32h735g.html">
+   STM32H735G Discovery Kit Setup Guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup.html">
+   Laboratory Hardware Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data.html">
+   Managing data between MATLAB and C
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../troubleshooting.html">
+   Troubleshooting / Frequently Asked Questions
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Labs
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab1/index.html">
+   Lab 1. Overview of Hardware and Software Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab2/index.html">
+   Lab 2. Generating Cosine and Sine Waves
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lab 3. Digital Filters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab4/primer.html">
+   Lab 4 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab4/index.html">
+   Lab 4. Pseudo-Random Binary Sequences and Data Scramblers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab5/primer.html">
+   Lab 5 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab5/index.html">
+   Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab6/primer.html">
+   Lab 6 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab6/index.html">
+   Lab 6. Quadrature Amplitude Modulation (QAM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab7/primer.html">
+   Lab 7 Primer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lab7/index.html">
+   Lab 7. Vocoder and Guitar Effects
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lab3/index.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Real-Time-DSP/lab"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Real-Time-DSP/lab/issues/new?title=Issue%20on%20page%20%2Flab3/index.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aim-of-the-experiment">
+   Aim of the experiment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-assignment">
+   Reading assignment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-3-instructions-week-1">
+   Lab 3 instructions: Week 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fir-filter-design-in-matlab">
+     FIR filter design in MATLAB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fir-filter-implementation-in-c">
+     FIR filter implementation in C
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-3-instructions-week-2">
+   Lab 3 instructions: Week 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frame-based-fir-filter">
+     Frame-based FIR filter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-3-instructions-week-3">
+   Lab 3 instructions: Week 3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iir-filter-design-in-matlab">
+     IIR filter design in MATLAB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iir-filter-implementation-direct-form">
+     IIR filter implementation: direct form
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iir-filter-implementation-second-order-sections">
+     IIR filter implementation: second order sections
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-report-contents">
+   Lab report contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-introduction">
+     I. Introduction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ii-methods">
+     II. Methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iii-results-from-lab-exercise">
+     III. Results from lab exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iv-discussion">
+     IV. Discussion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#v-assignment-questions">
+     V. Assignment questions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lab 3. Digital Filters</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aim-of-the-experiment">
+   Aim of the experiment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-assignment">
+   Reading assignment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-3-instructions-week-1">
+   Lab 3 instructions: Week 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fir-filter-design-in-matlab">
+     FIR filter design in MATLAB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fir-filter-implementation-in-c">
+     FIR filter implementation in C
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-3-instructions-week-2">
+   Lab 3 instructions: Week 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frame-based-fir-filter">
+     Frame-based FIR filter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-3-instructions-week-3">
+   Lab 3 instructions: Week 3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iir-filter-design-in-matlab">
+     IIR filter design in MATLAB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iir-filter-implementation-direct-form">
+     IIR filter implementation: direct form
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iir-filter-implementation-second-order-sections">
+     IIR filter implementation: second order sections
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-report-contents">
+   Lab report contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-introduction">
+     I. Introduction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ii-methods">
+     II. Methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iii-results-from-lab-exercise">
+     III. Results from lab exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iv-discussion">
+     IV. Discussion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#v-assignment-questions">
+     V. Assignment questions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lab-3-digital-filters">
+<h1>Lab 3. Digital Filters<a class="headerlink" href="#lab-3-digital-filters" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="aim-of-the-experiment">
+<h2>Aim of the experiment<a class="headerlink" href="#aim-of-the-experiment" title="Permalink to this headline">¶</a></h2>
+<p>A goal of this experiment is to design discrete-time digital filters and implement them in real time.</p>
+<p>In this experiment, you will design and implement finite impulse response (FIR) filters and infinite impulse response (IIR) filters in Matlab. You will measure the response of the filters using a variety of input test signals and quantify the change in magnitude response due to an increase in filter order.</p>
+</div>
+<div class="section" id="reading-assignment">
+<h2>Reading assignment<a class="headerlink" href="#reading-assignment" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Digital Signal Processing using Arm Cortex-M based Microcontrollers by Cem Ünsalan, M. Erkin Yücel, H. Deniz Gürhan.</p>
+<ul>
+<li><p>Chapter 4, sections 1-8</p></li>
+<li><p>Chapter 7, sections 1-4</p></li>
+<li><p>Chapter 8, sections 1-6</p></li>
+</ul>
+</li>
+<li><p>Software Receiver Design by C. Richard Johnson, Jr., William A. Sethares and Andrew Klein</p>
+<ul>
+<li><p>Chapter 3, sections 1-4</p></li>
+<li><p>Chapter 4</p></li>
+<li><p>Chapter 6, sections 1-2</p></li>
+<li><p>Chapter 7</p></li>
+</ul>
+</li>
+<li><p>Course reader</p>
+<ul>
+<li><p>Lecture 3 slides on <a class="reference external" href="http://users.ece.utexas.edu/~bevans/courses/realtime/lectures/03_Signals_Systems/lecture3.pptx">Signals and Systems</a></p></li>
+<li><p>Lecture 5 slides on <a class="reference external" href="http://users.ece.utexas.edu/~bevans/courses/realtime/lectures/05_FIR_Filters/lecture5.pptx">Finite Impulse Response Filters</a></p></li>
+<li><p>Lecture 6 slides on <a class="reference external" href="http://users.ece.utexas.edu/~bevans/courses/realtime/lectures/06_IIR_Filters/lecture6.ppt">Infinite Impulse Response Filters</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="lab-3-instructions-week-1">
+<h2>Lab 3 instructions: Week 1<a class="headerlink" href="#lab-3-instructions-week-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fir-filter-design-in-matlab">
+<h3>FIR filter design in MATLAB<a class="headerlink" href="#fir-filter-design-in-matlab" title="Permalink to this headline">¶</a></h3>
+<p>We want to design a FIR bandpass filter using the following parameters:</p>
+<ul class="simple">
+<li><p>Design method: Parks-McClellan (a.k.a. equiripple)</p></li>
+<li><p>Filter order <span class="math notranslate nohighlight">\(N=30\)</span> (the filter will have <span class="math notranslate nohighlight">\(N+1=31\)</span> coefficients)</p></li>
+<li><p>Sampling Frequency <span class="math notranslate nohighlight">\(F_s= 44.1 \text{ kHz}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{\text{stop1}}=4\text{ kHz}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{\text{pass1}}=6\text{ kHz}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{\text{pass2}}=14\text{ kHz}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{\text{stop2}}=16\text{ kHz}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(W_{\text{stop1}}=W_{\text{stop2}}=60W_{\text{pass}}\)</span></p></li>
+</ul>
+<p><img alt="" src="../_images/bandpass.svg" /></p>
+<ol>
+<li><p>Open the the MATLAB Filter Designer by calling the <code class="docutils literal notranslate"><span class="pre">filterDesigner</span></code> function. Enter the parameters and design the filter.</p></li>
+<li><p>Export the coefficients (File → Export → coefficients to workspace). The default variable name is <code class="docutils literal notranslate"><span class="pre">Num</span></code>, corresponding to the numerator of the transfer function.</p>
+<p>Later, we will experimentally measure the frequency response at 1000 Hz, 2000 Hz, <span class="math notranslate nohighlight">\(\ldots\)</span>, 19000 Hz, and 20000 Hz. In order to compare with our measurements, we need to first tabulate the theoretical response at these frequencies. Steps 3-5 describe this process.</p>
+</li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">freqz</span></code> function to get the response of the filter at 10 Hz intervals:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="n">f</span><span class="p">]</span> <span class="o">=</span> <span class="n">freqz</span><span class="p">(</span><span class="n">Num</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2205</span><span class="p">,</span><span class="mi">44100</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Define a function to convert the frequency response values returned by freqz from complex values to magnitude values in dB:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dB</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="mi">20</span><span class="o">*</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
+</pre></div>
+</div>
+</li>
+<li><p>Tabulate the theoretical magnitude response of this filter at 1000 Hz increments up to 20 kHz:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">freq</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="mi">101</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">2001</span><span class="p">);</span>
+<span class="n">resp_dB</span> <span class="o">=</span> <span class="n">dB</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="mi">101</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">2001</span><span class="p">));</span>
+<span class="n">table</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span><span class="n">resp_dB</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You may find it helpful to export the values to a spreadsheet so that you can record the measured values in a new column later. You can use the <code class="docutils literal notranslate"><span class="pre">xlswrite</span></code> function to export the data to a spreadsheet</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xlswrite</span><span class="p">(</span><span class="s1">&#39;theoretical_response.xlsx&#39;</span><span class="p">,[</span><span class="n">freq</span><span class="p">,</span><span class="n">resp_dB</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p><strong>Include the tabulated values of the theoretical magnitude response in your lab report</strong></p>
+</li>
+<li><p>We will need to define an array in C containing these coefficients. You can use the <code class="docutils literal notranslate"><span class="pre">sprintf</span></code> command in MATLAB to generate a comma separated string which you can copy into your C code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sprintf</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%f</span><span class="s1">,&#39;</span><span class="p">,</span><span class="n">Num</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="fir-filter-implementation-in-c">
+<h3>FIR filter implementation in C<a class="headerlink" href="#fir-filter-implementation-in-c" title="Permalink to this headline">¶</a></h3>
+<ol>
+<li><p>In lab.c, define an array containing your filter coefficients.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span> <span class="n">b</span><span class="p">[</span><span class="mi">31</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">coefficients</span><span class="o">&gt;</span><span class="p">};</span>
+</pre></div>
+</div>
+</li>
+<li><p>In lab.c, define variables corresponding to the state values of the filter. An good convention is to create an array <code class="docutils literal notranslate"><span class="pre">x</span></code> where <code class="docutils literal notranslate"><span class="pre">x[0]</span></code> corresponds with <span class="math notranslate nohighlight">\(x[n]\)</span>, <code class="docutils literal notranslate"><span class="pre">x[1]</span></code> corresponds with <span class="math notranslate nohighlight">\(x[n-1]\)</span>, and so on. Initialize your variables so that all initial conditions are zero. An easy way to do this is with the ‘universal zero initializer’ <code class="docutils literal notranslate"><span class="pre">{0}</span></code>, e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span> <span class="n">x</span><span class="p">[</span><span class="mi">31</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">float32_t</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>In lab.c, modify the process_left_sample function to implement the filter as a tapped delay line.</p>
+<p><img alt="" src="../_images/tapped_delay.svg" /></p>
+<ol class="simple">
+<li><p>Each time the process_left_sample function is called, we are given a new input sample from the ADC which is a 16-bit signed integer. Convert this value to floating point, apply the appropriate scaling, and store it into the array location corresponding to <span class="math notranslate nohighlight">\(x[n]\)</span></p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">float32_t</span><span class="p">)</span> <span class="n">input_sample</span><span class="p">)</span> <span class="o">/</span> <span class="n">SCALING_FACTOR</span><span class="p">;</span>
+</pre></div>
+</div>
+<ol>
+<li><p>Each time the process_left_sample function is called, we need to calculate the value of <span class="math notranslate nohighlight">\(y[n]\)</span> from a summation. Assign <code class="docutils literal notranslate"><span class="pre">y</span></code> a value of zero to ‘reset’ the summation.</p></li>
+<li><p>Create a for loop to perform the summation for the output of the tapped delay line</p>
+<div class="math notranslate nohighlight">
+\[y[n] = \sum_{i=0}^{N}{b_ix[n-i]}\]</div>
+</li>
+<li><p>After computing <span class="math notranslate nohighlight">\(y[n]\)</span> we need to move the variables down the delay line. Create another for loop that reassigns the state variables to prepare them for the next output when process_left_sample is called again. (Hint: use a down counting for loop.)</p></li>
+</ol>
+</li>
+<li><p>Connect the signal generator (set to 10 kHz) as the input and the oscilloscope as the output. Verify the operation of the program. (Since 10kHz is in the passband, you should see the signal on the output).</p></li>
+<li><p>Measure the frequency response of your filter at 1 kHz increments up to 20 kHz by changing the frequency on the signal generator and measuring the amplitude of the output signal. <strong>Include the measured values in your lab report.</strong></p></li>
+<li><p>Convert the amplitude values you measured to decibels. Since your measurement is a voltage and decibels are a ratio of power, the conversion is:</p>
+<div class="math notranslate nohighlight">
+\[\left| H \right|_{\text{dB}} = 10\log_{10}\left(\frac{P_{\text{out}}}{P_{\text{in}}}\right)= 20\log_{10}\left(\frac{V_{\text{out}}}{V_{\text{in}}}\right)\]</div>
+<p>The value for <span class="math notranslate nohighlight">\(V_{\text{out}}\)</span> is your measurement. Check the setting your signal generator to determine <span class="math notranslate nohighlight">\(V_{\text{in}}\)</span>.</p>
+</li>
+<li><p>Plot the values of your measured response on top of or next to the values of the theoretical response. <strong>Include this plot in your lab report.</strong></p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="lab-3-instructions-week-2">
+<h2>Lab 3 instructions: Week 2<a class="headerlink" href="#lab-3-instructions-week-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="frame-based-fir-filter">
+<h3>Frame-based FIR filter<a class="headerlink" href="#frame-based-fir-filter" title="Permalink to this headline">¶</a></h3>
+<p>The starter code uses the DMA controller to move blocks of data (also called frames) between the ADC, main memory and DAC. In this exercise, we will implement the same FIR bandpass filter, but apply it to entire frames of data rather than sample-by-sample. To achieve this, we will put our filter in the process_input_buffer function rather than the process_left_sample function.</p>
+<ol>
+<li><p>We will use the ARM CMSIS DSP library to perform filtering on a frame of data. Take a moment to read the <a class="reference external" href="https://www.keil.com/pack/doc/CMSIS/DSP/html/group__FIR.html">description of the FIR filter functions</a> in this library.</p></li>
+<li><p>In lab.c, initialize the variables necessary to use the <code class="docutils literal notranslate"><span class="pre">arm_fir_f32</span></code> function</p>
+<ol>
+<li><p>Create buffers for the input and output of the filter.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span> <span class="n">filter_in</span><span class="p">[</span><span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">float32_t</span> <span class="n">filter_out</span><span class="p">[</span><span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</pre></div>
+</div>
+<p><em>(The FRAME_SIZE constant specified in lab.h corresponds to the length of the entire circular buffer for both left and right channels. When one half of the circular buffer is accumulating data, we will work with the other half. Additionally, we are only working with one of the two channels. This is why our arrays are of length FRAME_LENGTH/4).</em></p>
+</li>
+<li><p>Create a buffer for the filter state</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span> <span class="n">state</span><span class="p">[</span><span class="mi">31</span><span class="o">+</span><span class="p">(</span><span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</pre></div>
+</div>
+<p><em>(The arm_fir_f32 function uses a state buffer of length num_taps+block_size-1 to implement the filter more efficiently.)</em></p>
+</li>
+<li><p>Create a filter instance struct.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arm_fir_instance_f32</span> <span class="n">filter_instance</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+<li><p>In lab.c, initialize the filter instance in the lab_init function</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arm_fir_init_f32</span><span class="p">(</span><span class="o">&amp;</span><span class="n">filter_instance</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">4</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>In lab.c, modify the process_input_buffer function to perform the filtering</p>
+<ol>
+<li><p>Fill your filter_in buffer with the samples from the left channel.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">uint32_t</span> <span class="n">i_sample</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_sample</span> <span class="o">&lt;</span> <span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">i_sample</span><span class="o">+=</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">filter_in</span><span class="p">[</span><span class="n">i_sample</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">float32_t</span><span class="p">)</span><span class="n">input_buffer</span><span class="p">[</span><span class="n">i_sample</span><span class="p">])</span><span class="o">/</span><span class="n">SCALING_FACTOR</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Perform the filtering.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arm_fir_f32</span><span class="p">(</span><span class="o">&amp;</span><span class="n">filter_instance</span><span class="p">,</span> <span class="n">filter_in</span><span class="p">,</span> <span class="n">filter_out</span><span class="p">,</span> <span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">4</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Copy the filter output buffer back to the array used by the DMA controller.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">uint32_t</span> <span class="n">i_sample</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_sample</span> <span class="o">&lt;</span> <span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">i_sample</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="n">input_buffer</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span> <span class="o">=</span> <span class="n">SCALING_FACTOR</span><span class="o">*</span><span class="n">filter_out</span><span class="p">[</span><span class="n">i_sample</span><span class="o">/</span><span class="mi">2</span><span class="p">];</span>
+     <span class="n">i_sample</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
+     <span class="n">input_buffer</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+<li><p>Connect the signal generator as the input and the oscilloscope as the output. Verify the operation of the program by sweeping through different frequencies and observing the response.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="lab-3-instructions-week-3">
+<h2>Lab 3 instructions: Week 3<a class="headerlink" href="#lab-3-instructions-week-3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="iir-filter-design-in-matlab">
+<h3>IIR filter design in MATLAB<a class="headerlink" href="#iir-filter-design-in-matlab" title="Permalink to this headline">¶</a></h3>
+<p>We want to design an IIR bandpass fitler using the following parameters:</p>
+<ul class="simple">
+<li><p>Design method: Elliptic</p></li>
+<li><p>Filter order <span class="math notranslate nohighlight">\(N=6\)</span></p></li>
+<li><p>Sampling Frequency <span class="math notranslate nohighlight">\(F_s= 44.1 \text{ kHz}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{\text{pass1}}=5\text{ kHz}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{\text{pass2}}=15\text{ kHz}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A_{\text{stop}}=60 \text{dB}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A_{\text{pass}}=2 \text{dB}\)</span></p></li>
+</ul>
+<p><img alt="" src="../_images/bandpass_IIR.svg" /></p>
+<ol>
+<li><p>Open the the MATLAB Filter Designer by calling the <code class="docutils literal notranslate"><span class="pre">filterDesigner</span></code> function. Enter the parameters and design the filter.</p>
+<p>Notice that once the filter is designed, the filter structure is changed to <code class="docutils literal notranslate"><span class="pre">Direct</span> <span class="pre">Form</span> <span class="pre">II,</span> <span class="pre">Second-Order</span> <span class="pre">Sections</span></code> in the ‘Current Filter Information’ panel.</p>
+</li>
+<li><p>Choose Edit → convet to single section, and export the coefficients (File → Export → coefficients to workspace). Two variables will be created corresponding to the numerator and denominator coefficients of the transfer function.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">freqz</span></code> function to get the response of the filter at 10 Hz intervals:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="n">f</span><span class="p">]</span> <span class="o">=</span> <span class="n">freqz</span><span class="p">(</span><span class="n">Num</span><span class="p">,</span><span class="n">Den</span><span class="p">,</span><span class="mi">2205</span><span class="p">,</span><span class="mi">44100</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Define a function to convert the frequency response values returned by freqz from complex values to magnitude values in dB:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dB</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="mi">20</span><span class="o">*</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
+</pre></div>
+</div>
+</li>
+<li><p>Tabulate the theoretical magnitude response of this filter at 1000 Hz increments up to 20 kHz:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">freq</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="mi">101</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">2001</span><span class="p">);</span>
+<span class="n">resp_dB</span> <span class="o">=</span> <span class="n">dB</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="mi">101</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">2001</span><span class="p">));</span>
+<span class="n">table</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span><span class="n">resp_dB</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You may find it helpful to export the values to a spreadsheet so that you can record the measured values in a new column later. You can use the <code class="docutils literal notranslate"><span class="pre">xlswrite</span></code> function to export the data to a spreadsheet</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xlswrite</span><span class="p">(</span><span class="s1">&#39;theoretical_response_iir.xlsx&#39;</span><span class="p">,[</span><span class="n">freq</span><span class="p">,</span><span class="n">resp_dB</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p><strong>Include the tabulated values of the theoretical magnitude response in your lab report</strong></p>
+</li>
+<li><p>We will need to define an array in C containing these coefficients. You can use the <code class="docutils literal notranslate"><span class="pre">sprintf</span></code> command in MATLAB to generate a comma separated string which you can copy into your C code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sprintf</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%f</span><span class="s1">,&#39;</span><span class="p">,</span><span class="n">Num</span><span class="p">)</span>
+<span class="n">sprintf</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%f</span><span class="s1">,&#39;</span><span class="p">,</span><span class="n">Den</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>In the filter designer, change the structure back to the default (Direct-Form II, Second-Order Sections) and export the coefficients. Two variables, ‘SOS’ and ‘G’ will be created.</p></li>
+<li><p>The first three columns of the SOS matrix that is created corresponds to the numerator coefficients of three cascaded second-order filters, and the last three columns correspond to the denominator coefficients. The G variable corresponds to the gain that is applied between sections. Later, we will use these coefficients in our C Code. You can use sprintf in MATLAB to format the coefficients for C.</p>
+<p>Numerator coefficients:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sprintf</span><span class="p">(</span><span class="s1">&#39;{</span><span class="si">%f</span><span class="s1">,</span><span class="si">%f</span><span class="s1">,</span><span class="si">%f</span><span class="s1">},</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">SOS</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">),</span><span class="n">SOS</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">),</span><span class="n">SOS</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Denominator coefficients:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sprintf</span><span class="p">(</span><span class="s1">&#39;{</span><span class="si">%f</span><span class="s1">,</span><span class="si">%f</span><span class="s1">,</span><span class="si">%f</span><span class="s1">},</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">SOS</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">),</span><span class="n">SOS</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">),</span><span class="n">SOS</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Gain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sprintf</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%f</span><span class="s1">,&#39;</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="iir-filter-implementation-direct-form">
+<h3>IIR filter implementation: direct form<a class="headerlink" href="#iir-filter-implementation-direct-form" title="Permalink to this headline">¶</a></h3>
+<p>In this exercise, we will implement the IIR filter in direct form.</p>
+<p><img alt="" src="../_images/iir_df_I.svg" /></p>
+<ol>
+<li><p>In lab.c, initialize variables for your filter coefficients and state variables. Notice that MATLAB has assigned a value of one where the nonexistent <span class="math notranslate nohighlight">\(a_0\)</span> coefficient would be.</p></li>
+<li><p>In lab.c, modify the process_left_sample function to implement the summation for the filter output. The diagram above should help you.</p>
+<div class="math notranslate nohighlight">
+\[y[n] = \sum_{k=0}^{N}{b_k x[n-k]} - \sum_{m=1}^{M}{a_m y[n-m]}\]</div>
+<p>Recall that <code class="docutils literal notranslate"><span class="pre">input_sample</span></code> is a 16 bit integer, so you will need to scale it when converting to floating point.</p>
+</li>
+<li><p>In lab.c modify the process_left_sample function to simulate the movement of data through the delay blocks (Hint: use a down counting for loop). <strong>Include the C code for your implementation of the filter in the lab report.</strong></p></li>
+<li><p>Connect the signal generator as the input and the oscilloscope as the output. Measure the frequency response of your filter at 1 kHz increments up to 20 kHz by changing the frequency on the signal generator and measuring the amplitude of the output signal. Convert the amplitude values you measured to decibels. <strong>Include the measured values in your lab report.</strong></p></li>
+<li><p>Plot the values of your measured response on top of or next to the values of the theoretical response. <strong>Include this plot in your lab report.</strong></p></li>
+</ol>
+</div>
+<div class="section" id="iir-filter-implementation-second-order-sections">
+<h3>IIR filter implementation: second order sections<a class="headerlink" href="#iir-filter-implementation-second-order-sections" title="Permalink to this headline">¶</a></h3>
+<p>In this exercise, we will implement the same IIR filter but as a cascade of second order filters (biquads).</p>
+<p><img alt="" src="../_images/cascade_biquads.svg" /></p>
+<ol>
+<li><p>In lab.c, initialize variables for your biquad coefficients state variables, and gain. A convenient way organize the coefficients and state variables in C is with two dimensional arrays:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span> <span class="n">B</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">&lt;</span><span class="n">first</span> <span class="n">three</span> <span class="n">columns</span> <span class="n">of</span> <span class="n">SOS</span> <span class="n">matrix</span><span class="o">&gt;</span>
+<span class="p">};</span>
+<span class="n">float32_t</span> <span class="n">A</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">&lt;</span><span class="n">last</span> <span class="n">three</span> <span class="n">columns</span> <span class="n">of</span> <span class="n">SOS</span> <span class="n">matrix</span><span class="o">&gt;</span>
+<span class="p">};</span>
+<span class="n">float32_t</span> <span class="n">Y</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">float32_t</span> <span class="n">X</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</pre></div>
+</div>
+</li>
+<li><p>In lab.c, add a for loop to process_left_sample that iterates over the three biquads to implement the filter.</p>
+<ol class="simple">
+<li><p>The input to the first biquad should come from <code class="docutils literal notranslate"><span class="pre">input_sample</span></code>. Otherwise, the input should come from the output of the the previous biquad.</p></li>
+<li><p>Apply the appropriate gain value to the input of each biquad.</p></li>
+<li><p>For each biquad, implement the second order filter using direct form (see the diagrams above).</p></li>
+</ol>
+<p>The process_left_sample function should return the output of the last biquad (after appropriate scaling and conversion back to a 16 bit integer). <strong>Include the C code for your implementation of the filter in the lab report.</strong></p>
+</li>
+<li><p>Run the program and verify that it produces the expected bandpass response.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="lab-report-contents">
+<h2>Lab report contents<a class="headerlink" href="#lab-report-contents" title="Permalink to this headline">¶</a></h2>
+<p>Be sure to include everything listed in this section when you submit your lab report. The goal of the report is to help cement what you learned in memory. For sections I, II, and IV, imagine your audience is a student who is your peer but who has not yet completed the lab.</p>
+<div class="section" id="i-introduction">
+<h3>I. Introduction<a class="headerlink" href="#i-introduction" title="Permalink to this headline">¶</a></h3>
+<p>Briefly explain the theory and algorithms behind the programs that you wrote. The slides and reading material might help you in writing this section.</p>
+</div>
+<div class="section" id="ii-methods">
+<h3>II. Methods<a class="headerlink" href="#ii-methods" title="Permalink to this headline">¶</a></h3>
+<p>Describe the steps you took to implement the algorithms in your own words.</p>
+</div>
+<div class="section" id="iii-results-from-lab-exercise">
+<h3>III. Results from lab exercise<a class="headerlink" href="#iii-results-from-lab-exercise" title="Permalink to this headline">¶</a></h3>
+<p>Present the results you obtain for each task on the assignment sheet. This section should include illustrative oscilloscope screenshots of the DSP algorithms in action. Also include any code that you wrote or modified. Please do not include all of the boilerplate code from the textbook.</p>
+<p>In addition to the code you modified, make sure to include.</p>
+<ol class="simple">
+<li><p>Theoretical magnitude response values (tabulated).</p>
+<ul class="simple">
+<li><p>For FIR bandpass filter (week one)</p></li>
+<li><p>For IIR bandpass filter (week three)</p></li>
+</ul>
+</li>
+<li><p>Measured magnitude response values of (tabulated).</p>
+<ul class="simple">
+<li><p>For FIR bandpass filter (week one)</p></li>
+<li><p>For IIR bandpass filter (week three)</p></li>
+</ul>
+</li>
+<li><p>Plot of theoretical response on top of or next to a plot of your measured response.</p>
+<ul class="simple">
+<li><p>For FIR bandpass filter (week one)</p></li>
+<li><p>For IIR bandpass filter (week three)</p></li>
+</ul>
+</li>
+<li><p>C code for filter implementations</p>
+<ul class="simple">
+<li><p>IIR filter in direct form</p></li>
+<li><p>IIR filter using cascade of second order sections</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="iv-discussion">
+<h3>IV. Discussion<a class="headerlink" href="#iv-discussion" title="Permalink to this headline">¶</a></h3>
+<p>In this section, discuss the takeaway from each lab. You can mention any intuition that you developed. Also mention any problems that you faced and how you rectified them.</p>
+</div>
+<div class="section" id="v-assignment-questions">
+<h3>V. Assignment questions<a class="headerlink" href="#v-assignment-questions" title="Permalink to this headline">¶</a></h3>
+<p>Please answer the following questions.</p>
+<ol class="simple">
+<li><p>Why use circular buffers?</p></li>
+<li><p>What happens if you do not multiply the scale factor in an IIR filter implementation using a cascade of second-order sections (SOS)?</p></li>
+<li><p>List the advantages and disadvantages of FIR vs. IIR filters.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lab3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../lab2/index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lab 2. Generating Cosine and Sine Waves</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../lab4/primer.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 4 Primer</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Dan Jacobellis<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
