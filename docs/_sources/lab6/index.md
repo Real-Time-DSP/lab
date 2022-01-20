@@ -163,4 +163,4 @@ In this exercise, we will use QAM to transmit the tree image.
 Enjoy Thanksgiving break!
 
 [1]:https://arm-software.github.io/CMSIS_5/DSP/html/group__FIR__Interpolate.html
-[2]:https://github.com/danjacobellis/EE445S-lab/raw/main/starter_code/QAM_receiver_demo.m
+[2]:https://github.com/Real-Time-DSP/lab/raw/main/starter_code/QAM_receiver_demo.m

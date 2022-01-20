@@ -589,7 +589,7 @@
 <div class="section" id="simulation-in-matlab">
 <h3>Simulation in MATLAB<a class="headerlink" href="#simulation-in-matlab" title="Permalink to this headline">¶</a></h3>
 <ol>
-<li><p>Run the following code which simulates the generation of the transmitted signal. Please download the <a class="reference external" href="https://danjacobellis.github.io/EE445S-lab/_sources/lab5/pn_16384.md.txt">file containing the PN sequence from lab four</a>, and the <a class="reference external" href="https://danjacobellis.github.io/EE445S-lab/_images/tree.png">tree image</a>. Ensure that both are accessible on the MATLAB path.</p>
+<li><p>Run the following code which simulates the generation of the transmitted signal. Please download the <a class="reference external" href="https://real-time-dsp.github.io/lab/_sources/lab5/pn_16384.md">file containing the PN sequence from lab four</a>, and the <a class="reference external" href="https://real-time-dsp.github.io/lab/_images/tree.png">tree image</a>. Ensure that both are accessible on the MATLAB path.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f0</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">;</span> <span class="n">fs</span> <span class="o">=</span> <span class="mi">48000</span><span class="p">;</span> <span class="n">sps</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="n">fsym</span> <span class="o">=</span> <span class="n">fs</span><span class="o">/</span><span class="n">sps</span><span class="p">;</span>
 <span class="n">pulse_shaping_filter</span> <span class="o">=</span> <span class="n">rcosdesign</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">sps</span><span class="p">,</span><span class="s1">&#39;normal&#39;</span><span class="p">);</span>
 <span class="n">carrier</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">theta</span><span class="p">)</span> <span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">f0</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span><span class="o">*</span><span class="n">n</span> <span class="o">+</span> <span class="n">theta</span><span class="p">);</span>
@@ -734,7 +734,7 @@
 </pre></div>
 </div>
 </li>
-<li><p>Run the <a class="reference external" href="https://github.com/danjacobellis/EE445S-lab/raw/main/starter_code/receiver_demo.m">receiver demo</a> in MATLAB using the transmission that was not scrambled. Try to adjust the parameters to recover the tree image. <strong>Include the recovered tree image in your lab report using the best parameters you find.</strong></p></li>
+<li><p>Run the <a class="reference external" href="https://github.com/Real-Time-DSP/lab/raw/main/starter_code/receiver_demo.m">receiver demo</a> in MATLAB using the transmission that was not scrambled. Try to adjust the parameters to recover the tree image. <strong>Include the recovered tree image in your lab report using the best parameters you find.</strong></p></li>
 </ol>
 </div>
 </div>

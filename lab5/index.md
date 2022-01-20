@@ -450,9 +450,9 @@ Present the results you obtain for each task on the assignment sheet. This secti
 In this section, discuss the takeaway from each lab. You can mention any intuition that you developed. Also mention any problems that you faced and how you rectified them.
 
 [1]:https://arm-software.github.io/CMSIS_5/DSP/html/group__FIR__Interpolate.html
-[2]:https://danjacobellis.github.io/EE445S-lab/_sources/lab5/pn_16384.md.txt
-[3]:https://danjacobellis.github.io/EE445S-lab/_images/tree.png
-[4]:https://github.com/danjacobellis/EE445S-lab/raw/main/starter_code/receiver_demo.m
+[2]:https://real-time-dsp.github.io/lab/_sources/lab5/pn_16384.md
+[3]:https://real-time-dsp.github.io/lab/_images/tree.png
+[4]:https://github.com/Real-Time-DSP/lab/raw/main/starter_code/receiver_demo.m
 [5]:../data.md
 [6]:https://en.wikipedia.org/wiki/Q-function
 [7]:https://en.wikipedia.org/wiki/Normal_distribution#Cumulative_distribution_function
