@@ -4,12 +4,7 @@ To complete the lab assignmnets, the STM32H735G Discovery Kit will be connected 
 
 The hardware is available for short term checkout only. The checkout desk is located on the first floor of EERC. A student ID is required.
 
-For lab one, you may complete the hardware component at any time the checkout desk is open.
-
-* Monday – Thursday  9:00am – 10:00pm
-* Friday 9:00am – 7:00pm
-* Saturday 10:00am – 6:00pm
-* Closed Labor Day, Monday Sept 6.
+For lab one, you should answer the canvas survey to arrange a time to complete the hardware checkout.
 
 For the remaining labs, one member of each group should checkout the hardware at the start of your lab meeting time.
 

@@ -1,12 +1,6 @@
 # EE 445S Lab Component
 
-As of Fall 2021, the instructions for the lab exercises will be entirely self contained in this lab manual.
-
-The exercises now use the [STM32H735G Discovery Kit][1]. Prior to fall 2021, the laboratory component used the [OMAP-L138 Low-Cost Developer's Kit][2] (LCDK) and the following book
-
-Thad B. Welch, Cameron H. G. Wright, and Michael G. Morrow, *[Real-Time Digital Signal Processing from MATLAB to C with the TMS320C6x DSPs][3]*, CRC Press, 3rd ed., Jan. 2017, ISBN 978-1498781015.
-
-This book is now optional, but you may find it helpful since some exercises were adapted from it.
+As of Fall 2021, the instructions for the lab exercises will be entirely self contained in this lab manual. The exercises now use the [STM32H735G Discovery Kit][1]. 
 
 ## Required textbook
 
@@ -15,6 +9,15 @@ Some reading assignments will include sections of the following textbook, which 
 [Digital Signal Processing using Arm Cortex-M based Microcontrollers by Cem Ünsalan, M. Erkin Yücel, H. Deniz Gürhan.][4]
 
 The STM32F4 discovery board used in this book is different from the hardware we will use in lab, but most of the contents on signal processing, embedded programming, and ARM Cortex-M processors is applicable to the hardware we will use.
+
+### Optional textbook
+
+Prior to fall 2021, the laboratory component used the [OMAP-L138 Low-Cost Developer's Kit][2] (LCDK) and the following book
+
+Thad B. Welch, Cameron H. G. Wright, and Michael G. Morrow, *[Real-Time Digital Signal Processing from MATLAB to C with the TMS320C6x DSPs][3]*, CRC Press, 3rd ed., Jan. 2017, ISBN 978-1498781015.
+
+This book is now optional, but you may find it helpful since some exercises were adapted from it.
+
 
 ## Format of lab
 
@@ -40,6 +43,7 @@ For partial credit, please submit all work even if incomplete or incorrect.
 | Feb. 21  |       | 3. Digital Filters Part 2            |       |
 | Feb. 28  |       | 3. Digital Filters Part 3            |       |
 | Mar. 7   |       |                                      |       |
+| Mar. 14  |       | Spring break                         |       |
 | Mar. 21  | Lab 4 | 4. Data Scramblers                   | Lab 3 |
 | Mar. 28  | Lab 5 | 5. Pulse Amplitude Modulation Part 1 | Lab 4 |
 | Apr. 4   |       | 5. Pulse Amplitude Modulation Part 2 |       |
