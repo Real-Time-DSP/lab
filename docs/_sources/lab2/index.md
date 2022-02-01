@@ -34,7 +34,7 @@ The first method we will use to generate a sinusoid is a math library call.
 
 3. In lab.c, create a variable corresponding to the current phase. Use the type float32_t.
 
-4. The math library will compute floating point values of the sinusoid in the range $[-1,1]$. However, the DAC is configured to use values in the range [-3200, 3200]. The `INPUT_SCALING_FACTOR constant`
+4. The math library will compute floating point values of the sinusoid in the range $[-1,1]$. However, the ADC and DAC are configured to use values in the range [-3200, 3200]. The `INPUT_SCALE_FACTOR` and `OUTPUT_SCALE_FACTOR` constants are provided to map int16_t data in this range to floating point data with the range [-1,1].
 
 5. In process_left_sample, replace the current talkthrough behavior with the sinusoidal generation using the math library and phase accumulation:
 
