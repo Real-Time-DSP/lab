@@ -14751,11 +14751,38 @@ $$L=\frac{f_s}{\text{gcd}(f_0,f_s)} \text{samples}$$<p>This means that we can co
 
 </div>
 </div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Direct-memory-access-and-frame-based-processing.">Direct memory access and frame-based processing.<a class="anchor-link" href="#Direct-memory-access-and-frame-based-processing.">&#182;</a></h2><p>Data is constantly flowing from ADC to main memory and from main memory to DAC. We could move the data using load/store operations, but this would use CPU cycles.</p>
+<p>Instead, we can offload this process to a direct memory access (DMA) controller. As samples are generated from an input device (such as an ADC), the DMA controller automatically populates a buffer in CPU addressable memory space.</p>
+<p>Rather than process individual samples, we wait for the buffer to fill so that we can process many samples at once. When the buffer is half full, an interrupt is triggered, signaling to the CPU that data is ready to be processed. In the background, samples continue being collected in the second half of the buffer so that no data is ever lost.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>After processing is completed, the CPU can stores outputs in a second buffer which is also accessible to the DMA controller. The DMA controller feeds the data to the DAC as needed, avoiding unnecessary CPU load/store operations.</p>
+<p>If multiple channels</p>
+
+</div>
+</div>
 </div>
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Direct-memory-access">Direct memory access<a class="anchor-link" href="#Direct-memory-access">&#182;</a></h2><p>Data is constantly flowing from ADC to main memory and from main memory to DAC. We could move the data using load/store operations, but this would use CPU cycles.</p>
+<p><img src="../img/buffer_diagram_clear.png" alt=""></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="../_images/buffer_diagram_clear.png"  height="100" width="200"></p>
 
 </div>
 </div>

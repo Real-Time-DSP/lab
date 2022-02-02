@@ -335,8 +335,8 @@
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#direct-memory-access">
-     Direct memory access
+    <a class="reference internal nav-link" href="#direct-memory-access-and-frame-based-processing">
+     Direct memory access and frame-based processing.
     </a>
    </li>
   </ul>
@@ -401,8 +401,8 @@
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#direct-memory-access">
-     Direct memory access
+    <a class="reference internal nav-link" href="#direct-memory-access-and-frame-based-processing">
+     Direct memory access and frame-based processing.
     </a>
    </li>
   </ul>
@@ -500,10 +500,15 @@
 <p>This method requires more memory than the GNU math library but fewer multiply and addition operations.</p>
 <p>Since this method always uses the same amount of memory for the lookup table (512 words), it might be preferred to the direct lookup table method if <span class="math notranslate nohighlight">\(L\)</span> is large.</p>
 </div>
-<div class="section" id="direct-memory-access">
-<h2>Direct memory access<a class="headerlink" href="#direct-memory-access" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="direct-memory-access-and-frame-based-processing">
+<h2>Direct memory access and frame-based processing.<a class="headerlink" href="#direct-memory-access-and-frame-based-processing" title="Permalink to this headline">¶</a></h2>
 <p>Data is constantly flowing from ADC to main memory and from main memory to DAC. We could move the data using load/store operations, but this would use CPU cycles.</p>
-</div>
+<p>Instead, we can offload this process to a direct memory access (DMA) controller. As samples are generated from an input device (such as an ADC), the DMA controller automatically populates a buffer in CPU addressable memory space.</p>
+<p>Rather than process individual samples, we wait for the buffer to fill so that we can process many samples at once. When the buffer is half full, an interrupt is triggered, signaling to the CPU that data is ready to be processed. In the background, samples continue being collected in the second half of the buffer so that no data is ever lost.</p>
+<p>After processing is completed, the CPU can stores outputs in a second buffer which is also accessible to the DMA controller. The DMA controller feeds the data to the DAC as needed, avoiding unnecessary CPU load/store operations.</p>
+<p>If multiple channels</p>
+<p><img alt="" src="../_images/buffer_diagram_clear.png" /></p>
+<img src="../_images/buffer_diagram_clear.png"  height="100" width="200"></div>
 </div>
 
     <script type="text/x-thebe-config">
