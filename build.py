@@ -12,7 +12,7 @@ def build():
     print(result.stdout.decode("utf-8"))
     
     # Build recitation slides
-    result = run("jupyter-nbconvert --to slides lab2/primer.ipynb --output ../_build/html/lab2/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-cell'",capture_output=True)
+    result = run("jupyter-nbconvert --to slides lab2/primer.ipynb --output ../_build/html/lab2/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True)
     print(result.stdout.decode("utf-8"))
     
     # Copy to docs folder to publish to github pages
