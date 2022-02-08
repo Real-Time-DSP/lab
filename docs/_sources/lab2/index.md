@@ -117,7 +117,7 @@ The lookup table method requires minimal computation compared the math library c
     for (uint32_t n = 0; n < 16; n+=1)
     {
         amplitude = arm_sin_f32(n * omega0);
-        table[n] = SCALING_FACTOR * amplitude;
+        table[n] = OUTPUT_SCALE_FACTOR * amplitude;
     }
     ```
 
@@ -167,7 +167,7 @@ The starter code is configured to use the DMA controller to repeatedly transfer 
 
 3. Run the program and view the output on the oscilloscope to verify the behavior.
 
-4. Notice the frame size (8192) is an integer multiple of our signal's period $L=16$. Recalculate $\omega0$ and $L$ corresponding to a $f_0 = \text{440 Hz}$ and update your lookup table accordingly. Run the program and observe the output on the oscilloscope. You should notice abrupt changes in your output every $\frac{8192}{16000} \approx 0.5$ seconds.
+4. Notice the frame size (8192) is an integer multiple of our signal's period $L=16$. Recalculate $\omega_0$ and $L$ corresponding to a $f_0 = \text{440 Hz}$ and update your lookup table accordingly. Run the program and observe the output on the oscilloscope. You should notice abrupt changes in your output every $\frac{8192}{16000} \approx 0.5$ seconds.
 
 5. In lab.h, change the frame size to 8000 and run the program. You should notice that the abrupt changes in your output no longer occur.
 

@@ -489,7 +489,7 @@
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">amplitude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arm_sin_f32</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">omega0</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">table</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SCALING_FACTOR</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">amplitude</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">table</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OUTPUT_SCALE_FACTOR</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">amplitude</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
@@ -534,7 +534,7 @@
 </div>
 </li>
 <li><p>Run the program and view the output on the oscilloscope to verify the behavior.</p></li>
-<li><p>Notice the frame size (8192) is an integer multiple of our signal’s period <span class="math notranslate nohighlight">\(L=16\)</span>. Recalculate <span class="math notranslate nohighlight">\(\omega0\)</span> and <span class="math notranslate nohighlight">\(L\)</span> corresponding to a <span class="math notranslate nohighlight">\(f_0 = \text{440 Hz}\)</span> and update your lookup table accordingly. Run the program and observe the output on the oscilloscope. You should notice abrupt changes in your output every <span class="math notranslate nohighlight">\(\frac{8192}{16000} \approx 0.5\)</span> seconds.</p></li>
+<li><p>Notice the frame size (8192) is an integer multiple of our signal’s period <span class="math notranslate nohighlight">\(L=16\)</span>. Recalculate <span class="math notranslate nohighlight">\(\omega_0\)</span> and <span class="math notranslate nohighlight">\(L\)</span> corresponding to a <span class="math notranslate nohighlight">\(f_0 = \text{440 Hz}\)</span> and update your lookup table accordingly. Run the program and observe the output on the oscilloscope. You should notice abrupt changes in your output every <span class="math notranslate nohighlight">\(\frac{8192}{16000} \approx 0.5\)</span> seconds.</p></li>
 <li><p>In lab.h, change the frame size to 8000 and run the program. You should notice that the abrupt changes in your output no longer occur.</p></li>
 </ol>
 </div>
