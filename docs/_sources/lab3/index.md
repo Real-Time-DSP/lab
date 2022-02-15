@@ -100,7 +100,7 @@ We want to design a FIR bandpass filter using the following parameters:
     1. Each time the process_left_sample function is called, we are given a new input sample from the ADC which is a 16-bit signed integer. Convert this value to floating point, apply the appropriate scaling, and store it into the array location corresponding to $x[n]$
     
     ```
-    x[0] = (float32_t) input_sample) / SCALING_FACTOR;
+    x[0] = ((float32_t) input_sample) * INPUT_SCALE_FACTOR;
     ```
 
     2. Each time the process_left_sample function is called, we need to calculate the value of $y[n]$ from a summation. Assign `y` a value of zero to 'reset' the summation.
@@ -169,7 +169,7 @@ The starter code uses the DMA controller to move blocks of data (also called fra
         ```
         for (uint32_t i_sample = 0; i_sample < FRAME_SIZE/2; i_sample+=2)
         {
-            filter_in[i_sample/2] = ((float32_t)input_buffer[i_sample])/SCALING_FACTOR;
+            filter_in[i_sample/2] = ((float32_t)input_buffer[i_sample])*INPUT_SCALE_FACTOR;
         }
         ```
     2. Perform the filtering.
@@ -183,7 +183,7 @@ The starter code uses the DMA controller to move blocks of data (also called fra
         ```
         for (uint32_t i_sample = 0; i_sample < FRAME_SIZE/2; i_sample+=1)
         {
-             input_buffer[i_sample] = SCALING_FACTOR*filter_out[i_sample/2];
+             input_buffer[i_sample] = OUTPUT_SCALE_FACTOR*filter_out[i_sample/2];
              i_sample+=1;
              input_buffer[i_sample] = 0;
         }

@@ -490,7 +490,7 @@
 <ol class="simple">
 <li><p>Each time the process_left_sample function is called, we are given a new input sample from the ADC which is a 16-bit signed integer. Convert this value to floating point, apply the appropriate scaling, and store it into the array location corresponding to <span class="math notranslate nohighlight">\(x[n]\)</span></p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">float32_t</span><span class="p">)</span> <span class="n">input_sample</span><span class="p">)</span> <span class="o">/</span> <span class="n">SCALING_FACTOR</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">float32_t</span><span class="p">)</span> <span class="n">input_sample</span><span class="p">)</span> <span class="o">*</span> <span class="n">INPUT_SCALE_FACTOR</span><span class="p">;</span>
 </pre></div>
 </div>
 <ol>
@@ -552,7 +552,7 @@
 <li><p>Fill your filter_in buffer with the samples from the left channel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">uint32_t</span> <span class="n">i_sample</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_sample</span> <span class="o">&lt;</span> <span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">i_sample</span><span class="o">+=</span><span class="mi">2</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="n">filter_in</span><span class="p">[</span><span class="n">i_sample</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">float32_t</span><span class="p">)</span><span class="n">input_buffer</span><span class="p">[</span><span class="n">i_sample</span><span class="p">])</span><span class="o">/</span><span class="n">SCALING_FACTOR</span><span class="p">;</span>
+    <span class="n">filter_in</span><span class="p">[</span><span class="n">i_sample</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">float32_t</span><span class="p">)</span><span class="n">input_buffer</span><span class="p">[</span><span class="n">i_sample</span><span class="p">])</span><span class="o">*</span><span class="n">INPUT_SCALE_FACTOR</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -565,7 +565,7 @@
 <li><p>Copy the filter output buffer back to the array used by the DMA controller.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">uint32_t</span> <span class="n">i_sample</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i_sample</span> <span class="o">&lt;</span> <span class="n">FRAME_SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">i_sample</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span>
 <span class="p">{</span>
-     <span class="n">input_buffer</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span> <span class="o">=</span> <span class="n">SCALING_FACTOR</span><span class="o">*</span><span class="n">filter_out</span><span class="p">[</span><span class="n">i_sample</span><span class="o">/</span><span class="mi">2</span><span class="p">];</span>
+     <span class="n">input_buffer</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span> <span class="o">=</span> <span class="n">OUTPUT_SCALE_FACTOR</span><span class="o">*</span><span class="n">filter_out</span><span class="p">[</span><span class="n">i_sample</span><span class="o">/</span><span class="mi">2</span><span class="p">];</span>
      <span class="n">i_sample</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
      <span class="n">input_buffer</span><span class="p">[</span><span class="n">i_sample</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
