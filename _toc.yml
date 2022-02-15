@@ -19,6 +19,7 @@ parts:
     - file: lab1/index
     - file: lab2/primer
     - file: lab2/index
+    - file: lab3/primer
     - file: lab3/index
     - file: lab4/primer
     - file: lab4/index
