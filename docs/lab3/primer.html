@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Real Time DSP Lab Manual</title>
+    <title>Lab 3 Primer &#8212; Real Time DSP Lab Manual</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -51,6 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 3. Digital Filters" href="index.html" />
+    <link rel="prev" title="Lab 2. Generating Cosine and Sine Waves" href="../lab2/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -126,7 +130,7 @@
   Labs
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../lab1/index.html">
    Lab 1. Overview of Hardware and Software Tools
@@ -142,13 +146,13 @@
    Lab 2. Generating Cosine and Sine Waves
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../lab3/primer.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Lab 3 Primer
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../lab3/index.html">
+  <a class="reference internal" href="index.html">
    Lab 3. Digital Filters
   </a>
  </li>
@@ -163,12 +167,12 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="primer.html">
+  <a class="reference internal" href="../lab5/primer.html">
    Lab 5 Primer
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="index.html">
+  <a class="reference internal" href="../lab5/index.html">
    Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM)
   </a>
  </li>
@@ -233,9 +237,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/lab5/pn_16384.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/lab3/primer.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -253,7 +257,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/Real-Time-DSP/lab/issues/new?title=Issue%20on%20page%20%2Flab5/pn_16384.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/Real-Time-DSP/lab/issues/new?title=Issue%20on%20page%20%2Flab3/primer.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -269,6 +273,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Real-Time-DSP/lab/master?urlpath=tree/docs/lab3/primer.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -278,7 +299,22 @@
                 <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-of-lti-systems-and-filters">
+   Review of LTI systems and filters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-impulse-response-fir-filters">
+   Finite impulse response (FIR) filters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fir-filter-design">
+   FIR filter design
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -290,70 +326,52 @@
         
               <div>
                 
-  <p>699842561,3256968010,555344952,788776305,437171664,3911004429,75469212,3644864168
-1390569626,1204362033,1587358809,1536685593,3152678175,1997803969,3293657319,1583845149
-2703353362,962108787,2248695597,2400044539,1603822544,1310493618,503032993,1337575995
-3073722332,3557780031,478222363,3791514872,2550934038,516871296,2716551081,158387105
-1896591605,3110745373,2315405977,852311565,302096361,3145335264,47169998,2353481449
-168146218,2037500859,1251152686,610060212,3190760390,711531214,1867498340,3464614586
-969786542,2130389497,1475916656,507436416,1091312148,2852408006,2879321814,1555542047
-60126753,1360468804,2212662727,907894519,3816674554,1696231758,3897741930,3985463133
-321596499,1251798088,3005557977,252328520,337942118,378406773,2195548917,4082706483
-286989307,2974096497,2876309786,2460171128,3266036827,4145628214,2512158951,657658577
-361638025,725157733,2823738239,1721826140,1562925357,2039780915,2664879615,3299108037
-866677883,2461429744,4127809335,3029689888,3266220409,2050089709,90146914,855086774
-3268318342,4010635103,3997005579,3154176674,4282596397,357686714,800312027,482418353
-131406372,3585114200,362054503,2296543076,1525147879,268396138,2045472000,622431895
-1301063857,3250852158,1555582841,2498534732,3761373898,3182362991,1339857638,2938203317
-2945359315,2276647016,187758684,2791633097,2570308900,3683295812,1401784488,3710887582
-841507717,3326368056,1535287953,2403898995,882389975,2470652281,56983329,2985314041
-546704544,3968342228,111170040,3968683510,2341009187,2087601523,2655810372,2871982460
-1517820798,3982318856,2161642112,1328953352,3961340169,4266862380,880294781,3392031091
-1937691861,699634979,1326040465,2986011837,986136854,3444443615,757684535,1108096488
-65021782,4035513754,722227384,4026020733,2213710957,2409063232,806551145,667739319
-1645256281,963157900,1284905460,4206672463,2565070298,3503972327,1624634835,2944308435
-1733672405,2823059771,2096215786,2095990822,1377672956,811052513,1288484016,3209641106
-670452748,3000997174,1830809907,2690953009,3405452804,1839551709,3170519526,99953702
-2548256214,3736044599,1469965229,103479017,982380024,825733813,1096016498,1658809024
-2221436805,729218729,3642740430,2587445404,1748992610,693920495,2166181622,1891917511
-2630426212,3675260159,1007097105,3036662171,1304646013,2962558095,2686581945,2717599235
-2969237014,2724502118,4223443172,4196010,3861444316,1304209998,190470119,688468173
-1402413894,2129974943,3229702173,2937832462,2135004860,3552939735,3888271001,2518899842
-1819624483,3081417797,917328221,3853680539,2345818727,966640558,559538834,3375051693
-1471291294,3796330218,762749265,2329351662,739687941,2269659948,4052150359,618029221
-1747944392,2429968216,1383228517,840092478,378229335,267766830,1673142454,81764252
-1711644798,1866819872,3570441996,403428773,1433542966,4185508718,2522222069,3454751485
-524577082,4014488791,2235377420,1633634409,3789418413,3944239480,3088089511,608595034
-502551495,3636470102,101736018,3930252951,1698749450,2913031351,1385744011,1898899074
-1196877992,3158251323,2728694169,3519396736,3599104121,4224061173,916978457,4293079597
-2853456748,303352673,2413337228,1094968280,3679803255,1460094230,1772120912,1398637309
-1323073613,931313605,2575054056,2866528245,2937338728,3896016337,1658885977,3650077233
-4024604819,539622508,2101237976,1498243935,51368090,1050511101,3929203394,1240886287
-2511110477,2662936422,3336634906,1777308316,571252556,2990879629,43347082,3384066100
-3037734140,460587370,1197021134,726072406,327256087,4018681640,2940484712,3080369850
-4231206788,2416115759,1286202477,2807764987,1551350752,703360325,2278745495,2651616750
-1292242848,398766384,3859221231,2849061453,480320334,2464782230,1053982513,2607021939
-3044007887,2696632834,3463568314,3643447571,3717179550,2372793683,4225980546,3365611180
-3386797967,981329144,3520130824,3794232085,3091868899,1639312007,2732704273,3133533063
-198859442,3847806325,3371071451,1749055825,2459122055,137724546,2192063362,1388789485
-3119892100,1755345403,3422443917,2016291190,451668056,1029240796,3834065645,1422352661
-3929873828,3733948258,612997315,2700387278,3206596107,632498899,3902305233,3718578575
-3827876747,2096831662,1723794832,1943769079,467576110,3796749486,925363431,2870019301
-127907530,701053746,2045655074,2821793868,3715080244,3556808025,2348348278,1356395894
-2789320382,1729040529,3988258790,3286509372,518750967,1607965212,1062049283,3781304161
-2058228084,3892163328,3418681654,2833326617,1318880999,3517595929,3569393318,2709645330
-2250050469,3148832407,471089606,420387372,1090083997,1600678608,2935739919,3197054406
-2502724632,1390985950,1570264711,2136685906,1881079510,359363841,4286366132,1219915790
-3945245921,3858181139,3771861600,3837944165,1070018834,929218415,3222361314,3670021121
-928508082,2275914976,1066558256,3857240799,3458325690,2257080952,1130113091,3303094093
-1487414396,1340722491,3902246071,1255992034,1426971141,1119260678,528400769,1065826232
-3511306675,2376990380,3516548070,509532287,3559954342,1097250223,627673794,1631197364
-4190749892,2425988756,589527508,3465246974,597461272,1597847794,2087828415,2965349790
-3378825825,652411439,517920042,409041438,3659522354,870130956,858290478,1592230472
-1836059562,2720123374,2428301539,3709838433,4172686684,3019187852,2633571483,294535718
-1236691621,1938061201,3540354344,3451606525,1088856657,1906031626,3434210578,3256104087
-1722745914,3394351680,3367079869,2694535511,3177554132,2146749492,1478656877,2582211893
-1378404641,2011254243,2845754241,1844446975,1852843094,197502078,3416984495,2862892230</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="lab-3-primer">
+<h1>Lab 3 Primer<a class="headerlink" href="#lab-3-primer" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://real-time-dsp.github.io/lab/lab3/primer.slides.html">Slides</a></p>
+<p>Digital filters have several benefits compared to their analog counterparts</p>
+<ul class="simple">
+<li><p>Easy to design, redesign, and tune</p></li>
+<li><p>Exact initial conditions can be enforced</p></li>
+<li><p>Scale to extremely high order</p></li>
+</ul>
+<p>Some applications are, to name just a few,</p>
+<ul class="simple">
+<li><p>Digital communications</p></li>
+<li><p>Speech and audio</p></li>
+<li><p>Sonar and radar</p></li>
+<li><p>Medical imaging</p></li>
+</ul>
+<div class="section" id="review-of-lti-systems-and-filters">
+<h2>Review of LTI systems and filters<a class="headerlink" href="#review-of-lti-systems-and-filters" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://realtimedsp.net/handouts/LTI_systems_filters.html#mathematical-definitions">Mathematical definitions</a></p></li>
+<li><p><a class="reference external" href="https://realtimedsp.net/handouts/LTI_systems_filters.html#impulse-response-and-convolution">Impulse response and convolution</a></p></li>
+<li><p><a class="reference external" href="https://realtimedsp.net/handouts/LTI_systems_filters.html#frequency-response">Frequency response</a></p></li>
+<li><p><a class="reference external" href="https://realtimedsp.net/handouts/LTI_systems_filters.html#magnitude-and-phase-response">Magnitude and phase response</a></p></li>
+<li><p><a class="reference external" href="https://realtimedsp.net/handouts/LTI_systems_filters.html#frequency-selectivity">Frequency Selectivity</a></p></li>
+</ul>
+</div>
+<div class="section" id="finite-impulse-response-fir-filters">
+<h2>Finite impulse response (FIR) filters<a class="headerlink" href="#finite-impulse-response-fir-filters" title="Permalink to this headline">¶</a></h2>
+<p>For a causal discrete-time FIR filter, each output sample <span class="math notranslate nohighlight">\(y[n]\)</span> is computed by taking the inner product of the input samples <span class="math notranslate nohighlight">\(x[n]\)</span> with the filter coefficients <span class="math notranslate nohighlight">\(b[n]\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[ y[n] = \sum_{m=0}^{N}{x[n-m]b[m]} \]</div>
+<p>This is often visualized as a ‘tapped delay line’</p>
+<p><img alt="" src="../_images/tapped_delay.svg" /></p>
+</div>
+<div class="section" id="fir-filter-design">
+<h2>FIR filter design<a class="headerlink" href="#fir-filter-design" title="Permalink to this headline">¶</a></h2>
+<p>For typical frequency selective filters, the design goals are threefold</p>
+<ul class="simple">
+<li><p>Minimize distortion of the signal in the passband(s)</p></li>
+<li><p>Attenuate the stopband as much as possible</p></li>
+<li><p>Keep the order of the filter low</p></li>
+</ul>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Parks%E2%80%93McClellan_filter_design_algorithm">Parks-McClellan algorithm</a> (aka equiripple) will create the optimal set of filter coefficients for an arbitrary filter shape using these basic design goals.</p>
+<p><img alt="" src="../_images/bandpass.svg" /></p>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -368,7 +386,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./lab5"
+            path: "./lab3"
         },
         predefinedOutput: true
     }
@@ -379,7 +397,21 @@
               
         
             <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../lab2/index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lab 2. Generating Cosine and Sine Waves</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 3. Digital Filters</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
