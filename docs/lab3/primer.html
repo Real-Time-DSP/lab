@@ -41,9 +41,9 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -242,7 +242,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -293,7 +293,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -315,6 +315,11 @@
    FIR filter design
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#frame-based-processing">
+   Frame-based processing
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -323,7 +328,45 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lab 3 Primer</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-of-lti-systems-and-filters">
+   Review of LTI systems and filters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-impulse-response-fir-filters">
+   Finite impulse response (FIR) filters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fir-filter-design">
+   FIR filter design
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#frame-based-processing">
+   Frame-based processing
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="lab-3-primer">
@@ -331,16 +374,17 @@
 <p><a class="reference external" href="https://real-time-dsp.github.io/lab/lab3/primer.slides.html">Slides</a></p>
 <p>Digital filters have several benefits compared to their analog counterparts</p>
 <ul class="simple">
-<li><p>Easy to design, redesign, and tune</p></li>
+<li><p>Design can be modified/tuned with software changes only</p></li>
 <li><p>Exact initial conditions can be enforced</p></li>
 <li><p>Scale to extremely high order</p></li>
+<li><p>Can be designed for perfectly linear phase</p></li>
 </ul>
-<p>Some applications are, to name just a few,</p>
+<p>Digital filters are used in a plethora of applications. To name a few,</p>
 <ul class="simple">
-<li><p>Digital communications</p></li>
 <li><p>Speech and audio</p></li>
-<li><p>Sonar and radar</p></li>
-<li><p>Medical imaging</p></li>
+<li><p>Image, video, and computer vision</p></li>
+<li><p>Sonar, radar, and medical imaging</p></li>
+<li><p>Digital communication (wifi, cellular, etc)</p></li>
 </ul>
 <div class="section" id="review-of-lti-systems-and-filters">
 <h2>Review of LTI systems and filters<a class="headerlink" href="#review-of-lti-systems-and-filters" title="Permalink to this headline">¶</a></h2>
@@ -368,8 +412,61 @@
 <li><p>Attenuate the stopband as much as possible</p></li>
 <li><p>Keep the order of the filter low</p></li>
 </ul>
-<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Parks%E2%80%93McClellan_filter_design_algorithm">Parks-McClellan algorithm</a> (aka equiripple) will create the optimal set of filter coefficients for an arbitrary filter shape using these basic design goals.</p>
+<p>As an example, consider the design of a bandpass filter. Ideally, the passband would have a gain of 0 dB and the two stopbands would have a gain of <span class="math notranslate nohighlight">\(-\infty\)</span> dB. However, we know that such an ideal filter would require infinite delay. In practice, we tolerate some amount of distortion in the passband and accept a small amount of leakage through the stopband. This leads to two important design tradeoffs:</p>
+<ul class="simple">
+<li><p>Better frequency selectivity vs lower delay</p></li>
+<li><p>Performance in the passband(s) vs performance in the stopband(s)</p></li>
+</ul>
 <p><img alt="" src="../_images/bandpass.svg" /></p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Parks%E2%80%93McClellan_filter_design_algorithm">Parks-McClellan algorithm</a> (aka equiripple) produces a set of filter coefficients that is optimal in the sense that it minimizes the worst deviation between the actual response and the desired response. When using this method, we have control over several parameters:</p>
+<ul class="simple">
+<li><p>Filter order <span class="math notranslate nohighlight">\(N\)</span></p>
+<ul>
+<li><p>Lower order will provide shorter delay</p></li>
+<li><p>Higher order will provide better frequency selectivity</p></li>
+</ul>
+</li>
+<li><p>Relative weights <span class="math notranslate nohighlight">\(W\)</span></p>
+<ul>
+<li><p>Specifies how to weight each passband and stopband when computing the error that is minimized by the algorithm</p></li>
+</ul>
+</li>
+<li><p>Location of transition regions (specified by <span class="math notranslate nohighlight">\(f_{\text{pass}_i}\)</span> and <span class="math notranslate nohighlight">\(f_{\text{stop}_i}\)</span>)</p>
+<ul>
+<li><p>Transition regions cause to much distortion to function as a passband but not enough attenuation to function as a stopband</p></li>
+<li><p>Smaller transition region increases the amount of usable bandwidth</p></li>
+<li><p>Larger transition region will provide better performance in the passband and stopband</p></li>
+</ul>
+</li>
+</ul>
+<p>Other FIR filter design methods include <a class="reference external" href="https://en.wikipedia.org/wiki/Filter_design#Methodology">least-squares</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_impulse_response#Window_design_method">window design methods</a>.</p>
+</div>
+<div class="section" id="frame-based-processing">
+<h2>Frame-based processing<a class="headerlink" href="#frame-based-processing" title="Permalink to this headline">¶</a></h2>
+<p>For a real-time system, data is constantly flowing in from the ADC and out to the DAC. We can configure how many samples to collect between interrupt triggers from the ADC.</p>
+<p>In the extreme case, we can trigger an interrupt each time a new sample is available and immediately compute one output sample of the filter. alternatively, we can wait until a frame of <span class="math notranslate nohighlight">\(N_F\)</span> samples is collected before triggering an interrupt then compute <span class="math notranslate nohighlight">\(N_F\)</span> output samples of the filter.</p>
+<p>There are a number of advantages to a frame-based implementation:</p>
+<ul class="simple">
+<li><p>Less overhead</p>
+<ul>
+<li><p>Each interrupt requires a fixed number of processor cycles <span class="math notranslate nohighlight">\(N_I\)</span>.</p></li>
+<li><p>For sample-by-sample processing, this cost is incurred for each sample</p></li>
+<li><p>For frame-based processing, this is reduced to <span class="math notranslate nohighlight">\(N_I / N_F\)</span> per sample</p></li>
+</ul>
+</li>
+<li><p>Computational advantages</p>
+<ul>
+<li><p>Algorithms to filter <span class="math notranslate nohighlight">\(N_f\)</span> samples can be more efficient than algorithms that operate sample-by-sample</p></li>
+<li><p>Allows use of single instruction multiple data (SIMD) operations</p></li>
+</ul>
+</li>
+<li><p>Memory advantages</p>
+<ul>
+<li><p>In some systems, large blocks of memory can be moved more efficiently.</p></li>
+<li><p>Caching may be more efficient with large frames</p></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
@@ -395,8 +492,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../lab2/index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -413,19 +510,16 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By University of Texas at Austin<br/>
-        
-            &copy; Copyright 2022.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By University of Texas at Austin<br/>
+    
+  </p>
+</footer>
 </main>
 
 

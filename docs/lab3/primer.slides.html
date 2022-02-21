@@ -14635,7 +14635,8 @@ div.jp-OutputPrompt {
 
 <div class="reveal">
 <div class="slides"><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Review-of-LTI-systems-and-filters">Review of LTI systems and filters<a class="anchor-link" href="#Review-of-LTI-systems-and-filters">&#182;</a></h2><ul>
 <li><a href="https://realtimedsp.net/handouts/LTI_systems_filters.html#mathematical-definitions">Mathematical definitions</a></li>
@@ -14646,22 +14647,28 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Finite-impulse-response-(FIR)-filters">Finite impulse response (FIR) filters<a class="anchor-link" href="#Finite-impulse-response-(FIR)-filters">&#182;</a></h2><p>For a causal discrete-time FIR filter, each output sample $y[n]$ is computed by taking the inner product of the input samples $x[n]$ with the filter coefficients $b[n]$.</p>
 $$ y[n] = \sum_{m=0}^{N}{x[n-m]b[m]} $$<p>This is often visualized as a 'tapped delay line'</p>
 
 </div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
 <p style="text-align:center;">
 <img src="../_images/tapped_delay.svg" width=900 height=900 class="center">
 </p>
 </div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="FIR-filter-design">FIR filter design<a class="anchor-link" href="#FIR-filter-design">&#182;</a></h2><p>For typical frequency selective filters, the design goals are threefold</p>
 <ul>
@@ -14669,20 +14676,80 @@ $$ y[n] = \sum_{m=0}^{N}{x[n-m]b[m]} $$<p>This is often visualized as a 'tapped 
 <li>Attenuate the stopband as much as possible</li>
 <li>Keep the order of the filter low</li>
 </ul>
-<p>The <a href="https://en.wikipedia.org/wiki/Parks–McClellan_filter_design_algorithm">Parks-McClellan algorithm</a> (aka equiripple) will create the optimal set of filter coefficients for an arbitrary filter shape using these basic design goals.</p>
 
 </div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
 <p style="text-align:center;">
 <img src="../_images/bandpass.svg" width=900 height=900 class="center">
 </p>
 </div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>Filter order $N$<ul>
+<li>Lower order will provide shorter delay</li>
+<li>Higher order will provide better frequency selectivity</li>
+</ul>
+</li>
+<li>Relative weights $W$<ul>
+<li>Specifies how to weight each passband and stopband when computing the error that is minimized by the algorithm</li>
+</ul>
+</li>
+<li>Location of transition regions (specified by $f_{\text{pass}_i}$ and $f_{\text{stop}_i}$)<ul>
+<li>Transition regions cause to much distortion to function as a passband but not enough attenuation to function as a stopband</li>
+<li>Smaller transition region increases the amount of usable bandwidth</li>
+<li>Larger transition region will provide better performance in the passband and stopband</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
 <h1 id="Week-2">Week 2<a class="anchor-link" href="#Week-2">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Frame-based-processing">Frame-based processing<a class="anchor-link" href="#Frame-based-processing">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>Less overhead<ul>
+<li>Each interrupt requires a fixed number of processor cycles $N_I$.</li>
+<li>For sample-by-sample processing, this cost is incurred for each sample</li>
+<li>For frame-based processing, this is reduced to $N_I / N_F$ per sample</li>
+</ul>
+</li>
+<li>Computational advantages<ul>
+<li>Algorithms to filter $N_f$ samples can be more efficient than algorithms that operate sample-by-sample</li>
+<li>Allows use of single instruction multiple data (SIMD) operations</li>
+</ul>
+</li>
+<li>Memory advantages<ul>
+<li>In some systems, large blocks of memory can be moved more efficiently.</li>
+<li>Caching may be more efficient with large frames</li>
+</ul>
+</li>
+</ul>
+
+</div>
 </div>
 </div></section></section>
 </div>
