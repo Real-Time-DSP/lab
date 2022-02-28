@@ -41,9 +41,9 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -242,7 +242,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -293,32 +293,63 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#review-of-lti-systems-and-filters">
-   Review of LTI systems and filters
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Lab 3 Primer
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#review-of-lti-systems-and-filters">
+     Review of LTI systems and filters
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finite-impulse-response-fir-filters">
+     Finite impulse response (FIR) filters
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fir-filter-design">
+     FIR filter design
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frame-based-processing">
+     Frame-based processing
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#finite-impulse-response-fir-filters">
-   Finite impulse response (FIR) filters
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-3">
+   Week 3
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iir-filters">
+     IIR Filters
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fir-filter-design">
-   FIR filter design
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numerical-errors">
+   Numerical errors
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#frame-based-processing">
-   Frame-based processing
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cascade-of-biquads">
+     Cascade of biquads
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -328,45 +359,7 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lab 3 Primer</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#review-of-lti-systems-and-filters">
-   Review of LTI systems and filters
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#finite-impulse-response-fir-filters">
-   Finite impulse response (FIR) filters
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fir-filter-design">
-   FIR filter design
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#frame-based-processing">
-   Frame-based processing
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="lab-3-primer">
@@ -469,6 +462,47 @@
 </ul>
 </div>
 </div>
+<div class="tex2jax_ignore mathjax_ignore section" id="week-3">
+<h1>Week 3<a class="headerlink" href="#week-3" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="iir-filters">
+<h2>IIR Filters<a class="headerlink" href="#iir-filters" title="Permalink to this headline">¶</a></h2>
+<p>For a causal discrete-time IIR filter, each output sample <span class="math notranslate nohighlight">\(y[n]\)</span> is computed from a set of feedforward terms and a set of feedback terms.</p>
+<div class="math notranslate nohighlight">
+\[ y[n] = \underbrace{\sum_{k=0}^{N}{b_k x[n-k]}}_{\text{feedforward}}-\underbrace{\sum_{k=1}^{N}{a_k y[n-k]}}_{\text{feedback}} \]</div>
+<p>The choice to subtract the feedback terms rather than add them is arbitrary, but this is conventional because it leads to a slightly simpler expression of the transfer function in the z-domain</p>
+<div class="math notranslate nohighlight">
+\[ H(z) = \frac{b_0 + b_1 z^{-1} + \cdots + b_N z^{-N}}{1 + a_1 z^{-1} + \cdots + a_N z^{-N}} \]</div>
+<p><img alt="" src="../_images/iir_df_I.svg" /></p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="numerical-errors">
+<h1>Numerical errors<a class="headerlink" href="#numerical-errors" title="Permalink to this headline">¶</a></h1>
+<p>With finite precision data types, many sequences of operations can be carried out with perfect accuracy. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">single</span><span class="p">(</span><span class="mf">7.2</span><span class="p">)</span><span class="o">*</span><span class="n">single</span><span class="p">(</span><span class="mf">13.8</span><span class="p">)</span><span class="o">*</span><span class="n">single</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+        <span class="mf">99.36</span>
+</pre></div>
+</div>
+<p>In general however, operations using finite precision data types (such as single precision floating point) are subject to numerical errors. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">single</span><span class="p">(</span><span class="mf">7.2</span><span class="p">)</span><span class="o">*</span><span class="n">single</span><span class="p">(</span><span class="mf">13.8e-35</span><span class="p">)</span><span class="o">*</span><span class="n">single</span><span class="p">(</span><span class="mf">1.0e35</span><span class="p">)</span>
+
+        <span class="mf">99.35999</span>
+</pre></div>
+</div>
+<p>These numerical errors can cause serious issues in the design and implementation of IIR filters.</p>
+<div class="section" id="cascade-of-biquads">
+<h2>Cascade of biquads<a class="headerlink" href="#cascade-of-biquads" title="Permalink to this headline">¶</a></h2>
+<p>Previously, the transfer function was expressed in terms of the coefficients <span class="math notranslate nohighlight">\(b_k\)</span> and <span class="math notranslate nohighlight">\(a_k\)</span>. Alternatively, we can express it in terms of poles <span class="math notranslate nohighlight">\(p_k\)</span>, zeros <span class="math notranslate nohighlight">\(\zeta_k\)</span>, and a constant gain <span class="math notranslate nohighlight">\(C\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[ H(z) = C \frac{(z-\zeta_1)(z-\zeta_2)\cdots(z-\zeta_N)}{(z-p_1)(z-p_2)\cdots(z-p_N)} \]</div>
+<p>A downside of this representation is that, even if all <span class="math notranslate nohighlight">\(a_k\)</span> and <span class="math notranslate nohighlight">\(b_k\)</span> are real, the corresponding <span class="math notranslate nohighlight">\(p_k\)</span> and <span class="math notranslate nohighlight">\(\zeta_k\)</span> may be complex. Alternatively, we can group together pairs of conjugate symmetric poles and zeros to create a similar similar representation where all of the coefficients are real. This is known as a cascade of biquads or a second-order sections representation.</p>
+<div class="math notranslate nohighlight">
+\[ H_k(z) = \frac{b_{k,0} + b_{k,1} z^{-1} + b_{k,2} z^{-2}}{1 + a_{k,1} z^{-1} + a_{k,2} z^{-2}} \]</div>
+<div class="math notranslate nohighlight">
+\[ H(z) = H_1(z)H_2(z) \cdots H_M (z) \]</div>
+<p><img alt="" src="../_images/cascade_biquads.svg" /></p>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -492,8 +526,8 @@
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../lab2/index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -510,16 +544,18 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By University of Texas at Austin<br/>
-    
-  </p>
-</footer>
+    <div class="container">
+      <p>
+        
+          By University of Texas at Austin<br/>
+        
+      </p>
+    </div>
+  </footer>
 </main>
 
 
