@@ -300,56 +300,40 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Lab 3 Primer
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-of-lti-systems-and-filters">
+   Review of LTI systems and filters
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#review-of-lti-systems-and-filters">
-     Review of LTI systems and filters
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#finite-impulse-response-fir-filters">
-     Finite impulse response (FIR) filters
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fir-filter-design">
-     FIR filter design
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#frame-based-processing">
-     Frame-based processing
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#week-3">
-   Week 3
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-impulse-response-fir-filters">
+   Finite impulse response (FIR) filters
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#iir-filters">
-     IIR Filters
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fir-filter-design">
+   FIR filter design
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#frame-based-processing">
+   Frame-based processing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#iir-filters">
+   IIR Filters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numerical-errors">
    Numerical errors
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cascade-of-biquads">
-     Cascade of biquads
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cascade-of-biquads">
+   Cascade of biquads
+  </a>
  </li>
 </ul>
 
@@ -461,9 +445,6 @@
 </li>
 </ul>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="week-3">
-<h1>Week 3<a class="headerlink" href="#week-3" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="iir-filters">
 <h2>IIR Filters<a class="headerlink" href="#iir-filters" title="Permalink to this headline">¶</a></h2>
 <p>For a causal discrete-time IIR filter, each output sample <span class="math notranslate nohighlight">\(y[n]\)</span> is computed from a set of feedforward terms and a set of feedback terms.</p>
@@ -474,22 +455,22 @@
 \[ H(z) = \frac{b_0 + b_1 z^{-1} + \cdots + b_N z^{-N}}{1 + a_1 z^{-1} + \cdots + a_N z^{-N}} \]</div>
 <p><img alt="" src="../_images/iir_df_I.svg" /></p>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="numerical-errors">
-<h1>Numerical errors<a class="headerlink" href="#numerical-errors" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="numerical-errors">
+<h2>Numerical errors<a class="headerlink" href="#numerical-errors" title="Permalink to this headline">¶</a></h2>
 <p>With finite precision data types, many sequences of operations can be carried out with perfect accuracy. For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">single</span><span class="p">(</span><span class="mf">7.2</span><span class="p">)</span><span class="o">*</span><span class="n">single</span><span class="p">(</span><span class="mf">13.8</span><span class="p">)</span><span class="o">*</span><span class="n">single</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">single</span><span class="p">(</span><span class="mf">7.2</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">13.8</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span><span class="w"></span>
 
-        <span class="mf">99.36</span>
+<span class="w">        </span><span class="mf">99.36</span><span class="w"></span>
 </pre></div>
 </div>
 <p>In general however, operations using finite precision data types (such as single precision floating point) are subject to numerical errors. For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">single</span><span class="p">(</span><span class="mf">7.2</span><span class="p">)</span><span class="o">*</span><span class="n">single</span><span class="p">(</span><span class="mf">13.8e-35</span><span class="p">)</span><span class="o">*</span><span class="n">single</span><span class="p">(</span><span class="mf">1.0e35</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">single</span><span class="p">(</span><span class="mf">7.2</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">13.8e-35</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">1.0e35</span><span class="p">)</span><span class="w"></span>
 
-        <span class="mf">99.35999</span>
+<span class="w">        </span><span class="mf">99.35999</span><span class="w"></span>
 </pre></div>
 </div>
 <p>These numerical errors can cause serious issues in the design and implementation of IIR filters.</p>
+</div>
 <div class="section" id="cascade-of-biquads">
 <h2>Cascade of biquads<a class="headerlink" href="#cascade-of-biquads" title="Permalink to this headline">¶</a></h2>
 <p>Previously, the transfer function was expressed in terms of the coefficients <span class="math notranslate nohighlight">\(b_k\)</span> and <span class="math notranslate nohighlight">\(a_k\)</span>. Alternatively, we can express it in terms of poles <span class="math notranslate nohighlight">\(p_k\)</span>, zeros <span class="math notranslate nohighlight">\(\zeta_k\)</span>, and a constant gain <span class="math notranslate nohighlight">\(C\)</span>.</p>

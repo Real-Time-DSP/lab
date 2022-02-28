@@ -14735,7 +14735,7 @@ $$ y[n] = \sum_{m=0}^{N}{x[n-m]b[m]} $$<p>This is often visualized as a 'tapped 
 </div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
 <h1 id="Week-3">Week 3<a class="anchor-link" href="#Week-3">&#182;</a></h1>
 </div>
 </div></section></section><section><section>
@@ -14755,16 +14755,16 @@ $$ H(z) = \frac{b_0 + b_1 z^{-1} + \cdots + b_N z^{-N}}{1 + a_1 z^{-1} + \cdots 
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Numerical-errors">Numerical errors<a class="anchor-link" href="#Numerical-errors">&#182;</a></h1><p>With finite precision data types, many sequences of operations can be carried out with perfect accuracy. For example:</p>
+<h2 id="Numerical-errors">Numerical errors<a class="anchor-link" href="#Numerical-errors">&#182;</a></h2><p>With finite precision data types, many sequences of operations can be carried out with perfect accuracy. For example:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">single</span><span class="p">(</span><span class="mf">7.2</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">13.8</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span><span class="w"></span>
 
-<pre><code>&gt;&gt; single(7.2)*single(13.8)*single(1.0)
-
-        99.36</code></pre>
+<span class="w">        </span><span class="mf">99.36</span><span class="w"></span>
+</pre></div>
 <p>In general however, operations using finite precision data types (such as single precision floating point) are subject to numerical errors. For example:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">single</span><span class="p">(</span><span class="mf">7.2</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">13.8e-35</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">1.0e35</span><span class="p">)</span><span class="w"></span>
 
-<pre><code>&gt;&gt; single(7.2)*single(13.8e-35)*single(1.0e35)
-
-        99.35999</code></pre>
+<span class="w">        </span><span class="mf">99.35999</span><span class="w"></span>
+</pre></div>
 <p>These numerical errors can cause serious issues in the design and implementation of IIR filters.</p>
 
 </div>
