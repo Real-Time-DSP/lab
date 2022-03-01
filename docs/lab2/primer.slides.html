@@ -14635,7 +14635,8 @@ div.jp-OutputPrompt {
 
 <div class="reveal">
 <div class="slides"><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Methods-for-sinusoidal-generation">Methods for sinusoidal generation<a class="anchor-link" href="#Methods-for-sinusoidal-generation">&#182;</a></h2><p>Given some desired frequency $f_0$, we want to generate a causal sinusoid</p>
 $$x(t) = u(t) \cos (2\pi f_0 t)$$<p>by sending the discrete signal $x[n] = u[n] \cos \left( 2\pi \frac{f_0}{f_s} n \right)$ to a digital-to-analog converter (DAC).</p>
@@ -14648,16 +14649,20 @@ $$x(t) = u(t) \cos (2\pi f_0 t)$$<p>by sending the discrete signal $x[n] = u[n] 
 </ul>
 
 </div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Polynomial-approximation-(GNU-math-library)">Polynomial approximation (GNU math library)<a class="anchor-link" href="#Polynomial-approximation-(GNU-math-library)">&#182;</a></h3><p>When the <code>cos</code> function of math.h is invoked, the implementation is system dependent. However, a typical algorithm is to use a polynomial approximation</p>
 $$ \cos(t) \approx a_0 + a_1 x + a_2 x^2 + a_3 x^3 \cdots$$<p>This is the approach used by the <a href="https://www.gnu.org/software/gsl">GNU scientific library</a>) which stores the first 11 coefficients of the approximation.</p>
 <p>Horner's form is used to minimize the number of operations required</p>
 $$ a_{10} x^{10} + a_9 x^9 + a_8 x^8 + \dots + a_0 $$$$ = ( \dots (((a_{10} x + a_9) x + a_8) x \dots ) + a_0 $$
 </div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>To generate a sinusoid of frequency $f_0$, need only repeat a few steps for each sample</p>
 <ol>
@@ -14669,8 +14674,10 @@ $$ a_{10} x^{10} + a_9 x^9 + a_8 x^8 + \dots + a_0 $$$$ = ( \dots (((a_{10} x + 
 <p>It is also extremely flexible, since it allows us to change the frequency as we please by simply changing the the amount at which we increment $\theta$.</p>
 
 </div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Difference-equation">Difference equation<a class="anchor-link" href="#Difference-equation">&#182;</a></h3><p>Consider the discrete-time linear time-invariant system governed by the difference equation</p>
 $$ y[n] = (2 \cos \omega_0) y[n-1] - y[n-2] + (\sin \omega_0) x[n-1]) $$<p>This system is particularly interesting when we consider it's stability. It is on the margin of being bounded-input bounded-output stable, but is technically unstable.</p>
@@ -14679,8 +14686,10 @@ $$ y[n] = (2 \cos \omega_0) y[n-1] - y[n-2] + (\sin \omega_0) x[n-1]) $$<p>This 
 <p>However, the impulse response of this particular system is a constant amplitude causal sinusoid, motivating another method for generating a sinusoid:</p>
 
 </div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ol>
 <li>Set the initial conditions to zero and apply a discrete-time impulse as the input.</li>
@@ -14691,13 +14700,17 @@ $$ y[n] = (2 \cos \omega_0) y[n-1] - y[n-2] + (\sin \omega_0) x[n-1]) $$<p>This 
 <p>This method requires only 2 multiplications and 3 additions per sample and the amount of computation per sample is independent from the desired frequency $f_0$ and the sampling rate $f_s$.</p>
 
 </div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Week-2">Week 2<a class="anchor-link" href="#Week-2">&#182;</a></h1>
 </div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Lookup-table">Lookup table<a class="anchor-link" href="#Lookup-table">&#182;</a></h3><p>$\cos (2\pi f_0 t)$ is a periodic signal with fundamental period $T_0 = 1/f_0$</p>
 <p>If the ratio $f_0 / f_s$ is a rational number, it is convenient to express it as $\frac{f_0}{f_s} = \frac{N}{L}$ where $N$ and $L$ are relatively prime. In this case, $\cos \left( 2\pi \frac{f_0}{f_s} n \right)$ is also periodic with fundamental period $L$, i.e.,</p>
@@ -14705,8 +14718,10 @@ $$L=\frac{f_s}{\text{gcd}(f_0,f_s)} \text{samples}$$<p>This means that we can co
 <p>The number $N$ tells us how many continuous time sinusoidal periods occur during one discrete time period.</p>
 
 </div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Lookup-table-with-interpolation-(ARM-DSP-library)">Lookup table with interpolation (ARM DSP library)<a class="anchor-link" href="#Lookup-table-with-interpolation-(ARM-DSP-library)">&#182;</a></h3><p>The <a href="https://arm-software.github.io/CMSIS_5/DSP/html/group__cos.html">'arm_cos_f32' function from the CMSIS DSP library</a> stores a 512 element lookup table regardless of the desired frequency and sampling rate. Like the GNU math library, the function takes a phase as input (in radians), and returns the value of the cosine with that phase using three steps:</p>
 <ol>
@@ -14718,27 +14733,34 @@ $$L=\frac{f_s}{\text{gcd}(f_0,f_s)} \text{samples}$$<p>This means that we can co
 <p>Since this method always uses the same amount of memory for the lookup table (512 words), it might be preferred to the direct lookup table method if $L$ is large.</p>
 
 </div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Direct-memory-access-and-frame-based-processing.">Direct memory access and frame-based processing.<a class="anchor-link" href="#Direct-memory-access-and-frame-based-processing.">&#182;</a></h2><p>Data is constantly flowing from ADC to main memory and from main memory to DAC. We could move the data using load/store operations, but this would use CPU cycles.</p>
 <p>Instead, we can offload this process to a direct memory access (DMA) controller. As samples are generated from an input device (such as an ADC), the DMA controller automatically populates a buffer in CPU addressable memory space.</p>
 <p>Rather than process individual samples, we wait for the buffer to fill so that we can process many samples at once. When the buffer is half full, an interrupt is triggered, signaling to the CPU that data is ready to be processed. In the background, samples continue being collected in the second half of the buffer so that no data is ever lost.</p>
 
 </div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>After processing is completed, the CPU can stores outputs in a second buffer which is also accessible to the DMA controller. The DMA controller feeds the data to the DAC as needed, avoiding unnecessary CPU load/store operations.</p>
 <p>If multiple inputs or outputs are needed (e.g. stereo ADC/DAC), then they are typically interleaved.</p>
 
 </div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
 <p style="text-align:center;">
 <img src="../_images/buffer_diagram_clear.png" width=450 height=450 class="center">
 </p>
+</div>
 </div>
 </div></section></section>
 </div>
