@@ -58,7 +58,9 @@ The first method we will use to generate a sinusoid is a math library call.
 
 In this exercise, we will apply an impulse to a causal discrete-time linear time-invariant system governed by the difference equation
 
-$$ y[n] = (2 \cos \omega_0) y[n-1] - y[n-2] + (\sin \omega_0) x[n-1]) $$
+$$ y[n] = (2 \cos \omega_0) y[n-1] - y[n-2] + (\sin \omega_0) x[n-1] $$
+
+and whose initial conditions are all zero as a necessary condition for it to be LTI.
 
 The impulse response of this system is a causal sinusoid with discrete time frequency $\omega_0$.
 
