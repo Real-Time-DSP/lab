@@ -237,9 +237,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/lab4/primer.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/lab4/primer.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -272,6 +272,23 @@
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Real-Time-DSP/lab/master?urlpath=tree/docs/lab4/primer.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
 
         </div>
 
@@ -384,6 +401,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="lab-4-primer">
 <h1>Lab 4 Primer<a class="headerlink" href="#lab-4-primer" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://real-time-dsp.github.io/lab/lab4/primer.slides.html">Slides</a></p>
 <p>Pseudo-random binary sequences are also known as pseudo-noise (PN) sequences because the sequences resemble noise. These binary sequences appear to be random but instead have structure. They have all frequencies present; i.e., there are no nulls in the magnitude spectrum.</p>
 <p><img alt="" src="../_images/PN_seq.svg" /></p>
 <div class="section" id="applications-of-pseudo-random-binary-sequences">
@@ -431,9 +449,9 @@
 <li><p>Shift each value along the delay line (i.e. increment n), then repeat starting from step two.</p></li>
 </ol>
 <p>With an appropriate choice of connected taps, the LFSR state will cycle through each of the <span class="math notranslate nohighlight">\(2^m - 1\)</span> possible (nonzero) combinations of <span class="math notranslate nohighlight">\(m\)</span> bits. In this case, we call the system a maximal-length LFSR, and <span class="math notranslate nohighlight">\(s[n]\)</span> is a <span class="math notranslate nohighlight">\((2^m -1)\)</span>-periodic PN sequence.</p>
-<p>Determining mathematically if a combination of taps produces a maximal length sequence is difficult. However, for engineering applications, we can use configurations which are known to provide this property. For example, the following configuration results in a maximal length PN sequence with period <span class="math notranslate nohighlight">\(2^3 -1 = 7\)</span>.
-<img alt="" src="../_images/example_LFSR.svg" />
-The first period of the this LFSR is listed below.</p>
+<p>Determining mathematically if a combination of taps produces a maximal length sequence is difficult. However, for engineering applications, we can use configurations which are known to provide this property. For example, the following configuration results in a maximal length PN sequence with period <span class="math notranslate nohighlight">\(2^3 -1 = 7\)</span>.</p>
+<p><img alt="" src="../_images/example_LFSR.svg" /></p>
+<p>The first period of the this LFSR is listed below.</p>
 <center>
 <table class="colwidths-auto table">
 <thead>
@@ -495,8 +513,7 @@ The first period of the this LFSR is listed below.</p>
 </tr>
 </tbody>
 </table>
-</center>
-<p>Typically, we map the binary <span class="math notranslate nohighlight">\(\left\{ 0,1 \right\}\)</span> values to symmetric amplitudes <span class="math notranslate nohighlight">\(\left\{ -1,1 \right\}\)</span> when representing the PN sequence as a signal.</p>
+</center><p>Typically, we map the binary <span class="math notranslate nohighlight">\(\left\{ 0,1 \right\}\)</span> values to symmetric amplitudes <span class="math notranslate nohighlight">\(\left\{ -1,1 \right\}\)</span> when representing the PN sequence as a signal.</p>
 </div>
 <div class="section" id="auto-correlation-of-pn-sequence">
 <h3>Auto-correlation of PN sequence<a class="headerlink" href="#auto-correlation-of-pn-sequence" title="Permalink to this headline">¶</a></h3>
@@ -544,8 +561,8 @@ The first period of the this LFSR is listed below.</p>
 <p>We can ‘undo’ the scrambler (i.e. descramble the data) using the same process:</p>
 <div class="math notranslate nohighlight">
 \[x_d[n] = ( x_s[n] + s[n] ) \text{ mod 2} = x_s[n] \oplus s[n]\]</div>
-<p>If the same scrambling sequence <span class="math notranslate nohighlight">\(s[n]\)</span> is used for the scrambler and descrambler, then <span class="math notranslate nohighlight">\(x_d[n]=x[n].\)</span>
-By initializing two two LFSRs (one at the transmitter and one at the receiever) with the same initial conditions and connected taps <span class="math notranslate nohighlight">\(h_k\)</span>, this process can be made extremely efficient.</p>
+<p>If the same scrambling sequence <span class="math notranslate nohighlight">\(s[n]\)</span> is used for the scrambler and descrambler, then <span class="math notranslate nohighlight">\(x_d[n]=x[n].\)</span></p>
+<p>By initializing two two LFSRs (one at the transmitter and one at the receiever) with the same initial conditions and connected taps <span class="math notranslate nohighlight">\(h_k\)</span>, this process can be made extremely efficient.</p>
 </div>
 </div>
 <div class="section" id="implementation-of-lfsr-in-c">
