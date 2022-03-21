@@ -445,7 +445,8 @@
 <h3>Sinusoidal generation using difference equation<a class="headerlink" href="#sinusoidal-generation-using-difference-equation" title="Permalink to this headline">¶</a></h3>
 <p>In this exercise, we will apply an impulse to a causal discrete-time linear time-invariant system governed by the difference equation</p>
 <div class="math notranslate nohighlight">
-\[ y[n] = (2 \cos \omega_0) y[n-1] - y[n-2] + (\sin \omega_0) x[n-1]) \]</div>
+\[ y[n] = (2 \cos \omega_0) y[n-1] - y[n-2] + (\sin \omega_0) x[n-1] \]</div>
+<p>and whose initial conditions are all zero as a necessary condition for it to be LTI.</p>
 <p>The impulse response of this system is a causal sinusoid with discrete time frequency <span class="math notranslate nohighlight">\(\omega_0\)</span>.</p>
 <ol>
 <li><p>In lab.c, initialize variables corresponding to the state variables of the system. For example:</p>
