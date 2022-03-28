@@ -21,6 +21,9 @@ def build():
     result = run("jupyter-nbconvert --to slides lab4/primer.ipynb --output ../_build/html/lab4/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True)
     print(result.stdout.decode("utf-8"))
     
+    result = run("jupyter-nbconvert --to slides lab5/primer.ipynb --output ../_build/html/lab5/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True)
+    print(result.stdout.decode("utf-8"))
+    
     # Copy to docs folder to publish to github pages
     if exists("docs"):
         rmtree("docs")
