@@ -237,9 +237,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/lab5/primer.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/lab5/primer.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -273,6 +273,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Real-Time-DSP/lab/master?urlpath=tree/docs/lab5/primer.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -290,29 +307,7 @@
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#mapping-data-to-pulses">
-     1. Mapping data to pulses
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modulation-and-demodulation">
-     2. Modulation and demodulation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mapping-pulses-to-data">
-     3. Mapping pulses to data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-could-go-wrong">
-   What could go wrong?
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#transmitter">
-     Transmitter
+     Mapping data to pulses
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -321,6 +316,21 @@
       </a>
      </li>
     </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modulation">
+     Modulation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#demodulation">
+     Demodulation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mapping-pulses-to-data">
+     Mapping pulses to data
+    </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#receiver">
@@ -354,12 +364,13 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="lab-5-primer">
 <h1>Lab 5 Primer<a class="headerlink" href="#lab-5-primer" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://real-time-dsp.github.io/lab/lab5/primer.slides.html">Slides</a></p>
 <p>The range of complexity for a pulse amplitude modulation (PAM) transceiver system can vary drastically. A working version that demonstrates the core principles can be simulated with just a few lines of code. In practice, many additional subsystems need to be added for reliable operation.</p>
 <div class="section" id="simulation">
 <h2>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h2>
 <p>In simulation, pulse amplitude modulation is relatively straightforward, and can be achieved with just a handful steps.</p>
 <div class="section" id="mapping-data-to-pulses">
-<h3>1. Mapping data to pulses<a class="headerlink" href="#mapping-data-to-pulses" title="Permalink to this headline">¶</a></h3>
+<h3>Mapping data to pulses<a class="headerlink" href="#mapping-data-to-pulses" title="Permalink to this headline">¶</a></h3>
 <p>The first step in any digital communication system is <a class="reference external" href="https://en.wikipedia.org/wiki/Serialization">serialization</a>, the process of converting a useful data structure into a stream of bits. For example, the following MATLAB code serializes the ascii string “meatball” into an array of 56 bits.</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">serialized_data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">((</span><span class="nb">dec2bin</span><span class="p">(</span><span class="nb">uint8</span><span class="p">(</span><span class="s">&#39;meatball&#39;</span><span class="p">))</span><span class="o">&#39;</span><span class="p">),[</span><span class="mi">1</span><span class="p">,</span><span class="mi">56</span><span class="p">])</span><span class="w"></span>
 
@@ -376,9 +387,15 @@
 </pre></div>
 </div>
 <p><img alt="" src="../_images/pulses.svg" /></p>
+<div class="section" id="polyphase-filter-bank-for-pulse-shaping">
+<h4>Polyphase filter bank for pulse shaping<a class="headerlink" href="#polyphase-filter-bank-for-pulse-shaping" title="Permalink to this headline">¶</a></h4>
+<p>Recall that we upsampled the data by a factor of <span class="math notranslate nohighlight">\(L\)</span> before applying the pulse shaping filter. Using the standard FIR filter structure, this would mean that a large fraction, <span class="math notranslate nohighlight">\(\frac{L-1}{L}\)</span>, of the multiply-accumulate operations used in the filter are wasted on zeros! The polyphase filterbank structure solves this problem.</p>
+<p><img alt="" src="../_images/polyphase_filter_bank.svg" /></p>
+<p>The diagram above depicts the polyphase structure to implement an 8-tap FIR filter with impulse response <span class="math notranslate nohighlight">\(g[n]\)</span> after upsampling by a factor of <span class="math notranslate nohighlight">\(L=4\)</span>. The filter coefficients <span class="math notranslate nohighlight">\(g[n]\)</span> are divided into <span class="math notranslate nohighlight">\(L\)</span> smaller filters of length <span class="math notranslate nohighlight">\(\frac{8}{L}=2\)</span>. Even though the upsampling operation quadrupled the sampling rate of the output, these smaller filters are allowed to run at the original rate, reducing the computational cost by a factor of roughly <span class="math notranslate nohighlight">\(L=4\)</span>. By allowing the commutator the cycle through these four smaller filters, we produce the same output signal as if we had upsampled first, then applied an FIR filter at a higher rate.</p>
 </div>
-<div class="section" id="modulation-and-demodulation">
-<h3>2. Modulation and demodulation<a class="headerlink" href="#modulation-and-demodulation" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="modulation">
+<h3>Modulation<a class="headerlink" href="#modulation" title="Permalink to this headline">¶</a></h3>
 <p>The signal above is what we call the <a class="reference external" href="https://en.wikipedia.org/wiki/Baseband">baseband</a> signal. Before transmitting, we want shift the spectrum to higher frequencies in a way that can be reversed at the transmitter. A simple method is with sinusoidal modulation and demodulation</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f0</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">;</span> <span class="n">fs</span> <span class="o">=</span> <span class="mi">48000</span><span class="p">;</span> <span class="n">w0</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">f0</span><span class="o">/</span><span class="n">fs</span><span class="p">;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">length</span><span class="p">(</span><span class="n">sequence_of_pulses</span><span class="p">);</span>
 <span class="n">modulated</span> <span class="o">=</span> <span class="n">sequence_of_pulses</span><span class="o">.</span><span class="s1">&#39; .* cos(w0*n);</span>
@@ -386,6 +403,9 @@
 </pre></div>
 </div>
 <p><img alt="" src="../_images/modulated.svg" /></p>
+</div>
+<div class="section" id="demodulation">
+<h3>Demodulation<a class="headerlink" href="#demodulation" title="Permalink to this headline">¶</a></h3>
 <p>Demodulation can be achieved by once again multiplying by the carrier. The second multiplication by cosine introduces frequency components at <span class="math notranslate nohighlight">\(\pm f_c\)</span>, which can be removed by a low pass filter.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">demodulated</span> <span class="o">=</span> <span class="n">modulated</span> <span class="o">.*</span> <span class="n">cos</span><span class="p">(</span><span class="n">w0</span><span class="o">*</span><span class="n">n</span><span class="p">);</span>
 <span class="n">recovered_pulses</span> <span class="o">=</span> <span class="n">conv</span><span class="p">(</span><span class="n">demodulated</span><span class="p">,</span><span class="n">pulse_shaping_filter</span><span class="p">,</span><span class="s1">&#39;same&#39;</span><span class="p">);</span>
@@ -395,28 +415,14 @@
 <p><img alt="" src="../_images/matched_filter.svg" /></p>
 </div>
 <div class="section" id="mapping-pulses-to-data">
-<h3>3. Mapping pulses to data<a class="headerlink" href="#mapping-pulses-to-data" title="Permalink to this headline">¶</a></h3>
-<p>We end up with a signal that can be downsampled and quantized to recover the original data</p>
+<h3>Mapping pulses to data<a class="headerlink" href="#mapping-pulses-to-data" title="Permalink to this headline">¶</a></h3>
+<p>We end up with a signal that can be downsampled and quantized to recover the original data.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">recovered_data</span> <span class="o">=</span> <span class="n">downsample</span><span class="p">(</span><span class="n">recovered_pulses</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
 
 <span class="n">recovered_data</span> <span class="o">=</span>
 
     <span class="s1">&#39;11011011100101110000111101001100010110000111011001101100&#39;</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="what-could-go-wrong">
-<h2>What could go wrong?<a class="headerlink" href="#what-could-go-wrong" title="Permalink to this headline">¶</a></h2>
-<p>The example above demonstrates the most important techniques used in PAM. However, it leaves out many important steps.</p>
-<div class="section" id="transmitter">
-<h3>Transmitter<a class="headerlink" href="#transmitter" title="Permalink to this headline">¶</a></h3>
-<p>In the 2-PAM system described above, every bit of data required 16 samples to represent. If we want to transmit data at a respectable <a class="reference external" href="https://en.wikipedia.org/wiki/Bit_rate">bit rate</a>, we need to ensure that each step is very efficient.</p>
-<div class="section" id="polyphase-filter-bank-for-pulse-shaping">
-<h4>Polyphase filter bank for pulse shaping<a class="headerlink" href="#polyphase-filter-bank-for-pulse-shaping" title="Permalink to this headline">¶</a></h4>
-<p>Recall that we upsampled the data by a factor of <span class="math notranslate nohighlight">\(L\)</span> before applying the pulse shaping filter. Using the standard FIR filter structure, this would mean that a large fraction, <span class="math notranslate nohighlight">\(\frac{L-1}{L}\)</span>, of the multiply-accumulate operations used in the filter are wasted on zeros! The polyphase filterbank structure solves this problem.</p>
-<p><img alt="" src="../_images/polyphase_filter_bank.svg" /></p>
-<p>The diagram above depicts the polyphase structure to implement an 8-tap FIR filter with impulse response <span class="math notranslate nohighlight">\(g[n]\)</span> after upsampling by a factor of <span class="math notranslate nohighlight">\(L=4\)</span>. The filter coefficients <span class="math notranslate nohighlight">\(g[n]\)</span> are divided into <span class="math notranslate nohighlight">\(L\)</span> smaller filters of length <span class="math notranslate nohighlight">\(\frac{8}{L}=2\)</span>. Even though the upsampling operation quadrupled the sampling rate of the output, these smaller filters are allowed to run at the original rate, reducing the computational cost by a factor of roughly <span class="math notranslate nohighlight">\(L=4\)</span>. By allowing the commutator the cycle through these four smaller filters, we produce the same output signal as if we had upsampled first, then applied an FIR filter at a higher rate.</p>
 </div>
 </div>
 <div class="section" id="receiver">
