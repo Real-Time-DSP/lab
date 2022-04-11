@@ -342,12 +342,29 @@
        Costas loop for carrier recovery
       </a>
      </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#power-maximization-for-timing-recovery">
-       Power maximization for timing recovery
-      </a>
-     </li>
     </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#symbol-clock-recovery">
+   Symbol Clock Recovery
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Symbol Clock Recovery
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#error-probability">
+   Error probability
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#power-maximization-for-timing-recovery">
+     Power maximization for timing recovery
+    </a>
    </li>
   </ul>
  </li>
@@ -437,10 +454,33 @@
 <p>For an in-depth discussion of the Costas loop, see <em>Software Receiver Design</em> by C. Richard Johnson, Jr., William A. Sethares and Andrew Klein, section 10.4.</p>
 <p><img alt="" src="../_images/costas.svg" /></p>
 </div>
-<div class="section" id="power-maximization-for-timing-recovery">
-<h4>Power maximization for timing recovery<a class="headerlink" href="#power-maximization-for-timing-recovery" title="Permalink to this headline">¶</a></h4>
-<p>For an in-depth discussion of timing recovery via output power maximization, see <em>Software Receiver Design</em> by C. Richard Johnson, Jr., William A. Sethares and Andrew Klein, section 12.4.</p>
 </div>
+</div>
+<div class="section" id="symbol-clock-recovery">
+<h2>Symbol Clock Recovery<a class="headerlink" href="#symbol-clock-recovery" title="Permalink to this headline">¶</a></h2>
+<p>The carrier recovery process will correct a frequency offset so that the signal can be properly demodulated.</p>
+<p>The demodulated signal is downsampled and quantized to produce a stream of bits at the receiver. This process is sensitive to any timing offset. For example, the red and black stem plots show two possible ways that the demodulated signal might be downsampled. In one case (red), the values are recovered exactly. In the other case (black) many of the samples are close to zero and might easily be overwhelmed by noise.</p>
+<p>A symbol clock recovery subsystem should adapt the sampling times to minimize errors.</p>
+<p><img alt="" src="../_images/timing_offset.svg" /></p>
+</div>
+<div class="section" id="id1">
+<h2>Symbol Clock Recovery<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>One simple clock recovery method consists of two bandpass filters and a squaring block.</p>
+<p><img alt="" src="../_images/symbol_clock_recovery.svg" /></p>
+<p>The first bandpass filter passes any oscillations that occur at a rate <span class="math notranslate nohighlight">\(f_{sym}/2\)</span>, which is the highest frequency that can occur in the baseband signal. Squaring the result will double the frequency. The second bandpass filter will then produce an estimate of the symbol clock.</p>
+<p><img alt="" src="../_images/BPF_square_BPF.svg" /></p>
+</div>
+<div class="section" id="error-probability">
+<h2>Error probability<a class="headerlink" href="#error-probability" title="Permalink to this headline">¶</a></h2>
+<p>It is common to model each sample of noise an independent draw from Gaussian distribution with variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<p>As the noise variance increases, it is more likely that a symbol is incorrectly decoded. However, as the symbol spacing <span class="math notranslate nohighlight">\(A\)</span> increases, a larger amount of noise is required to cause a bit error.</p>
+<p>As a result, the bit error probability will depend on the ratio <span class="math notranslate nohighlight">\(A/\sigma\)</span>. Since the signal power is proportional to <span class="math notranslate nohighlight">\(A^2\)</span> and the noise power is <span class="math notranslate nohighlight">\(\sigma^2\)</span>, this can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[\frac A \sigma = \sqrt{\frac{A^2}{\sigma ^2}} = \sqrt{\text{SNR}}\]</div>
+<p><img alt="" src="../_images/error_probability.svg" /></p>
+<div class="section" id="power-maximization-for-timing-recovery">
+<h3>Power maximization for timing recovery<a class="headerlink" href="#power-maximization-for-timing-recovery" title="Permalink to this headline">¶</a></h3>
+<p>For an in-depth discussion of timing recovery via output power maximization, see <em>Software Receiver Design</em> by C. Richard Johnson, Jr., William A. Sethares and Andrew Klein, section 12.4.</p>
 </div>
 </div>
 </div>
