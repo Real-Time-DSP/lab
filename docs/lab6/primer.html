@@ -235,9 +235,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/lab6/primer.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/lab6/primer.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -271,24 +271,28 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Real-Time-DSP/lab/master?urlpath=tree/docs/lab6/primer.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-qam">
-   What is QAM?
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -299,9 +303,8 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="lab-6-primer">
 <h1>Lab 6 Primer<a class="headerlink" href="#lab-6-primer" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://real-time-dsp.github.io/lab/lab6/primer.slides.html">Slides</a></p>
 <p>Most modern digital communication systems, including standards like 802.11 (WiFi), use quadrature amplitude modulation (QAM). In contrast to PAM, which only encodes information in the amplitude, QAM additionally makes use of the phase.</p>
-<div class="section" id="what-is-qam">
-<h2>What is QAM?<a class="headerlink" href="#what-is-qam" title="Permalink to this headline">¶</a></h2>
 <p>To understand QAM, let us revisit the modulation component of PAM. This time, we will look at the transmission of a single ASCII character ‘m’.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">serialized_data</span> <span class="o">=</span> <span class="n">reshape</span><span class="p">((</span><span class="n">dec2bin</span><span class="p">(</span><span class="n">uint8</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">))</span><span class="s1">&#39;),[1,7])</span>
 
@@ -317,7 +320,7 @@
 </pre></div>
 </div>
 <p><img alt="" src="../_images/ASCII_m_pulses.svg" /></p>
-<p>Recall that in lab 5, the sequence of pulses was multiplied by a cosine. In particular, we used a cosine whose frequency was one quarter the sampling frequency</p>
+<p>Recall that in lab 5, the sequence of pulses was multiplied by a cosine. In particular, we used a cosine whose frequency was one quarter the sampling frequency.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f0</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">;</span> <span class="n">fs</span> <span class="o">=</span> <span class="mi">48000</span><span class="p">;</span> <span class="n">w0</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">f0</span><span class="o">/</span><span class="n">fs</span><span class="p">;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">length</span><span class="p">(</span><span class="n">sequence_of_pulses</span><span class="p">);</span>
 <span class="n">modulated</span> <span class="o">=</span> <span class="n">sequence_of_pulses</span><span class="o">.</span><span class="s1">&#39; .* cos(w0*n);</span>
 <span class="n">figure</span><span class="p">;</span> <span class="n">plot</span><span class="p">(</span><span class="n">sequence_of_pulses</span><span class="p">);</span> <span class="n">hold</span> <span class="n">on</span><span class="p">;</span> <span class="n">stem</span><span class="p">(</span><span class="n">modulated</span><span class="p">);</span>
@@ -330,7 +333,6 @@
 <p>We can exploit this by modulating one stream of data with a cosine, modulating a second stream with a sine, and adding them together. Let’s assume that ‘m’ will be modulated by a cosine and our second stream of data is the ASCII character ‘e’, which will me modulated by a sine.</p>
 <p><img alt="" src="../_images/ASCII_me_QAM.svg" /></p>
 <p>If we look closely at these two signals, we see why QAM works. Normally, when we add two signals together, it is very difficult to separate them. It is only because of the orthogonality of sine and cosine that we can easily separate the two components at the receiver. This lets us transmit twice as much data without increasing the bandwidth or symbol rate.</p>
-</div>
 </div>
 
     <script type="text/x-thebe-config">
