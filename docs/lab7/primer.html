@@ -237,9 +237,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/lab7/primer.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/lab7/primer.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -272,6 +272,23 @@
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Real-Time-DSP/lab/master?urlpath=tree/docs/lab7/primer.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
 
         </div>
 
@@ -397,8 +414,9 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="lab-7-primer">
 <h1>Lab 7 Primer<a class="headerlink" href="#lab-7-primer" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://real-time-dsp.github.io/lab/lab7/primer.slides.html">Slides</a></p>
 <p>With all of the tools previously developed, we are equipped to build a plethora of real-time systems with creative applications. In particular, most musical effects can be implemented with a relatively small computational load. This makes it feasible to run many different effects on cheap, reprogrammable systems.</p>
-<p>The Nyquist Shannon-sampling theorem equips us to build an infinite number of audio effects digitally, but we will focus on four types of effects</p>
+<p>Here, we will focus on four types of effects.</p>
 <ul class="simple">
 <li><p>Comb filters</p></li>
 <li><p>Harmonic Distortion</p></li>
@@ -482,7 +500,8 @@
 <div class="section" id="harmonic-distortion">
 <h2>Harmonic Distortion<a class="headerlink" href="#harmonic-distortion" title="Permalink to this headline">¶</a></h2>
 <p>Recall that a Fourier series can represent any periodic signal as a combination of a fundamental frequency and equally spaced harmonics. However, if the signal or its derivative contain discontinuities, it requires an infinite number of harmonics.</p>
-<p>Many types of nonlinearities might introduce discontinuities. For example, when the linear range of an amplifier is exceeded, clipping will occur which introduces additional harmonics.</p>
+<p>For example, when the linear range of an amplifier is exceeded, clipping will occur which introduces additional harmonics.</p>
+<p><img alt="" src="../_images/clipping.svg" /></p>
 <p>For most systems, the introduction of new frequencies is a type of impairment. For musical applications, addition of harmonics can make an instrument have greater presence and warmth.</p>
 <p>Many types of nonlinearities can produce harmonic distortion. As a result, this category of effects often goes by many names:</p>
 <ul class="simple">
@@ -532,8 +551,8 @@
 <p>In the frequency domain, the result is concentration of energy at evenly spaced harmonics</p>
 <p><img alt="" src="../_images/gauss_shah_freq.svg" /></p>
 <p>The spacing of these harmonics is ‘pitch’, and their envelope contains the remaining phonetic information.</p>
-<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Vocoder">vocoder</a> attempts to to find the time-varying parameters to a speech model from a recording. Since the sophistication of speech models varies widely, so does the sophistication of vocoders. However, the main principles can be demonstrated with just a three subsystems: (1) a source model (above), (2) <a class="reference external" href="https://en.wikipedia.org/wiki/Pitch_detection_algorithm">pitch detection</a>, and (3) an <a class="reference external" href="https://en.wikipedia.org/wiki/Adaptive_filter">adaptive filter</a>.</p>
-<p>For a musical applications, the vocoder might rencode the speech with a new frequency <span class="math notranslate nohighlight">\(f_c\)</span> (autotune), or apply the learned filter model to a separate input signal, like a guitar.</p>
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Vocoder">vocoder</a> attempts to to find the time-varying parameters to a speech model from a recording. Since the sophistication of speech models varies widely, so does the sophistication of vocoders. However, the main principles can be demonstrated with just a three subsystems: (1) a source model (above), (2) <a class="reference external" href="https://en.wikipedia.org/wiki/Pitch_detection_algorithm">pitch detection</a>, and (3) an <a class="reference external" href="https://en.wikipedia.org/wiki/Adaptive_filter">adaptive filter</a>.
+For a musical applications, the vocoder might rencode the speech with a new frequency <span class="math notranslate nohighlight">\(f_c\)</span> (autotune), or apply the learned filter model to a separate input signal, like a guitar.</p>
 <p><img alt="" src="../_images/vocoder.svg" /></p>
 </div>
 <div class="section" id="autocorrelation-for-pitch-detection">
