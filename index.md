@@ -1,4 +1,4 @@
-# EE 445S Lab Component
+# ECE 445S Lab Component
 
 As of Fall 2021, the instructions for the lab exercises will be entirely self contained in this lab manual. The exercises now use the [STM32H735G Discovery Kit][1]. 
 
