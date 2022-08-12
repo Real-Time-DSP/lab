@@ -16,6 +16,7 @@ parts:
     
   - caption: Labs
     chapters:
+    - file: lab0/index
     - file: lab1/index
     - file: lab2/primer
     - file: lab2/index
