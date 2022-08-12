@@ -35,22 +35,22 @@ For partial credit, please submit all work even if incomplete or incorrect.
 
 | Week  | Prelab Quiz Due | Lab Work To Complete | Lab Report Due |
 | :---     |:----: |                :----:                |:----: |
-| Jan. 17  |       |                                      |       |
-| Jan. 24  |       | 1. Intro to Hardware and Software    |       |
-| Jan. 31  | Lab 2 | 2. Sinusoidal Generation Part 1      | Lab 1 |
-| Feb. 7   |       | 2. Sinusoidal Generation Part 2      |       |
-| Feb. 14  | Lab 3 | 3. Digital Filters Part 1            | Lab 2 |
-| Feb. 21  |       | 3. Digital Filters Part 2            |       |
-| Feb. 28  |       | 3. Digital Filters Part 3            |       |
-| Mar. 7   |       |                                      |       |
-| Mar. 14  |       | Spring break                         |       |
-| Mar. 21  | Lab 4 | 4. Data Scramblers                   | Lab 3 |
-| Mar. 28  | Lab 5 | 5. Pulse Amplitude Modulation Part 1 | Lab 4 |
-| Apr. 4   |       | 5. Pulse Amplitude Modulation Part 2 |       |
-| Apr. 11  |       | 5. Pulse Amplitude Modulation Part 3 |       |
-| Apr. 18  | Lab 6 | 6. Quadrature Amplitude Modulation   | Lab 5 |
-| Apr. 25  | Lab 7 | 7. Audio Effects                     | Lab 6 |
-| May  2   |       |                                      |       |
+| Aug. 22  |       | 0. Review of Prerequisites (Optional)|       |
+| Aug. 29  |       | 1. Intro to Hardware and Software    |       |
+| Sep. 5   | Lab 2 | 2. Sinusoidal Generation Part 1      | Lab 1 |
+| Sep. 12  |       | 2. Sinusoidal Generation Part 2      |       |
+| Sep. 19  | Lab 3 | 3. Digital Filters Part 1            | Lab 2 |
+| Sep. 26  |       | 3. Digital Filters Part 2            |       |
+| Oct. 3   |       | 3. Digital Filters Part 3            |       |
+| Oct. 10  |       |                                      |       |
+| Oct. 17  | Lab 4 | 4. Data Scramblers                   | Lab 3 |
+| Oct. 24  | Lab 5 | 5. Pulse Amplitude Modulation Part 1 | Lab 4 |
+| Oct. 31  |       | 5. Pulse Amplitude Modulation Part 2 |       |
+| Nov. 7   |       | 5. Pulse Amplitude Modulation Part 3 |       |
+| Nov. 14  | Lab 6 | 6. Quadrature Amplitude Modulation   | Lab 5 |
+| Nov. 21  |       |                                      |       |
+| Nov. 28  | Lab 7 | 7. Audio Effects                     | Lab 6 |
+| Dec. 5   |       |                                      |       |
 
 
 
