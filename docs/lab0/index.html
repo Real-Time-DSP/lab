@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -312,16 +314,69 @@
   <a class="reference internal nav-link" href="#c-programming">
    C Programming
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-vs-circular-buffer">
+     Linear vs circular buffer
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#linear-buffer">
+       Linear buffer
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#circular-buffer">
+       Circular buffer
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matlab">
    MATLAB
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-types-in-matlab">
+     Data Types in MATLAB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vector-and-array-operations">
+     Vector and array operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-plots">
+     Creating plots
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#floating-point">
+   Floating point
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linear-systems-and-signals">
    Linear Systems and Signals
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transforms">
+     Transforms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fourier-transform-example">
+     Fourier transform example
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -352,16 +407,69 @@
   <a class="reference internal nav-link" href="#c-programming">
    C Programming
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-vs-circular-buffer">
+     Linear vs circular buffer
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#linear-buffer">
+       Linear buffer
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#circular-buffer">
+       Circular buffer
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matlab">
    MATLAB
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-types-in-matlab">
+     Data Types in MATLAB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vector-and-array-operations">
+     Vector and array operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-plots">
+     Creating plots
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#floating-point">
+   Floating point
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linear-systems-and-signals">
    Linear Systems and Signals
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transforms">
+     Transforms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fourier-transform-example">
+     Fourier transform example
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -381,15 +489,168 @@
 <p>Attending lab #0 in person will allow you to access the hardware to get a head start on lab #1.</p>
 <div class="section" id="hardware-overview">
 <h2>Hardware Overview<a class="headerlink" href="#hardware-overview" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="../_images/hardware.svg" /></p>
 </div>
 <div class="section" id="c-programming">
 <h2>C Programming<a class="headerlink" href="#c-programming" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linear-vs-circular-buffer">
+<h3>Linear vs circular buffer<a class="headerlink" href="#linear-vs-circular-buffer" title="Permalink to this headline">¶</a></h3>
+<p>Example: Shift all elements of an <span class="math notranslate nohighlight">\(N=16\)</span> element array and add a new element to the start.</p>
+<div class="section" id="linear-buffer">
+<h4>Linear buffer<a class="headerlink" href="#linear-buffer" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="w">     </span><span class="p">.</span><span class="w"></span>
+<span class="w">     </span><span class="p">.</span><span class="w"></span>
+<span class="w">     </span><span class="p">.</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="n">linear_buffer_shift</span><span class="p">(</span><span class="n">float32_t</span><span class="w"> </span><span class="n">new_element</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="o">-=</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="mi">-1</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_element</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="circular-buffer">
+<h4>Circular buffer<a class="headerlink" href="#circular-buffer" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="kt">int32_t</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="p">.</span><span class="w"></span>
+<span class="w">     </span><span class="p">.</span><span class="w"></span>
+<span class="w">     </span><span class="p">.</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="n">circular_buffer_shift</span><span class="p">(</span><span class="n">float32_t</span><span class="w"> </span><span class="n">new_element</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">position</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">16</span><span class="w"></span>
+<span class="w">    </span><span class="n">x</span><span class="p">[</span><span class="n">position</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_element</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="matlab">
 <h2>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-types-in-matlab">
+<h3>Data Types in MATLAB<a class="headerlink" href="#data-types-in-matlab" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>By default, every variable in MATLAB is a 2d array of double precision floating point values</p></li>
+<li><p>To use another datatype, call the corresponding function (<code class="docutils literal notranslate"><span class="pre">single()</span></code>, <code class="docutils literal notranslate"><span class="pre">int16()</span></code>, <code class="docutils literal notranslate"><span class="pre">uint32()</span></code>, etc)</p></li>
+<li><p>View the size and type of variables using the <code class="docutils literal notranslate"><span class="pre">whos()</span></code> function</p></li>
+<li><p>By default <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code> represent <span class="math notranslate nohighlight">\(\sqrt{(-1)}\)</span>. Be careful naming variables that overwrite these!</p></li>
+<li><p>Data automatically become complex if any multiple of <code class="docutils literal notranslate"><span class="pre">j</span></code> is added, e.g. <code class="docutils literal notranslate"><span class="pre">1-3j</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="vector-and-array-operations">
+<h3>Vector and array operations<a class="headerlink" href="#vector-and-array-operations" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>You can use for loops to perform vector and array operations</p></li>
+<li><p>Most of the time, there is an easier and more computationally efficient way</p></li>
+</ul>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">     </span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">];</span><span class="w"></span>
+<span class="n">B</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="w"></span>
+<span class="w">     </span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Element-wise product of two matrices using for loops</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="n">i_row</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i_col</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="w"></span>
+<span class="w">        </span><span class="n">C</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">     </span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">];</span><span class="w"></span>
+<span class="n">B</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="w"></span>
+<span class="w">     </span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>element-wise product of two matrices using <code class="docutils literal notranslate"><span class="pre">.*</span></code> operator</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Matrix-matrix product using <code class="docutils literal notranslate"><span class="pre">*</span></code> operator and <code class="docutils literal notranslate"><span class="pre">'</span></code> for transpose.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="o">&#39;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-plots">
+<h3>Creating plots<a class="headerlink" href="#creating-plots" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>To describe your plot to MATLAB, give the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function the (x,y) coordinates of each point you want to plot</p></li>
+<li><p>Put all of the x coordinates in a vector and the y coordinates in a second vector</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">plot(x,y)</span></code> to represent continuous signals</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">stem(x,y)</span></code> to represent discrete signals</p></li>
+<li><p>Call the <code class="docutils literal notranslate"><span class="pre">figure()</span></code> function before a plot to put it in a new window</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">hold</span> <span class="pre">on;</span></code> to overlay on the previous plot</p></li>
+<li><p>Use the incantation <code class="docutils literal notranslate"><span class="pre">set(0,'DefaultFigureWindowStyle','Docked')</span></code> to keep all figures in the same window but make an new tab for each</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="floating-point">
+<h2>Floating point<a class="headerlink" href="#floating-point" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Integer and fixed data types have the same spacing between all possible values.</p>
+<ul>
+<li><p>Useful for representing natural numbers or the value read from ADC</p></li>
+</ul>
+</li>
+<li><p>Distance between adjacent floating point numbers is variable</p>
+<ul>
+<li><p>Useful for representing filter coefficients</p></li>
+<li><p>Less build up of error for sequences of operations compared to fixed point</p></li>
+</ul>
+</li>
+<li><p>Single precision (near 1.0) is roughly equivalent to 8 decimal points</p>
+<ul>
+<li><p>Largest possible value is about <span class="math notranslate nohighlight">\(3.4 \times 10^{38}\)</span></p></li>
+<li><p>Near zero, the smallest distance between values is about <span class="math notranslate nohighlight">\(1.4\times 10^{-45}\)</span></p></li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="linear-systems-and-signals">
 <h2>Linear Systems and Signals<a class="headerlink" href="#linear-systems-and-signals" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="transforms">
+<h3>Transforms<a class="headerlink" href="#transforms" title="Permalink to this headline">¶</a></h3>
+<p>Preview of the different transforms we will use in this class:</p>
+<ul class="simple">
+<li><p>Laplace transform</p></li>
+<li><p>Z-transform</p></li>
+<li><p>Fourier transform</p></li>
+<li><p>Discrete-time Fourier transform (DTFT)</p></li>
+<li><p>Fourier series</p></li>
+<li><p>Discrete Fourier transform (DFT, a.k.a FFT)</p></li>
+</ul>
+<p>All of these have certain properties in common (with a few caveats)</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \text{Multiplication} \leftrightarrow \text{Convolution} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \text{Stretch} \leftrightarrow  \text{Contract}\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="fourier-transform-example">
+<h3>Fourier transform example<a class="headerlink" href="#fourier-transform-example" title="Permalink to this headline">¶</a></h3>
+<p>What is the fourier transform of <span class="math notranslate nohighlight">\( x(t) = \left(1+\cos(2\pi t)\right) \left( \text{rect}(t) \right)\)</span> ?</p>
+<p><img alt="" src="../_images/FT_example.svg" /></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_transform#Tables_of_important_Fourier_transforms">Table of known fourier transforms and fourier transform properties.</a></p>
+<ul class="simple">
+<li><p>The Fourier transform of a constant <span class="math notranslate nohighlight">\(1\)</span> is  <span class="math notranslate nohighlight">\(\delta(f)\)</span>.</p></li>
+<li><p>The Fourier transform of <span class="math notranslate nohighlight">\( \cos(at) \)</span> is <span class="math notranslate nohighlight">\(\frac{1}{2}\left[ \delta(f-\frac{a}{2\pi}) + \delta(f+\frac{a}{2\pi}) \right]\)</span></p></li>
+<li><p>The Fourier transform of <span class="math notranslate nohighlight">\( \text{rect} (t) \)</span> is <span class="math notranslate nohighlight">\(\text{sinc}(f)=\frac{\sin(\pi f)}{\pi f}\)</span></p></li>
+<li><p>Multiplication in time domain is convolution in frequency domain</p></li>
+<li><p>Sifting property: <span class="math notranslate nohighlight">\(f(t) * \delta(t-t_0) = f(t-t_0)\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+X(f) = \mathscr F \{ x(t) \} &amp;= \mathscr F \{ 1+ \cos(2\pi t)\} * \mathscr F \{ \text{rect}(t)\} \\
+&amp;= \left[\frac 1 2 \delta(f-1) + \delta(f) + \frac 1 2 \delta(f+1) \right] * \text{sinc}(f) \\
+&amp;= \frac 1 2 sinc(f-1) + sinc(f) + \frac 1 2 sinc(f+1)
+\end{align}\end{split}\]</div>
+<p><img alt="" src="../_images/FT_example2.svg" /></p>
+</div>
 </div>
 </div>
 
