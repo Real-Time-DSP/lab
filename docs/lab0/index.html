@@ -41,9 +41,9 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -247,7 +247,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -298,7 +298,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -315,6 +315,21 @@
    C Programming
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-types">
+     Data Types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pointers-and-functions">
+     Pointers and functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arrays-and-for-loops">
+     Arrays and for loops
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linear-vs-circular-buffer">
      Linear vs circular buffer
@@ -366,6 +381,11 @@
    Linear Systems and Signals
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sampling-and-reconstruction">
+     Sampling and Reconstruction
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#transforms">
      Transforms
@@ -386,98 +406,7 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lab 0. Review of Prerequisites (Optional)</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hardware-overview">
-   Hardware Overview
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#c-programming">
-   C Programming
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#linear-vs-circular-buffer">
-     Linear vs circular buffer
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#linear-buffer">
-       Linear buffer
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#circular-buffer">
-       Circular buffer
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#matlab">
-   MATLAB
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-types-in-matlab">
-     Data Types in MATLAB
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vector-and-array-operations">
-     Vector and array operations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-plots">
-     Creating plots
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#floating-point">
-   Floating point
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-systems-and-signals">
-   Linear Systems and Signals
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#transforms">
-     Transforms
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fourier-transform-example">
-     Fourier transform example
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="lab-0-review-of-prerequisites-optional">
@@ -493,6 +422,60 @@
 </div>
 <div class="section" id="c-programming">
 <h2>C Programming<a class="headerlink" href="#c-programming" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-types">
+<h3>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>C language does not provide exact rules for data types</p>
+<ul>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">int</span></code></p>
+<ul>
+<li><p>Must be at least 16 bits, but can be larger</p></li>
+<li><p>Must include the range [−32,767, +32,767]. Often, -32,768 is included as well.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Toolchain used in lab provides exact specifications for data types</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">int16_t</span></code> 16-bit signed integer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uint32_t</span></code> 32 bit unsigned integer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float32_t</span></code> 32 bit (single precision) floating point</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="pointers-and-functions">
+<h3>Pointers and functions<a class="headerlink" href="#pointers-and-functions" title="Permalink to this headline">¶</a></h3>
+<p>Example: measuring clock cycles</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">systick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="mh">0xe000e018</span><span class="p">;</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">tic</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">systick</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="kt">uint32_t</span><span class="w"> </span><span class="nf">toc</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">*</span><span class="n">systick</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="arrays-and-for-loops">
+<h3>Arrays and for loops<a class="headerlink" href="#arrays-and-for-loops" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Example: cosine lookup table</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">int16_t</span> <span class="n">table</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+<span class="n">float32_t</span> <span class="n">amplitude</span><span class="p">;</span>
+<span class="n">flat32_t</span> <span class="n">omega0</span> <span class="o">=</span> <span class="mf">0.0576</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">uint32_t</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">16</span><span class="p">;</span> <span class="n">n</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">amplitude</span> <span class="o">=</span> <span class="n">arm_sin_f32</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">omega0</span><span class="p">);</span>
+    <span class="n">table</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">OUTPUT_SCALE_FACTOR</span> <span class="o">*</span> <span class="n">amplitude</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="linear-vs-circular-buffer">
 <h3>Linear vs circular buffer<a class="headerlink" href="#linear-vs-circular-buffer" title="Permalink to this headline">¶</a></h3>
 <p>Example: Shift all elements of an <span class="math notranslate nohighlight">\(N=16\)</span> element array and add a new element to the start.</p>
@@ -557,7 +540,7 @@
 <p>Element-wise product of two matrices using for loops</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="n">i_row</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="w"></span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i_col</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="w"></span>
-<span class="w">        </span><span class="n">C</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">C</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="k">end</span><span class="w"></span>
 <span class="k">end</span><span class="w"></span>
 </pre></div>
@@ -593,7 +576,7 @@
 <div class="section" id="floating-point">
 <h2>Floating point<a class="headerlink" href="#floating-point" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Integer and fixed data types have the same spacing between all possible values.</p>
+<li><p>Integer and other fixed-point data types have the same spacing between all possible values</p>
 <ul>
 <li><p>Useful for representing natural numbers or the value read from ADC</p></li>
 </ul>
@@ -614,6 +597,24 @@
 </div>
 <div class="section" id="linear-systems-and-signals">
 <h2>Linear Systems and Signals<a class="headerlink" href="#linear-systems-and-signals" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sampling-and-reconstruction">
+<h3>Sampling and Reconstruction<a class="headerlink" href="#sampling-and-reconstruction" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Sampling</p>
+<ul>
+<li><p>Continuous-time to discrete-time</p></li>
+<li><p><span class="math notranslate nohighlight">\(x[n] = x(n T_s)\)</span></p></li>
+</ul>
+</li>
+<li><p>Reconstruction</p>
+<ul>
+<li><p>Discrete-time to Continuous-time</p></li>
+<li><p>A continuous-time signal <span class="math notranslate nohighlight">\(x(t)\)</span> with frequencies no higher than <span class="math notranslate nohighlight">\(f_{\text{max}}\)</span> can be reconstructed exactly from its samples <span class="math notranslate nohighlight">\(x[n] = x(n T_s)\)</span> if samples are taken at a sampling rate <span class="math notranslate nohighlight">\(f_s &gt; 2f_{\text{max}}\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../_images/sampling_reconstruction.svg" /></p>
+</div>
 <div class="section" id="transforms">
 <h3>Transforms<a class="headerlink" href="#transforms" title="Permalink to this headline">¶</a></h3>
 <p>Preview of the different transforms we will use in this class:</p>
@@ -630,12 +631,13 @@
 <li><p><span class="math notranslate nohighlight">\( \text{Multiplication} \leftrightarrow \text{Convolution} \)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\( \text{Stretch} \leftrightarrow  \text{Contract}\)</span></p></li>
 </ul>
+<p><img alt="" src="../_images/transforms.svg" /></p>
 </div>
 <div class="section" id="fourier-transform-example">
 <h3>Fourier transform example<a class="headerlink" href="#fourier-transform-example" title="Permalink to this headline">¶</a></h3>
 <p>What is the fourier transform of <span class="math notranslate nohighlight">\( x(t) = \left(1+\cos(2\pi t)\right) \left( \text{rect}(t) \right)\)</span> ?</p>
 <p><img alt="" src="../_images/FT_example.svg" /></p>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_transform#Tables_of_important_Fourier_transforms">Table of known fourier transforms and fourier transform properties.</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_transform#Tables_of_important_Fourier_transforms">Table of known fourier transforms and fourier transform properties. The left column is in Hertz and the right column is in radians per second.</a></p>
 <ul class="simple">
 <li><p>The Fourier transform of a constant <span class="math notranslate nohighlight">\(1\)</span> is  <span class="math notranslate nohighlight">\(\delta(f)\)</span>.</p></li>
 <li><p>The Fourier transform of <span class="math notranslate nohighlight">\( \cos(at) \)</span> is <span class="math notranslate nohighlight">\(\frac{1}{2}\left[ \delta(f-\frac{a}{2\pi}) + \delta(f+\frac{a}{2\pi}) \right]\)</span></p></li>
@@ -676,8 +678,8 @@ X(f) = \mathscr F \{ x(t) \} &amp;= \mathscr F \{ 1+ \cos(2\pi t)\} * \mathscr F
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../troubleshooting.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -694,16 +696,18 @@ X(f) = \mathscr F \{ x(t) \} &amp;= \mathscr F \{ 1+ \cos(2\pi t)\} * \mathscr F
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By University of Texas at Austin<br/>
-    
-  </p>
-</footer>
+    <div class="container">
+      <p>
+        
+          By University of Texas at Austin<br/>
+        
+      </p>
+    </div>
+  </footer>
 </main>
 
 

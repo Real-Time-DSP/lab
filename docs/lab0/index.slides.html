@@ -14635,61 +14635,100 @@ div.jp-OutputPrompt {
 
 <div class="reveal">
 <div class="slides"><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
 <center> <h1>
 ECE 445S Laboratory: Week 1
 </h1> </center>
 </div>
-</div>
-</div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
 <center> <h3>
 Hardware Overview
 </h3> </center>
 </div>
 </div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
 <p style="text-align:center;">
 <img src="../_images/hardware.svg" width=550 height=550 class="center">
 </p>
 </div>
-</div>
-</div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="C-Programming">C Programming<a class="anchor-link" href="#C-Programming">&#182;</a></h2>
 </div>
 </div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
+<ul>
+<li>Data types</li>
+<li>Pointers</li>
+<li>Functions</li>
+<li>Arrays</li>
+<li>For loops</li>
+</ul>
+
 </div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Data-Types">Data Types<a class="anchor-link" href="#Data-Types">&#182;</a></h3><ul>
+<li>C language does not provide exact rules for data types<ul>
+<li>Example: <code>int</code><ul>
+<li>Must be at least 16 bits, but can be larger</li>
+<li>Must include the range [−32,767, +32,767]. Often, -32,768 is included as well.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Toolchain used in lab provides exact specifications for data types<ul>
+<li><code>int16_t</code> 16-bit signed integer</li>
+<li><code>uint32_t</code> 32 bit unsigned integer</li>
+<li><code>float32_t</code> 32 bit (single precision) floating point  </li>
+</ul>
+</li>
+</ul>
+
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Pointers-and-functions">Pointers and functions<a class="anchor-link" href="#Pointers-and-functions">&#182;</a></h3><p>Example: measuring clock cycles</p>
+<div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">systick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="mh">0xe000e018</span><span class="p">;</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">tic</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">systick</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="kt">uint32_t</span><span class="w"> </span><span class="nf">toc</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">*</span><span class="n">systick</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Arrays-and-for-loops">Arrays and for loops<a class="anchor-link" href="#Arrays-and-for-loops">&#182;</a></h3><ul>
+<li>Example: cosine lookup table</li>
+</ul>
+
+<pre><code>int16_t table[16];
+float32_t amplitude;
+flat32_t omega0 = 0.0576;
+
+for (uint32_t n = 0; n &lt; 16; n+=1)
+{
+    amplitude = arm_sin_f32(n * omega0);
+    table[n] = OUTPUT_SCALE_FACTOR * amplitude;
+}</code></pre>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Linear-vs-circular-buffer">Linear vs circular buffer<a class="anchor-link" href="#Linear-vs-circular-buffer">&#182;</a></h3><p>Example: Shift all elements of an $N=16$ element array and add a new element to the start.</p>
 <h4 id="Linear-buffer">Linear buffer<a class="anchor-link" href="#Linear-buffer">&#182;</a></h4><div class="highlight"><pre><span></span><span class="n">float32_t</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
@@ -14707,26 +14746,14 @@ Hardware Overview
 </pre></div>
 
 </div>
-</div>
-</div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
 <h3 id="Linear-vs-circular-buffer">Linear vs circular buffer<a class="anchor-link" href="#Linear-vs-circular-buffer">&#182;</a></h3><p>Example: Shift all elements of an $N=16$ element array and add a new element to the start.</p>
 
 </div>
 </div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h4 id="Circular-buffer">Circular buffer<a class="anchor-link" href="#Circular-buffer">&#182;</a></h4><div class="highlight"><pre><span></span><span class="n">float32_t</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
 <span class="kt">int32_t</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
@@ -14741,25 +14768,13 @@ Hardware Overview
 </pre></div>
 
 </div>
-</div>
-</div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="MATLAB">MATLAB<a class="anchor-link" href="#MATLAB">&#182;</a></h2>
 </div>
-</div>
-</div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Data-Types-in-MATLAB">Data Types in MATLAB<a class="anchor-link" href="#Data-Types-in-MATLAB">&#182;</a></h3><ul>
 <li>By default, every variable in MATLAB is a 2d array of double precision floating point values</li>
@@ -14770,14 +14785,8 @@ Hardware Overview
 </ul>
 
 </div>
-</div>
-</div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Vector-and-array-operations">Vector and array operations<a class="anchor-link" href="#Vector-and-array-operations">&#182;</a></h3><ul>
 <li>You can use for loops to perform vector and array operations</li>
@@ -14791,31 +14800,19 @@ Hardware Overview
 <p>Element-wise product of two matrices using for loops</p>
 <div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="n">i_row</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="w"></span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i_col</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="w"></span>
-<span class="w">        </span><span class="n">C</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">C</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="k">end</span><span class="w"></span>
 <span class="k">end</span><span class="w"></span>
 </pre></div>
 
 </div>
-</div>
-</div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
 <h3 id="Vector-and-array-operations">Vector and array operations<a class="anchor-link" href="#Vector-and-array-operations">&#182;</a></h3>
 </div>
 </div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
 <span class="w">     </span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">];</span><span class="w"></span>
@@ -14830,14 +14827,8 @@ Hardware Overview
 </pre></div>
 
 </div>
-</div>
-</div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Creating-plots">Creating plots<a class="anchor-link" href="#Creating-plots">&#182;</a></h3><ul>
 <li>To describe your plot to MATLAB, give the <code>plot()</code> function the (x,y) coordinates of each point you want to plot</li>
@@ -14850,17 +14841,11 @@ Hardware Overview
 </ul>
 
 </div>
-</div>
-</div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Floating-point">Floating point<a class="anchor-link" href="#Floating-point">&#182;</a></h2><ul>
-<li>Integer and fixed data types have the same spacing between all possible values.<ul>
+<li>Integer and other fixed-point data types have the same spacing between all possible values<ul>
 <li>Useful for representing natural numbers or the value read from ADC</li>
 </ul>
 </li>
@@ -14877,25 +14862,37 @@ Hardware Overview
 </ul>
 
 </div>
-</div>
-</div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Linear-Systems-and-Signals">Linear Systems and Signals<a class="anchor-link" href="#Linear-Systems-and-Signals">&#182;</a></h2>
 </div>
 </div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Sampling-and-Reconstruction">Sampling and Reconstruction<a class="anchor-link" href="#Sampling-and-Reconstruction">&#182;</a></h3><ul>
+<li>Sampling<ul>
+<li>Continuous-time to discrete-time</li>
+<li>$x[n] = x(n T_s)$</li>
+</ul>
+</li>
+<li>Reconstruction<ul>
+<li>Discrete-time to Continuous-time</li>
+<li>A continuous-time signal $x(t)$ with frequencies no higher than $f_{\text{max}}$ can be reconstructed exactly from its samples $x[n] = x(n T_s)$ if samples are taken at a sampling rate $f_s &gt; 2f_{\text{max}}$</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
+<p style="text-align:center;">
+<img src="../_images/sampling_reconstruction.svg" width=550 height=550 class="center">
+</p>
 </div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Transforms">Transforms<a class="anchor-link" href="#Transforms">&#182;</a></h3><p>Preview of the different transforms we will use in this class:</p>
 <ul>
@@ -14913,52 +14910,35 @@ Hardware Overview
 </ul>
 
 </div>
-</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
+<h3 id="Transforms">Transforms<a class="anchor-link" href="#Transforms">&#182;</a></h3><p style="text-align:center;">
+<img src="../_images/transforms.svg" width=550 height=550 class="center">
+</p>
 </div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Fourier-transform-example">Fourier transform example<a class="anchor-link" href="#Fourier-transform-example">&#182;</a></h3><p>What is the fourier transform of $ x(t) = \left(1+\cos(2\pi t)\right) \left( \text{rect}(t) \right)$ ?</p>
 
 </div>
 </div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
 <p style="text-align:center;">
 <img src="../_images/FT_example.svg" width=550 height=550 class="center">
 </p>
 </div>
-</div>
-</div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
 <h3 id="Fourier-transform-example">Fourier transform example<a class="anchor-link" href="#Fourier-transform-example">&#182;</a></h3>
 </div>
 </div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a href="https://en.wikipedia.org/wiki/Fourier_transform#Tables_of_important_Fourier_transforms">Table of known fourier transforms and fourier transform properties.</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Fourier_transform#Tables_of_important_Fourier_transforms">Table of known fourier transforms and fourier transform properties. The left column is in Hertz and the right column is in radians per second.</a></p>
 <ul>
 <li><p>The Fourier transform of a constant $1$ is  $\delta(f)$.</p>
 </li>
@@ -14973,25 +14953,13 @@ Hardware Overview
 </ul>
 
 </div>
-</div>
-</div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
 <h3 id="Fourier-transform-example">Fourier transform example<a class="anchor-link" href="#Fourier-transform-example">&#182;</a></h3>
 </div>
 </div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 $$\begin{align}
 X(f) = \mathscr F \{ x(t) \} &amp;= \mathscr F \{ 1+ \cos(2\pi t)\} * \mathscr F \{ \text{rect}(t)\} \\
@@ -15001,19 +14969,11 @@ X(f) = \mathscr F \{ x(t) \} &amp;= \mathscr F \{ 1+ \cos(2\pi t)\} * \mathscr F
 
 </div>
 </div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
 <p style="text-align:center;">
 <img src="../_images/FT_example2.svg" width=550 height=550 class="center">
 </p>
-</div>
-</div>
 </div>
 </div></section></section>
 </div>
