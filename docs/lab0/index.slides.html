@@ -14637,7 +14637,9 @@ div.jp-OutputPrompt {
 <div class="slides"><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
-<center> <h1>
+<script>
+    document.querySelector('head').innerHTML += '<style>.slides { zoom: 1.75 !important; }</style>';
+</script><center> <h1>
 ECE 445S Laboratory: Week 1
 </h1> </center>
 </div>
@@ -14715,16 +14717,16 @@ Hardware Overview
 <h3 id="Arrays-and-for-loops">Arrays and for loops<a class="anchor-link" href="#Arrays-and-for-loops">&#182;</a></h3><ul>
 <li>Example: cosine lookup table</li>
 </ul>
+<div class="highlight"><pre><span></span><span class="kt">int16_t</span><span class="w"> </span><span class="n">table</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span><span class="w"></span>
+<span class="n">float32_t</span><span class="w"> </span><span class="n">amplitude</span><span class="p">;</span><span class="w"></span>
+<span class="n">flat32_t</span><span class="w"> </span><span class="n">omega0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0576</span><span class="p">;</span><span class="w"></span>
 
-<pre><code>int16_t table[16];
-float32_t amplitude;
-flat32_t omega0 = 0.0576;
-
-for (uint32_t n = 0; n &lt; 16; n+=1)
-{
-    amplitude = arm_sin_f32(n * omega0);
-    table[n] = OUTPUT_SCALE_FACTOR * amplitude;
-}</code></pre>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">amplitude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arm_sin_f32</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">omega0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">table</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OUTPUT_SCALE_FACTOR</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">amplitude</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
 
 </div>
 </div></section></section><section><section>
@@ -14867,17 +14869,15 @@ for (uint32_t n = 0; n &lt; 16; n+=1)
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Linear-Systems-and-Signals">Linear Systems and Signals<a class="anchor-link" href="#Linear-Systems-and-Signals">&#182;</a></h2>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Sampling-and-Reconstruction">Sampling and Reconstruction<a class="anchor-link" href="#Sampling-and-Reconstruction">&#182;</a></h3><ul>
-<li>Sampling<ul>
-<li>Continuous-time to discrete-time</li>
+<li>Sampling (continuous-time to discrete-time conversion)<ul>
 <li>$x[n] = x(n T_s)$</li>
 </ul>
 </li>
-<li>Reconstruction<ul>
-<li>Discrete-time to Continuous-time</li>
+<li>Reconstruction (discrete-time to continuous-time conversion)<ul>
 <li>A continuous-time signal $x(t)$ with frequencies no higher than $f_{\text{max}}$ can be reconstructed exactly from its samples $x[n] = x(n T_s)$ if samples are taken at a sampling rate $f_s &gt; 2f_{\text{max}}$</li>
 </ul>
 </li>
@@ -14888,7 +14888,7 @@ for (uint32_t n = 0; n &lt; 16; n+=1)
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_remove-cell" data-mime-type="text/markdown">
 <p style="text-align:center;">
-<img src="../_images/sampling_reconstruction.svg" width=550 height=550 class="center">
+<img src="../_images/sampling_reconstruction.svg" width=450 height=450 class="center">
 </p>
 </div>
 </div></section></section><section><section>
