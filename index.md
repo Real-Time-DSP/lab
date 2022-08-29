@@ -25,7 +25,7 @@ Each laboratory section meets three hours per week. Pre-laboratory quizzes are r
 
 ## Grading
 
-Each lab is worth 40 points. Lap report grading consists of 30 points for the reported contents and accuracy. The report should be typed and submitted on canvas. 
+Each lab is worth 40 points. Lap report grading consists of 30 points for the reported contents and accuracy. The report should be typed and submitted on gradescope. 
 
 The remaining 10 points are for attendance and participation of lab recitation. Lab recitation will be held at the beginning 15-20 minutes each lab.
 

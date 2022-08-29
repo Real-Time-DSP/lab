@@ -1,12 +1,14 @@
 # Laboratory Hardware Setup
 
+![](../img/hardware.svg)
+
 To complete the lab assignmnets, the STM32H735G Discovery Kit will be connected to a signal generator and oscilloscope.
 
 The hardware is available for short term checkout only. The checkout desk is located on the first floor of EERC. A student ID is required.
 
-For lab one, you should answer the canvas survey to arrange a time to complete the hardware checkout.
+For lab one, each student should checkout a board during the lab time.
 
-For the remaining labs, one member of each group should checkout the hardware at the start of your lab meeting time.
+For the remaining labs, only one member of each group needs to checkout the board.
 
 ## Hardware provided at checkout
 
