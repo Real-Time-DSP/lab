@@ -1,6 +1,6 @@
 # Laboratory Hardware Setup
 
-![](../img/hardware.svg)
+![](img/hardware.svg)
 
 To complete the lab assignmnets, the STM32H735G Discovery Kit will be connected to a signal generator and oscilloscope.
 
