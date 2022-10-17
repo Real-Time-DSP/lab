@@ -1,14 +1,16 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Lab 7 Primer &#8212; Real Time DSP Lab Manual</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,51 +20,66 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 7. Vocoder and Guitar Effects" href="index.html" />
     <link rel="prev" title="Lab 6. Quadrature Amplitude Modulation (QAM)" href="../lab6/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +88,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -86,14 +104,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../index.html">
-   ECE 445S Lab Component
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    ECE 445S Lab Component
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -204,107 +223,209 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/lab7/primer.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/Real-Time-DSP/lab"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/Real-Time-DSP/lab/issues/new?title=Issue%20on%20page%20%2Flab7/primer.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Real-Time-DSP/lab/master?urlpath=tree/docs/lab7/primer.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/Real-Time-DSP/lab/master?urlpath=tree/docs/lab7/primer.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/Real-Time-DSP/lab"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/Real-Time-DSP/lab/issues/new?title=Issue%20on%20page%20%2Flab7/primer.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/lab7/primer.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comb-filters">
    Comb filters
@@ -408,17 +529,136 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lab 7 Primer</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comb-filters">
+   Comb filters
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feedforward">
+     Feedforward
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feedback">
+     Feedback
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#echo-delay">
+     Echo/Delay
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#allpass">
+     Allpass
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flanger">
+     Flanger
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chorus">
+   Chorus
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#phaser">
+   Phaser
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reverb">
+   Reverb
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#harmonic-distortion">
+   Harmonic Distortion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#amplitude-modulation">
+   Amplitude Modulation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tremolo">
+     Tremolo
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ring-modulation">
+     Ring modulation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vocoder">
+   Vocoder
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modeling-speech">
+     Modeling speech
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#autocorrelation-for-pitch-detection">
+     Autocorrelation for pitch detection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simple-model-of-vocal-source">
+     Simple model of vocal source
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modeling-the-vocal-tract">
+     Modeling the vocal tract
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#applications">
+   Applications
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lab-7-primer">
-<h1>Lab 7 Primer<a class="headerlink" href="#lab-7-primer" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-7-primer">
+<h1>Lab 7 Primer<a class="headerlink" href="#lab-7-primer" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://real-time-dsp.github.io/lab/lab7/primer.slides.html">Slides</a></p>
 <p>With all of the tools previously developed, we are equipped to build a plethora of real-time systems with creative applications. In particular, most musical effects can be implemented with a relatively small computational load. This makes it feasible to run many different effects on cheap, reprogrammable systems.</p>
 <p>Here, we will focus on four types of effects.</p>
@@ -429,11 +669,11 @@
 <li><p>Vocoder</p></li>
 </ul>
 <p>Many of the most well-known audio effects are variations or combinations of these basic systems.</p>
-<div class="section" id="comb-filters">
-<h2>Comb filters<a class="headerlink" href="#comb-filters" title="Permalink to this headline">¶</a></h2>
+<section id="comb-filters">
+<h2>Comb filters<a class="headerlink" href="#comb-filters" title="Permalink to this heading">#</a></h2>
 <p>The effect of adding signal with a delayed version of itself is often referred to as a “comb filter.” These filters can be further categorized as either feedforward (FIR) or feedback (IIR) comb filters.</p>
-<div class="section" id="feedforward">
-<h3>Feedforward<a class="headerlink" href="#feedforward" title="Permalink to this headline">¶</a></h3>
+<section id="feedforward">
+<h3>Feedforward<a class="headerlink" href="#feedforward" title="Permalink to this heading">#</a></h3>
 <p>Consider the effect of adding an input signal <span class="math notranslate nohighlight">\(x[n]\)</span> with a scaled and delayed version of itself <span class="math notranslate nohighlight">\(\alpha x[n-K]\)</span></p>
 <p><img alt="" src="../_images/comb1.svg" /></p>
 <p>It is very easy to describe this system using a difference equation and to find the impulse response <span class="math notranslate nohighlight">\(h[n]\)</span></p>
@@ -460,9 +700,9 @@
 </div>
 <p><img alt="" src="../_images/comb1_zplane.svg" /></p>
 <p>Although this example is a 40th order FIR filter, the computational complexity is low because nearly all of the filter coefficients are zero.</p>
-</div>
-<div class="section" id="feedback">
-<h3>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="feedback">
+<h3>Feedback<a class="headerlink" href="#feedback" title="Permalink to this heading">#</a></h3>
 <p>If an input signal <span class="math notranslate nohighlight">\(x[n]\)</span> is instead added with a delayed version of the output, it results in an all-pole IIR filter:</p>
 <p><img alt="" src="../_images/comb2.svg" /></p>
 <div class="math notranslate nohighlight">
@@ -471,17 +711,17 @@
 </pre></div>
 </div>
 <p><img alt="" src="../_images/comb2_freq.svg" /></p>
-</div>
-<div class="section" id="echo-delay">
-<h3>Echo/Delay<a class="headerlink" href="#echo-delay" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="echo-delay">
+<h3>Echo/Delay<a class="headerlink" href="#echo-delay" title="Permalink to this heading">#</a></h3>
 <p>With sufficiently high delay <span class="math notranslate nohighlight">\(K\)</span>, the comb filter becomes an audible echo. If the IIR form is used, it will create multiple echos.</p>
-</div>
-<div class="section" id="allpass">
-<h3>Allpass<a class="headerlink" href="#allpass" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="allpass">
+<h3>Allpass<a class="headerlink" href="#allpass" title="Permalink to this heading">#</a></h3>
 <p>If the same delay <span class="math notranslate nohighlight">\(K\)</span> is used for both a feedforward and a feedback term, the result in a perfectly flat magnitude response but a nonlinear phase response, These effects are often referred to as “Allpass” filters.</p>
-</div>
-<div class="section" id="flanger">
-<h3>Flanger<a class="headerlink" href="#flanger" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="flanger">
+<h3>Flanger<a class="headerlink" href="#flanger" title="Permalink to this heading">#</a></h3>
 <p>A flanger is a comb filter whose delay <span class="math notranslate nohighlight">\(K[n]\)</span> slowly oscillates within some range <span class="math notranslate nohighlight">\(\pm R\)</span></p>
 <div class="math notranslate nohighlight">
 \[y[n] = x[n] + \alpha x\left[n-K[n]\right]\]</div>
@@ -489,22 +729,22 @@
 \[K[n] = R \cos(\omega_{\text{flanger}}) + \frac{R}{2}\]</div>
 <p>The time-varying nature of the delay characterizes the flanger. Typically, the overall delay is very short. Although the example above uses a cosine, any periodic function could be used.</p>
 <p>Since the delay must be an integer, <span class="math notranslate nohighlight">\(K[n]\)</span> must be rounded.</p>
-</div>
-</div>
-<div class="section" id="chorus">
-<h2>Chorus<a class="headerlink" href="#chorus" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="chorus">
+<h2>Chorus<a class="headerlink" href="#chorus" title="Permalink to this heading">#</a></h2>
 <p>Typically, a “chorus” effect consists of adding three or more flangers running in parallel each with it’s own set of parameters.</p>
-</div>
-<div class="section" id="phaser">
-<h2>Phaser<a class="headerlink" href="#phaser" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="phaser">
+<h2>Phaser<a class="headerlink" href="#phaser" title="Permalink to this heading">#</a></h2>
 <p>The “phaser” effect can be implemented by slowly varying the frequency of a notch filter that is applied to the input and added back to the original signal.</p>
-</div>
-<div class="section" id="reverb">
-<h2>Reverb<a class="headerlink" href="#reverb" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="reverb">
+<h2>Reverb<a class="headerlink" href="#reverb" title="Permalink to this heading">#</a></h2>
 <p>Reverb simulates acoustic propagation effects. For example, a reverb effect might emulate the wall reflections in a large concert hall. Since the acoustic effects they emulate can be complex, their implementations vary widely. Reverb effects often consist of several comb filters combined with one or more allpass filters. However, since they attempt to replicate acoustic effects of some environment, they are time-invariant.</p>
-</div>
-<div class="section" id="harmonic-distortion">
-<h2>Harmonic Distortion<a class="headerlink" href="#harmonic-distortion" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="harmonic-distortion">
+<h2>Harmonic Distortion<a class="headerlink" href="#harmonic-distortion" title="Permalink to this heading">#</a></h2>
 <p>Recall that a Fourier series can represent any periodic signal as a combination of a fundamental frequency and equally spaced harmonics. However, if the signal or its derivative contain discontinuities, it requires an infinite number of harmonics.</p>
 <p>For example, when the linear range of an amplifier is exceeded, clipping will occur which introduces additional harmonics.</p>
 <p><img alt="" src="../_images/clipping.svg" /></p>
@@ -516,31 +756,31 @@
 <li><p>Overdrive</p></li>
 <li><p>Bit crusher</p></li>
 </ul>
-</div>
-<div class="section" id="amplitude-modulation">
-<h2>Amplitude Modulation<a class="headerlink" href="#amplitude-modulation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="amplitude-modulation">
+<h2>Amplitude Modulation<a class="headerlink" href="#amplitude-modulation" title="Permalink to this heading">#</a></h2>
 <p>Any effect which only modifies the amplitude and not the phase can be considered “amplitude modulation”</p>
-<div class="section" id="tremolo">
-<h3>Tremolo<a class="headerlink" href="#tremolo" title="Permalink to this headline">¶</a></h3>
+<section id="tremolo">
+<h3>Tremolo<a class="headerlink" href="#tremolo" title="Permalink to this heading">#</a></h3>
 <p>Tremolo refers to the effect of scaling the input by <span class="math notranslate nohighlight">\(\beta[n]\)</span> which osillates between some positive range. For example:</p>
 <div class="math notranslate nohighlight">
 \[ y[n] = x[n]\beta[n] \]</div>
 <div class="math notranslate nohighlight">
 \[\beta[n] = \frac{1}{2} \left(1 + \cos(\omega_{\text{tremolo}}n) \right)\]</div>
-</div>
-<div class="section" id="ring-modulation">
-<h3>Ring modulation<a class="headerlink" href="#ring-modulation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="ring-modulation">
+<h3>Ring modulation<a class="headerlink" href="#ring-modulation" title="Permalink to this heading">#</a></h3>
 <p>If the input is scaled by an oscillating factor which is allowed to be negative, the effect is instead referred to as “ring modulation”</p>
 <div class="math notranslate nohighlight">
 \[\beta[n] = \cos(\omega_{\text{ring}}n)\]</div>
 <p>Tremolo can be considered a specific type of ring modulation.</p>
-</div>
-</div>
-<div class="section" id="vocoder">
-<h2>Vocoder<a class="headerlink" href="#vocoder" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="vocoder">
+<h2>Vocoder<a class="headerlink" href="#vocoder" title="Permalink to this heading">#</a></h2>
 <p>Originally, the vocoder (voice encoder) was intended for applications of speech synthesis and compression. However, the term has since become synonymous with various musical effects used to combine a speech signal with a musical instrument.</p>
-<div class="section" id="modeling-speech">
-<h3>Modeling speech<a class="headerlink" href="#modeling-speech" title="Permalink to this headline">¶</a></h3>
+<section id="modeling-speech">
+<h3>Modeling speech<a class="headerlink" href="#modeling-speech" title="Permalink to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Source%E2%80%93filter_model">source-filter model</a> of speech is ubiquitous for speech synthesis. Most operating systems include speech synthesizers utilizing this model which can be accessed easily in MATLAB.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NET</span><span class="o">.</span><span class="n">addAssembly</span><span class="p">(</span><span class="s1">&#39;System.Speech&#39;</span><span class="p">);</span>
 <span class="n">speech_synth</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="n">Speech</span><span class="o">.</span><span class="n">Synthesis</span><span class="o">.</span><span class="n">SpeechSynthesizer</span><span class="p">;</span>
@@ -560,16 +800,16 @@
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Vocoder">vocoder</a> attempts to to find the time-varying parameters to a speech model from a recording. Since the sophistication of speech models varies widely, so does the sophistication of vocoders. However, the main principles can be demonstrated with just a three subsystems: (1) a source model (above), (2) <a class="reference external" href="https://en.wikipedia.org/wiki/Pitch_detection_algorithm">pitch detection</a>, and (3) an <a class="reference external" href="https://en.wikipedia.org/wiki/Adaptive_filter">adaptive filter</a>.
 For a musical applications, the vocoder might rencode the speech with a new frequency <span class="math notranslate nohighlight">\(f_c\)</span> (autotune), or apply the learned filter model to a separate input signal, like a guitar.</p>
 <p><img alt="" src="../_images/vocoder.svg" /></p>
-</div>
-<div class="section" id="autocorrelation-for-pitch-detection">
-<h3>Autocorrelation for pitch detection<a class="headerlink" href="#autocorrelation-for-pitch-detection" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="autocorrelation-for-pitch-detection">
+<h3>Autocorrelation for pitch detection<a class="headerlink" href="#autocorrelation-for-pitch-detection" title="Permalink to this heading">#</a></h3>
 <p>Suppose that we want to estimate the time-varying fundamental frequency <span class="math notranslate nohighlight">\(f_0\)</span> of a speech recording with an update rate of about 25 Hz. We can divide the input signal into frames which are roughly <span class="math notranslate nohighlight">\(\frac{1}{25 \text{ Hz}} = 40 \text{ ms}\)</span> long. For a sampling rate of 48 kHz, this would mean that we want to produce an estimate every <span class="math notranslate nohighlight">\(\frac{48 \text{ kHz}}{25 \text{ Hz}} = 1920\)</span> samples, though for convenience we will round this to to a power of two (2048).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">y</span><span class="p">,</span><span class="n">fs</span><span class="p">]</span> <span class="o">=</span> <span class="n">audioread</span><span class="p">(</span><span class="s1">&#39;example.wav&#39;</span><span class="p">);</span> <span class="n">y</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">320</span><span class="p">,</span><span class="mi">147</span><span class="p">);</span> <span class="n">fs</span> <span class="o">=</span> <span class="mf">48e3</span><span class="p">;</span>
 <span class="n">L</span> <span class="o">=</span> <span class="mi">2048</span><span class="p">;</span> <span class="n">N</span> <span class="o">=</span> <span class="n">floor</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">L</span><span class="p">);</span> <span class="n">y</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">end</span><span class="p">)</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">y</span> <span class="o">=</span> <span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">N</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The fundamental period of the signal is <span class="math notranslate nohighlight">\(T_0 = 1/f_0\)</span>. Therefore, the autocorrelation should have a peak at this offset. This fact leads to a simple pitch detection algorithm.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Find the offset <span class="math notranslate nohighlight">\(N_0\)</span> (in samples) where the peak autocorrelation occurs (subject to a constraint).</p></li>
 <li><p>Estimate that the signal in the frame is periodic with fundamental frequency <span class="math notranslate nohighlight">\(\omega_0 = \frac{1}{N_0} \frac{\text{radians}}{\text{sample}}\)</span>.</p></li>
 </ol>
@@ -589,9 +829,9 @@ For a musical applications, the vocoder might rencode the speech with a new freq
 <span class="n">end</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="simple-model-of-vocal-source">
-<h3>Simple model of vocal source<a class="headerlink" href="#simple-model-of-vocal-source" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="simple-model-of-vocal-source">
+<h3>Simple model of vocal source<a class="headerlink" href="#simple-model-of-vocal-source" title="Permalink to this heading">#</a></h3>
 <p>Any waveform that matches the desired fundamental frequency and has energy widely distributed among harmonics is suitable to simulate the vocal source. For this example, we will use the (derivative of) a gaussian pulse which has been modulated by an impulse train of the desired period. We will use the magnitude of the autocorrelation to control the volume and avoid changing frequencies when no voiced speech is present.</p>
 <p><img alt="" src="../_images/ddt_gauss_shah.svg" /></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="p">[];</span>
@@ -613,9 +853,9 @@ For a musical applications, the vocoder might rencode the speech with a new freq
 <span class="n">end</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="modeling-the-vocal-tract">
-<h3>Modeling the vocal tract<a class="headerlink" href="#modeling-the-vocal-tract" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="modeling-the-vocal-tract">
+<h3>Modeling the vocal tract<a class="headerlink" href="#modeling-the-vocal-tract" title="Permalink to this heading">#</a></h3>
 <p>Now that we have a model of the source, we can attempt to learn (for each new sample) an LTI approximation of the articulatory filter (lips, tounge, pharynx, etc). Many adaptive filtering techniques exist for this task. Though it has some limitations, <a class="reference external" href="https://en.wikipedia.org/wiki/Least_mean_squares_filter">Least mean square equalizer</a>, could be used for this application.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">length</span><span class="p">(</span><span class="n">x1</span><span class="p">));</span>
 <span class="n">n</span><span class="o">=</span><span class="mi">513</span><span class="p">;</span> <span class="n">h</span><span class="o">=</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
@@ -632,18 +872,18 @@ For a musical applications, the vocoder might rencode the speech with a new freq
 </div>
 <audio controls="controls">
      <source src="../_static/example2.wav" type="audio/wav">
-</audio></div>
-</div>
-<div class="section" id="applications">
-<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h2>
+</audio></section>
+</section>
+<section id="applications">
+<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">#</a></h2>
 <p>The example above encodes the speech into a time-varying frequeny <span class="math notranslate nohighlight">\(f_0\)</span> and a time-varying filter <span class="math notranslate nohighlight">\(h\)</span>. With this description of the signal, many applications are possible:</p>
 <ul class="simple">
 <li><p>Replace the source with a musical instrument with energetic harmonics, (like a guitar, violin, or synthesizer), but use the learned time-varying filter to make the instrument ‘speak’. (demonstrated in the lab exercise)</p></li>
 <li><p>Exploit the fact that the parameterized representation contains fewer bits for speech compression.</p></li>
 <li><p>Modify the parameters based on other information about the signal to perform denoising or source separation.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -667,9 +907,11 @@ For a musical applications, the vocoder might rencode the speech with a new freq
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../lab6/index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -685,25 +927,27 @@ For a musical applications, the vocoder might rencode the speech with a new freq
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By University of Texas at Austin<br/>
-        
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By University of Texas at Austin<br/>
+  
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

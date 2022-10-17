@@ -1,14 +1,16 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Lab 4 Primer &#8212; Real Time DSP Lab Manual</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,51 +20,66 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 4. Pseudo-Random Binary Sequences and Data Scramblers" href="index.html" />
     <link rel="prev" title="Lab 3. Digital Filters" href="../lab3/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +88,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -86,14 +104,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../index.html">
-   ECE 445S Lab Component
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    ECE 445S Lab Component
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -204,107 +223,209 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/lab4/primer.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/Real-Time-DSP/lab"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/Real-Time-DSP/lab/issues/new?title=Issue%20on%20page%20%2Flab4/primer.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Real-Time-DSP/lab/master?urlpath=tree/docs/lab4/primer.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/Real-Time-DSP/lab/master?urlpath=tree/docs/lab4/primer.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/Real-Time-DSP/lab"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/Real-Time-DSP/lab/issues/new?title=Issue%20on%20page%20%2Flab4/primer.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/lab4/primer.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#applications-of-pseudo-random-binary-sequences">
    Applications of Pseudo-Random Binary Sequences
@@ -395,40 +516,146 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lab 4 Primer</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#applications-of-pseudo-random-binary-sequences">
+   Applications of Pseudo-Random Binary Sequences
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#as-a-signal-for-test-measurement-and-calibration">
+     As a signal for test, measurement, and calibration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#as-a-training-signal">
+     As a training signal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-scrambler-descrabler">
+     Data scrambler/descrabler
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-feedback-shift-register-lfsr">
+   Linear-feedback shift register (LFSR)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lfsr-for-pn-sequence-generation">
+     LFSR for PN sequence generation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#auto-correlation-of-pn-sequence">
+     Auto-correlation of PN sequence
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#convolution">
+       Convolution
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cross-correlation">
+       Cross-correlation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#auto-correlation">
+       Auto-correlation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#auto-correlation-of-a-maximal-length-pn-sequence">
+       Auto-correlation of a maximal length PN sequence
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-scrambling">
+     Data scrambling
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation-of-lfsr-in-c">
+   Implementation of LFSR in C
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bits-words-and-arrays">
+     Bits, words, and arrays
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#review-of-bitwise-operations-in-c">
+     Review of bitwise operations in C
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#addressing-individual-bits">
+     Addressing individual bits
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lab-4-primer">
-<h1>Lab 4 Primer<a class="headerlink" href="#lab-4-primer" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-4-primer">
+<h1>Lab 4 Primer<a class="headerlink" href="#lab-4-primer" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://real-time-dsp.github.io/lab/lab4/primer.slides.html">Slides</a></p>
 <p>Pseudo-random binary sequences are also known as pseudo-noise (PN) sequences because the sequences resemble noise. These binary sequences appear to be random but instead have structure. They have all frequencies present; i.e., there are no nulls in the magnitude spectrum.</p>
 <p><img alt="" src="../_images/PN_seq.svg" /></p>
-<div class="section" id="applications-of-pseudo-random-binary-sequences">
-<h2>Applications of Pseudo-Random Binary Sequences<a class="headerlink" href="#applications-of-pseudo-random-binary-sequences" title="Permalink to this headline">¶</a></h2>
+<section id="applications-of-pseudo-random-binary-sequences">
+<h2>Applications of Pseudo-Random Binary Sequences<a class="headerlink" href="#applications-of-pseudo-random-binary-sequences" title="Permalink to this heading">#</a></h2>
 <p>PN sequences are widely used to</p>
 <ul class="simple">
 <li><p>generate test, measurement and calibration signals</p></li>
 <li><p>generate training signals in communication systems</p></li>
 <li><p>scramble and descramble data in communication systems</p></li>
 </ul>
-<div class="section" id="as-a-signal-for-test-measurement-and-calibration">
-<h3>As a signal for test, measurement, and calibration<a class="headerlink" href="#as-a-signal-for-test-measurement-and-calibration" title="Permalink to this headline">¶</a></h3>
+<section id="as-a-signal-for-test-measurement-and-calibration">
+<h3>As a signal for test, measurement, and calibration<a class="headerlink" href="#as-a-signal-for-test-measurement-and-calibration" title="Permalink to this heading">#</a></h3>
 <p>The first application is to use a PN sequence to estimate an impulse response of an unknown subsystem, e.g. the cascade of a source, empty chamber, and receiver in a biomedical instrument. Once the impulse response is known, calibration of the system can proceed by means of a linear time-invariant filter in the transmitter (known as a predistorter) or receiver (known as an equalizer) to compensate for the distortion in the subsystem.</p>
-</div>
-<div class="section" id="as-a-training-signal">
-<h3>As a training signal<a class="headerlink" href="#as-a-training-signal" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="as-a-training-signal">
+<h3>As a training signal<a class="headerlink" href="#as-a-training-signal" title="Permalink to this heading">#</a></h3>
 <p>As a training signal, the PN sequence would be the digital data to be transmitted over the unknown communication channel. The receiver knows the bits that had been transmitted, and can use that knowledge to adapt receiver settings to improve communication performance (signal quality). The receiver can also estimate the impulse response of the communication channel if needed.</p>
-</div>
-<div class="section" id="data-scrambler-descrabler">
-<h3>Data scrambler/descrabler<a class="headerlink" href="#data-scrambler-descrabler" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="data-scrambler-descrabler">
+<h3>Data scrambler/descrabler<a class="headerlink" href="#data-scrambler-descrabler" title="Permalink to this heading">#</a></h3>
 <p>The primary application of PN sequences in lab #4 is for data scrambling and descrambling. As a data scrambling sequence, pseudonoise can (1) eliminate strong DC components (long strongs of zeros and ones) in the baseband signal and (2) disperse the power spectrum to mitigate the effects of certain channel impairments.</p>
-<ol>
+<ol class="arabic">
 <li><p><strong>Eliminating DC components</strong></p>
 <p>During a long string of zeros or ones, the primary frequency component in the signal would be at DC. For baseband transmission, this would not get passed by some communication channels (e.g. voiceband and acoustic channels). Some automatic gain control algorithms will also fail in the presence of a strong DC components. For bandpass transmission, the DC component is upconverted to sit at the carrier frequency. Strong components at this frequency will hinder the clock recovery and symbol synchronization subsystems.</p>
 </li>
@@ -436,16 +663,16 @@
 <p>If a baseband signal has most of its power concentrated at specific frequencies, scrambling with a PN sequence can help disperse the spectrum to mitigate certain channel impairments. For example, a common impairment caused by nonlinearity or time-variance is intermodulation, or cross-modulation. The effect of intermodulation is greatly reduced by dispersing the power spectrum and eliminating signal components concentrated at specific frequencies.</p>
 </li>
 </ol>
-</div>
-</div>
-<div class="section" id="linear-feedback-shift-register-lfsr">
-<h2>Linear-feedback shift register (LFSR)<a class="headerlink" href="#linear-feedback-shift-register-lfsr" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="linear-feedback-shift-register-lfsr">
+<h2>Linear-feedback shift register (LFSR)<a class="headerlink" href="#linear-feedback-shift-register-lfsr" title="Permalink to this heading">#</a></h2>
 <p>In Lab #4, we will use a a Fibonacci LFSR to (1) generate PN sequences, (2) scramble data, and (3) descramble data. This structure shares many similarities to the tapped delay line for filtering. Like the tapped delay line, the Fibonacci LFSR maintains a delay line of <span class="math notranslate nohighlight">\(m\)</span> elements <span class="math notranslate nohighlight">\(s[n-1], s[n-2], \ldots, s[n-m]\)</span>. Unlike the tapped delay line for LTI filters, the values are restricted to be binary (zero or one). Instead of real-valued coefficients, the LFSR has a set of taps <span class="math notranslate nohighlight">\(h_1, h_2, \ldots, h_m\)</span> which also have a binary state (connected or disconnected). Since all values are binary, additions are performed modulo two (equivalent to an exclusive or).</p>
 <p><img alt="" src="../_images/Fibonacci_LFSR.svg" /></p>
-<div class="section" id="lfsr-for-pn-sequence-generation">
-<h3>LFSR for PN sequence generation<a class="headerlink" href="#lfsr-for-pn-sequence-generation" title="Permalink to this headline">¶</a></h3>
+<section id="lfsr-for-pn-sequence-generation">
+<h3>LFSR for PN sequence generation<a class="headerlink" href="#lfsr-for-pn-sequence-generation" title="Permalink to this heading">#</a></h3>
 <p>The procedure to produce a PN sequence using the LFSR consists of three steps:</p>
-<ol>
+<ol class="arabic">
 <li><p>Set the initial values <span class="math notranslate nohighlight">\(s[-1], s[-2], \ldots, s[-m]\)</span> so that at least one is nonzero.</p></li>
 <li><p>Compute the addition modulo 2, equivalent to a series of exclusive or (<span class="math notranslate nohighlight">\(\oplus\)</span>) operations, of the connected taps in the shift register:</p>
 <div class="math notranslate nohighlight">
@@ -460,105 +687,105 @@
 <center>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="text-align:left head"><p><span class="math notranslate nohighlight">\(n\)</span></p></th>
-<th class="text-align:right head"><p><span class="math notranslate nohighlight">\(s[n]=s[n-2]\oplus[n-3]\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(s[n-1]\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(s[n-2]\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(s[n-3]\)</span></p></th>
+<tr class="row-odd"><th class="text-left head"><p><span class="math notranslate nohighlight">\(n\)</span></p></th>
+<th class="text-right head"><p><span class="math notranslate nohighlight">\(s[n]=s[n-2]\oplus[n-3]\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(s[n-1]\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(s[n-2]\)</span></p></th>
+<th class="text-center head"><p><span class="math notranslate nohighlight">\(s[n-3]\)</span></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p>0</p></td>
-<td class="text-align:right"><p><center>1</center></p></td>
-<td class="text-align:center"><p><center>1</center></p></td>
-<td class="text-align:center"><p><center>0</center></p></td>
-<td class="text-align:center"><p><center>1</center></p></td>
+<tr class="row-even"><td class="text-left"><p>0</p></td>
+<td class="text-right"><p><center>1</center></p></td>
+<td class="text-center"><p><center>1</center></p></td>
+<td class="text-center"><p><center>0</center></p></td>
+<td class="text-center"><p><center>1</center></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>1</p></td>
-<td class="text-align:right"><p><center>1</center></p></td>
-<td class="text-align:center"><p><center>1</center></p></td>
-<td class="text-align:center"><p><center>1</center></p></td>
-<td class="text-align:center"><p><center>0</center></p></td>
+<tr class="row-odd"><td class="text-left"><p>1</p></td>
+<td class="text-right"><p><center>1</center></p></td>
+<td class="text-center"><p><center>1</center></p></td>
+<td class="text-center"><p><center>1</center></p></td>
+<td class="text-center"><p><center>0</center></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>2</p></td>
-<td class="text-align:right"><p><center>0</center></p></td>
-<td class="text-align:center"><p><center>1</center></p></td>
-<td class="text-align:center"><p><center>1</center></p></td>
-<td class="text-align:center"><p><center>1</center></p></td>
+<tr class="row-even"><td class="text-left"><p>2</p></td>
+<td class="text-right"><p><center>0</center></p></td>
+<td class="text-center"><p><center>1</center></p></td>
+<td class="text-center"><p><center>1</center></p></td>
+<td class="text-center"><p><center>1</center></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>3</p></td>
-<td class="text-align:right"><p><center>0</center></p></td>
-<td class="text-align:center"><p><center>0</center></p></td>
-<td class="text-align:center"><p><center>1</center></p></td>
-<td class="text-align:center"><p><center>1</center></p></td>
+<tr class="row-odd"><td class="text-left"><p>3</p></td>
+<td class="text-right"><p><center>0</center></p></td>
+<td class="text-center"><p><center>0</center></p></td>
+<td class="text-center"><p><center>1</center></p></td>
+<td class="text-center"><p><center>1</center></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>4</p></td>
-<td class="text-align:right"><p><center>1</center></p></td>
-<td class="text-align:center"><p><center>0</center></p></td>
-<td class="text-align:center"><p><center>0</center></p></td>
-<td class="text-align:center"><p><center>1</center></p></td>
+<tr class="row-even"><td class="text-left"><p>4</p></td>
+<td class="text-right"><p><center>1</center></p></td>
+<td class="text-center"><p><center>0</center></p></td>
+<td class="text-center"><p><center>0</center></p></td>
+<td class="text-center"><p><center>1</center></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>5</p></td>
-<td class="text-align:right"><p><center>0</center></p></td>
-<td class="text-align:center"><p><center>1</center></p></td>
-<td class="text-align:center"><p><center>0</center></p></td>
-<td class="text-align:center"><p><center>0</center></p></td>
+<tr class="row-odd"><td class="text-left"><p>5</p></td>
+<td class="text-right"><p><center>0</center></p></td>
+<td class="text-center"><p><center>1</center></p></td>
+<td class="text-center"><p><center>0</center></p></td>
+<td class="text-center"><p><center>0</center></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>6</p></td>
-<td class="text-align:right"><p><center>1</center></p></td>
-<td class="text-align:center"><p><center>0</center></p></td>
-<td class="text-align:center"><p><center>1</center></p></td>
-<td class="text-align:center"><p><center>0</center></p></td>
+<tr class="row-even"><td class="text-left"><p>6</p></td>
+<td class="text-right"><p><center>1</center></p></td>
+<td class="text-center"><p><center>0</center></p></td>
+<td class="text-center"><p><center>1</center></p></td>
+<td class="text-center"><p><center>0</center></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>7</p></td>
-<td class="text-align:right"><p><center>1</center></p></td>
-<td class="text-align:center"><p><center>1</center></p></td>
-<td class="text-align:center"><p><center>0</center></p></td>
-<td class="text-align:center"><p><center>1</center></p></td>
+<tr class="row-odd"><td class="text-left"><p>7</p></td>
+<td class="text-right"><p><center>1</center></p></td>
+<td class="text-center"><p><center>1</center></p></td>
+<td class="text-center"><p><center>0</center></p></td>
+<td class="text-center"><p><center>1</center></p></td>
 </tr>
 </tbody>
 </table>
 </center><p>Typically, we map the binary <span class="math notranslate nohighlight">\(\left\{ 0,1 \right\}\)</span> values to symmetric amplitudes <span class="math notranslate nohighlight">\(\left\{ -1,1 \right\}\)</span> when representing the PN sequence as a signal.</p>
-</div>
-<div class="section" id="auto-correlation-of-pn-sequence">
-<h3>Auto-correlation of PN sequence<a class="headerlink" href="#auto-correlation-of-pn-sequence" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="auto-correlation-of-pn-sequence">
+<h3>Auto-correlation of PN sequence<a class="headerlink" href="#auto-correlation-of-pn-sequence" title="Permalink to this heading">#</a></h3>
 <p>In order to understand some of the useful properties of PN sequences, we need to first define the auto-correlation operation, which is closely related to convolution.</p>
-<div class="section" id="convolution">
-<h4>Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">¶</a></h4>
+<section id="convolution">
+<h4>Convolution<a class="headerlink" href="#convolution" title="Permalink to this heading">#</a></h4>
 <p>Recall that the convolution operation (denoted using <span class="math notranslate nohighlight">\(*\)</span>) for two discrete-time signals is defined as:</p>
 <div class="math notranslate nohighlight">
 \[x_1[n]*x_2[n] = \sum_{k=-\infty}^{\infty}x_1[k]x_2[n-k]\]</div>
 <p>This operation is often described as ‘flip and slide’, since <span class="math notranslate nohighlight">\(x_2[n-k]\)</span> is a reversed and shifted version of <span class="math notranslate nohighlight">\(x_2[k]\)</span>.</p>
-</div>
-<div class="section" id="cross-correlation">
-<h4>Cross-correlation<a class="headerlink" href="#cross-correlation" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="cross-correlation">
+<h4>Cross-correlation<a class="headerlink" href="#cross-correlation" title="Permalink to this heading">#</a></h4>
 <p>The cross-correlation operation (denoted using <span class="math notranslate nohighlight">\(\star\)</span>) is nearly identical to convolution, but without the ‘flip’.</p>
 <div class="math notranslate nohighlight">
 \[x_1[n]\star x_2[n] = \sum_{k=-\infty}^{\infty}\overline{x_1[k]}x_2[n+k]\]</div>
 <p><em>Note: <span class="math notranslate nohighlight">\(\overline{x_1[k]}\)</span> denotes the complex conjugate of <span class="math notranslate nohighlight">\(x_1[k]\)</span>, but for real valued signals <span class="math notranslate nohighlight">\(\overline{x_1[k]}=x_1[k]\)</span>.</em></p>
-</div>
-<div class="section" id="auto-correlation">
-<h4>Auto-correlation<a class="headerlink" href="#auto-correlation" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="auto-correlation">
+<h4>Auto-correlation<a class="headerlink" href="#auto-correlation" title="Permalink to this heading">#</a></h4>
 <p>The auto-correlation <span class="math notranslate nohighlight">\(R_{xx}[k]\)</span> of a discrete-time signal <span class="math notranslate nohighlight">\(x[n]\)</span> is the cross-correlation with itself:</p>
 <div class="math notranslate nohighlight">
 \[R_{xx}[n] = x[n]\star x[n] = \sum_{k=-\infty}^{\infty}\overline{x[k]}x[n+k]\]</div>
 <p>For periodic signals the summation can be simplified, and the result is often normalized by the period <span class="math notranslate nohighlight">\(N\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[R_{xx}[n] \text{ for periodic signal} = \frac{1}{N}x[n]\star x[n] = \frac{1}{N}\sum_{k=1}^{N}\overline{x[k]}x[n+k]\]</div>
-</div>
-<div class="section" id="auto-correlation-of-a-maximal-length-pn-sequence">
-<h4>Auto-correlation of a maximal length PN sequence<a class="headerlink" href="#auto-correlation-of-a-maximal-length-pn-sequence" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="auto-correlation-of-a-maximal-length-pn-sequence">
+<h4>Auto-correlation of a maximal length PN sequence<a class="headerlink" href="#auto-correlation-of-a-maximal-length-pn-sequence" title="Permalink to this heading">#</a></h4>
 <p>Applying the formula above to the maximal length PN sequence from the earlier example yields the following (normalized) auto-correlation:</p>
 <p><img alt="" src="../_images/PN_autocorr.svg" /></p>
 <p>The auto-correlation for this PN sequence is equal to one at integer multiples of the period <span class="math notranslate nohighlight">\(N\)</span> and is equal to <span class="math notranslate nohighlight">\(\frac{-1}{N}\)</span> for all other offsets. This behavior is the same for <em>all</em> maximal-length PN sequences, as long as the following two conditions are met:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>The values of the binary PN sequence are mapped to <span class="math notranslate nohighlight">\(\left\{ -1,1 \right\}\)</span>. We avoid representing the sequence with <span class="math notranslate nohighlight">\(\left\{ 0,1 \right\}\)</span> because this would introduce a DC component.</p></li>
 <li><p>The auto-correlation is taken of the infinite-length, periodically extended sequence. The auto-correlation of just one period can also be computed, but its properties will be different.</p></li>
 </ol>
-</div>
-</div>
-<div class="section" id="data-scrambling">
-<h3>Data scrambling<a class="headerlink" href="#data-scrambling" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="data-scrambling">
+<h3>Data scrambling<a class="headerlink" href="#data-scrambling" title="Permalink to this heading">#</a></h3>
 <p>Suppose we have a binary data sequence <span class="math notranslate nohighlight">\(x[n]\)</span> that we want to transmit. We can scramble the data by adding (modulo two) a scrambling sequence <span class="math notranslate nohighlight">\(s[n]\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[x_s[n] = ( x[n] + s[n] ) \text{ mod 2} = x[n] \oplus s[n]\]</div>
@@ -568,34 +795,34 @@
 \[x_d[n] = ( x_s[n] + s[n] ) \text{ mod 2} = x_s[n] \oplus s[n]\]</div>
 <p>If the same scrambling sequence <span class="math notranslate nohighlight">\(s[n]\)</span> is used for the scrambler and descrambler, then <span class="math notranslate nohighlight">\(x_d[n]=x[n].\)</span></p>
 <p>By initializing two two LFSRs (one at the transmitter and one at the receiever) with the same initial conditions and connected taps <span class="math notranslate nohighlight">\(h_k\)</span>, this process can be made extremely efficient.</p>
-</div>
-</div>
-<div class="section" id="implementation-of-lfsr-in-c">
-<h2>Implementation of LFSR in C<a class="headerlink" href="#implementation-of-lfsr-in-c" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="implementation-of-lfsr-in-c">
+<h2>Implementation of LFSR in C<a class="headerlink" href="#implementation-of-lfsr-in-c" title="Permalink to this heading">#</a></h2>
 <p>In lab #4, you will implement the LFSR in C. To prepare, it is useful to review some topics in C programming.</p>
-<div class="section" id="bits-words-and-arrays">
-<h3>Bits, words, and arrays<a class="headerlink" href="#bits-words-and-arrays" title="Permalink to this headline">¶</a></h3>
+<section id="bits-words-and-arrays">
+<h3>Bits, words, and arrays<a class="headerlink" href="#bits-words-and-arrays" title="Permalink to this heading">#</a></h3>
 <p>Although it would be convenient to think of our generated PN sequence as an ‘array of bits’ there is no datatype in C that would allow this, since the smallest addressable unit of data in C is a byte (8 bits).</p>
 <p>Typically, we refer to the unit of addressable data in an array as a ‘word’. For example, if we have an array of <code class="docutils literal notranslate"><span class="pre">int16_t</span></code>s, then we would say that <span class="math notranslate nohighlight">\(1 \text{ word} = 16 \text{ bits}\)</span>. If the array is composed of <code class="docutils literal notranslate"><span class="pre">float32_t</span></code>s, then <span class="math notranslate nohighlight">\(1 \text{ word} = 32 \text{ bits}\)</span>, and so on.</p>
 <p>If we need to address individual bits in a long sequence of data in C, we can instead create an array of conveniently sized words and use bitwise operations to access individual bits in each word.</p>
-</div>
-<div class="section" id="review-of-bitwise-operations-in-c">
-<h3>Review of bitwise operations in C<a class="headerlink" href="#review-of-bitwise-operations-in-c" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="review-of-bitwise-operations-in-c">
+<h3>Review of bitwise operations in C<a class="headerlink" href="#review-of-bitwise-operations-in-c" title="Permalink to this heading">#</a></h3>
 <p>There are six bitwise operations in c: <em>and</em> <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <em>or</em> <code class="docutils literal notranslate"><span class="pre">|</span></code>, <em>xor</em> <code class="docutils literal notranslate"><span class="pre">^</span></code>, <em>left shift</em> <code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code>, <em>right shift</em> <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>, and <em>not</em><code class="docutils literal notranslate"><span class="pre">~</span></code>.</p>
 <p>Most of these behave as you would expect, but the right shift <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> is an exception. The behavior of the right shift <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> operation depends on if the datatype is signed or unsigned, and varies depending on the compiler used. This is because there are two possible behaviors for the right shift operation</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>In a logical right shift, the most significant bit receives a value of zero. This is the behavior that occurs when operating on an unsigned datatype.</p></li>
 <li><p>In an arithmetic right shift, the most significant bit (which is the sign bit for signed datatypes) is unchanged.</p></li>
 </ol>
 <p><em>Takeaway: use unsigned datatypes when implementing the LFSR in C to ensure that all shifts are logical shifts.</em></p>
 <p>For left shift operations, the least significant bit always receives a value of zero in C, regardless of the data type.</p>
-</div>
-<div class="section" id="addressing-individual-bits">
-<h3>Addressing individual bits<a class="headerlink" href="#addressing-individual-bits" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="addressing-individual-bits">
+<h3>Addressing individual bits<a class="headerlink" href="#addressing-individual-bits" title="Permalink to this heading">#</a></h3>
 <p>There are many ways to use the bitwise operations above to perform addressing of individual bits. The easiest way to demonstrate is with an example. Suppose we have a variable <code class="docutils literal notranslate"><span class="pre">x</span></code> in C with the datatype <code class="docutils literal notranslate"><span class="pre">uint32_t</span></code> and we want to perform the following operation:</p>
 <p><em>Example operation: Set the 6th least significant bit equal to the xor of the 4th and 2nd least significant bits.</em></p>
 <p>Let’s outline one approach:</p>
-<ol>
+<ol class="arabic">
 <li><p>Create expressions corresponding to the 4th and 2nd least significant bits shifted to the least significant position:</p>
 <p><code class="docutils literal notranslate"><span class="pre">x&gt;&gt;3</span></code> and <code class="docutils literal notranslate"><span class="pre">x&gt;&gt;1</span></code></p>
 </li>
@@ -635,9 +862,9 @@
 </pre></div>
 </div>
 <p>There are many other ways that this operation can be completed in C, so it can be helpful to try multiple approaches until you find a style you are comfortable with.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -661,9 +888,11 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../lab3/index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -679,25 +908,27 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By University of Texas at Austin<br/>
-        
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By University of Texas at Austin<br/>
+  
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

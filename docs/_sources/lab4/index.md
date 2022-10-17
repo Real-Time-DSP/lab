@@ -196,4 +196,4 @@ In this section, discuss the takeaway from each lab. You can mention any intuiti
 
 [1]:primer.md
 [2]:../data.md
-[3]:https://danjacobellis.github.io/EE445S-lab/_sources/lab5/pn_16384.md.txt
+[3]:https://realtimedsp.net/lab/_sources/lab5/pn_16384.md
