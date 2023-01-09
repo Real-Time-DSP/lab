@@ -14697,7 +14697,7 @@ $$ a_{10} x^{10} + a_9 x^9 + a_8 x^8 + \dots + a_0 $$$$ = ( \dots (((a_{10} x + 
 <ol>
 <li>Calculate $\cos(\theta)$ via the approximation above and send the value to the DAC</li>
 <li>Increment $\theta$ by $\omega_0 = 2\pi \frac{f_0}{f_s}$</li>
-<li>Check if $\theta$ exceeds $2\pi$. If it does, subtract $2\pi$ to prevent overflow or loss of precision.</li>
+<li>Check if $\theta$ exceeds $2\pi$. If it does, subtract $2\pi$ to prevent overflow or loss of precision. </li>
 </ol>
 <p>This method produces a very accurate signal, but requires roughly 20 multiplications and 20 additions per sample in addition to the storage of the coefficients.</p>
 <p>It is also extremely flexible, since it allows us to change the frequency as we please by simply changing the the amount at which we increment $\theta$.</p>
@@ -14821,7 +14821,6 @@ $$L=\frac{f_s}{\text{gcd}(f_0,f_s)} \text{samples}$$<p>This means that we can co
 <p style="text-align:center;">
 <img src="../_images/buffer_diagram_clear.png" width=450 height=450 class="center">
 </p>
-
 </div>
 </div>
 </div>

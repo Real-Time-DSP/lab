@@ -14717,7 +14717,6 @@ div.jp-OutputPrompt {
 <p style="text-align:center;">
 <img src="../_images/pulses.svg" width=900 height=900 class="center">
 </p>
-
 </div>
 </div>
 </div>
@@ -14742,7 +14741,6 @@ div.jp-OutputPrompt {
 <p style="text-align:center;">
 <img src="../_images/polyphase_filter_bank.svg" width=900 height=900 class="center">
 </p>
-
 </div>
 </div>
 </div>
@@ -14764,10 +14762,10 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
 <pre><code>f0 = 12000; fs = 48000; w0 = 2*pi*f0/fs; n = 1:length(sequence_of_pulses);
 modulated = sequence_of_pulses.' .* cos(w0*n);
-figure; plot(sequence_of_pulses); hold on; plot(modulated);
-</code></pre>
+figure; plot(sequence_of_pulses); hold on; plot(modulated);</code></pre>
 
 </div>
 </div>
@@ -14782,7 +14780,6 @@ figure; plot(sequence_of_pulses); hold on; plot(modulated);
 <p style="text-align:center;">
 <img src="../_images/modulated.svg" width=900 height=900 class="center">
 </p>
-
 </div>
 </div>
 </div>
@@ -14804,10 +14801,10 @@ figure; plot(sequence_of_pulses); hold on; plot(modulated);
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
 <pre><code>demodulated = modulated .* cos(w0*n);
 recovered_pulses = conv(demodulated,pulse_shaping_filter,'same');
-figure; plot(sequence_of_pulses); hold on; plot(recovered_pulses);
-</code></pre>
+figure; plot(sequence_of_pulses); hold on; plot(recovered_pulses);</code></pre>
 
 </div>
 </div>
@@ -14822,7 +14819,6 @@ figure; plot(sequence_of_pulses); hold on; plot(recovered_pulses);
 <p style="text-align:center;">
 <img src="../_images/matched_filter.svg" width=900 height=900 class="center">
 </p>
-
 </div>
 </div>
 </div>
@@ -14844,12 +14840,12 @@ figure; plot(sequence_of_pulses); hold on; plot(recovered_pulses);
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
 <pre><code>&gt;&gt; recovered_data = downsample(recovered_pulses,16) &gt; 0
 
 recovered_data =
 
-    '11011011100101110000111101001100010110000111011001101100'
-</code></pre>
+    '11011011100101110000111101001100010110000111011001101100'</code></pre>
 
 </div>
 </div>
@@ -14897,7 +14893,6 @@ $$ \theta[k+1] =  \theta[k] - \mu \text{LPF} \left\{ r[k] \cos(\omega_0 k + \the
 <p style="text-align:center;">
 <img src="../_images/costas.svg" width=900 height=900 class="center">
 </p>
-
 </div>
 </div>
 </div>
@@ -14933,7 +14928,6 @@ $$ \theta[k+1] =  \theta[k] - \mu \text{LPF} \left\{ r[k] \cos(\omega_0 k + \the
 <p style="text-align:center;">
 <img src="../_images/timing_offset.svg" width=900 height=900 class="center">
 </p>
-
 </div>
 </div>
 </div>
@@ -14958,7 +14952,6 @@ $$ \theta[k+1] =  \theta[k] - \mu \text{LPF} \left\{ r[k] \cos(\omega_0 k + \the
 <p style="text-align:center;">
 <img src="../_images/symbol_clock_recovery.svg" width=900 height=900 class="center">
 </p>
-
 </div>
 </div>
 </div>
@@ -14983,7 +14976,6 @@ $$ \theta[k+1] =  \theta[k] - \mu \text{LPF} \left\{ r[k] \cos(\omega_0 k + \the
 <p style="text-align:center;">
 <img src="../_images/BPF_square_BPF.svg" width=900 height=900 class="center">
 </p>
-
 </div>
 </div>
 </div>
@@ -15019,7 +15011,6 @@ $$\frac A \sigma = \sqrt{\frac{A^2}{\sigma ^2}} = \sqrt{\text{SNR}}$$
 <p style="text-align:center;">
 <img src="../_images/error_probability.svg" width=900 height=900 class="center">
 </p>
-
 </div>
 </div>
 </div>

@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -34,9 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
@@ -59,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lab 7. Vocoder and Guitar Effects" href="index.html" />
     <link rel="prev" title="Lab 6. Quadrature Amplitude Modulation (QAM)" href="../lab6/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -658,7 +656,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="lab-7-primer">
-<h1>Lab 7 Primer<a class="headerlink" href="#lab-7-primer" title="Permalink to this heading">#</a></h1>
+<h1>Lab 7 Primer<a class="headerlink" href="#lab-7-primer" title="Permalink to this headline">#</a></h1>
 <p><a class="reference external" href="https://real-time-dsp.github.io/lab/lab7/primer.slides.html">Slides</a></p>
 <p>With all of the tools previously developed, we are equipped to build a plethora of real-time systems with creative applications. In particular, most musical effects can be implemented with a relatively small computational load. This makes it feasible to run many different effects on cheap, reprogrammable systems.</p>
 <p>Here, we will focus on four types of effects.</p>
@@ -670,10 +668,10 @@ title="Print to PDF"
 </ul>
 <p>Many of the most well-known audio effects are variations or combinations of these basic systems.</p>
 <section id="comb-filters">
-<h2>Comb filters<a class="headerlink" href="#comb-filters" title="Permalink to this heading">#</a></h2>
+<h2>Comb filters<a class="headerlink" href="#comb-filters" title="Permalink to this headline">#</a></h2>
 <p>The effect of adding signal with a delayed version of itself is often referred to as a “comb filter.” These filters can be further categorized as either feedforward (FIR) or feedback (IIR) comb filters.</p>
 <section id="feedforward">
-<h3>Feedforward<a class="headerlink" href="#feedforward" title="Permalink to this heading">#</a></h3>
+<h3>Feedforward<a class="headerlink" href="#feedforward" title="Permalink to this headline">#</a></h3>
 <p>Consider the effect of adding an input signal <span class="math notranslate nohighlight">\(x[n]\)</span> with a scaled and delayed version of itself <span class="math notranslate nohighlight">\(\alpha x[n-K]\)</span></p>
 <p><img alt="" src="../_images/comb1.svg" /></p>
 <p>It is very easy to describe this system using a difference equation and to find the impulse response <span class="math notranslate nohighlight">\(h[n]\)</span></p>
@@ -702,7 +700,7 @@ title="Print to PDF"
 <p>Although this example is a 40th order FIR filter, the computational complexity is low because nearly all of the filter coefficients are zero.</p>
 </section>
 <section id="feedback">
-<h3>Feedback<a class="headerlink" href="#feedback" title="Permalink to this heading">#</a></h3>
+<h3>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">#</a></h3>
 <p>If an input signal <span class="math notranslate nohighlight">\(x[n]\)</span> is instead added with a delayed version of the output, it results in an all-pole IIR filter:</p>
 <p><img alt="" src="../_images/comb2.svg" /></p>
 <div class="math notranslate nohighlight">
@@ -713,15 +711,15 @@ title="Print to PDF"
 <p><img alt="" src="../_images/comb2_freq.svg" /></p>
 </section>
 <section id="echo-delay">
-<h3>Echo/Delay<a class="headerlink" href="#echo-delay" title="Permalink to this heading">#</a></h3>
+<h3>Echo/Delay<a class="headerlink" href="#echo-delay" title="Permalink to this headline">#</a></h3>
 <p>With sufficiently high delay <span class="math notranslate nohighlight">\(K\)</span>, the comb filter becomes an audible echo. If the IIR form is used, it will create multiple echos.</p>
 </section>
 <section id="allpass">
-<h3>Allpass<a class="headerlink" href="#allpass" title="Permalink to this heading">#</a></h3>
+<h3>Allpass<a class="headerlink" href="#allpass" title="Permalink to this headline">#</a></h3>
 <p>If the same delay <span class="math notranslate nohighlight">\(K\)</span> is used for both a feedforward and a feedback term, the result in a perfectly flat magnitude response but a nonlinear phase response, These effects are often referred to as “Allpass” filters.</p>
 </section>
 <section id="flanger">
-<h3>Flanger<a class="headerlink" href="#flanger" title="Permalink to this heading">#</a></h3>
+<h3>Flanger<a class="headerlink" href="#flanger" title="Permalink to this headline">#</a></h3>
 <p>A flanger is a comb filter whose delay <span class="math notranslate nohighlight">\(K[n]\)</span> slowly oscillates within some range <span class="math notranslate nohighlight">\(\pm R\)</span></p>
 <div class="math notranslate nohighlight">
 \[y[n] = x[n] + \alpha x\left[n-K[n]\right]\]</div>
@@ -732,19 +730,19 @@ title="Print to PDF"
 </section>
 </section>
 <section id="chorus">
-<h2>Chorus<a class="headerlink" href="#chorus" title="Permalink to this heading">#</a></h2>
+<h2>Chorus<a class="headerlink" href="#chorus" title="Permalink to this headline">#</a></h2>
 <p>Typically, a “chorus” effect consists of adding three or more flangers running in parallel each with it’s own set of parameters.</p>
 </section>
 <section id="phaser">
-<h2>Phaser<a class="headerlink" href="#phaser" title="Permalink to this heading">#</a></h2>
+<h2>Phaser<a class="headerlink" href="#phaser" title="Permalink to this headline">#</a></h2>
 <p>The “phaser” effect can be implemented by slowly varying the frequency of a notch filter that is applied to the input and added back to the original signal.</p>
 </section>
 <section id="reverb">
-<h2>Reverb<a class="headerlink" href="#reverb" title="Permalink to this heading">#</a></h2>
+<h2>Reverb<a class="headerlink" href="#reverb" title="Permalink to this headline">#</a></h2>
 <p>Reverb simulates acoustic propagation effects. For example, a reverb effect might emulate the wall reflections in a large concert hall. Since the acoustic effects they emulate can be complex, their implementations vary widely. Reverb effects often consist of several comb filters combined with one or more allpass filters. However, since they attempt to replicate acoustic effects of some environment, they are time-invariant.</p>
 </section>
 <section id="harmonic-distortion">
-<h2>Harmonic Distortion<a class="headerlink" href="#harmonic-distortion" title="Permalink to this heading">#</a></h2>
+<h2>Harmonic Distortion<a class="headerlink" href="#harmonic-distortion" title="Permalink to this headline">#</a></h2>
 <p>Recall that a Fourier series can represent any periodic signal as a combination of a fundamental frequency and equally spaced harmonics. However, if the signal or its derivative contain discontinuities, it requires an infinite number of harmonics.</p>
 <p>For example, when the linear range of an amplifier is exceeded, clipping will occur which introduces additional harmonics.</p>
 <p><img alt="" src="../_images/clipping.svg" /></p>
@@ -758,10 +756,10 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="amplitude-modulation">
-<h2>Amplitude Modulation<a class="headerlink" href="#amplitude-modulation" title="Permalink to this heading">#</a></h2>
+<h2>Amplitude Modulation<a class="headerlink" href="#amplitude-modulation" title="Permalink to this headline">#</a></h2>
 <p>Any effect which only modifies the amplitude and not the phase can be considered “amplitude modulation”</p>
 <section id="tremolo">
-<h3>Tremolo<a class="headerlink" href="#tremolo" title="Permalink to this heading">#</a></h3>
+<h3>Tremolo<a class="headerlink" href="#tremolo" title="Permalink to this headline">#</a></h3>
 <p>Tremolo refers to the effect of scaling the input by <span class="math notranslate nohighlight">\(\beta[n]\)</span> which osillates between some positive range. For example:</p>
 <div class="math notranslate nohighlight">
 \[ y[n] = x[n]\beta[n] \]</div>
@@ -769,7 +767,7 @@ title="Print to PDF"
 \[\beta[n] = \frac{1}{2} \left(1 + \cos(\omega_{\text{tremolo}}n) \right)\]</div>
 </section>
 <section id="ring-modulation">
-<h3>Ring modulation<a class="headerlink" href="#ring-modulation" title="Permalink to this heading">#</a></h3>
+<h3>Ring modulation<a class="headerlink" href="#ring-modulation" title="Permalink to this headline">#</a></h3>
 <p>If the input is scaled by an oscillating factor which is allowed to be negative, the effect is instead referred to as “ring modulation”</p>
 <div class="math notranslate nohighlight">
 \[\beta[n] = \cos(\omega_{\text{ring}}n)\]</div>
@@ -777,10 +775,10 @@ title="Print to PDF"
 </section>
 </section>
 <section id="vocoder">
-<h2>Vocoder<a class="headerlink" href="#vocoder" title="Permalink to this heading">#</a></h2>
+<h2>Vocoder<a class="headerlink" href="#vocoder" title="Permalink to this headline">#</a></h2>
 <p>Originally, the vocoder (voice encoder) was intended for applications of speech synthesis and compression. However, the term has since become synonymous with various musical effects used to combine a speech signal with a musical instrument.</p>
 <section id="modeling-speech">
-<h3>Modeling speech<a class="headerlink" href="#modeling-speech" title="Permalink to this heading">#</a></h3>
+<h3>Modeling speech<a class="headerlink" href="#modeling-speech" title="Permalink to this headline">#</a></h3>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Source%E2%80%93filter_model">source-filter model</a> of speech is ubiquitous for speech synthesis. Most operating systems include speech synthesizers utilizing this model which can be accessed easily in MATLAB.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NET</span><span class="o">.</span><span class="n">addAssembly</span><span class="p">(</span><span class="s1">&#39;System.Speech&#39;</span><span class="p">);</span>
 <span class="n">speech_synth</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="n">Speech</span><span class="o">.</span><span class="n">Synthesis</span><span class="o">.</span><span class="n">SpeechSynthesizer</span><span class="p">;</span>
@@ -802,14 +800,14 @@ For a musical applications, the vocoder might rencode the speech with a new freq
 <p><img alt="" src="../_images/vocoder.svg" /></p>
 </section>
 <section id="autocorrelation-for-pitch-detection">
-<h3>Autocorrelation for pitch detection<a class="headerlink" href="#autocorrelation-for-pitch-detection" title="Permalink to this heading">#</a></h3>
+<h3>Autocorrelation for pitch detection<a class="headerlink" href="#autocorrelation-for-pitch-detection" title="Permalink to this headline">#</a></h3>
 <p>Suppose that we want to estimate the time-varying fundamental frequency <span class="math notranslate nohighlight">\(f_0\)</span> of a speech recording with an update rate of about 25 Hz. We can divide the input signal into frames which are roughly <span class="math notranslate nohighlight">\(\frac{1}{25 \text{ Hz}} = 40 \text{ ms}\)</span> long. For a sampling rate of 48 kHz, this would mean that we want to produce an estimate every <span class="math notranslate nohighlight">\(\frac{48 \text{ kHz}}{25 \text{ Hz}} = 1920\)</span> samples, though for convenience we will round this to to a power of two (2048).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">y</span><span class="p">,</span><span class="n">fs</span><span class="p">]</span> <span class="o">=</span> <span class="n">audioread</span><span class="p">(</span><span class="s1">&#39;example.wav&#39;</span><span class="p">);</span> <span class="n">y</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">320</span><span class="p">,</span><span class="mi">147</span><span class="p">);</span> <span class="n">fs</span> <span class="o">=</span> <span class="mf">48e3</span><span class="p">;</span>
 <span class="n">L</span> <span class="o">=</span> <span class="mi">2048</span><span class="p">;</span> <span class="n">N</span> <span class="o">=</span> <span class="n">floor</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">L</span><span class="p">);</span> <span class="n">y</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">end</span><span class="p">)</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">y</span> <span class="o">=</span> <span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">N</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The fundamental period of the signal is <span class="math notranslate nohighlight">\(T_0 = 1/f_0\)</span>. Therefore, the autocorrelation should have a peak at this offset. This fact leads to a simple pitch detection algorithm.</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>Find the offset <span class="math notranslate nohighlight">\(N_0\)</span> (in samples) where the peak autocorrelation occurs (subject to a constraint).</p></li>
 <li><p>Estimate that the signal in the frame is periodic with fundamental frequency <span class="math notranslate nohighlight">\(\omega_0 = \frac{1}{N_0} \frac{\text{radians}}{\text{sample}}\)</span>.</p></li>
 </ol>
@@ -831,7 +829,7 @@ For a musical applications, the vocoder might rencode the speech with a new freq
 </div>
 </section>
 <section id="simple-model-of-vocal-source">
-<h3>Simple model of vocal source<a class="headerlink" href="#simple-model-of-vocal-source" title="Permalink to this heading">#</a></h3>
+<h3>Simple model of vocal source<a class="headerlink" href="#simple-model-of-vocal-source" title="Permalink to this headline">#</a></h3>
 <p>Any waveform that matches the desired fundamental frequency and has energy widely distributed among harmonics is suitable to simulate the vocal source. For this example, we will use the (derivative of) a gaussian pulse which has been modulated by an impulse train of the desired period. We will use the magnitude of the autocorrelation to control the volume and avoid changing frequencies when no voiced speech is present.</p>
 <p><img alt="" src="../_images/ddt_gauss_shah.svg" /></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="p">[];</span>
@@ -855,7 +853,7 @@ For a musical applications, the vocoder might rencode the speech with a new freq
 </div>
 </section>
 <section id="modeling-the-vocal-tract">
-<h3>Modeling the vocal tract<a class="headerlink" href="#modeling-the-vocal-tract" title="Permalink to this heading">#</a></h3>
+<h3>Modeling the vocal tract<a class="headerlink" href="#modeling-the-vocal-tract" title="Permalink to this headline">#</a></h3>
 <p>Now that we have a model of the source, we can attempt to learn (for each new sample) an LTI approximation of the articulatory filter (lips, tounge, pharynx, etc). Many adaptive filtering techniques exist for this task. Though it has some limitations, <a class="reference external" href="https://en.wikipedia.org/wiki/Least_mean_squares_filter">Least mean square equalizer</a>, could be used for this application.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">length</span><span class="p">(</span><span class="n">x1</span><span class="p">));</span>
 <span class="n">n</span><span class="o">=</span><span class="mi">513</span><span class="p">;</span> <span class="n">h</span><span class="o">=</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
@@ -875,7 +873,7 @@ For a musical applications, the vocoder might rencode the speech with a new freq
 </audio></section>
 </section>
 <section id="applications">
-<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">#</a></h2>
+<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">#</a></h2>
 <p>The example above encodes the speech into a time-varying frequeny <span class="math notranslate nohighlight">\(f_0\)</span> and a time-varying filter <span class="math notranslate nohighlight">\(h\)</span>. With this description of the signal, many applications are possible:</p>
 <ul class="simple">
 <li><p>Replace the source with a musical instrument with energetic harmonics, (like a guitar, violin, or synthesizer), but use the learned time-varying filter to make the instrument ‘speak’. (demonstrated in the lab exercise)</p></li>

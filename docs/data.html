@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -34,9 +34,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
@@ -59,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Troubleshooting / Frequently Asked Questions" href="troubleshooting.html" />
     <link rel="prev" title="Laboratory Hardware Setup" href="setup.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -447,10 +445,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="managing-data-between-matlab-and-c">
-<h1>Managing data between MATLAB and C<a class="headerlink" href="#managing-data-between-matlab-and-c" title="Permalink to this heading">#</a></h1>
+<h1>Managing data between MATLAB and C<a class="headerlink" href="#managing-data-between-matlab-and-c" title="Permalink to this headline">#</a></h1>
 <p>Often, we will want to examine data generated on the board using MATLAB or export data from MATLAB (such as filter coefficients in Lab 3) to use in our C code.</p>
 <section id="moving-data-from-matlab-to-c">
-<h2>Moving data from MATLAB to C.<a class="headerlink" href="#moving-data-from-matlab-to-c" title="Permalink to this heading">#</a></h2>
+<h2>Moving data from MATLAB to C.<a class="headerlink" href="#moving-data-from-matlab-to-c" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">tree.png</span></code> image will be used as the data payload in some subsequent lab exercises.</p>
 <p><img alt="" src="_images/tree.png" /></p>
 <p>It is a 128x128 binary image (16,384 bits or 512 32-bit words). In MATLAB, we can load this file as a matrix using ‘imread’ and display it using ‘imshow’:</p>
@@ -459,7 +457,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>There are two main ways we can load data like this on the STM32 board:</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>Use <a class="reference external" href="https://www.st.com/en/development-tools/stm32cubeprog.html">STM32CubeProg</a> or similar software to directly load the data to an appropriate section of the processor’s memory. This method is appropriate for large chunks of data like audio or video files.</p></li>
 <li><p>Format the data into text (usually hexadecimal) and directly initialize a variable with the data in a .c or .h file. This method is appropriate for smaller chunks of data like the filter coefficients or the relatively small tree.png, and is what we will use for the lab exercises.</p></li>
 </ol>
@@ -478,7 +476,7 @@ title="Print to PDF"
 </div>
 <p>The ‘%.8g’ format is adequate for single precision floating point values, but is not ideal for binary data like the tree image. Instead, we can use ‘%x’ for hexadecimal.</p>
 <p>Before formatting the data using sprintf, we must orgainize the data into appropriately sized words with the correct endianness.</p>
-<ol class="arabic">
+<ol>
 <li><p>Convert the image into a vector of zeros and ones. For this example, we will map white pixels to 0 and black pixels to one:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tree</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">imread</span><span class="p">(</span><span class="s1">&#39;tree.png&#39;</span><span class="p">);</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">reshape</span><span class="p">(</span><span class="n">tree</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">128</span><span class="o">^</span><span class="mi">2</span><span class="p">]);</span>
@@ -545,9 +543,9 @@ title="Print to PDF"
 </div>
 </section>
 <section id="moving-data-from-c-to-matlab">
-<h2>Moving data from C to MATLAB<a class="headerlink" href="#moving-data-from-c-to-matlab" title="Permalink to this heading">#</a></h2>
+<h2>Moving data from C to MATLAB<a class="headerlink" href="#moving-data-from-c-to-matlab" title="Permalink to this headline">#</a></h2>
 <p>The STM32CubeIDE has a memory browser feature which can be used to easily locate and export a chunk of memory while in debug mode.</p>
-<ol class="arabic">
+<ol>
 <li><p>Verify that the data is in memory using either the ‘variables’ or ‘expressions’ view.</p></li>
 <li><p>Open the memory browser (Window → Show view → Memory Browser).</p></li>
 <li><p>Identify the address of the beginning of the data you want to access in the memory browser. For example, if using the array above enter <code class="docutils literal notranslate"><span class="pre">tree</span></code> or <code class="docutils literal notranslate"><span class="pre">&amp;tree[0]</span></code>, and you will see the associated address listed in hexadecimal.</p></li>

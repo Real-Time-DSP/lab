@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -34,9 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
@@ -59,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lab 5 Primer" href="../lab5/primer.html" />
     <link rel="prev" title="Lab 4 Primer" href="primer.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -545,24 +543,24 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="lab-4-pseudo-random-binary-sequences-and-data-scramblers">
-<h1>Lab 4. Pseudo-Random Binary Sequences and Data Scramblers<a class="headerlink" href="#lab-4-pseudo-random-binary-sequences-and-data-scramblers" title="Permalink to this heading">#</a></h1>
+<h1>Lab 4. Pseudo-Random Binary Sequences and Data Scramblers<a class="headerlink" href="#lab-4-pseudo-random-binary-sequences-and-data-scramblers" title="Permalink to this headline">#</a></h1>
 <section id="aim-of-the-experiment">
-<h2>Aim of the experiment<a class="headerlink" href="#aim-of-the-experiment" title="Permalink to this heading">#</a></h2>
+<h2>Aim of the experiment<a class="headerlink" href="#aim-of-the-experiment" title="Permalink to this headline">#</a></h2>
 <p>In this experiment, you will generate pseudo-random binary sequences using linear feedback shift registers. You will use the generated sequence for a data scrambler and descrambler.</p>
 </section>
 <section id="reading-assignment">
-<h2>Reading assignment<a class="headerlink" href="#reading-assignment" title="Permalink to this heading">#</a></h2>
+<h2>Reading assignment<a class="headerlink" href="#reading-assignment" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="primer.html"><span class="doc std std-doc">Lab 4 Primer</span></a></p></li>
 <li><p><a class="reference internal" href="../data.html"><span class="doc std std-doc">Managing data between MATLAB and C</span></a></p></li>
 </ul>
 </section>
 <section id="lab-4-instructions">
-<h2>Lab 4 instructions<a class="headerlink" href="#lab-4-instructions" title="Permalink to this heading">#</a></h2>
+<h2>Lab 4 instructions<a class="headerlink" href="#lab-4-instructions" title="Permalink to this headline">#</a></h2>
 <section id="linear-feedback-shift-register-for-psuedonoise-sequence-generation">
-<h3>Linear-feedback shift register for psuedonoise sequence generation<a class="headerlink" href="#linear-feedback-shift-register-for-psuedonoise-sequence-generation" title="Permalink to this heading">#</a></h3>
+<h3>Linear-feedback shift register for psuedonoise sequence generation<a class="headerlink" href="#linear-feedback-shift-register-for-psuedonoise-sequence-generation" title="Permalink to this headline">#</a></h3>
 <p>In this exercise, we will implement a <span class="math notranslate nohighlight">\(m=14\)</span> bit LFSR with <span class="math notranslate nohighlight">\(h_1=h_3=h_4=\cdots=h_{11}=0\)</span> and <span class="math notranslate nohighlight">\(h_2=h_{12}=h_{13}=h_{14}=1.\)</span> This will generate a maximal length PN sequence with period <span class="math notranslate nohighlight">\(N=2^{14}-1=16,383\)</span>.</p>
-<ol class="arabic">
+<ol>
 <li><p>In lab.c, create a variable to act as the ‘shift register’. Since we will be using the right shift <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> operation later, use an unsigned datatype such as uint32_t. Initialize it with a nonzero value.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uint32_t</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 </pre></div>
@@ -575,7 +573,7 @@ title="Print to PDF"
 </div>
 </li>
 <li><p>Implement the LFSR. Since we will not need any I/O functionality for this exercise, you can put all of your code inside the lab_init() function in lab.c.</p>
-<ol class="arabic">
+<ol>
 <li><p>Since each iteration of the LFSR corresponds to generating a single bit, we need to keep track of (1) our bit position in the current word and (2) the current word in the array. Create two variables corresponding to the current location in our <code class="docutils literal notranslate"><span class="pre">PN</span></code> array:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uint32_t</span> <span class="n">i_bit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="n">uint32_t</span> <span class="n">i_word</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -627,9 +625,9 @@ title="Print to PDF"
 </ol>
 </section>
 <section id="data-scrambler-descrambler">
-<h3>Data scrambler / descrambler<a class="headerlink" href="#data-scrambler-descrambler" title="Permalink to this heading">#</a></h3>
+<h3>Data scrambler / descrambler<a class="headerlink" href="#data-scrambler-descrambler" title="Permalink to this headline">#</a></h3>
 <p>In this exercise, we will use the generated PN sequence to scramble and descramble a binary image.</p>
-<ol class="arabic">
+<ol>
 <li><p>In lab.c create an array containing the binary ‘tree.png’ image. Please see the instructions on <a class="reference internal" href="../data.html"><span class="doc std std-doc">managing data between MATLAB and C</span></a>. (you can copy and paste the variable declaration from this page.)</p></li>
 <li><p>In lab.c, call the provided ‘display_image’ function to show the tree image on the display. Put breakpoint after this function so that you have an oppurtinity to see it before the code resumes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">display_image</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">);</span>
@@ -666,9 +664,9 @@ title="Print to PDF"
 <p><strong>Include your scrambler/descrambler code in the lab report</strong></p>
 </section>
 <section id="autocorrelation">
-<h3>Autocorrelation<a class="headerlink" href="#autocorrelation" title="Permalink to this heading">#</a></h3>
+<h3>Autocorrelation<a class="headerlink" href="#autocorrelation" title="Permalink to this headline">#</a></h3>
 <p>This exercise will help you understand the properties of PN sequences by calculating their auto correlation in MATLAB.</p>
-<ol class="arabic">
+<ol>
 <li><p>Fill out the MATLAB code which implements the autocorrelation for a <em>periodic</em> signal represented by an array <code class="docutils literal notranslate"><span class="pre">x</span></code> containing one period.</p>
 <div class="math notranslate nohighlight">
 \[R_{xx}[n] \text{ for periodic signal} = \frac{1}{N}x[n]\star x[n] = \frac{1}{N}\sum_{k=1}^{N}\overline{x[k]}x[n+k]\]</div>
@@ -707,18 +705,18 @@ title="Print to PDF"
 </section>
 </section>
 <section id="lab-report-contents">
-<h2>Lab report contents<a class="headerlink" href="#lab-report-contents" title="Permalink to this heading">#</a></h2>
+<h2>Lab report contents<a class="headerlink" href="#lab-report-contents" title="Permalink to this headline">#</a></h2>
 <p>Be sure to include everything listed in this section when you submit your lab report. The goal of the report is to help cement what you learned in memory. For sections I, II, and IV, imagine your audience is a student who is your peer but who has not yet completed the lab.</p>
 <section id="i-introduction">
-<h3>I. Introduction<a class="headerlink" href="#i-introduction" title="Permalink to this heading">#</a></h3>
+<h3>I. Introduction<a class="headerlink" href="#i-introduction" title="Permalink to this headline">#</a></h3>
 <p>Briefly explain the theory and algorithms behind the programs that you wrote. The slides and reading material might help you in writing this section.</p>
 </section>
 <section id="ii-methods">
-<h3>II. Methods<a class="headerlink" href="#ii-methods" title="Permalink to this heading">#</a></h3>
+<h3>II. Methods<a class="headerlink" href="#ii-methods" title="Permalink to this headline">#</a></h3>
 <p>Describe the steps you took to implement the algorithms in your own words.</p>
 </section>
 <section id="iii-results-from-lab-exercise">
-<h3>III. Results from lab exercise<a class="headerlink" href="#iii-results-from-lab-exercise" title="Permalink to this heading">#</a></h3>
+<h3>III. Results from lab exercise<a class="headerlink" href="#iii-results-from-lab-exercise" title="Permalink to this headline">#</a></h3>
 <p>Present the results you obtain for each task on the assignment sheet. This section should include illustrative oscilloscope screenshots of the DSP algorithms in action. Also include any code that you wrote or modified. Please do not include all of the boilerplate code from the textbook.</p>
 <ul class="simple">
 <li><p>Code for data scrambler and descrambler</p></li>
@@ -726,7 +724,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="iv-discussion">
-<h3>IV. Discussion<a class="headerlink" href="#iv-discussion" title="Permalink to this heading">#</a></h3>
+<h3>IV. Discussion<a class="headerlink" href="#iv-discussion" title="Permalink to this headline">#</a></h3>
 <p>In this section, discuss the takeaway from each lab. You can mention any intuition that you developed. Also mention any problems that you faced and how you rectified them.</p>
 </section>
 </section>

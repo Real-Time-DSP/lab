@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -34,9 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
@@ -59,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lab 4. Pseudo-Random Binary Sequences and Data Scramblers" href="index.html" />
     <link rel="prev" title="Lab 3. Digital Filters" href="../lab3/index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -632,12 +630,12 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="lab-4-primer">
-<h1>Lab 4 Primer<a class="headerlink" href="#lab-4-primer" title="Permalink to this heading">#</a></h1>
+<h1>Lab 4 Primer<a class="headerlink" href="#lab-4-primer" title="Permalink to this headline">#</a></h1>
 <p><a class="reference external" href="https://real-time-dsp.github.io/lab/lab4/primer.slides.html">Slides</a></p>
 <p>Pseudo-random binary sequences are also known as pseudo-noise (PN) sequences because the sequences resemble noise. These binary sequences appear to be random but instead have structure. They have all frequencies present; i.e., there are no nulls in the magnitude spectrum.</p>
 <p><img alt="" src="../_images/PN_seq.svg" /></p>
 <section id="applications-of-pseudo-random-binary-sequences">
-<h2>Applications of Pseudo-Random Binary Sequences<a class="headerlink" href="#applications-of-pseudo-random-binary-sequences" title="Permalink to this heading">#</a></h2>
+<h2>Applications of Pseudo-Random Binary Sequences<a class="headerlink" href="#applications-of-pseudo-random-binary-sequences" title="Permalink to this headline">#</a></h2>
 <p>PN sequences are widely used to</p>
 <ul class="simple">
 <li><p>generate test, measurement and calibration signals</p></li>
@@ -645,17 +643,17 @@ title="Print to PDF"
 <li><p>scramble and descramble data in communication systems</p></li>
 </ul>
 <section id="as-a-signal-for-test-measurement-and-calibration">
-<h3>As a signal for test, measurement, and calibration<a class="headerlink" href="#as-a-signal-for-test-measurement-and-calibration" title="Permalink to this heading">#</a></h3>
+<h3>As a signal for test, measurement, and calibration<a class="headerlink" href="#as-a-signal-for-test-measurement-and-calibration" title="Permalink to this headline">#</a></h3>
 <p>The first application is to use a PN sequence to estimate an impulse response of an unknown subsystem, e.g. the cascade of a source, empty chamber, and receiver in a biomedical instrument. Once the impulse response is known, calibration of the system can proceed by means of a linear time-invariant filter in the transmitter (known as a predistorter) or receiver (known as an equalizer) to compensate for the distortion in the subsystem.</p>
 </section>
 <section id="as-a-training-signal">
-<h3>As a training signal<a class="headerlink" href="#as-a-training-signal" title="Permalink to this heading">#</a></h3>
+<h3>As a training signal<a class="headerlink" href="#as-a-training-signal" title="Permalink to this headline">#</a></h3>
 <p>As a training signal, the PN sequence would be the digital data to be transmitted over the unknown communication channel. The receiver knows the bits that had been transmitted, and can use that knowledge to adapt receiver settings to improve communication performance (signal quality). The receiver can also estimate the impulse response of the communication channel if needed.</p>
 </section>
 <section id="data-scrambler-descrabler">
-<h3>Data scrambler/descrabler<a class="headerlink" href="#data-scrambler-descrabler" title="Permalink to this heading">#</a></h3>
+<h3>Data scrambler/descrabler<a class="headerlink" href="#data-scrambler-descrabler" title="Permalink to this headline">#</a></h3>
 <p>The primary application of PN sequences in lab #4 is for data scrambling and descrambling. As a data scrambling sequence, pseudonoise can (1) eliminate strong DC components (long strongs of zeros and ones) in the baseband signal and (2) disperse the power spectrum to mitigate the effects of certain channel impairments.</p>
-<ol class="arabic">
+<ol>
 <li><p><strong>Eliminating DC components</strong></p>
 <p>During a long string of zeros or ones, the primary frequency component in the signal would be at DC. For baseband transmission, this would not get passed by some communication channels (e.g. voiceband and acoustic channels). Some automatic gain control algorithms will also fail in the presence of a strong DC components. For bandpass transmission, the DC component is upconverted to sit at the carrier frequency. Strong components at this frequency will hinder the clock recovery and symbol synchronization subsystems.</p>
 </li>
@@ -666,13 +664,13 @@ title="Print to PDF"
 </section>
 </section>
 <section id="linear-feedback-shift-register-lfsr">
-<h2>Linear-feedback shift register (LFSR)<a class="headerlink" href="#linear-feedback-shift-register-lfsr" title="Permalink to this heading">#</a></h2>
+<h2>Linear-feedback shift register (LFSR)<a class="headerlink" href="#linear-feedback-shift-register-lfsr" title="Permalink to this headline">#</a></h2>
 <p>In Lab #4, we will use a a Fibonacci LFSR to (1) generate PN sequences, (2) scramble data, and (3) descramble data. This structure shares many similarities to the tapped delay line for filtering. Like the tapped delay line, the Fibonacci LFSR maintains a delay line of <span class="math notranslate nohighlight">\(m\)</span> elements <span class="math notranslate nohighlight">\(s[n-1], s[n-2], \ldots, s[n-m]\)</span>. Unlike the tapped delay line for LTI filters, the values are restricted to be binary (zero or one). Instead of real-valued coefficients, the LFSR has a set of taps <span class="math notranslate nohighlight">\(h_1, h_2, \ldots, h_m\)</span> which also have a binary state (connected or disconnected). Since all values are binary, additions are performed modulo two (equivalent to an exclusive or).</p>
 <p><img alt="" src="../_images/Fibonacci_LFSR.svg" /></p>
 <section id="lfsr-for-pn-sequence-generation">
-<h3>LFSR for PN sequence generation<a class="headerlink" href="#lfsr-for-pn-sequence-generation" title="Permalink to this heading">#</a></h3>
+<h3>LFSR for PN sequence generation<a class="headerlink" href="#lfsr-for-pn-sequence-generation" title="Permalink to this headline">#</a></h3>
 <p>The procedure to produce a PN sequence using the LFSR consists of three steps:</p>
-<ol class="arabic">
+<ol>
 <li><p>Set the initial values <span class="math notranslate nohighlight">\(s[-1], s[-2], \ldots, s[-m]\)</span> so that at least one is nonzero.</p></li>
 <li><p>Compute the addition modulo 2, equivalent to a series of exclusive or (<span class="math notranslate nohighlight">\(\oplus\)</span>) operations, of the connected taps in the shift register:</p>
 <div class="math notranslate nohighlight">
@@ -687,85 +685,85 @@ title="Print to PDF"
 <center>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="text-left head"><p><span class="math notranslate nohighlight">\(n\)</span></p></th>
-<th class="text-right head"><p><span class="math notranslate nohighlight">\(s[n]=s[n-2]\oplus[n-3]\)</span></p></th>
-<th class="text-center head"><p><span class="math notranslate nohighlight">\(s[n-1]\)</span></p></th>
-<th class="text-center head"><p><span class="math notranslate nohighlight">\(s[n-2]\)</span></p></th>
-<th class="text-center head"><p><span class="math notranslate nohighlight">\(s[n-3]\)</span></p></th>
+<tr class="row-odd"><th class="text-align:left head"><p><span class="math notranslate nohighlight">\(n\)</span></p></th>
+<th class="text-align:right head"><p><span class="math notranslate nohighlight">\(s[n]=s[n-2]\oplus[n-3]\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(s[n-1]\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(s[n-2]\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(s[n-3]\)</span></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p>0</p></td>
-<td class="text-right"><p><center>1</center></p></td>
-<td class="text-center"><p><center>1</center></p></td>
-<td class="text-center"><p><center>0</center></p></td>
-<td class="text-center"><p><center>1</center></p></td>
+<tr class="row-even"><td class="text-align:left"><p>0</p></td>
+<td class="text-align:right"><p><center>1</center></p></td>
+<td class="text-align:center"><p><center>1</center></p></td>
+<td class="text-align:center"><p><center>0</center></p></td>
+<td class="text-align:center"><p><center>1</center></p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>1</p></td>
-<td class="text-right"><p><center>1</center></p></td>
-<td class="text-center"><p><center>1</center></p></td>
-<td class="text-center"><p><center>1</center></p></td>
-<td class="text-center"><p><center>0</center></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>1</p></td>
+<td class="text-align:right"><p><center>1</center></p></td>
+<td class="text-align:center"><p><center>1</center></p></td>
+<td class="text-align:center"><p><center>1</center></p></td>
+<td class="text-align:center"><p><center>0</center></p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>2</p></td>
-<td class="text-right"><p><center>0</center></p></td>
-<td class="text-center"><p><center>1</center></p></td>
-<td class="text-center"><p><center>1</center></p></td>
-<td class="text-center"><p><center>1</center></p></td>
+<tr class="row-even"><td class="text-align:left"><p>2</p></td>
+<td class="text-align:right"><p><center>0</center></p></td>
+<td class="text-align:center"><p><center>1</center></p></td>
+<td class="text-align:center"><p><center>1</center></p></td>
+<td class="text-align:center"><p><center>1</center></p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>3</p></td>
-<td class="text-right"><p><center>0</center></p></td>
-<td class="text-center"><p><center>0</center></p></td>
-<td class="text-center"><p><center>1</center></p></td>
-<td class="text-center"><p><center>1</center></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>3</p></td>
+<td class="text-align:right"><p><center>0</center></p></td>
+<td class="text-align:center"><p><center>0</center></p></td>
+<td class="text-align:center"><p><center>1</center></p></td>
+<td class="text-align:center"><p><center>1</center></p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>4</p></td>
-<td class="text-right"><p><center>1</center></p></td>
-<td class="text-center"><p><center>0</center></p></td>
-<td class="text-center"><p><center>0</center></p></td>
-<td class="text-center"><p><center>1</center></p></td>
+<tr class="row-even"><td class="text-align:left"><p>4</p></td>
+<td class="text-align:right"><p><center>1</center></p></td>
+<td class="text-align:center"><p><center>0</center></p></td>
+<td class="text-align:center"><p><center>0</center></p></td>
+<td class="text-align:center"><p><center>1</center></p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>5</p></td>
-<td class="text-right"><p><center>0</center></p></td>
-<td class="text-center"><p><center>1</center></p></td>
-<td class="text-center"><p><center>0</center></p></td>
-<td class="text-center"><p><center>0</center></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>5</p></td>
+<td class="text-align:right"><p><center>0</center></p></td>
+<td class="text-align:center"><p><center>1</center></p></td>
+<td class="text-align:center"><p><center>0</center></p></td>
+<td class="text-align:center"><p><center>0</center></p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>6</p></td>
-<td class="text-right"><p><center>1</center></p></td>
-<td class="text-center"><p><center>0</center></p></td>
-<td class="text-center"><p><center>1</center></p></td>
-<td class="text-center"><p><center>0</center></p></td>
+<tr class="row-even"><td class="text-align:left"><p>6</p></td>
+<td class="text-align:right"><p><center>1</center></p></td>
+<td class="text-align:center"><p><center>0</center></p></td>
+<td class="text-align:center"><p><center>1</center></p></td>
+<td class="text-align:center"><p><center>0</center></p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>7</p></td>
-<td class="text-right"><p><center>1</center></p></td>
-<td class="text-center"><p><center>1</center></p></td>
-<td class="text-center"><p><center>0</center></p></td>
-<td class="text-center"><p><center>1</center></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>7</p></td>
+<td class="text-align:right"><p><center>1</center></p></td>
+<td class="text-align:center"><p><center>1</center></p></td>
+<td class="text-align:center"><p><center>0</center></p></td>
+<td class="text-align:center"><p><center>1</center></p></td>
 </tr>
 </tbody>
 </table>
 </center><p>Typically, we map the binary <span class="math notranslate nohighlight">\(\left\{ 0,1 \right\}\)</span> values to symmetric amplitudes <span class="math notranslate nohighlight">\(\left\{ -1,1 \right\}\)</span> when representing the PN sequence as a signal.</p>
 </section>
 <section id="auto-correlation-of-pn-sequence">
-<h3>Auto-correlation of PN sequence<a class="headerlink" href="#auto-correlation-of-pn-sequence" title="Permalink to this heading">#</a></h3>
+<h3>Auto-correlation of PN sequence<a class="headerlink" href="#auto-correlation-of-pn-sequence" title="Permalink to this headline">#</a></h3>
 <p>In order to understand some of the useful properties of PN sequences, we need to first define the auto-correlation operation, which is closely related to convolution.</p>
 <section id="convolution">
-<h4>Convolution<a class="headerlink" href="#convolution" title="Permalink to this heading">#</a></h4>
+<h4>Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">#</a></h4>
 <p>Recall that the convolution operation (denoted using <span class="math notranslate nohighlight">\(*\)</span>) for two discrete-time signals is defined as:</p>
 <div class="math notranslate nohighlight">
 \[x_1[n]*x_2[n] = \sum_{k=-\infty}^{\infty}x_1[k]x_2[n-k]\]</div>
 <p>This operation is often described as ‘flip and slide’, since <span class="math notranslate nohighlight">\(x_2[n-k]\)</span> is a reversed and shifted version of <span class="math notranslate nohighlight">\(x_2[k]\)</span>.</p>
 </section>
 <section id="cross-correlation">
-<h4>Cross-correlation<a class="headerlink" href="#cross-correlation" title="Permalink to this heading">#</a></h4>
+<h4>Cross-correlation<a class="headerlink" href="#cross-correlation" title="Permalink to this headline">#</a></h4>
 <p>The cross-correlation operation (denoted using <span class="math notranslate nohighlight">\(\star\)</span>) is nearly identical to convolution, but without the ‘flip’.</p>
 <div class="math notranslate nohighlight">
 \[x_1[n]\star x_2[n] = \sum_{k=-\infty}^{\infty}\overline{x_1[k]}x_2[n+k]\]</div>
 <p><em>Note: <span class="math notranslate nohighlight">\(\overline{x_1[k]}\)</span> denotes the complex conjugate of <span class="math notranslate nohighlight">\(x_1[k]\)</span>, but for real valued signals <span class="math notranslate nohighlight">\(\overline{x_1[k]}=x_1[k]\)</span>.</em></p>
 </section>
 <section id="auto-correlation">
-<h4>Auto-correlation<a class="headerlink" href="#auto-correlation" title="Permalink to this heading">#</a></h4>
+<h4>Auto-correlation<a class="headerlink" href="#auto-correlation" title="Permalink to this headline">#</a></h4>
 <p>The auto-correlation <span class="math notranslate nohighlight">\(R_{xx}[k]\)</span> of a discrete-time signal <span class="math notranslate nohighlight">\(x[n]\)</span> is the cross-correlation with itself:</p>
 <div class="math notranslate nohighlight">
 \[R_{xx}[n] = x[n]\star x[n] = \sum_{k=-\infty}^{\infty}\overline{x[k]}x[n+k]\]</div>
@@ -774,18 +772,18 @@ title="Print to PDF"
 \[R_{xx}[n] \text{ for periodic signal} = \frac{1}{N}x[n]\star x[n] = \frac{1}{N}\sum_{k=1}^{N}\overline{x[k]}x[n+k]\]</div>
 </section>
 <section id="auto-correlation-of-a-maximal-length-pn-sequence">
-<h4>Auto-correlation of a maximal length PN sequence<a class="headerlink" href="#auto-correlation-of-a-maximal-length-pn-sequence" title="Permalink to this heading">#</a></h4>
+<h4>Auto-correlation of a maximal length PN sequence<a class="headerlink" href="#auto-correlation-of-a-maximal-length-pn-sequence" title="Permalink to this headline">#</a></h4>
 <p>Applying the formula above to the maximal length PN sequence from the earlier example yields the following (normalized) auto-correlation:</p>
 <p><img alt="" src="../_images/PN_autocorr.svg" /></p>
 <p>The auto-correlation for this PN sequence is equal to one at integer multiples of the period <span class="math notranslate nohighlight">\(N\)</span> and is equal to <span class="math notranslate nohighlight">\(\frac{-1}{N}\)</span> for all other offsets. This behavior is the same for <em>all</em> maximal-length PN sequences, as long as the following two conditions are met:</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>The values of the binary PN sequence are mapped to <span class="math notranslate nohighlight">\(\left\{ -1,1 \right\}\)</span>. We avoid representing the sequence with <span class="math notranslate nohighlight">\(\left\{ 0,1 \right\}\)</span> because this would introduce a DC component.</p></li>
 <li><p>The auto-correlation is taken of the infinite-length, periodically extended sequence. The auto-correlation of just one period can also be computed, but its properties will be different.</p></li>
 </ol>
 </section>
 </section>
 <section id="data-scrambling">
-<h3>Data scrambling<a class="headerlink" href="#data-scrambling" title="Permalink to this heading">#</a></h3>
+<h3>Data scrambling<a class="headerlink" href="#data-scrambling" title="Permalink to this headline">#</a></h3>
 <p>Suppose we have a binary data sequence <span class="math notranslate nohighlight">\(x[n]\)</span> that we want to transmit. We can scramble the data by adding (modulo two) a scrambling sequence <span class="math notranslate nohighlight">\(s[n]\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[x_s[n] = ( x[n] + s[n] ) \text{ mod 2} = x[n] \oplus s[n]\]</div>
@@ -798,19 +796,19 @@ title="Print to PDF"
 </section>
 </section>
 <section id="implementation-of-lfsr-in-c">
-<h2>Implementation of LFSR in C<a class="headerlink" href="#implementation-of-lfsr-in-c" title="Permalink to this heading">#</a></h2>
+<h2>Implementation of LFSR in C<a class="headerlink" href="#implementation-of-lfsr-in-c" title="Permalink to this headline">#</a></h2>
 <p>In lab #4, you will implement the LFSR in C. To prepare, it is useful to review some topics in C programming.</p>
 <section id="bits-words-and-arrays">
-<h3>Bits, words, and arrays<a class="headerlink" href="#bits-words-and-arrays" title="Permalink to this heading">#</a></h3>
+<h3>Bits, words, and arrays<a class="headerlink" href="#bits-words-and-arrays" title="Permalink to this headline">#</a></h3>
 <p>Although it would be convenient to think of our generated PN sequence as an ‘array of bits’ there is no datatype in C that would allow this, since the smallest addressable unit of data in C is a byte (8 bits).</p>
 <p>Typically, we refer to the unit of addressable data in an array as a ‘word’. For example, if we have an array of <code class="docutils literal notranslate"><span class="pre">int16_t</span></code>s, then we would say that <span class="math notranslate nohighlight">\(1 \text{ word} = 16 \text{ bits}\)</span>. If the array is composed of <code class="docutils literal notranslate"><span class="pre">float32_t</span></code>s, then <span class="math notranslate nohighlight">\(1 \text{ word} = 32 \text{ bits}\)</span>, and so on.</p>
 <p>If we need to address individual bits in a long sequence of data in C, we can instead create an array of conveniently sized words and use bitwise operations to access individual bits in each word.</p>
 </section>
 <section id="review-of-bitwise-operations-in-c">
-<h3>Review of bitwise operations in C<a class="headerlink" href="#review-of-bitwise-operations-in-c" title="Permalink to this heading">#</a></h3>
+<h3>Review of bitwise operations in C<a class="headerlink" href="#review-of-bitwise-operations-in-c" title="Permalink to this headline">#</a></h3>
 <p>There are six bitwise operations in c: <em>and</em> <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <em>or</em> <code class="docutils literal notranslate"><span class="pre">|</span></code>, <em>xor</em> <code class="docutils literal notranslate"><span class="pre">^</span></code>, <em>left shift</em> <code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code>, <em>right shift</em> <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>, and <em>not</em><code class="docutils literal notranslate"><span class="pre">~</span></code>.</p>
 <p>Most of these behave as you would expect, but the right shift <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> is an exception. The behavior of the right shift <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> operation depends on if the datatype is signed or unsigned, and varies depending on the compiler used. This is because there are two possible behaviors for the right shift operation</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>In a logical right shift, the most significant bit receives a value of zero. This is the behavior that occurs when operating on an unsigned datatype.</p></li>
 <li><p>In an arithmetic right shift, the most significant bit (which is the sign bit for signed datatypes) is unchanged.</p></li>
 </ol>
@@ -818,11 +816,11 @@ title="Print to PDF"
 <p>For left shift operations, the least significant bit always receives a value of zero in C, regardless of the data type.</p>
 </section>
 <section id="addressing-individual-bits">
-<h3>Addressing individual bits<a class="headerlink" href="#addressing-individual-bits" title="Permalink to this heading">#</a></h3>
+<h3>Addressing individual bits<a class="headerlink" href="#addressing-individual-bits" title="Permalink to this headline">#</a></h3>
 <p>There are many ways to use the bitwise operations above to perform addressing of individual bits. The easiest way to demonstrate is with an example. Suppose we have a variable <code class="docutils literal notranslate"><span class="pre">x</span></code> in C with the datatype <code class="docutils literal notranslate"><span class="pre">uint32_t</span></code> and we want to perform the following operation:</p>
 <p><em>Example operation: Set the 6th least significant bit equal to the xor of the 4th and 2nd least significant bits.</em></p>
 <p>Let’s outline one approach:</p>
-<ol class="arabic">
+<ol>
 <li><p>Create expressions corresponding to the 4th and 2nd least significant bits shifted to the least significant position:</p>
 <p><code class="docutils literal notranslate"><span class="pre">x&gt;&gt;3</span></code> and <code class="docutils literal notranslate"><span class="pre">x&gt;&gt;1</span></code></p>
 </li>

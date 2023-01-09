@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -34,9 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
@@ -59,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lab 7 Primer" href="../lab7/primer.html" />
     <link rel="prev" title="Lab 6 Primer" href="primer.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -491,9 +489,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="lab-6-quadrature-amplitude-modulation-qam">
-<h1>Lab 6. Quadrature Amplitude Modulation (QAM)<a class="headerlink" href="#lab-6-quadrature-amplitude-modulation-qam" title="Permalink to this heading">#</a></h1>
+<h1>Lab 6. Quadrature Amplitude Modulation (QAM)<a class="headerlink" href="#lab-6-quadrature-amplitude-modulation-qam" title="Permalink to this headline">#</a></h1>
 <section id="aim-of-the-experiment">
-<h2>Aim of the experiment<a class="headerlink" href="#aim-of-the-experiment" title="Permalink to this heading">#</a></h2>
+<h2>Aim of the experiment<a class="headerlink" href="#aim-of-the-experiment" title="Permalink to this headline">#</a></h2>
 <p>This experiment primarily concerns the design and implementation of a Quadrature Amplitude Modulation (QAM) transmitter. QAM is a widely used method of transmitting digital data over bandpass channels. QAM is a popular choice because of its bandwidth efficiency and its ability to compensate for linear channel distortion.</p>
 <p>Before you start with the experiment, it is necessary that you have an understanding at some level of the following concepts:</p>
 <ul class="simple">
@@ -512,7 +510,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="reading-assignment">
-<h2>Reading assignment<a class="headerlink" href="#reading-assignment" title="Permalink to this heading">#</a></h2>
+<h2>Reading assignment<a class="headerlink" href="#reading-assignment" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Software Receiver Design by C. Richard Johnson, Jr., William A. Sethares and Andrew Klein</p>
 <ul>
@@ -531,11 +529,11 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="lab-6-instructions">
-<h2>Lab 6 instructions<a class="headerlink" href="#lab-6-instructions" title="Permalink to this heading">#</a></h2>
+<h2>Lab 6 instructions<a class="headerlink" href="#lab-6-instructions" title="Permalink to this headline">#</a></h2>
 <p>In this exercise, we will use QAM to transmit the tree image.</p>
 <section id="setting-up-the-transmitter-on-the-stm32-board">
-<h3>Setting up the transmitter on the STM32 board<a class="headerlink" href="#setting-up-the-transmitter-on-the-stm32-board" title="Permalink to this heading">#</a></h3>
-<ol class="arabic">
+<h3>Setting up the transmitter on the STM32 board<a class="headerlink" href="#setting-up-the-transmitter-on-the-stm32-board" title="Permalink to this headline">#</a></h3>
+<ol>
 <li><p>In lab.c, create an array containing the data stream to transmit. The data stream will have 32 bits of header followed by 16384 bits for the (scrambled) tree image. If we store it as an array of 32-bit words, then we will need an array of length 513.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uint32_t</span> <span class="n">data_stream</span><span class="p">[</span><span class="mi">513</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
 </pre></div>
@@ -630,8 +628,8 @@ title="Print to PDF"
 </ol>
 </section>
 <section id="examining-the-transmission-in-matlab">
-<h3>Examining the transmission in MATLAB<a class="headerlink" href="#examining-the-transmission-in-matlab" title="Permalink to this heading">#</a></h3>
-<ol class="arabic">
+<h3>Examining the transmission in MATLAB<a class="headerlink" href="#examining-the-transmission-in-matlab" title="Permalink to this headline">#</a></h3>
+<ol>
 <li><p>With the transmitter running, record 12 seconds of data using MATLAB and save it to a file.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="o">=</span> <span class="mi">48000</span><span class="p">;</span>
 <span class="n">recorder</span> <span class="o">=</span> <span class="n">audiorecorder</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
@@ -653,7 +651,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="lab-report-contents">
-<h2>Lab report contents<a class="headerlink" href="#lab-report-contents" title="Permalink to this heading">#</a></h2>
+<h2>Lab report contents<a class="headerlink" href="#lab-report-contents" title="Permalink to this headline">#</a></h2>
 <p>Enjoy Thanksgiving break!</p>
 </section>
 </section>
