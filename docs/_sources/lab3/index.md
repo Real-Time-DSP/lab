@@ -31,7 +31,7 @@ In this experiment, you will design and implement finite impulse response (FIR) 
 We want to design a FIR bandpass filter using the following parameters:
 * Design method: Parks-McClellan (a.k.a. equiripple)
 * Filter order $N=30$ (the filter will have $N+1=31$ coefficients)
-* Sampling Frequency $F_s= 44.1 \text{ kHz}$
+* Sampling Frequency $F_s= 48 \text{ kHz}$
 * $F_{\text{stop1}}=4\text{ kHz}$
 * $F_{\text{pass1}}=6\text{ kHz}$
 * $F_{\text{pass2}}=14\text{ kHz}$
@@ -198,7 +198,7 @@ The starter code uses the DMA controller to move blocks of data (also called fra
 We want to design an IIR bandpass fitler using the following parameters:
 * Design method: Elliptic
 * Filter order $N=6$
-* Sampling Frequency $F_s= 44.1 \text{ kHz}$
+* Sampling Frequency $F_s= 48 \text{ kHz}$
 * $F_{\text{pass1}}=5\text{ kHz}$
 * $F_{\text{pass2}}=15\text{ kHz}$
 * $A_{\text{stop}}=60 \text{dB}$
