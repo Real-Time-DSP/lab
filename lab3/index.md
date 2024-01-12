@@ -123,7 +123,13 @@ We want to design a FIR bandpass filter using the following parameters:
     
 7. Plot the values of your measured response on top of or next to the values of the theoretical response. **Include this plot in your lab report.**
 
-## Lab 3 instructions: Week 2
+8. Measure the number of elapsed cycles of your FIR filter. 
+
+### FIR filter with circular buffer.
+
+1. Replace the linear buffer in your direct form FIR implementation with a circular buffer. **Hint:** See the example in lab #0.
+
+2. Measure the number of elapsed cycles for the circular buffer implementation, and compare this with the direct form.
 
 ### Frame-based FIR filter
 
@@ -131,7 +137,7 @@ The starter code uses the DMA controller to move blocks of data (also called fra
   
 1. We will use the ARM CMSIS DSP library to perform filtering on a frame of data. Take a moment to read the [description of the FIR filter functions][4] in this library.
 
-2. In lab.c, initialize the variables necessary to use the `arm_fir_f32` function
+2. Starting from the original talk through starer project, in lab.c, initialize the variables necessary to use the `arm_fir_f32` function
 
     1. Create buffers for the input and output of the filter.
     
@@ -191,7 +197,7 @@ The starter code uses the DMA controller to move blocks of data (also called fra
         
 6. Connect the signal generator as the input and the oscilloscope as the output. Verify the operation of the program by sweeping through different frequencies and observing the response.
 
-## Lab 3 instructions: Week 3
+## Lab 3 instructions: Week 2
 
 ### IIR filter design in MATLAB
 
@@ -283,6 +289,14 @@ In this exercise, we will implement the IIR filter in direct form.
 4. Connect the signal generator as the input and the oscilloscope as the output. Measure the frequency response of your filter at 1 kHz increments up to 20 kHz by changing the frequency on the signal generator and measuring the amplitude of the output signal. Convert the amplitude values you measured to decibels. **Include the measured values in your lab report.**
     
 5. Plot the values of your measured response on top of or next to the values of the theoretical response. **Include this plot in your lab report.**
+
+## Lab 3 instructions: Week 3
+
+### IIR filter with circular buffer.
+
+1. Replace the linear buffer in your direct form IIR implementation from week #2 with a circular buffer. **Hint:** See the example in lab #0.
+
+2. Measure the number of elapsed cycles for the circular buffer implementation, and compare this with the direct form.
 
 ### IIR filter implementation: second order sections
 
