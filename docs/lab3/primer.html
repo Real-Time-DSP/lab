@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 3 Primer &#8212; Real Time DSP Lab Manual</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lab 3. Digital Filters" href="index.html" />
     <link rel="prev" title="Lab 2. Generating Cosine and Sine Waves" href="../lab2/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -388,7 +389,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-3-primer">
-<h1>Lab 3 Primer<a class="headerlink" href="#lab-3-primer" title="Permalink to this headline">#</a></h1>
+<h1>Lab 3 Primer<a class="headerlink" href="#lab-3-primer" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://real-time-dsp.github.io/lab/lab3/primer.slides.html">Slides</a></p>
 <p>Digital filters have several benefits compared to their analog counterparts</p>
 <ul class="simple">
@@ -405,7 +406,7 @@ document.write(`
 <li><p>Digital communication (wifi, cellular, etc)</p></li>
 </ul>
 <section id="review-of-lti-systems-and-filters">
-<h2>Review of LTI systems and filters<a class="headerlink" href="#review-of-lti-systems-and-filters" title="Permalink to this headline">#</a></h2>
+<h2>Review of LTI systems and filters<a class="headerlink" href="#review-of-lti-systems-and-filters" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://realtimedsp.net/handouts/LTI_systems_filters.html#mathematical-definitions">Mathematical definitions</a></p></li>
 <li><p><a class="reference external" href="https://realtimedsp.net/handouts/LTI_systems_filters.html#impulse-response-and-convolution">Impulse response and convolution</a></p></li>
@@ -415,7 +416,7 @@ document.write(`
 </ul>
 </section>
 <section id="finite-impulse-response-fir-filters">
-<h2>Finite impulse response (FIR) filters<a class="headerlink" href="#finite-impulse-response-fir-filters" title="Permalink to this headline">#</a></h2>
+<h2>Finite impulse response (FIR) filters<a class="headerlink" href="#finite-impulse-response-fir-filters" title="Permalink to this heading">#</a></h2>
 <p>For a causal discrete-time FIR filter, each output sample <span class="math notranslate nohighlight">\(y[n]\)</span> is computed by taking the inner product of the input samples <span class="math notranslate nohighlight">\(x[n]\)</span> with the filter coefficients <span class="math notranslate nohighlight">\(b[n]\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[ y[n] = \sum_{m=0}^{N}{x[n-m]b[m]} \]</div>
@@ -423,7 +424,7 @@ document.write(`
 <p><img alt="" src="../_images/tapped_delay.svg" /></p>
 </section>
 <section id="fir-filter-design">
-<h2>FIR filter design<a class="headerlink" href="#fir-filter-design" title="Permalink to this headline">#</a></h2>
+<h2>FIR filter design<a class="headerlink" href="#fir-filter-design" title="Permalink to this heading">#</a></h2>
 <p>For typical frequency selective filters, the design goals are threefold</p>
 <ul class="simple">
 <li><p>Minimize distortion of the signal in the passband(s)</p></li>
@@ -460,7 +461,7 @@ document.write(`
 <p>Other FIR filter design methods include <a class="reference external" href="https://en.wikipedia.org/wiki/Filter_design#Methodology">least-squares</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_impulse_response#Window_design_method">window design methods</a>.</p>
 </section>
 <section id="frame-based-processing">
-<h2>Frame-based processing<a class="headerlink" href="#frame-based-processing" title="Permalink to this headline">#</a></h2>
+<h2>Frame-based processing<a class="headerlink" href="#frame-based-processing" title="Permalink to this heading">#</a></h2>
 <p>For a real-time system, data is constantly flowing in from the ADC and out to the DAC. We can configure how many samples to collect between interrupt triggers from the ADC.</p>
 <p>In the extreme case, we can trigger an interrupt each time a new sample is available and immediately compute one output sample of the filter. alternatively, we can wait until a frame of <span class="math notranslate nohighlight">\(N_F\)</span> samples is collected before triggering an interrupt then compute <span class="math notranslate nohighlight">\(N_F\)</span> output samples of the filter.</p>
 <p>There are a number of advantages to a frame-based implementation:</p>
@@ -487,7 +488,7 @@ document.write(`
 </ul>
 </section>
 <section id="iir-filters">
-<h2>IIR Filters<a class="headerlink" href="#iir-filters" title="Permalink to this headline">#</a></h2>
+<h2>IIR Filters<a class="headerlink" href="#iir-filters" title="Permalink to this heading">#</a></h2>
 <p>For a causal discrete-time IIR filter, each output sample <span class="math notranslate nohighlight">\(y[n]\)</span> is computed from a set of feedforward terms and a set of feedback terms.</p>
 <div class="math notranslate nohighlight">
 \[ y[n] = \underbrace{\sum_{k=0}^{N}{b_k x[n-k]}}_{\text{feedforward}}-\underbrace{\sum_{k=1}^{N}{a_k y[n-k]}}_{\text{feedback}} \]</div>
@@ -497,23 +498,23 @@ document.write(`
 <p><img alt="" src="../_images/iir_df_I.svg" /></p>
 </section>
 <section id="numerical-errors">
-<h2>Numerical errors<a class="headerlink" href="#numerical-errors" title="Permalink to this headline">#</a></h2>
+<h2>Numerical errors<a class="headerlink" href="#numerical-errors" title="Permalink to this heading">#</a></h2>
 <p>With finite precision data types, many sequences of operations can be carried out with perfect accuracy. For example:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">single</span><span class="p">(</span><span class="mf">7.2</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">13.8</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">single</span><span class="p">(</span><span class="mf">7.2</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">13.8</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
 
-<span class="w">        </span><span class="mf">99.36</span><span class="w"></span>
+<span class="w">        </span><span class="mf">99.36</span>
 </pre></div>
 </div>
 <p>In general however, operations using finite precision data types (such as single precision floating point) are subject to numerical errors. For example:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">single</span><span class="p">(</span><span class="mf">7.2</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">13.8e-35</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">1.0e35</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nb">single</span><span class="p">(</span><span class="mf">7.2</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">13.8e-35</span><span class="p">)</span><span class="o">*</span><span class="nb">single</span><span class="p">(</span><span class="mf">1.0e35</span><span class="p">)</span>
 
-<span class="w">        </span><span class="mf">99.35999</span><span class="w"></span>
+<span class="w">        </span><span class="mf">99.35999</span>
 </pre></div>
 </div>
 <p>These numerical errors can cause serious issues in the design and implementation of IIR filters.</p>
 </section>
 <section id="cascade-of-biquads">
-<h2>Cascade of biquads<a class="headerlink" href="#cascade-of-biquads" title="Permalink to this headline">#</a></h2>
+<h2>Cascade of biquads<a class="headerlink" href="#cascade-of-biquads" title="Permalink to this heading">#</a></h2>
 <p>Previously, the transfer function was expressed in terms of the coefficients <span class="math notranslate nohighlight">\(b_k\)</span> and <span class="math notranslate nohighlight">\(a_k\)</span>. Alternatively, we can express it in terms of poles <span class="math notranslate nohighlight">\(p_k\)</span>, zeros <span class="math notranslate nohighlight">\(\zeta_k\)</span>, and a constant gain <span class="math notranslate nohighlight">\(C\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[ H(z) = C \frac{(z-\zeta_1)(z-\zeta_2)\cdots(z-\zeta_N)}{(z-p_1)(z-p_2)\cdots(z-p_N)} \]</div>

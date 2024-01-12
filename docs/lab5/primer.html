@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 5 Primer &#8212; Real Time DSP Lab Manual</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM)" href="index.html" />
     <link rel="prev" title="Lab 4. Pseudo-Random Binary Sequences and Data Scramblers" href="../lab4/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -401,39 +402,39 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-5-primer">
-<h1>Lab 5 Primer<a class="headerlink" href="#lab-5-primer" title="Permalink to this headline">#</a></h1>
+<h1>Lab 5 Primer<a class="headerlink" href="#lab-5-primer" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://real-time-dsp.github.io/lab/lab5/primer.slides.html">Slides</a></p>
 <p>The range of complexity for a pulse amplitude modulation (PAM) transceiver system can vary drastically. A working version that demonstrates the core principles can be simulated with just a few lines of code. In practice, many additional subsystems need to be added for reliable operation.</p>
 <section id="simulation">
-<h2>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">#</a></h2>
+<h2>Simulation<a class="headerlink" href="#simulation" title="Permalink to this heading">#</a></h2>
 <p>In simulation, pulse amplitude modulation is relatively straightforward, and can be achieved with just a handful steps.</p>
 <section id="mapping-data-to-pulses">
-<h3>Mapping data to pulses<a class="headerlink" href="#mapping-data-to-pulses" title="Permalink to this headline">#</a></h3>
+<h3>Mapping data to pulses<a class="headerlink" href="#mapping-data-to-pulses" title="Permalink to this heading">#</a></h3>
 <p>The first step in any digital communication system is <a class="reference external" href="https://en.wikipedia.org/wiki/Serialization">serialization</a>, the process of converting a useful data structure into a stream of bits. For example, the following MATLAB code serializes the ascii string “meatball” into an array of 56 bits.</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">serialized_data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">((</span><span class="nb">dec2bin</span><span class="p">(</span><span class="nb">uint8</span><span class="p">(</span><span class="s">&#39;meatball&#39;</span><span class="p">))</span><span class="o">&#39;</span><span class="p">),[</span><span class="mi">1</span><span class="p">,</span><span class="mi">56</span><span class="p">])</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">serialized_data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">((</span><span class="nb">dec2bin</span><span class="p">(</span><span class="nb">uint8</span><span class="p">(</span><span class="s">&#39;meatball&#39;</span><span class="p">))</span><span class="o">&#39;</span><span class="p">),[</span><span class="mi">1</span><span class="p">,</span><span class="mi">56</span><span class="p">])</span>
 
-<span class="n">serialized_data</span><span class="w"> </span><span class="p">=</span><span class="w"></span>
+<span class="n">serialized_data</span><span class="w"> </span><span class="p">=</span>
 
-<span class="w">    </span><span class="s">&#39;11011011100101110000111101001100010110000111011001101100&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;11011011100101110000111101001100010110000111011001101100&#39;</span>
 </pre></div>
 </div>
 <p>In 2-PAM, we map a bit of ‘0’ to a pulse with an amplitude <span class="math notranslate nohighlight">\(-d\)</span> and a bit of one to a pulse with an amplitude of <span class="math notranslate nohighlight">\(+d\)</span>. A common pulse shape is the <a class="reference external" href="https://en.wikipedia.org/wiki/Raised-cosine_filter">raised cosine</a></p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">upsampled_data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">upsample</span><span class="p">(</span><span class="nb">str2num</span><span class="p">(</span><span class="n">serialized_data</span><span class="o">&#39;</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">16</span><span class="p">);</span><span class="w"></span>
-<span class="n">pulse_shaping_filter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rcosdesign</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s">&#39;normal&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="n">sequence_of_pulses</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">conv</span><span class="p">(</span><span class="n">upsampled_data</span><span class="p">,</span><span class="n">pulse_shaping_filter</span><span class="p">,</span><span class="s">&#39;same&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="nb">figure</span><span class="p">;</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">sequence_of_pulses</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="p">;</span><span class="w"> </span><span class="nb">stem</span><span class="p">(</span><span class="n">upsampled_data</span><span class="o">.*</span><span class="nb">max</span><span class="p">(</span><span class="n">pulse_shaping_filter</span><span class="p">));</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">upsampled_data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">upsample</span><span class="p">(</span><span class="nb">str2num</span><span class="p">(</span><span class="n">serialized_data</span><span class="o">&#39;</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">16</span><span class="p">);</span>
+<span class="n">pulse_shaping_filter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rcosdesign</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s">&#39;normal&#39;</span><span class="p">);</span>
+<span class="n">sequence_of_pulses</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">conv</span><span class="p">(</span><span class="n">upsampled_data</span><span class="p">,</span><span class="n">pulse_shaping_filter</span><span class="p">,</span><span class="s">&#39;same&#39;</span><span class="p">)</span>
+<span class="nb">figure</span><span class="p">;</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">sequence_of_pulses</span><span class="p">);</span><span class="w"> </span><span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="p">;</span><span class="w"> </span><span class="nb">stem</span><span class="p">(</span><span class="n">upsampled_data</span><span class="o">.*</span><span class="nb">max</span><span class="p">(</span><span class="n">pulse_shaping_filter</span><span class="p">));</span>
 </pre></div>
 </div>
 <p><img alt="" src="../_images/pulses.svg" /></p>
 <section id="polyphase-filter-bank-for-pulse-shaping">
-<h4>Polyphase filter bank for pulse shaping<a class="headerlink" href="#polyphase-filter-bank-for-pulse-shaping" title="Permalink to this headline">#</a></h4>
+<h4>Polyphase filter bank for pulse shaping<a class="headerlink" href="#polyphase-filter-bank-for-pulse-shaping" title="Permalink to this heading">#</a></h4>
 <p>Recall that we upsampled the data by a factor of <span class="math notranslate nohighlight">\(L\)</span> before applying the pulse shaping filter. Using the standard FIR filter structure, this would mean that a large fraction, <span class="math notranslate nohighlight">\(\frac{L-1}{L}\)</span>, of the multiply-accumulate operations used in the filter are wasted on zeros! The polyphase filterbank structure solves this problem.</p>
 <p><img alt="" src="../_images/polyphase_filter_bank.svg" /></p>
 <p>The diagram above depicts the polyphase structure to implement an 8-tap FIR filter with impulse response <span class="math notranslate nohighlight">\(g[n]\)</span> after upsampling by a factor of <span class="math notranslate nohighlight">\(L=4\)</span>. The filter coefficients <span class="math notranslate nohighlight">\(g[n]\)</span> are divided into <span class="math notranslate nohighlight">\(L\)</span> smaller filters of length <span class="math notranslate nohighlight">\(\frac{8}{L}=2\)</span>. Even though the upsampling operation quadrupled the sampling rate of the output, these smaller filters are allowed to run at the original rate, reducing the computational cost by a factor of roughly <span class="math notranslate nohighlight">\(L=4\)</span>. By allowing the commutator the cycle through these four smaller filters, we produce the same output signal as if we had upsampled first, then applied an FIR filter at a higher rate.</p>
 </section>
 </section>
 <section id="modulation">
-<h3>Modulation<a class="headerlink" href="#modulation" title="Permalink to this headline">#</a></h3>
+<h3>Modulation<a class="headerlink" href="#modulation" title="Permalink to this heading">#</a></h3>
 <p>The signal above is what we call the <a class="reference external" href="https://en.wikipedia.org/wiki/Baseband">baseband</a> signal. Before transmitting, we want shift the spectrum to higher frequencies in a way that can be reversed at the transmitter. A simple method is with sinusoidal modulation and demodulation</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f0</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">;</span> <span class="n">fs</span> <span class="o">=</span> <span class="mi">48000</span><span class="p">;</span> <span class="n">w0</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">f0</span><span class="o">/</span><span class="n">fs</span><span class="p">;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">length</span><span class="p">(</span><span class="n">sequence_of_pulses</span><span class="p">);</span>
 <span class="n">modulated</span> <span class="o">=</span> <span class="n">sequence_of_pulses</span><span class="o">.</span><span class="s1">&#39; .* cos(w0*n);</span>
@@ -443,7 +444,7 @@ document.write(`
 <p><img alt="" src="../_images/modulated.svg" /></p>
 </section>
 <section id="demodulation">
-<h3>Demodulation<a class="headerlink" href="#demodulation" title="Permalink to this headline">#</a></h3>
+<h3>Demodulation<a class="headerlink" href="#demodulation" title="Permalink to this heading">#</a></h3>
 <p>Demodulation can be achieved by once again multiplying by the carrier. The second multiplication by cosine introduces frequency components at <span class="math notranslate nohighlight">\(\pm f_c\)</span>, which can be removed by a low pass filter.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">demodulated</span> <span class="o">=</span> <span class="n">modulated</span> <span class="o">.*</span> <span class="n">cos</span><span class="p">(</span><span class="n">w0</span><span class="o">*</span><span class="n">n</span><span class="p">);</span>
 <span class="n">recovered_pulses</span> <span class="o">=</span> <span class="n">conv</span><span class="p">(</span><span class="n">demodulated</span><span class="p">,</span><span class="n">pulse_shaping_filter</span><span class="p">,</span><span class="s1">&#39;same&#39;</span><span class="p">);</span>
@@ -453,7 +454,7 @@ document.write(`
 <p><img alt="" src="../_images/matched_filter.svg" /></p>
 </section>
 <section id="mapping-pulses-to-data">
-<h3>Mapping pulses to data<a class="headerlink" href="#mapping-pulses-to-data" title="Permalink to this headline">#</a></h3>
+<h3>Mapping pulses to data<a class="headerlink" href="#mapping-pulses-to-data" title="Permalink to this heading">#</a></h3>
 <p>We end up with a signal that can be downsampled and quantized to recover the original data.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">recovered_data</span> <span class="o">=</span> <span class="n">downsample</span><span class="p">(</span><span class="n">recovered_pulses</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
 
@@ -464,10 +465,10 @@ document.write(`
 </div>
 </section>
 <section id="receiver">
-<h3>Receiver<a class="headerlink" href="#receiver" title="Permalink to this headline">#</a></h3>
+<h3>Receiver<a class="headerlink" href="#receiver" title="Permalink to this heading">#</a></h3>
 <p>The receiver is where most of complexities occur. In the simulation above, we assumed that the receiver’s carrier exactly matches the transmitter (both in frequency and phase). We assumed that the signal traveled from transmitter to receiver with no distortion or time delay. We also assumed that the transmitter and receiver have exactly the same sampling rates so that every symbol was separated by exactly 16 samples. Though these assumptions are rarely true in practice, each type of error can be addressed by adding an appropriate subsystem.</p>
 <section id="costas-loop-for-carrier-recovery">
-<h4>Costas loop for carrier recovery<a class="headerlink" href="#costas-loop-for-carrier-recovery" title="Permalink to this headline">#</a></h4>
+<h4>Costas loop for carrier recovery<a class="headerlink" href="#costas-loop-for-carrier-recovery" title="Permalink to this heading">#</a></h4>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Costas_loop">Costas loop</a> is one way to track the phase <span class="math notranslate nohighlight">\(\theta\)</span> using an iterative algorithm. When processing the <span class="math notranslate nohighlight">\(k\)</span>th sample at the receiver, the Costas loop produces the next phase estimate <span class="math notranslate nohighlight">\(\theta[k+1]\)</span> based on the following rule:</p>
 <div class="math notranslate nohighlight">
 \[ \theta[k+1] =  \theta[k] - \mu \text{LPF} \left\{ r[k] \cos(\omega_0 k + \theta[k])  \right\} \times \text{LPF} \left\{ r[k] \sin(\omega_0 k + \theta[k])  \right\}\]</div>
@@ -478,21 +479,21 @@ document.write(`
 </section>
 </section>
 <section id="symbol-clock-recovery">
-<h2>Symbol Clock Recovery<a class="headerlink" href="#symbol-clock-recovery" title="Permalink to this headline">#</a></h2>
+<h2>Symbol Clock Recovery<a class="headerlink" href="#symbol-clock-recovery" title="Permalink to this heading">#</a></h2>
 <p>The carrier recovery process will correct a frequency offset so that the signal can be properly demodulated.</p>
 <p>The demodulated signal is downsampled and quantized to produce a stream of bits at the receiver. This process is sensitive to any timing offset. For example, the red and black stem plots show two possible ways that the demodulated signal might be downsampled. In one case (red), the values are recovered exactly. In the other case (black) many of the samples are close to zero and might easily be overwhelmed by noise.</p>
 <p>A symbol clock recovery subsystem should adapt the sampling times to minimize errors.</p>
 <p><img alt="" src="../_images/timing_offset.svg" /></p>
 </section>
 <section id="id1">
-<h2>Symbol Clock Recovery<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2>Symbol Clock Recovery<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>One simple clock recovery method consists of two bandpass filters and a squaring block.</p>
 <p><img alt="" src="../_images/symbol_clock_recovery.svg" /></p>
 <p>The first bandpass filter passes any oscillations that occur at a rate <span class="math notranslate nohighlight">\(f_{sym}/2\)</span>, which is the highest frequency that can occur in the baseband signal. Squaring the result will double the frequency. The second bandpass filter will then produce an estimate of the symbol clock.</p>
 <p><img alt="" src="../_images/BPF_square_BPF.svg" /></p>
 </section>
 <section id="error-probability">
-<h2>Error probability<a class="headerlink" href="#error-probability" title="Permalink to this headline">#</a></h2>
+<h2>Error probability<a class="headerlink" href="#error-probability" title="Permalink to this heading">#</a></h2>
 <p>It is common to model each sample of noise an independent draw from Gaussian distribution with variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
 <p>As the noise variance increases, it is more likely that a symbol is incorrectly decoded. However, as the symbol spacing <span class="math notranslate nohighlight">\(A\)</span> increases, a larger amount of noise is required to cause a bit error.</p>
 <p>As a result, the bit error probability will depend on the ratio <span class="math notranslate nohighlight">\(A/\sigma\)</span>. Since the signal power is proportional to <span class="math notranslate nohighlight">\(A^2\)</span> and the noise power is <span class="math notranslate nohighlight">\(\sigma^2\)</span>, this can be expressed as</p>
@@ -500,7 +501,7 @@ document.write(`
 \[\frac A \sigma = \sqrt{\frac{A^2}{\sigma ^2}} = \sqrt{\text{SNR}}\]</div>
 <p><img alt="" src="../_images/error_probability.svg" /></p>
 <section id="power-maximization-for-timing-recovery">
-<h3>Power maximization for timing recovery<a class="headerlink" href="#power-maximization-for-timing-recovery" title="Permalink to this headline">#</a></h3>
+<h3>Power maximization for timing recovery<a class="headerlink" href="#power-maximization-for-timing-recovery" title="Permalink to this heading">#</a></h3>
 <p>For an in-depth discussion of timing recovery via output power maximization, see <em>Software Receiver Design</em> by C. Richard Johnson, Jr., William A. Sethares and Andrew Klein, section 12.4.</p>
 </section>
 </section>

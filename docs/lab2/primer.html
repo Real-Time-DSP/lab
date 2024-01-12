@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 2 Primer &#8212; Real Time DSP Lab Manual</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lab 2. Generating Cosine and Sine Waves" href="index.html" />
     <link rel="prev" title="Lab 1. Overview of Hardware and Software Tools" href="../lab1/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -396,7 +397,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-2-primer">
-<h1>Lab 2 Primer<a class="headerlink" href="#lab-2-primer" title="Permalink to this headline">#</a></h1>
+<h1>Lab 2 Primer<a class="headerlink" href="#lab-2-primer" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://real-time-dsp.github.io/lab/lab2/primer.slides.html">Slides</a></p>
 <p>Sinusoidal generation is a microcosm of real-time DSP systems. Although simple, this task demonstrates many important elements:</p>
 <ul class="simple">
@@ -407,7 +408,7 @@ document.write(`
 <li><p>Presence of artifacts due to sampling and quantization</p></li>
 </ul>
 <section id="methods-for-sinusoidal-generation">
-<h2>Methods for sinusoidal generation<a class="headerlink" href="#methods-for-sinusoidal-generation" title="Permalink to this headline">#</a></h2>
+<h2>Methods for sinusoidal generation<a class="headerlink" href="#methods-for-sinusoidal-generation" title="Permalink to this heading">#</a></h2>
 <p>Given some desired frequency <span class="math notranslate nohighlight">\(f_0\)</span>, we want to generate a causal sinusoid</p>
 <div class="math notranslate nohighlight">
 \[x(t) = u(t) \cos (2\pi f_0 t)\]</div>
@@ -420,7 +421,7 @@ document.write(`
 <li><p>Lookup table with interpolation (ARM DSP math library)</p></li>
 </ul>
 <section id="polynomial-approximation-gnu-math-library">
-<h3>Polynomial approximation (GNU math library)<a class="headerlink" href="#polynomial-approximation-gnu-math-library" title="Permalink to this headline">#</a></h3>
+<h3>Polynomial approximation (GNU math library)<a class="headerlink" href="#polynomial-approximation-gnu-math-library" title="Permalink to this heading">#</a></h3>
 <p>When the <code class="docutils literal notranslate"><span class="pre">cos</span></code> function of math.h is invoked, the implementation is system dependent. However, a typical algorithm is to use a polynomial approximation</p>
 <div class="math notranslate nohighlight">
 \[ \cos(t) \approx a_0 + a_1 x + a_2 x^2 + a_3 x^3 \cdots\]</div>
@@ -440,7 +441,7 @@ document.write(`
 <p>It is also extremely flexible, since it allows us to change the frequency as we please by simply changing the the amount at which we increment <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
 </section>
 <section id="difference-equation">
-<h3>Difference equation<a class="headerlink" href="#difference-equation" title="Permalink to this headline">#</a></h3>
+<h3>Difference equation<a class="headerlink" href="#difference-equation" title="Permalink to this heading">#</a></h3>
 <p>Consider the discrete-time linear time-invariant system governed by the difference equation</p>
 <div class="math notranslate nohighlight">
 \[ y[n] = (2 \cos \omega_0) y[n-1] - y[n-2] + (\sin \omega_0) x[n-1]) \]</div>
@@ -459,9 +460,9 @@ document.write(`
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="week-2">
-<h1>Week 2<a class="headerlink" href="#week-2" title="Permalink to this headline">#</a></h1>
+<h1>Week 2<a class="headerlink" href="#week-2" title="Permalink to this heading">#</a></h1>
 <section id="lookup-table">
-<h2>Lookup table<a class="headerlink" href="#lookup-table" title="Permalink to this headline">#</a></h2>
+<h2>Lookup table<a class="headerlink" href="#lookup-table" title="Permalink to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(\cos (2\pi f_0 t)\)</span> is a periodic signal with fundamental period <span class="math notranslate nohighlight">\(T_0 = 1/f_0\)</span></p>
 <p>If the ratio <span class="math notranslate nohighlight">\(f_0 / f_s\)</span> is a rational number, it is convenient to express it as <span class="math notranslate nohighlight">\(\frac{f_0}{f_s} = \frac{N}{L}\)</span> where <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(L\)</span> are relatively prime. In this case, <span class="math notranslate nohighlight">\(\cos \left( 2\pi \frac{f_0}{f_s} n \right)\)</span> is also periodic with fundamental period <span class="math notranslate nohighlight">\(L\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
@@ -470,7 +471,7 @@ document.write(`
 <p>The number <span class="math notranslate nohighlight">\(N\)</span> tells us how many continuous time sinusoidal periods occur during one discrete time period.</p>
 </section>
 <section id="lookup-table-with-interpolation-arm-dsp-library">
-<h2>Lookup table with interpolation (ARM DSP library)<a class="headerlink" href="#lookup-table-with-interpolation-arm-dsp-library" title="Permalink to this headline">#</a></h2>
+<h2>Lookup table with interpolation (ARM DSP library)<a class="headerlink" href="#lookup-table-with-interpolation-arm-dsp-library" title="Permalink to this heading">#</a></h2>
 <p>The <a class="reference external" href="https://arm-software.github.io/CMSIS_5/DSP/html/group__cos.html">‘arm_cos_f32’ function from the CMSIS DSP library</a> stores a 512 element lookup table regardless of the desired frequency and sampling rate. Like the GNU math library, the function takes a phase as input (in radians), and returns the value of the cosine with that phase using three steps:</p>
 <ol class="arabic simple">
 <li><p>Find the integer table index <span class="math notranslate nohighlight">\(i\)</span> which is nearest to the desired phase</p></li>
@@ -481,7 +482,7 @@ document.write(`
 <p>Since this method always uses the same amount of memory for the lookup table (512 words), it might be preferred to the direct lookup table method if <span class="math notranslate nohighlight">\(L\)</span> is large.</p>
 </section>
 <section id="direct-memory-access-and-frame-based-processing">
-<h2>Direct memory access and frame-based processing.<a class="headerlink" href="#direct-memory-access-and-frame-based-processing" title="Permalink to this headline">#</a></h2>
+<h2>Direct memory access and frame-based processing.<a class="headerlink" href="#direct-memory-access-and-frame-based-processing" title="Permalink to this heading">#</a></h2>
 <p>Data is constantly flowing from ADC to main memory and from main memory to DAC. We could move the data using load/store operations, but this would use CPU cycles.</p>
 <p>Instead, we can offload this process to a direct memory access (DMA) controller. As samples are generated from an input device (such as an ADC), the DMA controller automatically populates a buffer in CPU addressable memory space.</p>
 <p>Rather than process individual samples, we wait for the buffer to fill so that we can process many samples at once. When the buffer is half full, an interrupt is triggered, signaling to the CPU that data is ready to be processed. In the background, samples continue being collected in the second half of the buffer so that no data is ever lost.</p>

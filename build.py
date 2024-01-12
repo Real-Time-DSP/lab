@@ -6,32 +6,32 @@ def build():
     from re import sub
     
     # Build the lab manual
-    result = run("jupyter-book clean -a .",capture_output=True)
+    result = run("jupyter-book clean -a .",capture_output=True, shell=True)
     print(result.stdout.decode("utf-8"))
-    result = run("jupyter-book build --builder html .",capture_output=True)
+    result = run("jupyter-book build --builder html .",capture_output=True, shell=True)
     print(result.stdout.decode("utf-8"))
     
     # Build recitation slides
     
-    result = run("jupyter-nbconvert --to slides lab0/index.ipynb --output ../_build/html/lab0/index --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True)
+    result = run("jupyter-nbconvert --to slides lab0/index.ipynb --output ../_build/html/lab0/index --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True, shell=True)
     print(result.stdout.decode("utf-8"))
     
-    result = run("jupyter-nbconvert --to slides lab2/primer.ipynb --output ../_build/html/lab2/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True)
+    result = run("jupyter-nbconvert --to slides lab2/primer.ipynb --output ../_build/html/lab2/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True, shell=True)
     print(result.stdout.decode("utf-8"))
     
-    result = run("jupyter-nbconvert --to slides lab3/primer.ipynb --output ../_build/html/lab3/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True)
+    result = run("jupyter-nbconvert --to slides lab3/primer.ipynb --output ../_build/html/lab3/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True, shell=True)
     print(result.stdout.decode("utf-8"))
     
-    result = run("jupyter-nbconvert --to slides lab4/primer.ipynb --output ../_build/html/lab4/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True)
+    result = run("jupyter-nbconvert --to slides lab4/primer.ipynb --output ../_build/html/lab4/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True, shell=True)
     print(result.stdout.decode("utf-8"))
     
-    result = run("jupyter-nbconvert --to slides lab5/primer.ipynb --output ../_build/html/lab5/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True)
+    result = run("jupyter-nbconvert --to slides lab5/primer.ipynb --output ../_build/html/lab5/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True, shell=True)
     print(result.stdout.decode("utf-8"))
     
-    result = run("jupyter-nbconvert --to slides lab6/primer.ipynb --output ../_build/html/lab6/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True)
+    result = run("jupyter-nbconvert --to slides lab6/primer.ipynb --output ../_build/html/lab6/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True, shell=True)
     print(result.stdout.decode("utf-8"))
     
-    result = run("jupyter-nbconvert --to slides lab7/primer.ipynb --output ../_build/html/lab7/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True)
+    result = run("jupyter-nbconvert --to slides lab7/primer.ipynb --output ../_build/html/lab7/primer --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags='remove-nb-cell'",capture_output=True, shell=True)
     print(result.stdout.decode("utf-8"))
     
     # Copy to docs folder to publish to github pages

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 7. Vocoder and Guitar Effects &#8212; Real Time DSP Lab Manual</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Lab 7 Primer" href="primer.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -390,21 +391,21 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-7-vocoder-and-guitar-effects">
-<h1>Lab 7. Vocoder and Guitar Effects<a class="headerlink" href="#lab-7-vocoder-and-guitar-effects" title="Permalink to this headline">#</a></h1>
+<h1>Lab 7. Vocoder and Guitar Effects<a class="headerlink" href="#lab-7-vocoder-and-guitar-effects" title="Permalink to this heading">#</a></h1>
 <section id="aim-of-the-experiment">
-<h2>Aim of the experiment<a class="headerlink" href="#aim-of-the-experiment" title="Permalink to this headline">#</a></h2>
+<h2>Aim of the experiment<a class="headerlink" href="#aim-of-the-experiment" title="Permalink to this heading">#</a></h2>
 <p>This experiment demonstrates audio effects commonly applied to harmonic instruments like the guitar.</p>
 </section>
 <section id="reading-assignment">
-<h2>Reading assignment<a class="headerlink" href="#reading-assignment" title="Permalink to this headline">#</a></h2>
+<h2>Reading assignment<a class="headerlink" href="#reading-assignment" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Lab 7 primer</p></li>
 </ul>
 </section>
 <section id="lab-7-instructions">
-<h2>Lab 7 instructions<a class="headerlink" href="#lab-7-instructions" title="Permalink to this headline">#</a></h2>
+<h2>Lab 7 instructions<a class="headerlink" href="#lab-7-instructions" title="Permalink to this heading">#</a></h2>
 <section id="vocoder-training-in-matlab">
-<h3>Vocoder training in MATLAB<a class="headerlink" href="#vocoder-training-in-matlab" title="Permalink to this headline">#</a></h3>
+<h3>Vocoder training in MATLAB<a class="headerlink" href="#vocoder-training-in-matlab" title="Permalink to this heading">#</a></h3>
 <p>In this exercise, we will encode a voice recording into a matrix of IIR filter coefficients.</p>
 <ol class="arabic">
 <li><p>Record or generate a short segment of speech and save it to a file with 48kHz sampling rate.</p>
@@ -456,7 +457,7 @@ document.write(`
 </ol>
 </section>
 <section id="vocoder-effect-in-c">
-<h3>Vocoder effect in C<a class="headerlink" href="#vocoder-effect-in-c" title="Permalink to this headline">#</a></h3>
+<h3>Vocoder effect in C<a class="headerlink" href="#vocoder-effect-in-c" title="Permalink to this heading">#</a></h3>
 <p>In this exercise, you will apply the learned vocal filter to input data in real time.</p>
 <ol class="arabic">
 <li><p>Define <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">N</span></code>, and <code class="docutils literal notranslate"><span class="pre">ORDER</span></code> based on the vocoder filters from MATLAB</p>
@@ -521,7 +522,7 @@ document.write(`
 </ol>
 </section>
 <section id="flanger">
-<h3>Flanger<a class="headerlink" href="#flanger" title="Permalink to this headline">#</a></h3>
+<h3>Flanger<a class="headerlink" href="#flanger" title="Permalink to this heading">#</a></h3>
 <p>In this exercise, you will implement the flanger using the feedforward form of the comb filter.</p>
 <div class="math notranslate nohighlight">
 \[y[n] = x[n] + \alpha x\left[n-K[n]\right]\]</div>
@@ -590,7 +591,7 @@ document.write(`
 </ol>
 </section>
 <section id="distortion">
-<h3>Distortion<a class="headerlink" href="#distortion" title="Permalink to this headline">#</a></h3>
+<h3>Distortion<a class="headerlink" href="#distortion" title="Permalink to this heading">#</a></h3>
 <p>In this exercise, you will implement harmonic distortion by clipping.</p>
 <ol class="arabic">
 <li><p>Add a nonlinearity to the input signal to increase the energy at higher harmonics. Whenever the absolute value of the signal exceeds some threshold <span class="math notranslate nohighlight">\(L\)</span>, set the value equal to <span class="math notranslate nohighlight">\(\text{sgn}(x[n]) L\)</span></p>
@@ -622,7 +623,7 @@ document.write(`
 </section>
 </section>
 <section id="lab-report-contents">
-<h2>Lab report contents<a class="headerlink" href="#lab-report-contents" title="Permalink to this headline">#</a></h2>
+<h2>Lab report contents<a class="headerlink" href="#lab-report-contents" title="Permalink to this heading">#</a></h2>
 <p>Good luck on exam two!</p>
 </section>
 </section>

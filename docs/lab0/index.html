@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 0. Review of Prerequisites (Optional) &#8212; Real Time DSP Lab Manual</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lab 1. Overview of Hardware and Software Tools" href="../lab1/index.html" />
     <link rel="prev" title="Troubleshooting / Frequently Asked Questions" href="../troubleshooting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -406,20 +407,20 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-0-review-of-prerequisites-optional">
-<h1>Lab 0. Review of Prerequisites (Optional)<a class="headerlink" href="#lab-0-review-of-prerequisites-optional" title="Permalink to this headline">#</a></h1>
+<h1>Lab 0. Review of Prerequisites (Optional)<a class="headerlink" href="#lab-0-review-of-prerequisites-optional" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://real-time-dsp.github.io/lab/lab0/index.slides.html">Slides</a></p>
 <p>There are several topics from software design, embedded systems, and linear systems that we will review before building upon in subsequent labs. Additionally, we will review the basics of MATLAB and C programming.</p>
 <p><em><strong>Attendance for Lab 0 is optional. There are no graded assignments associated with lab #0.</strong></em></p>
 <p>For lab #0 only, you may attend remotely through zoom. All other labs require in-person attendance for access to the hardware.</p>
 <p>Attending lab #0 in person will allow you to access the hardware to get a head start on lab #1.</p>
 <section id="hardware-overview">
-<h2>Hardware Overview<a class="headerlink" href="#hardware-overview" title="Permalink to this headline">#</a></h2>
+<h2>Hardware Overview<a class="headerlink" href="#hardware-overview" title="Permalink to this heading">#</a></h2>
 <p><img alt="" src="../_images/hardware.svg" /></p>
 </section>
 <section id="c-programming">
-<h2>C Programming<a class="headerlink" href="#c-programming" title="Permalink to this headline">#</a></h2>
+<h2>C Programming<a class="headerlink" href="#c-programming" title="Permalink to this heading">#</a></h2>
 <section id="data-types">
-<h3>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">#</a></h3>
+<h3>Data Types<a class="headerlink" href="#data-types" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>C language does not provide exact rules for data types</p>
 <ul>
@@ -441,78 +442,78 @@ document.write(`
 </ul>
 </section>
 <section id="pointers-and-functions">
-<h3>Pointers and functions<a class="headerlink" href="#pointers-and-functions" title="Permalink to this headline">#</a></h3>
+<h3>Pointers and functions<a class="headerlink" href="#pointers-and-functions" title="Permalink to this heading">#</a></h3>
 <p>Example: measuring clock cycles</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">systick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="mh">0xe000e018</span><span class="p">;</span><span class="w"></span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">tic</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">	</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">systick</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="kt">uint32_t</span><span class="w"> </span><span class="nf">toc</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">*</span><span class="n">systick</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">systick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="mh">0xe000e018</span><span class="p">;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">tic</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">	</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">systick</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">uint32_t</span><span class="w"> </span><span class="nf">toc</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">*</span><span class="n">systick</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
 <section id="arrays-and-for-loops">
-<h3>Arrays and for loops<a class="headerlink" href="#arrays-and-for-loops" title="Permalink to this headline">#</a></h3>
+<h3>Arrays and for loops<a class="headerlink" href="#arrays-and-for-loops" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Example: cosine lookup table</p></li>
 </ul>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int16_t</span><span class="w"> </span><span class="n">table</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span><span class="w"></span>
-<span class="n">float32_t</span><span class="w"> </span><span class="n">amplitude</span><span class="p">;</span><span class="w"></span>
-<span class="n">flat32_t</span><span class="w"> </span><span class="n">omega0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0576</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int16_t</span><span class="w"> </span><span class="n">table</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+<span class="n">float32_t</span><span class="w"> </span><span class="n">amplitude</span><span class="p">;</span>
+<span class="n">flat32_t</span><span class="w"> </span><span class="n">omega0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0576</span><span class="p">;</span>
 
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">amplitude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arm_sin_f32</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">omega0</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">table</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OUTPUT_SCALE_FACTOR</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">amplitude</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">amplitude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arm_sin_f32</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">omega0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">table</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OUTPUT_SCALE_FACTOR</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">amplitude</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
 <section id="linear-vs-circular-buffer">
-<h3>Linear vs circular buffer<a class="headerlink" href="#linear-vs-circular-buffer" title="Permalink to this headline">#</a></h3>
+<h3>Linear vs circular buffer<a class="headerlink" href="#linear-vs-circular-buffer" title="Permalink to this heading">#</a></h3>
 <p>Example: Shift all elements of an <span class="math notranslate nohighlight">\(N=16\)</span> element array and add a new element to the start.</p>
 <section id="linear-buffer">
-<h4>Linear buffer<a class="headerlink" href="#linear-buffer" title="Permalink to this headline">#</a></h4>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
-<span class="w">     </span><span class="p">.</span><span class="w"></span>
-<span class="w">     </span><span class="p">.</span><span class="w"></span>
-<span class="w">     </span><span class="p">.</span><span class="w"></span>
-<span class="kt">void</span><span class="w"> </span><span class="n">linear_buffer_shift</span><span class="p">(</span><span class="n">float32_t</span><span class="w"> </span><span class="n">new_element</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="o">-=</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="mi">-1</span><span class="p">];</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_element</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<h4>Linear buffer<a class="headerlink" href="#linear-buffer" title="Permalink to this heading">#</a></h4>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">     </span><span class="p">.</span>
+<span class="w">     </span><span class="p">.</span>
+<span class="w">     </span><span class="p">.</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">linear_buffer_shift</span><span class="p">(</span><span class="n">float32_t</span><span class="w"> </span><span class="n">new_element</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="o">-=</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="mi">-1</span><span class="p">];</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_element</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
 <section id="circular-buffer">
-<h4>Circular buffer<a class="headerlink" href="#circular-buffer" title="Permalink to this headline">#</a></h4>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
-<span class="kt">int32_t</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">     </span><span class="p">.</span><span class="w"></span>
-<span class="w">     </span><span class="p">.</span><span class="w"></span>
-<span class="w">     </span><span class="p">.</span><span class="w"></span>
-<span class="kt">void</span><span class="w"> </span><span class="n">circular_buffer_shift</span><span class="p">(</span><span class="n">float32_t</span><span class="w"> </span><span class="n">new_element</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">position</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">16</span><span class="w"></span>
-<span class="w">    </span><span class="n">x</span><span class="p">[</span><span class="n">position</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_element</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<h4>Circular buffer<a class="headerlink" href="#circular-buffer" title="Permalink to this heading">#</a></h4>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="kt">int32_t</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">     </span><span class="p">.</span>
+<span class="w">     </span><span class="p">.</span>
+<span class="w">     </span><span class="p">.</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">circular_buffer_shift</span><span class="p">(</span><span class="n">float32_t</span><span class="w"> </span><span class="n">new_element</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">position</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">16</span>
+<span class="w">    </span><span class="n">x</span><span class="p">[</span><span class="n">position</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_element</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
 </section>
 </section>
 <section id="matlab">
-<h2>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this headline">#</a></h2>
+<h2>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this heading">#</a></h2>
 <section id="data-types-in-matlab">
-<h3>Data Types in MATLAB<a class="headerlink" href="#data-types-in-matlab" title="Permalink to this headline">#</a></h3>
+<h3>Data Types in MATLAB<a class="headerlink" href="#data-types-in-matlab" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>By default, every variable in MATLAB is a 2d array of double precision floating point values</p></li>
 <li><p>To use another datatype, call the corresponding function (<code class="docutils literal notranslate"><span class="pre">single()</span></code>, <code class="docutils literal notranslate"><span class="pre">int16()</span></code>, <code class="docutils literal notranslate"><span class="pre">uint32()</span></code>, etc)</p></li>
@@ -522,42 +523,42 @@ document.write(`
 </ul>
 </section>
 <section id="vector-and-array-operations">
-<h3>Vector and array operations<a class="headerlink" href="#vector-and-array-operations" title="Permalink to this headline">#</a></h3>
+<h3>Vector and array operations<a class="headerlink" href="#vector-and-array-operations" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>You can use for loops to perform vector and array operations</p></li>
 <li><p>Most of the time, there is an easier and more computationally efficient way</p></li>
 </ul>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
-<span class="w">     </span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">];</span><span class="w"></span>
-<span class="n">B</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="w"></span>
-<span class="w">     </span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span>
+<span class="w">     </span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">];</span>
+<span class="n">B</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span>
+<span class="w">     </span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span>
 </pre></div>
 </div>
 <p>Element-wise product of two matrices using for loops</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="n">i_row</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="w"></span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i_col</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="w"></span>
-<span class="w">        </span><span class="n">C</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">end</span><span class="w"></span>
-<span class="k">end</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="n">i_row</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i_col</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span>
+<span class="w">        </span><span class="n">C</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">i_row</span><span class="p">,</span><span class="n">i_col</span><span class="p">);</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
 </pre></div>
 </div>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
-<span class="w">     </span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">];</span><span class="w"></span>
-<span class="n">B</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="w"></span>
-<span class="w">     </span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span>
+<span class="w">     </span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">];</span>
+<span class="n">B</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span>
+<span class="w">     </span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span>
 </pre></div>
 </div>
 <p>element-wise product of two matrices using <code class="docutils literal notranslate"><span class="pre">.*</span></code> operator</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">B</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Matrix-matrix product using <code class="docutils literal notranslate"><span class="pre">*</span></code> operator and <code class="docutils literal notranslate"><span class="pre">'</span></code> for transpose.</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="o">&#39;</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="o">&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="creating-plots">
-<h3>Creating plots<a class="headerlink" href="#creating-plots" title="Permalink to this headline">#</a></h3>
+<h3>Creating plots<a class="headerlink" href="#creating-plots" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>To describe your plot to MATLAB, give the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function the (x,y) coordinates of each point you want to plot</p></li>
 <li><p>Put all of the x coordinates in a vector and the y coordinates in a second vector</p></li>
@@ -570,7 +571,7 @@ document.write(`
 </section>
 </section>
 <section id="floating-point">
-<h2>Floating point<a class="headerlink" href="#floating-point" title="Permalink to this headline">#</a></h2>
+<h2>Floating point<a class="headerlink" href="#floating-point" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Integer and other fixed-point data types have the same spacing between all possible values</p>
 <ul>
@@ -592,9 +593,9 @@ document.write(`
 </ul>
 </section>
 <section id="linear-systems-and-signals">
-<h2>Linear Systems and Signals<a class="headerlink" href="#linear-systems-and-signals" title="Permalink to this headline">#</a></h2>
+<h2>Linear Systems and Signals<a class="headerlink" href="#linear-systems-and-signals" title="Permalink to this heading">#</a></h2>
 <section id="sampling-and-reconstruction">
-<h3>Sampling and Reconstruction<a class="headerlink" href="#sampling-and-reconstruction" title="Permalink to this headline">#</a></h3>
+<h3>Sampling and Reconstruction<a class="headerlink" href="#sampling-and-reconstruction" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Sampling (continuous-time to discrete-time conversion)</p>
 <ul>
@@ -610,7 +611,7 @@ document.write(`
 <p><img alt="" src="../_images/sampling_reconstruction.svg" /></p>
 </section>
 <section id="transforms">
-<h3>Transforms<a class="headerlink" href="#transforms" title="Permalink to this headline">#</a></h3>
+<h3>Transforms<a class="headerlink" href="#transforms" title="Permalink to this heading">#</a></h3>
 <p>Preview of the different transforms we will use in this class:</p>
 <ul class="simple">
 <li><p>Laplace transform</p></li>
@@ -628,7 +629,7 @@ document.write(`
 <p><img alt="" src="../_images/transforms.svg" /></p>
 </section>
 <section id="fourier-transform-example">
-<h3>Fourier transform example<a class="headerlink" href="#fourier-transform-example" title="Permalink to this headline">#</a></h3>
+<h3>Fourier transform example<a class="headerlink" href="#fourier-transform-example" title="Permalink to this heading">#</a></h3>
 <p>What is the fourier transform of <span class="math notranslate nohighlight">\( x(t) = \left(1+\cos(2\pi t)\right) \left( \text{rect}(t) \right)\)</span> ?</p>
 <p><img alt="" src="../_images/FT_example.svg" /></p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Fourier_transform#Tables_of_important_Fourier_transforms">Table of known fourier transforms and fourier transform properties. The left column is in Hertz and the right column is in radians per second.</a></p>

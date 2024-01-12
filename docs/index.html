@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>ECE 445S Lab Component &#8212; Real Time DSP Lab Manual</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -65,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Lab Primer" href="primer.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -385,38 +386,38 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ece-445s-lab-component">
-<h1>ECE 445S Lab Component<a class="headerlink" href="#ece-445s-lab-component" title="Permalink to this headline">#</a></h1>
+<h1>ECE 445S Lab Component<a class="headerlink" href="#ece-445s-lab-component" title="Permalink to this heading">#</a></h1>
 <p>As of Fall 2021, the instructions for the lab exercises will be entirely self contained in this lab manual. The exercises now use the <a class="reference external" href="https://www.st.com/en/evaluation-tools/stm32h735g-dk.html">STM32H735G Discovery Kit</a>.</p>
 <section id="required-textbook">
-<h2>Required textbook<a class="headerlink" href="#required-textbook" title="Permalink to this headline">#</a></h2>
+<h2>Required textbook<a class="headerlink" href="#required-textbook" title="Permalink to this heading">#</a></h2>
 <p>Some reading assignments will include sections of the following textbook, which is available as a free download from ARM:</p>
 <p><a class="reference external" href="https://www.arm.com/resources/ebook/digital-signal-processing">Digital Signal Processing using Arm Cortex-M based Microcontrollers by Cem Ünsalan, M. Erkin Yücel, H. Deniz Gürhan.</a></p>
 <p>The STM32F4 discovery board used in this book is different from the hardware we will use in lab, but most of the contents on signal processing, embedded programming, and ARM Cortex-M processors is applicable to the hardware we will use.</p>
 <section id="optional-textbook">
-<h3>Optional textbook<a class="headerlink" href="#optional-textbook" title="Permalink to this headline">#</a></h3>
+<h3>Optional textbook<a class="headerlink" href="#optional-textbook" title="Permalink to this heading">#</a></h3>
 <p>Prior to fall 2021, the laboratory component used the <a class="reference external" href="http://www.ti.com/tool/tmdslcdk138">OMAP-L138 Low-Cost Developer’s Kit</a> (LCDK) and the following book</p>
 <p>Thad B. Welch, Cameron H. G. Wright, and Michael G. Morrow, <em><a class="reference external" href="http://www.rt-dsp.com/">Real-Time Digital Signal Processing from MATLAB to C with the TMS320C6x DSPs</a></em>, CRC Press, 3rd ed., Jan. 2017, ISBN 978-1498781015.</p>
 <p>This book is now optional, but you may find it helpful since some exercises were adapted from it.</p>
 </section>
 </section>
 <section id="format-of-lab">
-<h2>Format of lab<a class="headerlink" href="#format-of-lab" title="Permalink to this headline">#</a></h2>
+<h2>Format of lab<a class="headerlink" href="#format-of-lab" title="Permalink to this heading">#</a></h2>
 <p>Each laboratory section meets three hours per week. Pre-laboratory quizzes are required for laboratories 2-6, and they are to be completed individually without help from anyone. For laboratory 1, the experiment and written report are to be completed individually. For laboratories 2-6, the experiment and report are to be completed in a team of two. For laboratory 7, which is optional, the experiment and oral report are to be completed individually. The format of the written lab report is described with each lab assignment.</p>
 </section>
 <section id="grading">
-<h2>Grading<a class="headerlink" href="#grading" title="Permalink to this headline">#</a></h2>
+<h2>Grading<a class="headerlink" href="#grading" title="Permalink to this heading">#</a></h2>
 <p>Each lab is worth 40 points. Lap report grading consists of 30 points for the reported contents and accuracy. The report should be typed and submitted on gradescope.</p>
 <p>The remaining 10 points are for attendance and participation of lab recitation. Lab recitation will be held at the beginning 15-20 minutes each lab.</p>
 <p>For partial credit, please submit all work even if incomplete or incorrect.</p>
 </section>
 <section id="schedule">
-<h2>Schedule<a class="headerlink" href="#schedule" title="Permalink to this headline">#</a></h2>
-<table class="colwidths-auto table">
+<h2>Schedule<a class="headerlink" href="#schedule" title="Permalink to this heading">#</a></h2>
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-left head"><p>Week</p></th>
-<th class="text-center head"><p>Prelab Quiz Due</p></th>
-<th class="text-center head"><p>Lab Work To Complete</p></th>
-<th class="text-center head"><p>Lab Report Due</p></th>
+<tr class="row-odd"><th class="head text-left"><p>Week</p></th>
+<th class="head text-center"><p>Prelab Quiz Due</p></th>
+<th class="head text-center"><p>Lab Work To Complete</p></th>
+<th class="head text-center"><p>Lab Report Due</p></th>
 </tr>
 </thead>
 <tbody>

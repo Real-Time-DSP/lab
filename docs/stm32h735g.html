@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>STM32H735G Discovery Kit Setup Guide &#8212; Real Time DSP Lab Manual</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Laboratory Hardware Setup" href="setup.html" />
     <link rel="prev" title="Lab Primer" href="primer.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -385,10 +386,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="stm32h735g-discovery-kit-setup-guide">
-<h1>STM32H735G Discovery Kit Setup Guide<a class="headerlink" href="#stm32h735g-discovery-kit-setup-guide" title="Permalink to this headline">#</a></h1>
+<h1>STM32H735G Discovery Kit Setup Guide<a class="headerlink" href="#stm32h735g-discovery-kit-setup-guide" title="Permalink to this heading">#</a></h1>
 <p>This guide will walk you through the steps needed to install the STM32CubeIDE software, import the starter code, and program the board.</p>
 <section id="stm32cubeide-installation">
-<h2>STM32CubeIDE installation<a class="headerlink" href="#stm32cubeide-installation" title="Permalink to this headline">#</a></h2>
+<h2>STM32CubeIDE installation<a class="headerlink" href="#stm32cubeide-installation" title="Permalink to this heading">#</a></h2>
 <p>The easiest way to program the discovery board is with the <a class="reference external" href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a> Software.</p>
 <p>The software is free and available on Windows, Mac OS, and Linux, but you will need to either register an account with ST of provide your email to access it.</p>
 <p>When installing, make sure to install the suggested components: SEGGER J-Link drivers and ST-Link Drivers.</p>
@@ -398,7 +399,7 @@ document.write(`
 <p>When you run the program for the first time, you will be prompted to select a workspace. <strong>Make sure you note the location of your workspace.</strong> This is where your projects for the lab assignments will reside. The default location is <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;/STM32CubeIDE/workspace_&lt;version&gt;</span></code>, but feel free to choose a more convenient location since you will access it often for the lab exercises.</p>
 </section>
 <section id="importing-the-starter-code">
-<h2>Importing the starter code<a class="headerlink" href="#importing-the-starter-code" title="Permalink to this headline">#</a></h2>
+<h2>Importing the starter code<a class="headerlink" href="#importing-the-starter-code" title="Permalink to this heading">#</a></h2>
 <p>We have provided a project that contains all of the starter code necessary to complete the lab exercises. With it, we have included a short MATLAB script that will help you import the code to the IDE for each lab while avoiding naming conflicts.</p>
 <p>If you do not already have a working installation of MATLAB, follow the <a class="reference external" href="http://users.ece.utexas.edu/~bevans/courses/realtime/homework/matlab.html">instructions on the course webpage</a>.</p>
 <ol class="arabic simple">
@@ -410,12 +411,12 @@ document.write(`
 </ol>
 </section>
 <section id="running-the-project-on-the-discovery-board">
-<h2>Running the project on the discovery board<a class="headerlink" href="#running-the-project-on-the-discovery-board" title="Permalink to this headline">#</a></h2>
+<h2>Running the project on the discovery board<a class="headerlink" href="#running-the-project-on-the-discovery-board" title="Permalink to this heading">#</a></h2>
 <p>Once the project is imported, select it as the active project by double clicking it.</p>
 <p>Connect the board with a micro USB cable to your computer. There are two micro USB ports on the board. Use the one labeled ‘CN15 STLINK’.</p>
 <p>The project can now be compiled and run normally <img alt="" src="_images/run.png" /> or in debug <img alt="" src="_images/debug.png" /> mode by clicking the icon at the top.</p>
 <section id="running-in-debug-mode">
-<h3>Running in debug mode<a class="headerlink" href="#running-in-debug-mode" title="Permalink to this headline">#</a></h3>
+<h3>Running in debug mode<a class="headerlink" href="#running-in-debug-mode" title="Permalink to this heading">#</a></h3>
 <p>Running in debug mode will allow you to place breakpoints, examine the processor’s memory, and make timing measurements.</p>
 <ol class="arabic simple">
 <li><p>Click the debug (<img alt="" src="_images/debug.png" />) icon in the top menu bar.</p></li>

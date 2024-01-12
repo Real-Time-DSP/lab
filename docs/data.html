@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Managing data between MATLAB and C &#8212; Real Time DSP Lab Manual</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Troubleshooting / Frequently Asked Questions" href="troubleshooting.html" />
     <link rel="prev" title="Laboratory Hardware Setup" href="setup.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -383,10 +384,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="managing-data-between-matlab-and-c">
-<h1>Managing data between MATLAB and C<a class="headerlink" href="#managing-data-between-matlab-and-c" title="Permalink to this headline">#</a></h1>
+<h1>Managing data between MATLAB and C<a class="headerlink" href="#managing-data-between-matlab-and-c" title="Permalink to this heading">#</a></h1>
 <p>Often, we will want to examine data generated on the board using MATLAB or export data from MATLAB (such as filter coefficients in Lab 3) to use in our C code.</p>
 <section id="moving-data-from-matlab-to-c">
-<h2>Moving data from MATLAB to C.<a class="headerlink" href="#moving-data-from-matlab-to-c" title="Permalink to this headline">#</a></h2>
+<h2>Moving data from MATLAB to C.<a class="headerlink" href="#moving-data-from-matlab-to-c" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">tree.png</span></code> image will be used as the data payload in some subsequent lab exercises.</p>
 <p><img alt="" src="_images/tree.png" /></p>
 <p>It is a 128x128 binary image (16,384 bits or 512 32-bit words). In MATLAB, we can load this file as a matrix using ‘imread’ and display it using ‘imshow’:</p>
@@ -481,7 +482,7 @@ document.write(`
 </div>
 </section>
 <section id="moving-data-from-c-to-matlab">
-<h2>Moving data from C to MATLAB<a class="headerlink" href="#moving-data-from-c-to-matlab" title="Permalink to this headline">#</a></h2>
+<h2>Moving data from C to MATLAB<a class="headerlink" href="#moving-data-from-c-to-matlab" title="Permalink to this heading">#</a></h2>
 <p>The STM32CubeIDE has a memory browser feature which can be used to easily locate and export a chunk of memory while in debug mode.</p>
 <ol class="arabic">
 <li><p>Verify that the data is in memory using either the ‘variables’ or ‘expressions’ view.</p></li>
