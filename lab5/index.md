@@ -312,7 +312,7 @@ In this exercise we will transmit the tree image (either from MATLAB or your lab
 3. Create an if statement to detect if the array is full. When it is, display it as an image.
 
     ```
-    if (i_word>512){
+    if (i_word>511){
         display_image(data,128,128);
     }
     ```
