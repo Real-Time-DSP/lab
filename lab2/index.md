@@ -19,6 +19,9 @@ Sinusoidal waveforms will be computed in discrete time, plotted, and played as a
     
 * Course reader
     * Lecture 1 slides on [Generating Sinusoidal Signals][1]
+
+* Handouts
+    * Handout on [Bounded-Input Bounded-Output Stability][2]
     
 ## Lab 2 instructions: Week 1
 
@@ -230,3 +233,4 @@ Please answer the following questions.
     c. $\Omega_0 = 1000 \text{ rad/sec}$, $f_s = 16 \text{ kHz}$.
     
 [1]:http://users.ece.utexas.edu/~bevans/courses/realtime/lectures/01_Sinusoids/lecture1.ppt
+[2]:https://users.ece.utexas.edu/~bevans/courses/realtime/lectures/06_IIR_Filters/BIBOStability.pdf
