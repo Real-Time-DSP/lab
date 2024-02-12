@@ -360,7 +360,8 @@ In addition to the code you modified, make sure to include.
     * For IIR bandpass filter (week three)
     
 4. C code for filter implementations
-    * IIR filter in direct form
+    * FIR filter using circular buffer
+    * IIR filter in direct form for both linear and circular buffers
     * IIR filter using cascade of second order sections
     
 ### IV. Discussion
