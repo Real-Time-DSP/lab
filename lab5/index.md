@@ -434,7 +434,7 @@ Present the results you obtain for each task on the assignment sheet. This secti
 
 #### Week one
 
-* Eye diagram of simulated transmission
+* Eye diagram of simulated transmission(What exactly is the diagram showing?)
 * Spectrograms of PAM transmissions
 * Recovered tree image
 
@@ -448,6 +448,20 @@ Present the results you obtain for each task on the assignment sheet. This secti
 ### IV. Discussion
 
 In this section, discuss the takeaway from each lab. You can mention any intuition that you developed. Also mention any problems that you faced and how you rectified them.
+
+### V. Assignment questions
+
+Please answer the following questions.
+
+* Why we had only 4 elements for cos array while modulating. (Week 1)
+
+* Why we had the stripes when using the receiver demo. (Week 1)
+
+* What does the eye diagram actually show. (Week 1)
+
+* Explain how does the Costas loop compensate for frequency offset at the receiver.(Week 2)
+
+* What are the trade-offs of increasing the number of symbols M. (Week 3)
 
 [1]:https://arm-software.github.io/CMSIS_5/DSP/html/group__FIR__Interpolate.html
 [2]:https://real-time-dsp.github.io/lab/_sources/lab5/pn_16384.md
