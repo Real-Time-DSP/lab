@@ -349,15 +349,15 @@ In addition to the code you modified, make sure to include.
 
 1. Theoretical magnitude response values (tabulated).
     * For FIR bandpass filter (week one)
-    * For IIR bandpass filter (week three)
+    * For IIR bandpass filter (week two)
 
 2. Measured magnitude response values of (tabulated).
     * For FIR bandpass filter (week one)
-    * For IIR bandpass filter (week three)
+    * For IIR bandpass filter (week two)
 
 3. Plot of theoretical response on top of or next to a plot of your measured response.
     * For FIR bandpass filter (week one)
-    * For IIR bandpass filter (week three)
+    * For IIR bandpass filter (week two)
     
 4. C code for filter implementations
     * FIR filter using circular buffer
@@ -374,7 +374,7 @@ Please answer the following questions.
 
 1. Why use circular buffers?
 
-2. What happens if you do not multiply the scale factor in an IIR filter implementation using a cascade of second-order sections (SOS)?
+2. What happens if you do not multiply the gain for each biquad in an IIR filter implementation using a cascade of second-order sections (SOS)?
 
 3. List the advantages and disadvantages of FIR vs. IIR filters.
 
