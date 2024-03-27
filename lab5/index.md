@@ -457,8 +457,6 @@ Please answer the following questions.
 
 * Why we had the stripes when using the receiver demo. (Week 1)
 
-* What does the eye diagram actually show. (Week 1)
-
 * Explain how does the Costas loop compensate for frequency offset at the receiver.(Week 2)
 
 * What are the trade-offs of increasing the number of symbols M. (Week 3)
