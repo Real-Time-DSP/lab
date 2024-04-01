@@ -443,7 +443,7 @@ Present the results you obtain for each task on the assignment sheet. This secti
 
 #### Week three
 * Recovered tree image
-* Symbol error probability vs SNR plot
+* Symbol error probability vs SNR (Please use "semilogy" instead of "plot")
     
 ### IV. Discussion
 
