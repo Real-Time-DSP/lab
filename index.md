@@ -35,7 +35,7 @@ For partial credit, please submit all work even if incomplete or incorrect.
 
 | Week  | Prelab Quiz Due | Lab Work To Complete | Lab Report Due |
 | :---     |:----: |                :----:                |:----: |
-| Aug. 28  |       | 0. Review of Prerequisites (Optional)|       |
+| Aug. 26  |       | 0. Review of Prerequisites (Optional)|       |
 | Sep. 02  |       | 1. Intro to Hardware and Software    |       |
 | Sep. 09  | Lab 2 | 2. Sinusoidal Generation Part 1      | Lab 1 |
 | Sep. 16  |       | 2. Sinusoidal Generation Part 2      |       |
