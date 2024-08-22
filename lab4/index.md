@@ -83,7 +83,7 @@ In this exercise, we will implement a $m=14$ bit LFSR with $h_1=h_3=h_4=\cdots=h
             ) >> 1;
         ```
 
-    6. Put a breakpoint after the for loop and run the code. Examine the 'PN' array and confirm that the sequence has a period of $N=2^{14}-1=16,383$.
+    6. Put a breakpoint after the for loop and run the code. Examine the 'PN' array and confirm that the sequence has a period of $N=2^{14}-1=16,383$. **Include the explanation for the periodicity in the discussion section in your lab report**.
     
 ### Data scrambler / descrambler
 
