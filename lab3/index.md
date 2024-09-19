@@ -49,7 +49,7 @@ We want to design a FIR bandpass filter using the following parameters:
 3. Use the `freqz` function to get the response of the filter at 10 Hz intervals:
 
     ```
-    [h,f] = freqz(Num,1,2205,48000);
+    [h,f] = freqz(Num,1,2400,48000);
     ```
 4. Define a function to convert the frequency response values returned by freqz from complex values to magnitude values in dB:
 
@@ -221,7 +221,7 @@ We want to design an IIR bandpass fitler using the following parameters:
 3. Use the `freqz` function to get the response of the filter at 10 Hz intervals:
 
     ```
-    [h,f] = freqz(Num,Den,2205,48000);
+    [h,f] = freqz(Num,Den,2400,48000);
     ```
 4. Define a function to convert the frequency response values returned by freqz from complex values to magnitude values in dB:
 
