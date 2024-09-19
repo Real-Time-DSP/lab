@@ -49,7 +49,7 @@ We want to design a FIR bandpass filter using the following parameters:
 3. Use the `freqz` function to get the response of the filter at 10 Hz intervals:
 
     ```
-    [h,f] = freqz(Num,1,2205,44100);
+    [h,f] = freqz(Num,1,2205,48000);
     ```
 4. Define a function to convert the frequency response values returned by freqz from complex values to magnitude values in dB:
 
@@ -221,7 +221,7 @@ We want to design an IIR bandpass fitler using the following parameters:
 3. Use the `freqz` function to get the response of the filter at 10 Hz intervals:
 
     ```
-    [h,f] = freqz(Num,Den,2205,44100);
+    [h,f] = freqz(Num,Den,2205,48000);
     ```
 4. Define a function to convert the frequency response values returned by freqz from complex values to magnitude values in dB:
 
@@ -376,7 +376,9 @@ Please answer the following questions.
 
 2. What happens if you do not multiply the gain for each biquad in an IIR filter implementation using a cascade of second-order sections (SOS)?
 
-3. List the advantages and disadvantages of FIR vs. IIR filters.
+3. Explain the difference between the theoratical magnitude response and the measured magnitude response in the FIR case.  
+
+4. List the advantages and disadvantages of FIR vs. IIR filters.
 
 [1]:http://users.ece.utexas.edu/~bevans/courses/realtime/lectures/03_Signals_Systems/lecture3.pptx
 [2]:http://users.ece.utexas.edu/~bevans/courses/realtime/lectures/05_FIR_Filters/lecture5.pptx

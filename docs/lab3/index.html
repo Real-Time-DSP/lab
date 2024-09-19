@@ -480,7 +480,7 @@ document.write(`
 <p>Later, we will experimentally measure the frequency response at 1000 Hz, 2000 Hz, <span class="math notranslate nohighlight">\(\ldots\)</span>, 19000 Hz, and 20000 Hz. In order to compare with our measurements, we need to first tabulate the theoretical response at these frequencies. Steps 3-5 describe this process.</p>
 </li>
 <li><p>Use the <code class="docutils literal notranslate"><span class="pre">freqz</span></code> function to get the response of the filter at 10 Hz intervals:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="n">f</span><span class="p">]</span> <span class="o">=</span> <span class="n">freqz</span><span class="p">(</span><span class="n">Num</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2205</span><span class="p">,</span><span class="mi">44100</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="n">f</span><span class="p">]</span> <span class="o">=</span> <span class="n">freqz</span><span class="p">(</span><span class="n">Num</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2205</span><span class="p">,</span><span class="mi">48000</span><span class="p">);</span>
 </pre></div>
 </div>
 </li>
@@ -641,7 +641,7 @@ document.write(`
 </li>
 <li><p>Choose Edit → convet to single section, and export the coefficients (File → Export → coefficients to workspace). Two variables will be created corresponding to the numerator and denominator coefficients of the transfer function.</p></li>
 <li><p>Use the <code class="docutils literal notranslate"><span class="pre">freqz</span></code> function to get the response of the filter at 10 Hz intervals:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="n">f</span><span class="p">]</span> <span class="o">=</span> <span class="n">freqz</span><span class="p">(</span><span class="n">Num</span><span class="p">,</span><span class="n">Den</span><span class="p">,</span><span class="mi">2205</span><span class="p">,</span><span class="mi">44100</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="n">f</span><span class="p">]</span> <span class="o">=</span> <span class="n">freqz</span><span class="p">(</span><span class="n">Num</span><span class="p">,</span><span class="n">Den</span><span class="p">,</span><span class="mi">2205</span><span class="p">,</span><span class="mi">48000</span><span class="p">);</span>
 </pre></div>
 </div>
 </li>
@@ -793,6 +793,7 @@ document.write(`
 <ol class="arabic simple">
 <li><p>Why use circular buffers?</p></li>
 <li><p>What happens if you do not multiply the gain for each biquad in an IIR filter implementation using a cascade of second-order sections (SOS)?</p></li>
+<li><p>Explain the difference between the theoratical magnitude response and the measured magnitude response in the FIR case.</p></li>
 <li><p>List the advantages and disadvantages of FIR vs. IIR filters.</p></li>
 </ol>
 </section>
