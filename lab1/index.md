@@ -33,7 +33,7 @@ Complete the following exercises during your lab section. Include your results i
 
 If you are unfamiliar with a particular MATLAB function, type `doc <function>`  or `help <function>` in the MATLAB command window.
 
-### DSP in MATLAB
+### DSP in MATLAB (Optional)
 
 Since these exercises are intended to teach the basics of MATLAB, some possible solutions are provided.
 
