@@ -128,21 +128,19 @@ In order for you to get started programming the board, we have created a sample 
 
 5. Locate the `process_left_sample` function in `lab.c`. Change the behavior from a talkthrough $f(x[n]) = x[n]$ to a squaring function $f(x[n]) = {(x[n])}^2$ by modifying the line `output_sample = input_sample;` Rerun the program and observe the result on the oscilloscope.
 
-6. At the end of the `process_left_sample` function in `lab.c`, locate the line `return output_sample;`. Put a breakpoint at this line.
+6. $sin(2\pi f_0 t)^2$ has the fundamental frequency of $2f_0$. Verify this on the oscilloscope by modifying your code.
+Note: The math library will compute floating point values of the sinusoid in the range of [-1,1]. However, the ADC and DAC are configured to use values in the range [-3200, 3200]. The INPUT_SCALE_FACTOR and OUTPUT_SCALE_FACTOR constants are provided to map int16_t data in this range to floating point data with the range [-1,1].
+ 
+7. At the end of the `process_left_sample` function in `lab.c`, locate the line `return output_sample;`. Put a breakpoint at this line.
 
-7. Allow the program to continue until it stops at the breakpoint. Add a watch expression for the variable `elapsed_cycles` and record the value. **Include this measurement in your lab report.**
+8. Allow the program to continue until it stops at the breakpoint. Add a watch expression for the variable `elapsed_cycles` and record the value. **Include this measurement in your lab report.**
 
 ## Lab report contents
 
 Be sure to include everything listed in this section when you submit your lab report.
 
-### I. Results from lab exercise
 
-1. DSP in MATLAB
-
-2. Using the STM32H735G discovery Kit and starter code
-
-### II. Assignment questions
+###  Assignment questions
 
 1. What is aliasing? How do you manage aliasing in DSP applications?
 
