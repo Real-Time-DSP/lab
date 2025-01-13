@@ -42,8 +42,8 @@ For partial credit, please submit all work even if incomplete or incorrect.
 | Feb. 10  | Lab 3 | 3. Digital Filters Part 1            | Lab 2 |
 | Feb. 17  |       | 3. Digital Filters Part 2            |       |
 | Feb. 24  |       | 3. Digital Filters Part 3            |       |
-| Mar. 03  |       |                                      |       |
-| Mar. 10  | Lab 4 | 4. Data Scramblers                   | Lab 3 |
+| Mar. 03  | Lab 4 | 4. Data Scramblers                   | Lab 3 |
+| Mar. 10  |       |                                      |       |
 | Mar. 17  |       |                                      |       |
 | Mar. 24  | Lab 5 | 5. Pulse Amplitude Modulation Part 1 | Lab 4 |
 | Mar. 31  |       | 5. Pulse Amplitude Modulation Part 2 |       |
