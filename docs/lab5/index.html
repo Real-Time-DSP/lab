@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM) &#8212; Real Time DSP Lab Manual</title>
   
@@ -15,53 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lab5/index';</script>
@@ -78,27 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -120,8 +111,13 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -145,6 +141,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../index.html">
   
@@ -156,7 +154,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Real Time DSP Lab Manual</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -206,7 +215,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -215,14 +224,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -347,10 +356,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -358,14 +367,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -432,9 +441,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-5-digital-data-transmission-by-baseband-pulse-amplitude-modulation-pam">
-<h1>Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM)<a class="headerlink" href="#lab-5-digital-data-transmission-by-baseband-pulse-amplitude-modulation-pam" title="Permalink to this heading">#</a></h1>
+<h1>Lab 5. Digital Data Transmission by Baseband Pulse Amplitude Modulation (PAM)<a class="headerlink" href="#lab-5-digital-data-transmission-by-baseband-pulse-amplitude-modulation-pam" title="Link to this heading">#</a></h1>
 <section id="aim-of-the-experiment">
-<h2>Aim of the experiment<a class="headerlink" href="#aim-of-the-experiment" title="Permalink to this heading">#</a></h2>
+<h2>Aim of the experiment<a class="headerlink" href="#aim-of-the-experiment" title="Link to this heading">#</a></h2>
 <p>In this experiment, you will learn the basics concepts of digital communications like pulse shaping filters, Nyquist criterion, eye diagram, inter-symbol interference and clock recovery. You will learn digital data transmission using baseband pulse amplitude modulation.</p>
 <p>Before you start with the experiment, it is necessary that you have an understanding (at some level) of the following concepts:</p>
 <ul class="simple">
@@ -448,7 +457,7 @@ document.write(`
 </ul>
 </section>
 <section id="reading-assignment">
-<h2>Reading assignment<a class="headerlink" href="#reading-assignment" title="Permalink to this heading">#</a></h2>
+<h2>Reading assignment<a class="headerlink" href="#reading-assignment" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Digital Signal Processing using Arm Cortex-M based Microcontrollers by Cem Ünsalan, M. Erkin Yücel, H. Deniz Gürhan.</p>
 <ul>
@@ -479,10 +488,10 @@ document.write(`
 </ul>
 </section>
 <section id="lab-5-instructions-week-1">
-<h2>Lab 5 instructions: week 1<a class="headerlink" href="#lab-5-instructions-week-1" title="Permalink to this heading">#</a></h2>
+<h2>Lab 5 instructions: week 1<a class="headerlink" href="#lab-5-instructions-week-1" title="Link to this heading">#</a></h2>
 <p>In this exercise, we will transmit the scrambled tree image from the STM board to a PC running a receiver to recover the image.</p>
 <section id="simulation-in-matlab">
-<h3>Simulation in MATLAB<a class="headerlink" href="#simulation-in-matlab" title="Permalink to this heading">#</a></h3>
+<h3>Simulation in MATLAB<a class="headerlink" href="#simulation-in-matlab" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Run the following code which simulates the generation of the transmitted signal. Please download the <a class="reference external" href="https://real-time-dsp.github.io/lab/_sources/lab5/pn_16384.md">file containing the PN sequence from lab four</a>, and the <a class="reference external" href="https://real-time-dsp.github.io/lab/_images/tree.png">tree image</a>. Ensure that both are accessible on the MATLAB path.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f0</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">;</span> <span class="n">fs</span> <span class="o">=</span> <span class="mi">48000</span><span class="p">;</span> <span class="n">sps</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="n">fsym</span> <span class="o">=</span> <span class="n">fs</span><span class="o">/</span><span class="n">sps</span><span class="p">;</span>
@@ -511,7 +520,7 @@ document.write(`
 </ol>
 </section>
 <section id="setting-up-the-transmitter-on-the-stm32-board">
-<h3>Setting up the transmitter on the STM32 board<a class="headerlink" href="#setting-up-the-transmitter-on-the-stm32-board" title="Permalink to this heading">#</a></h3>
+<h3>Setting up the transmitter on the STM32 board<a class="headerlink" href="#setting-up-the-transmitter-on-the-stm32-board" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>In lab.c, create an array containing the data stream to transmit. The data stream will have 32 bits of header followed by 16384 bits for the (scrambled) tree image. If we store it as an array of 32-bit words, then we will need an array of length 513.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uint32_t</span> <span class="n">data_stream</span><span class="p">[</span><span class="mi">513</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
@@ -533,7 +542,7 @@ document.write(`
 <ul class="simple">
 <li><p>Filter type: raised cosine</p></li>
 <li><p>Samples per symbol: 16</p></li>
-<li><p>Sampling Frequency <span class="math notranslate nohighlight">\(F_s= 44.1 \text{ kHz}\)</span></p></li>
+<li><p>Sampling Frequency <span class="math notranslate nohighlight">\(F_s= 48 \text{ kHz}\)</span></p></li>
 <li><p>Rolloff factor: 0.8</p></li>
 </ul>
 <p>In MATLAB, use the ‘rcosdesign’ function and copy the coefficients into lab.c</p>
@@ -600,7 +609,7 @@ document.write(`
 </ol>
 </section>
 <section id="examining-the-transmission-in-matlab">
-<h3>Examining the transmission in MATLAB<a class="headerlink" href="#examining-the-transmission-in-matlab" title="Permalink to this heading">#</a></h3>
+<h3>Examining the transmission in MATLAB<a class="headerlink" href="#examining-the-transmission-in-matlab" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>With the transmitter running, record 12 seconds of data using MATLAB and save it to a file.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="o">=</span> <span class="mi">48000</span><span class="p">;</span>
@@ -629,15 +638,17 @@ document.write(`
 </pre></div>
 </div>
 </li>
-<li><p>Run the <a class="reference external" href="https://github.com/Real-Time-DSP/lab/raw/main/starter_code/receiver_demo.m">receiver demo</a> in MATLAB using the transmission that was not scrambled. Try to adjust the parameters to recover the tree image. <strong>Include the recovered tree image in your lab report using the best parameters you find.</strong></p></li>
+<li><p>Run the <a class="reference external" href="https://github.com/Real-Time-DSP/lab/raw/main/starter_code/receiver_demo.m">receiver demo</a> in MATLAB using the transmission that was not scrambled. Try to adjust the parameters to recover the tree image. <strong>Include the recovered tree image in your lab report using the best parameters you find.</strong>
+Note: Your laptop’s microphine automatically filters out frequencies above 8kHz. In order to disable this feature follow the steps below:
+<span class="math notranslate nohighlight">\(\text{Settings} \rightarrow\text{System} \rightarrow \text{Sound} \rightarrow \text{more sound settings (under Advanced)} \rightarrow \text{choose your mic under Recording tab} \rightarrow \text{Advanced tab} \rightarrow \text{disable &quot;Audio Enhancements&quot;}\)</span></p></li>
 </ol>
 </section>
 </section>
 <section id="lab-5-instructions-week-2">
-<h2>Lab 5 instructions: week 2<a class="headerlink" href="#lab-5-instructions-week-2" title="Permalink to this heading">#</a></h2>
+<h2>Lab 5 instructions: week 2<a class="headerlink" href="#lab-5-instructions-week-2" title="Link to this heading">#</a></h2>
 <p>In this exercise we will transmit the tree image (either from MATLAB or your lab partner’s board) and receive it on the STM board.</p>
 <section id="costas-loop-for-carrier-recovery">
-<h3>Costas loop for carrier recovery<a class="headerlink" href="#costas-loop-for-carrier-recovery" title="Permalink to this heading">#</a></h3>
+<h3>Costas loop for carrier recovery<a class="headerlink" href="#costas-loop-for-carrier-recovery" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>In lab.c, create variables necessary for the costas loop. Assume that the lowpass filter in the costas loop is the same pulse shaping filter as before with 64 coefficients.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">float32_t</span> <span class="n">Ux</span><span class="p">[</span><span class="mi">64</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
@@ -693,7 +704,7 @@ document.write(`
 <li><p>Display the output on the oscilloscope and verify its behavior. For the scrambled signal, the output of the Costas loop should closely resemble the baseband signal before modulation. <strong>Include an oscilloscope screenshot in your lab report.</strong></p></li>
 </ol>
 <section id="symbol-recovery-by-downsampling-and-quantization">
-<h4>Symbol recovery by downsampling and quantization<a class="headerlink" href="#symbol-recovery-by-downsampling-and-quantization" title="Permalink to this heading">#</a></h4>
+<h4>Symbol recovery by downsampling and quantization<a class="headerlink" href="#symbol-recovery-by-downsampling-and-quantization" title="Link to this heading">#</a></h4>
 <ol class="arabic">
 <li><p>Create a variable <span class="math notranslate nohighlight">\(k\)</span> that acts as a counter for the downsampler. Since every 16th sample corresponds to a new symbol, let <span class="math notranslate nohighlight">\(k\)</span> count up to 15 before saving the next value and resetting the counter.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">int32_t</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -745,16 +756,16 @@ document.write(`
 </pre></div>
 </div>
 </li>
-<li><p>Setup the transmitter as the input (either with your lab partner running the week 1 code or the provided MATLAB simulation) <em>without</em> scrambling the data. Run the receiver with a breakpoint immediately after image is displayed. You should see a noisy and possibly inverted tree image. Since no symbol timing recovery algorithm is in place, the quality of the recovered image could change when you repeat the experiment. <strong>Include the recovered image in your lab report.</strong> (You can either use a photo or <a class="reference internal" href="../data.html"><span class="doc std std-doc">export the array</span></a> and plot it in MATLAB using the <code class="docutils literal notranslate"><span class="pre">image</span></code> function).</p></li>
+<li><p>Setup the transmitter as the input (either with your lab partner running the week 1 code or the provided MATLAB simulation) <em>without</em> scrambling the data. Run the receiver with a breakpoint immediately after image is displayed. You should see a noisy and possibly inverted tree image. Since no symbol timing recovery algorithm is in place, the quality of the recovered image could change when you repeat the experiment. <strong>Include the recovered image in your lab report.</strong> (You can either use a photo or <a class="reference internal" href="../data.html"><span class="std std-doc">export the array</span></a> and plot it in MATLAB using the <code class="docutils literal notranslate"><span class="pre">image</span></code> function).</p></li>
 </ol>
 </section>
 </section>
 </section>
 <section id="lab-5-instructions-week-3">
-<h2>Lab 5 instructions: week 3<a class="headerlink" href="#lab-5-instructions-week-3" title="Permalink to this heading">#</a></h2>
+<h2>Lab 5 instructions: week 3<a class="headerlink" href="#lab-5-instructions-week-3" title="Link to this heading">#</a></h2>
 <p>In this exercise we will add a symbol clock recovery subsystem and implement the cross-correlation to match the PN header.</p>
 <section id="cross-correlation-for-header-detection">
-<h3>Cross-correlation for header detection<a class="headerlink" href="#cross-correlation-for-header-detection" title="Permalink to this heading">#</a></h3>
+<h3>Cross-correlation for header detection<a class="headerlink" href="#cross-correlation-for-header-detection" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Create the variables necessary to implement the header detection as an FIR filter including a semaphore variable to track when the header has been detected.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">int8_t</span> <span class="n">xcorr</span><span class="p">[</span><span class="mi">32</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
@@ -804,7 +815,7 @@ document.write(`
 </ol>
 </section>
 <section id="symbol-timing-recovery">
-<h3>Symbol timing recovery<a class="headerlink" href="#symbol-timing-recovery" title="Permalink to this heading">#</a></h3>
+<h3>Symbol timing recovery<a class="headerlink" href="#symbol-timing-recovery" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Design two second order IIR bandpass filters in the MATLAB filter designer with the following parameters</p>
 <p><strong>BPF 1</strong></p>
@@ -835,7 +846,7 @@ document.write(`
 </ol>
 </section>
 <section id="symbol-error-probability">
-<h3>Symbol error probability<a class="headerlink" href="#symbol-error-probability" title="Permalink to this heading">#</a></h3>
+<h3>Symbol error probability<a class="headerlink" href="#symbol-error-probability" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>In MATLAB, plot the theoretical symbol error probability as a function of signal to noise ratio for <span class="math notranslate nohighlight">\(M = 2, 4, 8.\)</span> Put the x-axis SNR variable in dB.</p>
 <div class="math notranslate nohighlight">
@@ -849,21 +860,21 @@ document.write(`
 </section>
 </section>
 <section id="lab-report-contents">
-<h2>Lab report contents<a class="headerlink" href="#lab-report-contents" title="Permalink to this heading">#</a></h2>
+<h2>Lab report contents<a class="headerlink" href="#lab-report-contents" title="Link to this heading">#</a></h2>
 <p>Be sure to include everything listed in this section when you submit your lab report. The goal of the report is to help cement what you learned in memory. For sections I, II, and IV, imagine your audience is a student who is your peer but who has not yet completed the lab.</p>
 <section id="i-introduction">
-<h3>I. Introduction<a class="headerlink" href="#i-introduction" title="Permalink to this heading">#</a></h3>
+<h3>I. Introduction<a class="headerlink" href="#i-introduction" title="Link to this heading">#</a></h3>
 <p>Briefly explain the theory and algorithms behind the programs that you wrote. The slides and reading material might help you in writing this section.</p>
 </section>
 <section id="ii-methods">
-<h3>II. Methods<a class="headerlink" href="#ii-methods" title="Permalink to this heading">#</a></h3>
+<h3>II. Methods<a class="headerlink" href="#ii-methods" title="Link to this heading">#</a></h3>
 <p>Describe the steps you took to implement the algorithms in your own words.</p>
 </section>
 <section id="iii-results-from-lab-exercise">
-<h3>III. Results from lab exercise<a class="headerlink" href="#iii-results-from-lab-exercise" title="Permalink to this heading">#</a></h3>
+<h3>III. Results from lab exercise<a class="headerlink" href="#iii-results-from-lab-exercise" title="Link to this heading">#</a></h3>
 <p>Present the results you obtain for each task on the assignment sheet. This section should include illustrative oscilloscope screenshots of the DSP algorithms in action. Also include any code that you wrote or modified. Please do not include all of the boilerplate code from the textbook.</p>
 <section id="week-one">
-<h4>Week one<a class="headerlink" href="#week-one" title="Permalink to this heading">#</a></h4>
+<h4>Week one<a class="headerlink" href="#week-one" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Eye diagram of simulated transmission(What exactly is the diagram showing?)</p></li>
 <li><p>Spectrograms of PAM transmissions</p></li>
@@ -871,13 +882,13 @@ document.write(`
 </ul>
 </section>
 <section id="week-two">
-<h4>Week two<a class="headerlink" href="#week-two" title="Permalink to this heading">#</a></h4>
+<h4>Week two<a class="headerlink" href="#week-two" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Recovered tree image</p></li>
 </ul>
 </section>
 <section id="week-three">
-<h4>Week three<a class="headerlink" href="#week-three" title="Permalink to this heading">#</a></h4>
+<h4>Week three<a class="headerlink" href="#week-three" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Recovered tree image</p></li>
 <li><p>Symbol error probability vs SNR (Please use “semilogy” instead of “plot”)</p></li>
@@ -885,11 +896,11 @@ document.write(`
 </section>
 </section>
 <section id="iv-discussion">
-<h3>IV. Discussion<a class="headerlink" href="#iv-discussion" title="Permalink to this heading">#</a></h3>
+<h3>IV. Discussion<a class="headerlink" href="#iv-discussion" title="Link to this heading">#</a></h3>
 <p>In this section, discuss the takeaway from each lab. You can mention any intuition that you developed. Also mention any problems that you faced and how you rectified them.</p>
 </section>
 <section id="v-assignment-questions">
-<h3>V. Assignment questions<a class="headerlink" href="#v-assignment-questions" title="Permalink to this heading">#</a></h3>
+<h3>V. Assignment questions<a class="headerlink" href="#v-assignment-questions" title="Link to this heading">#</a></h3>
 <p>Please answer the following questions.</p>
 <ul class="simple">
 <li><p>Why we had only 4 elements for cos array while modulating. (Week 1)</p></li>
@@ -928,7 +939,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1040,8 +1051,8 @@ By University of Texas at Austin
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

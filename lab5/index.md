@@ -91,7 +91,7 @@ In this exercise, we will transmit the scrambled tree image from the STM board t
 
     * Filter type: raised cosine
     * Samples per symbol: 16
-    * Sampling Frequency $F_s= 44.1 \text{ kHz}$
+    * Sampling Frequency $F_s= 48 \text{ kHz}$
     * Rolloff factor: 0.8
 
     In MATLAB, use the 'rcosdesign' function and copy the coefficients into lab.c
@@ -197,6 +197,8 @@ In this exercise, we will transmit the scrambled tree image from the STM board t
     ```
 
 4. Run the [receiver demo][4] in MATLAB using the transmission that was not scrambled. Try to adjust the parameters to recover the tree image. **Include the recovered tree image in your lab report using the best parameters you find.**
+Note: Your laptop's microphine automatically filters out frequencies above 8kHz. In order to disable this feature follow the steps below:
+$\text{Settings} \rightarrow\text{System} \rightarrow \text{Sound} \rightarrow \text{more sound settings (under Advanced)} \rightarrow \text{choose your mic under Recording tab} \rightarrow \text{Advanced tab} \rightarrow \text{disable "Audio Enhancements"}$
 
 ## Lab 5 instructions: week 2
 
