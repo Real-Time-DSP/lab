@@ -418,7 +418,7 @@ In this exercise we will add a symbol clock recovery subsystem and implement the
     
     $$ \Phi(x) = \frac{1}{2} \left[ 1 + \text{erf}\left( \frac{x}{\sqrt 2} \right) \right] $$
     
-    ** Include the error probability vs SNR plot in your lab report**
+    ** Include the error probability vs SNR plot in your lab report (Please use "semilogy" instead of "plot")**
 
 ## Lab report contents
 
