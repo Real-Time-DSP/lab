@@ -83,7 +83,7 @@ In this exercise, we will implement a $m=14$ bit LFSR with $h_1=h_3=h_4=\cdots=h
             ) >> 1;
         ```
 
-    6. Put a breakpoint after the for loop and run the code. Examine the 'PN' array and confirm that the sequence has a period of $N=2^{14}-1=16,383$. **Include the explanation for the periodicity in the discussion section in your lab report**.
+    6. Put a breakpoint after the for loop and run the code. Examine the 'PN' array and confirm that the sequence has a period of $N=2^{14}-1=16,383$. **Include snapshots and an explanation of how you confirmed the periodicity in the discussion section in your lab report**.
     
 ### Data scrambler / descrambler
 
@@ -169,7 +169,7 @@ This exercise will help you understand the properties of PN sequences by calcula
     figure; stem(n, arrayfun(func,n));
     ```
     
-**Include the autocorrelation plot in your lab report**
+**Include the autocorrelation code and plot in your lab report**
 
 ## Lab report contents
 
