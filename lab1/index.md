@@ -137,7 +137,7 @@ Note: The math library will compute floating point values of the sinusoid in the
 
 ## Lab report contents
 
-Be sure to include everything listed in this section when you submit your lab report.
+Include your answers to the 5 Assignment questions below in the lab report.
 
 
 ###  Assignment questions
